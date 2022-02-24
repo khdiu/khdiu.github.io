@@ -457,14 +457,14 @@ protocols: control sendin">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    591
+                    735
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -664,6 +664,46 @@ protocols: control sendin">
 <h3 id="Tow-key-network-core-functions"><a href="#Tow-key-network-core-functions" class="headerlink" title="Tow key network-core functions"></a>Tow key network-core functions</h3><ul>
 <li>routing: determines source-destination route taken by packets</li>
 <li>forwarding: move packets from router’ input to appropriate router ouput</li>
+</ul>
+<h3 id="Alternative-core-circuit-switching"><a href="#Alternative-core-circuit-switching" class="headerlink" title="Alternative core: circuit switching"></a>Alternative core: circuit switching</h3><p>end-end resources allocated to,reserved for “call” between source&amp;destination</p>
+<ul>
+<li><p>in diagram, each links has four circuits </p>
+<p>call gets 2nd circuit in top link and 1st circuit in right link</p>
+</li>
+<li><p>dedicated resources: no sharing</p>
+<p>circuit-like(guaranteed) performance</p>
+</li>
+<li><p>circuit segment idle if not used by call(no sharing)</p>
+</li>
+<li><p>commonly used in traditional telephone networks</p>
+</li>
+</ul>
+<h4 id="FDM-versus-TDM"><a href="#FDM-versus-TDM" class="headerlink" title="FDM versus TDM"></a>FDM versus TDM</h4><p>FDM: frequency-division multiplexing</p>
+<p>TDM: time-division multiplexing</p>
+<ul>
+<li>With FDM each circuit continuously gets a fraction of the bandwidth</li>
+<li>With TDM each circuit gets all of the bandwidth periodically during brief of time</li>
+</ul>
+<h3 id="Packet-switching-versus-circuit-switching"><a href="#Packet-switching-versus-circuit-switching" class="headerlink" title="Packet switching versus circuit switching"></a>Packet switching versus circuit switching</h3><ul>
+<li><p>Packet switching </p>
+<p>Advantages:</p>
+<ul>
+<li>great for bursty data</li>
+<li>resource sharing</li>
+<li>simpler, no call set up</li>
+</ul>
+<p>excessive congestion possible: </p>
+<ul>
+<li>packet delay and loss</li>
+<li>protocols needed for reliable data transfer, congestion control</li>
+</ul>
+</li>
+<li><p>circuit switching </p>
+<ul>
+<li>bandwidth guarantees needed for audio&#x2F;video apps</li>
+<li>still an unsolved problem(chapter 7)</li>
+</ul>
+</li>
 </ul>
 
                 
@@ -1460,7 +1500,7 @@ protocols: control sendin">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2.3k</span>
+                        class="white-color">2.4k</span>
             
             
             
