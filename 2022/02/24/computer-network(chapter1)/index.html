@@ -466,14 +466,14 @@ protocols: control send">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -520,11 +520,12 @@ protocols: control send">
 <li><p>network core :</p>
 <ul>
 <li>interconnected routers</li>
-<li>networl of networks</li>
+<li>network of networks</li>
 </ul>
 </li>
 </ul>
-<h2 id="1-2network-edge"><a href="#1-2network-edge" class="headerlink" title="1.2network edge"></a>1.2network edge</h2><h3 id="Access-networks"><a href="#Access-networks" class="headerlink" title="Access networks"></a>Access networks</h3><ul>
+<h2 id="1-2network-edge"><a href="#1-2network-edge" class="headerlink" title="1.2network edge"></a>1.2network edge</h2><h3 id="ISP-internet-service-provider"><a href="#ISP-internet-service-provider" class="headerlink" title="ISP(internet service provider)"></a>ISP(internet service provider)</h3><p>End system access the Internet through ISP, such as local cable or telephone companies</p>
+<h3 id="Access-networks"><a href="#Access-networks" class="headerlink" title="Access networks"></a>Access networks</h3><ul>
 <li>serveral connect methods<ul>
 <li>ressidential access nets</li>
 <li>institutional nets wnetworks</li>
@@ -745,7 +746,7 @@ protocols: control send">
 <p><strong>D(delay)&#x3D;d(length of physical link)&#x2F;s(propagation speed)</strong></p>
 </li>
 </ul>
-<p>**link : the device transform the digital signal to the analog signal **</p>
+<p><strong>link : the device transform the digital signal to the analog signal</strong></p>
 <p><strong>relay device: the intermedium device transmit the analog signal</strong>  </p>
 <h3 id="Queuing-delay-and-packet-loss"><a href="#Queuing-delay-and-packet-loss" class="headerlink" title="Queuing delay and packet loss"></a>Queuing delay and packet loss</h3><ul>
 <li><p>Queuing delay:</p>
@@ -802,7 +803,7 @@ protocols: control send">
 </ul>
 </li>
 </ul>
-<p><strong>Internet protocol stack</strong></p>
+<p><strong>Internet protocol stack</strong> (From bottom to top)</p>
 <ul>
 <li><p>Application: supporting network applications</p>
 <p>FTP,SMTP,HTTP</p>
@@ -821,6 +822,19 @@ protocols: control send">
 </ul>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220228231507652.png" style="zoom: 33%;">
 
+
+
+<p><strong>IOS&#x2F;OSI reference model</strong></p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301205238242.png" alt="image-20220301205238242" style="zoom:50%;">
+
+
+
+<ul>
+<li>presentation: allow applications to interpret meaning of data, encryption, compression, machine-specific conventions</li>
+<li>session: synchronization, checkpointing, recovery of data exchange</li>
+</ul>
+<p><strong>Internet stack “missing” these layers!</strong></p>
+<p>these services, if needed, must be implemented in application</p>
 <h3 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation:"></a>Encapsulation:</h3><ul>
 <li>Application: append message</li>
 <li>transport: append segment</li>
@@ -830,9 +844,28 @@ protocols: control send">
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220228231927492.png" style="zoom: 50%;">
 
 <p>Typically, switch only has link and physical layers, no network layer ,witch means it doesn’t have IP address and cannot be found by uesers </p>
-<p><strong>PDU: Each layer in protocol stack, except layer-1(application), has its PDU(protocol data unit)</strong></p>
+<p><strong>PDU: Each layer in protocol stack, except layer-1(physical), has its PDU(protocol data unit)</strong></p>
 <p><strong>Data + header &#x3D; PDU</strong></p>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220228232827461.png" style="zoom: 50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301211157835.png" alt="image-20220301211157835" style="zoom:50%;">
+
+
+
+<ul>
+<li>Application-layer-<strong>message</strong>: Exchange of packet information</li>
+<li>Transport-layer-<strong>segment</strong>: Appending <strong><u>additional information</u></strong>(so-called transport-layer header information, the added information may include information allowing the receiver-side transport layer to deliver the message up to the appropriate application, and error detection bits which show whether the message have been changed), which will be used by the receiver-side transport-layer, <strong><u>the message and header comprise of segment</u></strong></li>
+<li>Network-layer-<strong>datagram</strong>: Appending network-layer header, such as source and destination end system address, creating a <strong><u>datagram</u></strong></li>
+<li>Link-layer-frame: appending linked-layer header</li>
+<li>Each packet has two type of fields: header and payload(A packet form the layer above)</li>
+</ul>
+<h2 id="The-homework-complements"><a href="#The-homework-complements" class="headerlink" title="The homework complements"></a>The homework complements</h2><ul>
+<li>NAT(Network Address Transmission)</li>
+<li>A router equipped with NAT software is called a NAT router and has at least one valid external global IP address (public IP address)</li>
+<li>Host &#x3D; end system; end system &#x3D; clients + server (page 11)</li>
+<li>Two nodes in the internet are connected together by communication links</li>
+<li>socket: A interface that specifies how a program running on one end system asks the internet infrastructure to deliver data to a specific destination program running on other end system</li>
+</ul>
 
                 
             </div>
@@ -1630,7 +1663,7 @@ protocols: control send">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.6k</span>
+                        class="white-color">6.8k</span>
             
             
             
