@@ -4,11 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="servelet学习, khdiu&#39;blog">
-    <meta name="description" content="javawebTomcat: web 应用服务器
-servletweb开发基石，与平台无关的服务器组件，负责与客户端进行通信
-servlet本身是一堆接口，自定义一个类，并实现servlet
-客户端无法直接访问servlet，只能在服务器端">
+    <meta name="keywords" content="软件开发环境与工具, khdiu&#39;blog">
+    <meta name="description" content="软件开发环境与工具1概述
+在软件工程学中，方法和工具是一个问题的两个方面
+方法是工具研制的先导
+工具是方法的具体体现
+软件工程方法的研究成果需要转化为最终实现的软件工具和系统
+软件开发环境是由工具构成的
+
+1.1软件开发工具
+软件开发工具是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +25,7 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>servelet学习 | khdiu&#39;blog</title>
+    <title>软件开发环境与工具 | khdiu&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +317,12 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">servelet学习</h1>
+                    <h1 class="description center-align post-title">软件开发环境与工具</h1>
                 </div>
             </div>
         </div>
@@ -433,8 +438,8 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
+                            <a href="/tags/learning/">
+                                <span class="chip bg-color">learning</span>
                             </a>
                         
                     </div>
@@ -445,8 +450,8 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/javaweb/" class="post-category">
-                                javaweb
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/" class="post-category">
+                                软件开发环境与工具
                             </a>
                         
                     </div>
@@ -458,7 +463,7 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-23
+                    2022-03-01
                 </div>
                 
 
@@ -467,14 +472,14 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    11 分
                 </div>
                 
 
@@ -494,122 +499,318 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="javaweb"><a href="#javaweb" class="headerlink" title="javaweb"></a>javaweb</h1><p>Tomcat: web 应用服务器</p>
-<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><p>web开发基石，与平台无关的服务器组件，负责与客户端进行通信</p>
-<p>servlet本身是一堆接口，自定义一个类，并实现servlet</p>
-<p>客户端无法直接访问servlet，只能在服务器端添加映射才能访问</p>
-<p>映射需要开发者手动配置，有两种：</p>
-<ul>
-<li><p>基于xml的配置方式，直接手写映射</p>
+                <h1 id="软件开发环境与工具"><a href="#软件开发环境与工具" class="headerlink" title="软件开发环境与工具"></a>软件开发环境与工具</h1><h2 id="1概述"><a href="#1概述" class="headerlink" title="1概述"></a>1概述</h2><ul>
+<li>在软件工程学中，方法和工具是一个问题的两个方面</li>
+<li><strong>方法</strong>是工具研制的先导</li>
+<li><strong>工具</strong>是方法的具体体现</li>
+<li>软件工程方法的研究成果需要转化为最终实现的软件工具和系统</li>
+<li>软件开发环境是由工具构成的</li>
+</ul>
+<h3 id="1-1软件开发工具"><a href="#1-1软件开发工具" class="headerlink" title="1.1软件开发工具"></a>1.1软件开发工具</h3><ul>
+<li><p>软件开发工具是用于辅助软件生命周期过程的基于计算机的工具</p>
 </li>
-<li><p>基于注解的方式，在需要映射的类名上方使用@添加注释</p>
-<p>上述两种配置方法结果一致</p>
+<li><p>软件工具是指为支持计算机软件的开发、维护、模拟、移植或管理而研制的程序系统</p>
+</li>
+<li><p>软件工具通常由三部分组成：工具，工具接口，工具用户接口</p>
 </li>
 </ul>
-<h3 id="1-servlet功能"><a href="#1-servlet功能" class="headerlink" title="1.servlet功能"></a>1.servlet功能</h3><ul>
-<li>创建并返回给予客户请求的动态页面</li>
-<li>与数据库进行通信</li>
-</ul>
-<h3 id="2-servlet生命周期"><a href="#2-servlet生命周期" class="headerlink" title="2.servlet生命周期"></a>2.servlet生命周期</h3><ol>
-<li><p>当浏览器访问servle的时候，Tomcat会查询当前servlet的实例化对象是否存在，<u>若不存在，则通过反射机制动态创建对象（运行时类，获取类名-》获取构造器-》调用构造器创建对象， 若存在则直接执行第三步操作）</u></p>
-</li>
-<li><p>调用init方法完成初始化操作</p>
-</li>
-<li><p>调用service方法完成业务逻辑操作</p>
-</li>
-<li><p>关闭Tomcat时，调用destroy方法，释放当前占用资源</p>
-<p>​    servlet生命周期方法：无参构造函数，init，service，destroy</p>
-</li>
+<p><strong>软件开发工具的发展特点</strong></p>
+<ol>
+<li>软件开发工具由单个工具向多个工具集成化方向发展</li>
+<li>重视用户界面的设计</li>
+<li>不断采用新理论和新技术</li>
+<li>软件工具的商品化推动了软件产业的发展，软件产业的发展，又反过来促进了软件工具的发展</li>
 </ol>
-<h3 id="3-servletconfig"><a href="#3-servletconfig" class="headerlink" title="3.servletconfig"></a>3.servletconfig</h3><p>该接口用来描述servlet的基本信息</p>
-<ul>
-<li>getservletname()  获取全类名</li>
-<li>getinitparameter(string key)  过去init参数值(web.xml)</li>
-<li>getinitparametername() 返回所有的initparameter的name值，用于遍历所有初始化值</li>
-<li>getservletcontent 返回servletcontext，它是servlet的上下文，整个servlet的管理者</li>
-</ul>
-<h4 id="servletconfig与servletcontext的区别："><a href="#servletconfig与servletcontext的区别：" class="headerlink" title="servletconfig与servletcontext的区别："></a>servletconfig与servletcontext的区别：</h4><p>config作用于某个servlet对象，context作用于整个web应用</p>
-<p>config具体实例，context全局</p>
-<h3 id="4-servlet的层次结构"><a href="#4-servlet的层次结构" class="headerlink" title="4.servlet的层次结构"></a>4.servlet的层次结构</h3><p>servlet-》genericservlet（屏蔽常用方法）-》Httpservlet（处理HTTP请求）</p>
-<ul>
-<li>Genericservlet实现了servlet接口，同时为它的子类屏蔽不常用方法，子类只需要重写service方法，HTTPservice方法即可</li>
-<li>HTTPservlet继承Genericservlet，根据请求类型进行分发处理，GET进入doGET方法等</li>
-</ul>
-<p>开发者自定义servlet只需继承HTTPservlet即可</p>
-<h4 id="HTTP请求类型："><a href="#HTTP请求类型：" class="headerlink" title="HTTP请求类型："></a>HTTP请求类型：</h4><ul>
-<li>Get 读</li>
-<li>post 存</li>
-<li>put 放</li>
-<li>delete 删</li>
-</ul>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>PS：jsp会将写入的代码转化为servlet，在调用write（）方法将HTML内容逐行输出</p>
-<p> JSP本质上就是一个servlet，jsp主要负责于用户交互，将最终的界面全部呈现给用户，即HTML+CSS+JS混合文件</p>
-<p> Tomcat会将jsp转化为servlet，将代码逐行输出，所有信息组合成完整的HTML代码</p>
-<h3 id="1-转换流程"><a href="#1-转换流程" class="headerlink" title="1.转换流程"></a>1.转换流程</h3><p>​              <img src="/2022/02/23/servelet/Users/khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" alt="image-20211126203817591" style="zoom: 50%;"></p>
-<h3 id="2-HTML中嵌入JAVA程序"><a href="#2-HTML中嵌入JAVA程序" class="headerlink" title="2.HTML中嵌入JAVA程序"></a>2.HTML中嵌入JAVA程序</h3><ol>
-<li>jsp脚本：执行JAVA代码用&lt;% code %&gt;单标签</li>
-<li>jsp声明：定义JAVA方法用&lt;%! code%&gt;单标签</li>
-<li>jsp表达式：把JAVA对象直接输出到HTML页中&lt;%&#x3D; java变量%&gt;</li>
+<p><strong>软件开发工具5个方面的功能需求</strong></p>
+<ol>
+<li>认识与描述客观系统：<u>需求阶段</u></li>
+<li>存储及管理开发过程中的信息：如配置管理，<strong>核心：</strong>保持数据的一致性</li>
+<li>代码的编写和生成：编辑、编译、链接，<strong>核心</strong>：通过代码自动生成方式及软件重用提高效率</li>
+<li>文档的编制与生成：World工具，<strong>核心：</strong>保持文档与软件的一致性</li>
+<li>软件项目管理：为管理人员提供支持</li>
 </ol>
-<h3 id="3-jsp内置对象"><a href="#3-jsp内置对象" class="headerlink" title="3.jsp内置对象"></a>3.jsp内置对象</h3><ul>
-<li>request 表示一次请求 Httpservletservice</li>
-<li>response 表示一次响应 Httpservletresponse</li>
-<li>pagecontext 页面上下文 获取页面信息 </li>
-<li>session 表示一次会话 保存用户信息 Httpsession</li>
-<li>applocation 表示当前web应用，全局对象，保存所有用户共享信息 servletcontext</li>
-<li>config 当前就jsp对应servlet的servletconfig对象，获取当前的servlet信息</li>
-<li>out 向浏览器输出数据 jspwriter</li>
-<li>page 当前jsp对应的servlet对象 servlet</li>
-<li>exception 表示jsp页面发生的异常</li>
-</ul>
-<h3 id="4-request常用方法"><a href="#4-request常用方法" class="headerlink" title="4.request常用方法"></a>4.request常用方法</h3><ol>
-<li>string getparameter(string key)获取从客户端传来的参数</li>
-<li>void setAttribute(string key,objerct value) 通过键值对</li>
-<li>string getAttribute(string key) 源JSP调用getrequestDispatcher(jsp名).forward(request,response)将对象传递给其他的JSP，之后由其他JSP处理请求</li>
-<li>requestDispatcher ，getrequestdispatcher(string path)返回一个requestdispatcher对象</li>
-<li>string[] getparametervalues()获取客户端传来的多个同名参数</li>
-<li>void setcharacterEncoding(string charset)指定每个请求的编码</li>
+<p>对应：需求工具、配置管理工具、编程工具、设计&#x2F;测试工具以及项目管理工具</p>
+<p><strong>软件开发工具5个方面的性能要求</strong></p>
+<ol>
+<li>表达能力和描述能力</li>
+<li>保持信息一致性的能力</li>
+<li>使用的方便程度</li>
+<li>工具的可靠程度</li>
+<li>对硬件和软件环境的要求</li>
 </ol>
-<h3 id="5-response常用方法"><a href="#5-response常用方法" class="headerlink" title="5.response常用方法"></a>5.response常用方法</h3><p>senddirect(string path)重定向，页面之间的跳转</p>
-<p><u>转发是将同请求传递给下个页面，重定向是创建一个新的请求给下一个页面，之前的请求结束生命周期</u></p>
+<h3 id="1-2CASE工具概述"><a href="#1-2CASE工具概述" class="headerlink" title="1.2CASE工具概述"></a>1.2CASE工具概述</h3><p>CASE(Computer-Aided Software Engineering): 是一组工具和方法的集合，可以辅助软件开发生成周期各阶段进行软件开发，是软件工程发展的产物，例如：</p>
 <ul>
-<li>转发：同一个请求在服务器之间的传毒，地址栏不变，也叫服务器跳转</li>
-<li>重定向：由客户端发送一个新的请求来访问跳转后的目标资源，地址栏改变，也叫客户端跳转</li>
+<li>设计：Visio，Power Designer</li>
+<li>版本管理：Clear case</li>
+<li>集成开发环境：Visual Studio 2010</li>
 </ul>
-<p><strong>如果两个页面之间需要通过request来传值，则必须使用转发，不能使用重定向</strong></p>
-<p>如：用户名登录，则需要将用户名传递给下一个页面</p>
-<h2 id="session会话"><a href="#session会话" class="headerlink" title="session会话"></a>session会话</h2><p><u>服务器无法识别每一次HTTP请求的出处(<strong>无法识别来自哪个终端</strong>)，它只会接受到一个请求信号，必须有一种技术让服务器知道请求来自哪，这就是会话技术</u></p>
-<h3 id="会话："><a href="#会话：" class="headerlink" title="会话："></a>会话：</h3><p>​      就是客户端与服务器之间发生的一系列连续的请求和响应的过程，<strong>打开浏览器到关闭浏览器进行的过程操作</strong></p>
-<h3 id="会话状态："><a href="#会话状态：" class="headerlink" title="会话状态："></a>会话状态：</h3><p>指服务器和浏览器在会话过程中产生的状态信息，借助于会话状态，服务器能够把属于同一次会话的一系列请求和响应关联起来</p>
-<p>属于同一次会话的请求共用一个标识符，即session id（同一浏览器多个窗口属于同一会话，即共用同一id，关闭浏览器后再次打开，id刷新）</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li>string getid() 获取session id</li>
-<li>vodi setmaxnactiveinterval（） 设置session失效时间，单位秒</li>
-<li>int getmaxinactiveinterval 获取当前session的失效时间</li>
-<li>void invalidate 设置session失效时间</li>
-<li>void setattribute（string key，object value） 通过键值对存储数据</li>
-<li>object getattribute(string key) 通过键值对获取对应数据</li>
-<li>object removeattribute(string key) 通过键值对删除对应数据</li>
+<h4 id="CASE工具要达到以下目标："><a href="#CASE工具要达到以下目标：" class="headerlink" title="CASE工具要达到以下目标："></a><strong>CASE工具要达到以下目标：</strong></h4><ol>
+<li>高效及时完成开发工作</li>
+<li>降低开发成本</li>
+<li>达到软件的功能要求</li>
+<li>取得较好的软件性能</li>
+<li>降低软件维护费用</li>
+</ol>
+<p>核心：<strong>提高生产率，提高质量</strong></p>
+<h4 id="CASE的作用："><a href="#CASE的作用：" class="headerlink" title="CASE的作用："></a><strong>CASE的作用：</strong></h4><ol>
+<li>提供一个具有快速响应、早期查错功能的交互式开发环境</li>
+<li>对软件的开发和维护过程中的许多环节实现自动化</li>
+<li>通过一个强有力的图形接口，实现直观的程序设计</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301143045412.png" alt="image-20220301143045412" style="zoom:67%;">
+
+<h4 id="CASE工具的分类："><a href="#CASE工具的分类：" class="headerlink" title="CASE工具的分类："></a><strong>CASE工具的分类：</strong></h4><ol>
+<li>支持单个过程任务的工具，比如：编译器、连接器等</li>
+<li>工作台支持某一过程某些活动或所有活动，比如C语言集成开发环境</li>
+<li>环境支持软件过程大部分活动或所有活动</li>
+</ol>
+<h4 id="CASE工具台："><a href="#CASE工具台：" class="headerlink" title="CASE工具台："></a><strong>CASE工具台：</strong></h4><p>一个CASE工作台是一组工具集，支持图形化设计、编码实现或测试等特定的软件开发阶段，可以分为：</p>
+<ol>
+<li>分析和设计工作台（上游CASE工具）</li>
+<li>程序设计工作台（下游CASE工具）</li>
+<li>测试工作台</li>
+</ol>
+<h4 id="CASE软件的特点："><a href="#CASE软件的特点：" class="headerlink" title="CASE软件的特点："></a>CASE软件的特点：</h4><ol>
+<li>将软件生存期各个阶段的工作连接在一起</li>
+<li>收集和连接软件系统中从最初需求到软件维护各个阶段的所有信息</li>
+<li>用人工智能技术实现软件开发和维护工作的自动化</li>
+</ol>
+<h4 id="方法的发展："><a href="#方法的发展：" class="headerlink" title="方法的发展："></a>方法的发展：</h4><ol>
+<li>20世纪70年代  结构化方法</li>
+<li>20世纪80年代  面向对象方法</li>
+<li>20世纪90年代  快速原型法</li>
+</ol>
+<h4 id="CASE的集成化工具发展趋势"><a href="#CASE的集成化工具发展趋势" class="headerlink" title="CASE的集成化工具发展趋势"></a>CASE的集成化工具发展趋势</h4><ol>
+<li>界面集成</li>
+<li>数据集成</li>
+<li>控制集成</li>
+<li>过程集成</li>
+</ol>
+<h5 id="CASE工具的界面集成"><a href="#CASE工具的界面集成" class="headerlink" title="CASE工具的界面集成"></a>CASE工具的界面集成</h5><ul>
+<li><p>界面集成是指一个系统中的工具使用共同的风格，以及采用共同的用户交互标准</p>
+</li>
+<li><p>界面集成的目的是通过减轻用户的认知负担而提高用户使用环境的效率和效果</p>
+</li>
+<li><p>如：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301151538584.png" style="zoom: 50%;"></li>
 </ul>
-<p><strong>session生命周期比request长，故用session存储用户名与密码</strong></p>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>针对浏览器，不同浏览器使用不同的cookie</p>
-<p>cookie是服务端在HTTP响应中附带传给浏览器的一个小文本文件，一旦浏览器保存了某个cookie，在之后的请求与响应过程中，会将此cookie来回传递，这样就可以通过cookie这个载体完成客户端与服务端的交互</p>
-<p><strong>cookie本身也是javax.servlet中的类</strong></p>
+<h5 id="CASE工具的数据集成"><a href="#CASE工具的数据集成" class="headerlink" title="CASE工具的数据集成"></a>CASE工具的数据集成</h5><ul>
+<li>数据集成是指不同软件工程能相互交换数据</li>
+<li>数据集成的目的是确认开发环境中的所有信息都作为一个整体数据被各部分操作或转换</li>
+<li>数据集成包括：通用性、非冗余性、一致性、同步性和交换性五个方面属性</li>
+</ul>
+<h5 id="CASE工具的控制集成"><a href="#CASE工具的控制集成" class="headerlink" title="CASE工具的控制集成"></a>CASE工具的控制集成</h5><ul>
+<li>控制集成支持工作台或环境中一个工具对系统中其它工具的访问</li>
+<li>控制集成的目的是为了让工具共享功能</li>
+<li>工具之间的控制关系包括：<ol>
+<li>供给：一个工具被别的工具使用</li>
+<li>使用：一个工具使用其他工具</li>
+</ol>
+</li>
+</ul>
+<h5 id="CASE的过程集成"><a href="#CASE的过程集成" class="headerlink" title="CASE的过程集成"></a>CASE的过程集成</h5><ul>
+<li><p>过程是指开发软件所需要的阶段、任务活动序列，许多工具都服务于一定过程</p>
+</li>
+<li><p>过程集成是指CASE系统嵌入了关于过程活动、阶段、约束和支持这些活动所需要的工具的知识</p>
+</li>
+<li><p>过程集成属性包括：</p>
+<ol>
+<li>构成块</li>
+<li>事件</li>
+<li>约束</li>
+</ol>
+</li>
+<li><p>如：vs</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301152150468.png" style="zoom:50%;"></li>
+</ul>
+<h3 id="1-3软件开发环境简介："><a href="#1-3软件开发环境简介：" class="headerlink" title="1.3软件开发环境简介："></a>1.3软件开发环境简介：</h3><ul>
+<li>软件开发环境的发展</li>
+<li>软件开发环境的要求</li>
+<li>软件开发环境的特性</li>
+<li>软件开发环境的分类</li>
+</ul>
+<p><strong><u>软件开发环境</u>是指在计算机的基础软件（比如操作系统）上，为了支持软件的开发而提供的一组工具软件系统</strong></p>
+<h4 id="1-3-1软件开发环境的组成"><a href="#1-3-1软件开发环境的组成" class="headerlink" title="1.3.1软件开发环境的组成"></a>1.3.1软件开发环境的组成</h4><ol>
+<li>人机接口 ——软件工具环境的重要质量标志</li>
+<li>软件环境数据库—— 软件开发环境的核心</li>
+<li>软件开发工具——完成具体的工作</li>
+</ol>
+<h4 id="1-3-2软件开发环境的数据库组成"><a href="#1-3-2软件开发环境的数据库组成" class="headerlink" title="1.3.2软件开发环境的数据库组成"></a>1.3.2软件开发环境的数据库组成</h4><ol>
+<li>通用子程序数据库（比如函数库）</li>
+<li>可重组的程序加工信息库（编译环境）</li>
+<li>模块描述与接口信息库（接口，.h文件）</li>
+<li>软件测试与纠错依据信息库（调试信息）</li>
+<li>可行性和需求信息档案（需求文档）</li>
+<li>阶段设计详细档案（设计文档）</li>
+<li>测试驱动数据库（测试案例）</li>
+<li>软件维护档案等（维护文档）</li>
+</ol>
+<p>示例：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301154646824.png" style="zoom:50%;">
+
+<h4 id="1-3-3软件开发环境的分层"><a href="#1-3-3软件开发环境的分层" class="headerlink" title="1.3.3软件开发环境的分层"></a>1.3.3软件开发环境的分层</h4><p><strong>通常分为以下四层：</strong></p>
+<ol>
+<li>宿主层</li>
+<li>核心层</li>
+<li>基本层</li>
+<li>应用层</li>
+</ol>
+<h5 id="宿主层："><a href="#宿主层：" class="headerlink" title="宿主层："></a>宿主层：</h5><p>宿主层是软件开发环境依赖的计算机基础，包括：</p>
+<ol>
+<li>基本宿主硬件，如计算机、工作站、服务器等</li>
+<li>基本宿主软件，如操作系统</li>
+</ol>
+<h5 id="核心层："><a href="#核心层：" class="headerlink" title="核心层："></a>核心层：</h5><p>核心层是软件开发环境本身的支持基础，比如：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301155909076.png" style="zoom:50%;">
+
+<ol>
+<li>C#的CLR( Common Language Runtime)</li>
+<li>Java的虚拟机JVM等</li>
+</ol>
+<h5 id="基本层："><a href="#基本层：" class="headerlink" title="基本层："></a>基本层：</h5><ul>
+<li>基本层是软件开发工具的工作工具集，包括</li>
+<li>最少限度的一组工具，比如：<ol>
+<li>编译工具</li>
+<li>连接工具</li>
+<li>调试工具等</li>
+</ol>
+</li>
+<li>这些工具由核心层支持</li>
+</ul>
+<h5 id="应用层："><a href="#应用层：" class="headerlink" title="应用层："></a>应用层：</h5><p>应用层是以特定的基本层为基础而引入的配套补充工具，比如：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301155836294.png" style="zoom:67%;">
+
+<ol>
+<li>界面生成器</li>
+<li>版本管理器</li>
+<li>性能分析器等</li>
+</ol>
+<h4 id="1-3-4软件开发环境的发展"><a href="#1-3-4软件开发环境的发展" class="headerlink" title="1.3.4软件开发环境的发展"></a>1.3.4软件开发环境的发展</h4><p>软件开发环境的发展依赖于软件开发方法的发展</p>
 <ul>
-<li><p>创建cookie</p>
-<p>调用responseaddcookie()将cookie写入客户端</p>
-</li>
-<li><p>读取cookie</p>
-<p>request.getcookies()</p>
-</li>
+<li>20世纪70年代：结构化开发方法，主要是<strong>高级语言开发工具</strong>的发展</li>
+<li>20世纪80年代：面向对象方法，主要是<strong>面向对象开发工具</strong>的发展</li>
+<li>20世纪90年代：系统集成方法，CASE<strong>集成开发环境</strong>开始出现</li>
 </ul>
-<h3 id="cookie常用方法"><a href="#cookie常用方法" class="headerlink" title="cookie常用方法"></a>cookie常用方法</h3><p>void setmaxage(int age) 设置cookie的有效时间，单位秒</p>
-<p>int getmaxage() 获取cookie的有效时间</p>
-<p>string getName() 获取cookie的name</p>
-<p>string getvalue() 获取cookie的value</p>
-<h3 id="cookie与session的区别"><a href="#cookie与session的区别" class="headerlink" title="cookie与session的区别"></a>cookie与session的区别</h3><p>session：存在服务器 保存object类型</p>
-<p>cookie：存在浏览器，保存的数据是string类型</p>
-<p>安全： <strong>session保存重要内容，cookie保存不重要信息</strong></p>
+<h5 id="结构化的开发方法和工具"><a href="#结构化的开发方法和工具" class="headerlink" title="结构化的开发方法和工具"></a>结构化的开发方法和工具</h5><ul>
+<li>20世纪70年代：结构化开发方法，主要是结构化高级语言开发工具的发展</li>
+<li>结构化程序设计方法又称为“自顶向下”或“逐步求精”法</li>
+</ul>
+<p><strong>结构化程序设计方法是按照模块划分原则以提高程序可读性和易维护性、可调性和可扩充性为目标的一种程序设计方法。</strong></p>
+<p>在结构化的程序设计中，只允许三种基本的程序结构形式：</p>
+<ol>
+<li>顺序结构</li>
+<li>分支结构</li>
+<li>循环结构</li>
+</ol>
+<p><strong>这三种基本结构的共同特点是只允许有一个流动入口和一个出口，仅有这三种基本结构组成的程序称为<u>结构化程序</u></strong></p>
+<h5 id="面向对象开发方法和工具："><a href="#面向对象开发方法和工具：" class="headerlink" title="面向对象开发方法和工具："></a>面向对象开发方法和工具：</h5><ul>
+<li>20世纪80年代：面向对象方法，主要是面向对象开发工具的发展</li>
+<li>面向对象编程的基础是类，三大机制： “封装、继承、多态”</li>
+</ul>
+<p>面向对象程序设计（Object Oriented Programming，OOP）是一种计算机编程架构。</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301161046444.png" alt="image-20220301161046444" style="zoom:50%;">
+
+<p><strong>OOP的一条基本原则是计算机程序由单个能够起到子程序作用的单元或对象组合而成。</strong></p>
+<p>OOP达到了软件工程的三个主要目标：重用性、灵活性和扩展性。</p>
+<p>OOP&#x3D;对象+类+继承+多态+消息，其中核心概念是类和对象。</p>
+<h5 id="集成化开发方法和工具："><a href="#集成化开发方法和工具：" class="headerlink" title="集成化开发方法和工具："></a>集成化开发方法和工具：</h5><ul>
+<li>20世纪90年代：系统集成方法，CASE集成开发环境开始出现</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301161425599.png" style="zoom:50%;">
+
+<h4 id="1-3-5软件开发环境的要求"><a href="#1-3-5软件开发环境的要求" class="headerlink" title="1.3.5软件开发环境的要求"></a>1.3.5软件开发环境的要求</h4><ol>
+<li>高度集成化的系统</li>
+<li>具有高度的通用性</li>
+<li>易于定制，具有高度的适应性和灵活性</li>
+<li>具有易用性</li>
+<li>具有半自动或自动化的开发能力</li>
+</ol>
+<h5 id="高度集成化的系统"><a href="#高度集成化的系统" class="headerlink" title="高度集成化的系统"></a>高度集成化的系统</h5><p><strong>支持软件生存周期各个阶段的活动，包括：需求分析、系统设计、编码、调试以及维护等</strong></p>
+<ul>
+<li>支持软件生存周期各个阶段的管理和开发两方面的工作</li>
+<li>协调一致地支持各阶段和各方面的工作，具有统一的内部数据表示</li>
+<li>具有一致性的用户接口</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301161823472.png" style="zoom:50%;">
+
+<h5 id="高度的通用性："><a href="#高度的通用性：" class="headerlink" title="高度的通用性："></a>高度的通用性：</h5><ol>
+<li>能适应最常用的几种语言</li>
+<li>能适应和支持不同的开发方法</li>
+<li>能适应不同的计算机硬件及其系统软件</li>
+<li>能适应开发不同类型的软件</li>
+<li>能适应并考虑到不同用户的需要（如程序员、系统分析员、项目经理、质量保证人员等）</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301161951991.png" style="zoom:50%;">
+
+<h5 id="易于定制，裁剪和扩充"><a href="#易于定制，裁剪和扩充" class="headerlink" title="易于定制，裁剪和扩充"></a>易于定制，裁剪和扩充</h5><ul>
+<li>定制是指软件开发环境应能符合项目特征、过程和用户的爱好</li>
+<li>裁剪是指环境能按照用户需求建立好子环境</li>
+<li>扩充是指环境能向上扩展，能根据用户新的需求或软件技术的新发展对原有的环境进行更新或扩充（Eclipse插件）</li>
+</ul>
+<h5 id="易学易用，经济高效"><a href="#易学易用，经济高效" class="headerlink" title="易学易用，经济高效"></a>易学易用，经济高效</h5><ul>
+<li>易学、易用、响应时间合理和用户喜爱</li>
+<li>能支持自然语言处理</li>
+<li>能支持交互式和分布式软件开发</li>
+<li>降低用户和环境的资源花费</li>
+</ul>
+<h5 id="具有半自动或自动化能力"><a href="#具有半自动或自动化能力" class="headerlink" title="具有半自动或自动化能力"></a>具有半自动或自动化能力</h5><ul>
+<li>各个阶段的文档之间要能半自动或自动地变换和跟踪（Rational Rose UML)</li>
+<li>应注重使用形式化技术</li>
+<li>不同程度地、逐步采用“软件构件”的集成组装技术，并建立软件构件库</li>
+<li>采用人工智能技术，逐步包含支持软件开发的专家系统</li>
+</ul>
+<h4 id="1-3-6软件开发环境的特性"><a href="#1-3-6软件开发环境的特性" class="headerlink" title="1.3.6软件开发环境的特性"></a>1.3.6软件开发环境的特性</h4><p>软件开发环境的特性包括：</p>
+<ul>
+<li>可用性</li>
+<li>自动化程度</li>
+<li>公共性</li>
+<li>集成化程度</li>
+<li>适应性</li>
+</ul>
+<h5 id="软件开发环境的分类："><a href="#软件开发环境的分类：" class="headerlink" title="软件开发环境的分类："></a>软件开发环境的分类：</h5><p>软件开发环境与软件生存期、软件开发方法、软件处理模型紧密相关，有多种分类方法：</p>
+<ul>
+<li>按问题分类</li>
+<li>按软件开发环境的演变趋势分类</li>
+<li>按集成化程度分类</li>
+</ul>
+<h5 id="按照问题分类："><a href="#按照问题分类：" class="headerlink" title="按照问题分类："></a>按照问题分类：</h5><h6 id="程序设计环境："><a href="#程序设计环境：" class="headerlink" title="程序设计环境："></a>程序设计环境：</h6><p>解决如何将规范说明（软件需求规格说明书）转换成可工作的程序（代码和运行程序）的问题，包括两个部分：方法和工具</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301163206591.png" alt="image-20220301163206591" style="zoom:67%;">
+
+<h6 id="系统合成环境-："><a href="#系统合成环境-：" class="headerlink" title="系统合成环境 ："></a>系统合成环境 ：</h6><p><strong>主要考虑把很多子系统集成为一个大系统的问题</strong></p>
+<p>所有大型软件都有两个基本特点：</p>
+<ol>
+<li>由一些小的、较易理解的子系统组成</li>
+<li>需要有一个系统合成环境来辅助控制系统及其向大系统的集成（基于组件的开发）</li>
+</ol>
+<p>如：原生插件调用</p>
+<ul>
+<li><p>二维码扫描</p>
+</li>
+<li><p>地理定位</p>
+</li>
+<li><p>摄像头拍照及录像</p>
+</li>
+<li><p>音频录制及播放</p>
+</li>
+<li><p>微信支付、支付宝支</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301163426274.png" alt="image-20220301163426274" style="zoom:50%;"></li>
+</ul>
+<h6 id="项目管理环境："><a href="#项目管理环境：" class="headerlink" title="项目管理环境："></a>项目管理环境：</h6><ul>
+<li>大型软件系统的开发和维护必然会有很多人员在同一时间段内协同工作，需要对人与人之间的交流和合作进行管理</li>
+<li>项目管理环境 的责任是解决由于软件产品的规模大、生存期长、人们的交往多而造成的问题</li>
+</ul>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301163641467.png" alt="image-20220301163641467"></p>
+<h3 id="1-4总结："><a href="#1-4总结：" class="headerlink" title="1.4总结："></a>1.4总结：</h3><p><strong>软件开发工具、环境和CASE之间的关系</strong></p>
+<ul>
+<li>工具是一款具体的开发软件</li>
+<li>CASE是计算机软件工程的辅助工具</li>
+<li>环境是开发工具的集合</li>
+</ul>
+<p>工具学习流程： 了解+掌握+应用</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220301164114766.png" alt="image-20220301164114766" style="zoom:50%;">
+
+
+
 
                 
             </div>
@@ -636,7 +837,7 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://khdiu.github.io/2022/02/23/servelet/">http://khdiu.github.io/2022/02/23/servelet/</a>
+                    <a href="http://khdiu.github.io/2022/03/01/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/">http://khdiu.github.io/2022/03/01/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -674,8 +875,8 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
+                                <a href="/tags/learning/">
+                                    <span class="chip bg-color">learning</span>
                                 </a>
                             
                         </div>
@@ -1119,13 +1320,13 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/02/24/computer-network(chapter1)/">
+                <a href="/2022/03/03/database-system-C1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="computer network(chapter 1)-1">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="database system(W2)">
                         
-                        <span class="card-title">computer network(chapter 1)-1</span>
+                        <span class="card-title">database system(W2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1136,14 +1337,14 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-03
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/computer-network/" class="post-category">
-                                    computer network
+                            <a href="/categories/Database/" class="post-category">
+                                    Database
                                 </a>
                             
                             
@@ -1168,13 +1369,13 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/22/hello-world/">
+                <a href="/2022/02/28/introduction%20to%20software%20engineer/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="introduction to software engineer">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">introduction to software engineer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1185,12 +1386,16 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            何星林
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/introduction-to-software-engineer/" class="post-category">
+                                    introduction to software engineer
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1198,8 +1403,8 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/common/">
-                        <span class="chip bg-color">common</span>
+                    <a href="/tags/learning/">
+                        <span class="chip bg-color">learning</span>
                     </a>
                     
                 </div>

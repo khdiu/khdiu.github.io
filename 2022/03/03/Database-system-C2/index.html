@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="introduction to software engineer(C2), khdiu&#39;blog">
-    <meta name="description" content="chapter2 Process modelspreview“Software Process” Definition: A series of predictable steps (a road map) that helps you d">
+    <meta name="keywords" content="Database system(C2), khdiu&#39;blog">
+    <meta name="description" content="chapter2 Introduction to relation modeloutline
+Structure of Relation Database
+Database Schema
+keys, integrity constrains">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>introduction to software engineer(C2) | khdiu&#39;blog</title>
+    <title>Database system(C2) | khdiu&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">introduction to software engineer(C2)</h1>
+                    <h1 class="description center-align post-title">Database system(C2)</h1>
                 </div>
             </div>
         </div>
@@ -442,8 +445,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/introduction-to-software-engineer/" class="post-category">
-                                introduction to software engineer
+                            <a href="/categories/Database/" class="post-category">
+                                Database
                             </a>
                         
                     </div>
@@ -455,7 +458,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-28
+                    2022-03-03
                 </div>
                 
 
@@ -464,7 +467,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    60
+                    86
                 </div>
                 
 
@@ -491,10 +494,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="chapter2-Process-models"><a href="#chapter2-Process-models" class="headerlink" title="chapter2 Process models"></a>chapter2 Process models</h1><h2 id="preview"><a href="#preview" class="headerlink" title="preview"></a>preview</h2><p><strong>“Software Process”</strong> Definition: A series of predictable steps (a road map) that helps you deliver a high-quality product on time</p>
-<p>A process providers stability, control, and organization to an activity so that it does not become chaotic</p>
-<p>The process that you adopt depends on the software that you are building.</p>
-<h2 id="2-1-A-generic-process-model"><a href="#2-1-A-generic-process-model" class="headerlink" title="2.1 A generic process model"></a>2.1 A generic process model</h2>
+                <h1 id="chapter2-Introduction-to-relation-model"><a href="#chapter2-Introduction-to-relation-model" class="headerlink" title="chapter2 Introduction to relation model"></a>chapter2 Introduction to relation model</h1><h2 id="outline"><a href="#outline" class="headerlink" title="outline"></a>outline</h2><ul>
+<li>Structure of Relation Database</li>
+<li>Database Schema</li>
+<li>keys, integrity constrains</li>
+<li>Schema Diagram</li>
+<li>Relational Query Languages</li>
+<li>The Relational Algebra</li>
+</ul>
+<h3 id="Data-model"><a href="#Data-model" class="headerlink" title="Data model"></a>Data model</h3><p>Purpose: To represent data in an understandable way</p>
+<p>Define: Integrated collection of concepts for describing data, relationships between data, and constraints on the data in an organization</p>
+<p><strong>Data Model comprises:</strong></p>
+<ul>
+<li>A structural part</li>
+<li>Possibly a set of integrity rules</li>
+<li>a manipulative part</li>
+</ul>
+<h2 id="Relational-Model"><a href="#Relational-Model" class="headerlink" title="Relational Model"></a>Relational Model</h2><h3 id="Mathematical-Definition-of-Relation"><a href="#Mathematical-Definition-of-Relation" class="headerlink" title="Mathematical Definition of Relation"></a>Mathematical Definition of Relation</h3><ul>
+<li><p>Formally, given sets D1, D2, …Dn</p>
+<p>A relation r is a subset of D1*D2…*Dn</p>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -520,7 +541,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://khdiu.github.io/2022/02/28/introduction%20to%20software%20engineer(c2)/">http://khdiu.github.io/2022/02/28/introduction%20to%20software%20engineer(c2)/</a>
+                    <a href="http://khdiu.github.io/2022/03/03/Database-system-C2/">http://khdiu.github.io/2022/03/03/Database-system-C2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1003,13 +1024,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/03/01/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7(W2)/">
+                <a href="/2022/03/03/latex/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="软件开发环境与工具（W2）">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="latex学习">
                         
-                        <span class="card-title">软件开发环境与工具（W2）</span>
+                        <span class="card-title">latex学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1020,14 +1041,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-03
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    软件开发环境与工具
+                            <a href="/categories/latex/" class="post-category">
+                                    latex
                                 </a>
                             
                             
@@ -1052,13 +1073,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/28/introduction%20to%20software%20engineer(c1)/">
+                <a href="/2022/03/03/database-system-C1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="introduction to software engineer(C1)">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="database system(W2)">
                         
-                        <span class="card-title">introduction to software engineer(C1)</span>
+                        <span class="card-title">database system(W2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1069,14 +1090,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/introduction-to-software-engineer/" class="post-category">
-                                    introduction to software engineer
+                            <a href="/categories/Database/" class="post-category">
+                                    Database
                                 </a>
                             
                             
@@ -1291,7 +1312,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">6.8k</span>
+                        class="white-color">7.5k</span>
             
             
             
