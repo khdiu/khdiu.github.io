@@ -469,14 +469,14 @@ allow data independen">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    85
+                    967
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -496,7 +496,7 @@ allow data independen">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Database-system"><a href="#Database-system" class="headerlink" title="Database system"></a>Database system</h1><h2 id="preview"><a href="#preview" class="headerlink" title="preview"></a>preview</h2><p>The benefits of database: </p>
+                <h1 id="Database-system"><a href="#Database-system" class="headerlink" title="Database system"></a>Database system</h1><h3 id="preview"><a href="#preview" class="headerlink" title="preview"></a>preview</h3><p>The benefits of database: </p>
 <ul>
 <li>control redundancy</li>
 <li>share</li>
@@ -507,7 +507,7 @@ allow data independen">
 <li>provide for backup and recovery</li>
 <li>control security</li>
 </ul>
-<h2 id="Abstract-model"><a href="#Abstract-model" class="headerlink" title="Abstract model"></a>Abstract model</h2><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220303091944959.png" alt="image-20220303091944959" style="zoom: 33%;">
+<h3 id="Abstract-model"><a href="#Abstract-model" class="headerlink" title="Abstract model"></a>Abstract model</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220303091944959.png" alt="image-20220303091944959" style="zoom: 33%;">
 
 <p><strong>Conceptual model(information model for DB design):</strong></p>
 <ul>
@@ -529,6 +529,220 @@ allow data independen">
 <li>physical model:</li>
 <li>Describe how data is stored and accessed in the system</li>
 </ul>
+<h2 id="3-chapter3-Introduction-to-SQL"><a href="#3-chapter3-Introduction-to-SQL" class="headerlink" title="3.chapter3 Introduction to SQL"></a>3.chapter3 Introduction to SQL</h2><h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview:"></a>Preview:</h3><ul>
+<li>Overview of SQL Query Language</li>
+<li>Data Definition Language(DDL)</li>
+<li>Data manipulation Language<ul>
+<li>Modification of the Database</li>
+<li>Basic Query Structure</li>
+<li>Additional Basic Operations </li>
+<li>Set Operationals</li>
+<li>Null values</li>
+<li>Aggregate Functions</li>
+<li>Nested Subqueries</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-Overview-of-SQL"><a href="#1-Overview-of-SQL" class="headerlink" title="1 Overview of SQL"></a>1 Overview of SQL</h3><h4 id="1-1-History"><a href="#1-1-History" class="headerlink" title="1.1 History"></a>1.1 History</h4><ul>
+<li>IBM Sequel language developed as part of system R project at the IBM San Jose Research Laboratory</li>
+<li>Renamed Structured Query Language(SQL)</li>
+<li>ANSI and ISO standard SQL<ul>
+<li>SQL-86, SQL-89, SQL-92</li>
+<li>SQL:1999, SQL:2003, SQL:2008</li>
+<li>Commercial systems offer most, if not all, SQL-92 features plus varying feature sets from later standards and special proprietary festures</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-SQL-Parts"><a href="#1-2-SQL-Parts" class="headerlink" title="1.2 SQL Parts"></a>1.2 SQL Parts</h4><ul>
+<li>DDL: allows the specification of information about relations schema</li>
+<li>DML: provide the ability to query information from the database and to insert tuples into, delete tuples from, and modify tuples in the database</li>
+<li>integrity: the DDL includes commands for specifying integrity constraints</li>
+<li>View definitionL The DDl includes commands for defining views</li>
+<li>Autorization: includes commands for specifying accsee rights to relations and views</li>
+<li>Embedded SQL and dynamic SQL: define how SQL statements can be embedded within general-purpose programming languages</li>
+<li>Transaction control: includes commands for specifying the beginning and ending of transactions</li>
+</ul>
+<h3 id="2-Data-Definition-language"><a href="#2-Data-Definition-language" class="headerlink" title="2. Data Definition language"></a>2. Data Definition language</h3><h4 id="2-1-Definition"><a href="#2-1-Definition" class="headerlink" title="2.1 Definition"></a>2.1 Definition</h4><p><strong>The SQL data-definition language(DDL) allows the specification of information about relations</strong></p>
+<p>including:</p>
+<ul>
+<li>The domain of values associated with each attribute</li>
+<li>The schema for each relation</li>
+<li>Integrity constrains</li>
+<li>And as we will see later, also other information such as<ul>
+<li>Security and authorization information for each relation</li>
+<li>The set of indices to be maintained for each relations</li>
+<li>The physical storage structure of each relation on disk</li>
+</ul>
+</li>
+</ul>
+<p>Use DDL to create schemas of a database</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313170857633.png" alt="image-20220313170857633" style="zoom: 33%;">
+
+<h4 id="2-2-Domain-Types-in-SQL"><a href="#2-2-Domain-Types-in-SQL" class="headerlink" title="2.2 Domain Types in SQL"></a>2.2 Domain Types in SQL</h4><ul>
+<li>char: Fixed length character string, with user-specified length n.</li>
+<li>varchar: variable length character strings with user-specified maximum length n</li>
+<li>int: Integer(A finite subset of the integers that is machine dependent)</li>
+<li>smallint: Small integer</li>
+<li>numeric(p,d): Fixed point number, with user-specified precision of <strong>p</strong> digits, with <strong>n</strong> digits to the right of decimal point</li>
+<li>real, double precision: Flaoting poinit and double-precision floating point numbers, with machine-dependent precision</li>
+<li>float</li>
+</ul>
+<p>Example:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313171704249.png" alt="image-20220313171704249" style="zoom: 33%;">
+
+
+
+<h4 id="2-3-Operate-Table-Construct"><a href="#2-3-Operate-Table-Construct" class="headerlink" title="2.3 Operate Table Construct"></a>2.3 Operate Table Construct</h4><p><strong>Create the table</strong></p>
+<ul>
+<li>An SQL relation is defined using the create table command</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313171905177.png" alt="image-20220313171905177" style="zoom:33%;">
+
+<ul>
+<li>r is the name of the relation</li>
+<li>each Ai is an attribute name in the schema of relation r</li>
+<li>Di is the data type of values in the domain of attribute Ai</li>
+</ul>
+<p>Integrity constraint in create Table</p>
+<ul>
+<li>primary key(A1…AN)</li>
+<li>foreign key(Am…An) reference r</li>
+<li>not NULL</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313172630484.png" alt="image-20220313172630484" style="zoom: 33%;">
+
+
+
+<p><strong>Drop and alter Table Constructs</strong></p>
+<ul>
+<li><p>drop table </p>
+<p>Delete the table and its contents</p>
+</li>
+<li><p>alter table R</p>
+<p>alter table r add A D</p>
+<ul>
+<li>where A is the name of the attribute to be added to relation r and D is the domain of A</li>
+<li>All tuples in the relation are assigned null as the value for the new attribute</li>
+</ul>
+</li>
+<li><p>alter table r drop A</p>
+<ul>
+<li>where A is the name of an attribute of relation r</li>
+<li>Dropping of attributes not supported by many database</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Data-Manipulation-language-DML"><a href="#3-Data-Manipulation-language-DML" class="headerlink" title="3. Data Manipulation language(DML)"></a>3. Data Manipulation language(DML)</h3><h4 id="3-1-Definition"><a href="#3-1-Definition" class="headerlink" title="3.1 Definition"></a>3.1 Definition</h4><ul>
+<li><p>The SQL data-manipulation language(DML) provides the ability to </p>
+<p>**Insert, delete and update tuples **</p>
+<ul>
+<li>Insertion of new tuples into a given relation</li>
+<li>Deletion of tuples from a given relation</li>
+<li>Updating values in some tuples in a given relation</li>
+</ul>
+</li>
+<li><p>query information</p>
+<ul>
+<li>Basic Query Structure</li>
+<li>Additional Basic Operations</li>
+<li>NULL values</li>
+<li>Aggregate function</li>
+<li>Nested Subqueries</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-Modification-of-the-Database"><a href="#3-2-Modification-of-the-Database" class="headerlink" title="3.2 Modification of the Database"></a>3.2 Modification of the Database</h4><p>Insertion:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313173957807.png" alt="image-20220313173957807" style="zoom: 33%;">
+
+
+
+
+
+
+
+<p>Deletion</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313174020882.png" alt="image-20220313174020882" style="zoom: 33%;">
+
+
+
+<p>Updates:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313174046457.png" alt="image-20220313174046457" style="zoom: 33%;">
+
+
+
+<h4 id="3-3-Basic-Query-structure"><a href="#3-3-Basic-Query-structure" class="headerlink" title="3.3 Basic Query structure"></a>3.3 Basic Query structure</h4><p>A typical SQL query has the form:</p>
+<p>​          SELECT A1,A2,…,An</p>
+<p>​          FROM r1,r2,…,rn</p>
+<p>​          WHERE P</p>
+<ul>
+<li>Ai represents an attribute</li>
+<li>Ri represents a relation</li>
+<li>P is a predicate</li>
+</ul>
+<p>The result of an SQL query is a relation</p>
+<p>Basic Clause:</p>
+<ul>
+<li>select clause</li>
+<li>where clause</li>
+<li>from clause</li>
+</ul>
+<p>Cartesian Product:</p>
+<ul>
+<li>joins</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313174954622.png" alt="image-20220313174954622" style="zoom:33%;">
+
+<ul>
+<li>Natural join</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313175026668.png" alt="image-20220313175026668" style="zoom:33%;">
+
+
+
+
+
+<p><strong>String Operations:</strong></p>
+<p>SQL includes a string-matching operator for comparisons on character strings. The operator “like” uses patterns that are described using two special characters</p>
+<ul>
+<li>percent(%) The % character matches any character.</li>
+<li>underscore(_) The _ character matches any character</li>
+</ul>
+<p>Examples:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313175900987.png" alt="image-20220313175900987" style="zoom:33%;">
+
+<h4 id="3-4-Set-Operations"><a href="#3-4-Set-Operations" class="headerlink" title="3.4 Set Operations"></a>3.4 Set Operations</h4><ul>
+<li><p>Set operations union, intersect, and execpt</p>
+<ul>
+<li>Each of the above operations automatically eliminates duplicates</li>
+</ul>
+</li>
+<li><p>To retain duplicates use the corresponding multiset version union all, intersect all and except all .</p>
+<p>Suppose a tuple occurs m times, and n times in s, then, it occurs:</p>
+<ul>
+<li>m+n times in r union all s</li>
+<li>min{m,n} times in r intersect all s</li>
+<li>max{0,m-n} times in r except all s</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-NULL-values"><a href="#3-5-NULL-values" class="headerlink" title="3.5 NULL values"></a>3.5 NULL values</h4><ul>
+<li>It is possible for tuples to have null value, denoted by null for some of their attributes</li>
+<li><strong>null</strong> signifies an unknown value or that a value does not exist</li>
+<li>The result of any arithmetic expression involving null is null: 5+null&#x3D;null</li>
+<li><strong>The predicate is null can be used to check for null values</strong></li>
+<li><strong>The predicate is not null succeeds if the value on which it is applied is not null</strong></li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313181006727.png" alt="image-20220313181006727" style="zoom:33%;">
+
+<ul>
+<li><p>SQL treats as unknown the result of any comparison involving a null value(other than predicates is null and is not null)</p>
+<p>5&lt;null or null&lt;&gt;null or null&#x3D;null</p>
+</li>
+<li><p>The predicate in a where clause an involve Boolean operations(and,or,not); Thus the definitions of the Boolean operations need to be extended to deal with the value unknown</p>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313181441902.png" alt="image-20220313181441902" style="zoom:33%;">
+
 
                 
             </div>
@@ -1326,7 +1540,7 @@ allow data independen">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">11.5k</span>
+                        class="white-color">13.1k</span>
             
             
             
