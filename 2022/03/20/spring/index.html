@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="latex学习, khdiu&#39;blog">
-    <meta name="description" content="Latex学习">
+    <meta name="keywords" content="spring核心基础, khdiu&#39;blog">
+    <meta name="description" content="Spring核心基础来源： B站 楠哥教你学java
+1. Spring框架两大核心机制（ioC、AOP）
+ioC （Inversion of control）（控制反转）&amp;#x2F; DI （Dependency Injection） (">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>latex学习 | khdiu&#39;blog</title>
+    <title>spring核心基础 | khdiu&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">latex学习</h1>
+                    <h1 class="description center-align post-title">spring核心基础</h1>
                 </div>
             </div>
         </div>
@@ -442,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/latex/" class="post-category">
-                                latex
+                            <a href="/categories/javaweb/" class="post-category">
+                                javaweb
                             </a>
                         
                     </div>
@@ -455,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-03
+                    2022-03-20
                 </div>
                 
 
@@ -464,7 +466,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3
+                    508
                 </div>
                 
 
@@ -491,7 +493,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Latex学习"><a href="#Latex学习" class="headerlink" title="Latex学习"></a>Latex学习</h1>
+                <h1 id="Spring核心基础"><a href="#Spring核心基础" class="headerlink" title="Spring核心基础"></a>Spring核心基础</h1><p><strong>来源： B站 楠哥教你学java</strong></p>
+<h2 id="1-Spring框架两大核心机制（ioC、AOP）"><a href="#1-Spring框架两大核心机制（ioC、AOP）" class="headerlink" title="1. Spring框架两大核心机制（ioC、AOP）"></a>1. Spring框架两大核心机制（ioC、AOP）</h2><ul>
+<li>ioC （Inversion of control）（控制反转）&#x2F; DI （Dependency Injection） (依赖注入)</li>
+<li>AOP （Aspect oriented programming）（面向切面编程）</li>
+</ul>
+<p><strong>Spring是一个企业级开发框架，是软件设计层面的框架，优势在于可以将应用程序进行分层，开发者可以自主选择组件</strong></p>
+<p>MVC：Strust2、SpringMVC</p>
+<p>ORMapping：Hibernate、Mybatis、Spring Data</p>
+<p>企业级项目特点</p>
+<ul>
+<li>大规模：用户数量多、数据规模大、功能模块众多</li>
+<li>性能和安全要求高</li>
+<li>业务复杂</li>
+<li>灵活多变</li>
+</ul>
+<h3 id="1-1-spring-概述"><a href="#1-1-spring-概述" class="headerlink" title="1.1 spring 概述"></a>1.1 spring 概述</h3><ul>
+<li>Spring是一个企业级开发框架，关注点在于软件设计层面</li>
+<li>spring已经成为java领域的行业标准</li>
+<li>spirng提供了各个层面的解决方案，Spring MVC、Spring Data、Spring Cloud</li>
+<li>Spring两大核心机制：ioC（控制反转）于 AOP（面向切面编程）</li>
+</ul>
+<p>Spring 体系结构：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220320161239856.png" alt="image-20220320161239856" style="zoom:50%;">
+
+
+
+<p><strong>Spring的优点：</strong></p>
+<ul>
+<li>低侵入式设计</li>
+<li>独立于各种应用服务器</li>
+<li>依赖注入特性将组件关系透明化，降低了耦合度</li>
+<li>面向切面编程特性允许将通用任务进行，集中式处理</li>
+<li>第三方框架的良好整合</li>
+</ul>
+<p><strong>集中式处理示例：</strong></p>
+<p>多个任务中统一进行日志信息设置</p>
+<p>多个任务分别设计</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220320161921396.png" alt="image-20220320161921396" style="zoom: 33%;">
+
+<p><strong>采用AOP</strong></p>
+<p>将三个不同代码的对应位置抽象为 <strong>对象</strong></p>
+<p>封装为对象队多个任务进行集中式处理</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220320162229723.png" alt="image-20220320162229723" style="zoom: 25%;">
+
+<h3 id="1-2-Spring-IOC"><a href="#1-2-Spring-IOC" class="headerlink" title="1.2 Spring IOC"></a>1.2 Spring IOC</h3><ul>
+<li><p>什么是IOC(控制反转)</p>
+<ul>
+<li>在传统的程序开发中， 需要调用对象时，通常由调用者来创建被调用者的实例，即对象是由调用者主队new出来</li>
+<li>但是在Spring框架中创建对象的工作不再由调用者来完成，而是交给IoC容器来创建，在推送给调用者，整个流程完成反转，所以是控制反转</li>
+</ul>
+<p>ioC特点：解耦合</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220320163036471.png" alt="image-20220320163036471" style="zoom:50%;"></li>
+</ul>
+<h4 id="1-2-1-IOC的使用"><a href="#1-2-1-IOC的使用" class="headerlink" title="1.2.1 IOC的使用"></a>1.2.1 IOC的使用</h4><ul>
+<li>创建Maven工程，pom.xml添加依赖</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -517,7 +575,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://khdiu.github.io/2022/03/03/latex/">http://khdiu.github.io/2022/03/03/latex/</a>
+                    <a href="http://khdiu.github.io/2022/03/20/spring/">http://khdiu.github.io/2022/03/20/spring/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1000,13 +1058,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/03/20/spring/">
+                <a href="/2022/03/20/maven%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="spring核心基础">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="maven学习">
                         
-                        <span class="card-title">spring核心基础</span>
+                        <span class="card-title">maven学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,8 +1081,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/javaweb/" class="post-category">
-                                    javaweb
+                            <a href="/categories/project-manage/" class="post-category">
+                                    project manage
                                 </a>
                             
                             
@@ -1049,13 +1107,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/03/Database-system-C2/">
+                <a href="/2022/03/03/latex/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Database system(C2)">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="latex学习">
                         
-                        <span class="card-title">Database system(C2)</span>
+                        <span class="card-title">latex学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1072,8 +1130,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Database/" class="post-category">
-                                    Database
+                            <a href="/categories/latex/" class="post-category">
+                                    latex
                                 </a>
                             
                             

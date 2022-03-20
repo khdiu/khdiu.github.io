@@ -464,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    18 分
                 </div>
                 
 
@@ -734,6 +734,353 @@
 <p><strong>Lifecycle for Enterprise Unified Process:</strong></p>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220312145755437.png" alt="image-20220312145755437" style="zoom:50%;">
 
+
+
+<h2 id="3-Agility-and-process"><a href="#3-Agility-and-process" class="headerlink" title="3. Agility and process"></a>3. Agility and process</h2><h3 id="Quick-look"><a href="#Quick-look" class="headerlink" title="Quick look:"></a>Quick look:</h3><p> What is it:</p>
+<p>Agile software engineering combines a philosophy and a set of development guidelines.</p>
+<p>The philosophy encourages customer satisfaction and early incremental delivery of software</p>
+<h2 id="8-Understanding-Requirements"><a href="#8-Understanding-Requirements" class="headerlink" title="8. Understanding Requirements"></a>8. Understanding Requirements</h2><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><ul>
+<li>What is RE?</li>
+<li>RE tasks</li>
+<li>RE process</li>
+<li>Eliciting requirements</li>
+<li>Development Use-Case</li>
+<li>Building the Analysis Model</li>
+<li>Negotiating Requirements</li>
+<li>Validating</li>
+</ul>
+<h3 id="8-1-Requirements"><a href="#8-1-Requirements" class="headerlink" title="8.1 Requirements"></a>8.1 Requirements</h3><p><strong>Requirements unambiguously specify the solution to the customer’s problems you trying to solve</strong></p>
+<p>(include external behavior&#x2F;functionality, product and process quality, project constraints)</p>
+<ul>
+<li>Requirements drive all software activities</li>
+<li>They are needed by:<ul>
+<li>Project managers … to know what your team must deliver</li>
+<li>Designers … to know what to design</li>
+<li>Coders … to know what to code</li>
+<li>Testers … to know what to test</li>
+<li>Documentation writers … to know what to write in the user’s manual</li>
+</ul>
+</li>
+<li>Requirements represent contract between your team and you customer</li>
+</ul>
+<p>Importance of Requirements </p>
+<ul>
+<li>The set of requirements constitute a contract between the client and the software developer<ul>
+<li>It should be written such that all stakeholders can understand what the system will do.</li>
+<li>It allows developer to map problem domain concepts to solution domain concepts</li>
+</ul>
+</li>
+</ul>
+<p>Requirements Engineering:</p>
+<ul>
+<li>It helps software engineering to better understand the problem to be solved;</li>
+<li>It encompasses the set of questions:<ul>
+<li>What is the business impact of the software?</li>
+<li>What the customer wants? </li>
+<li>How end-users will interact with the software?</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-2-RE-Tasks"><a href="#8-2-RE-Tasks" class="headerlink" title="8.2 RE Tasks"></a>8.2 RE Tasks</h3><h4 id="Requirements-Engineering-Tasks"><a href="#Requirements-Engineering-Tasks" class="headerlink" title="Requirements Engineering Tasks:"></a><strong>Requirements Engineering Tasks</strong>:</h4><ul>
+<li>Inception（初启）—Establish a basic understanding of the problem and the nature of the solution. </li>
+<li>Elicitation（导出）—Draw out the requirements from stakeholders.</li>
+<li>Elaboration（精化）—Create an analysis model that represents information, functional, and behavioral aspects of the requirements.</li>
+<li>Negotiation（谈判）—Agree on a deliverable system that is realistic for developers and customers.</li>
+<li>Specification（规格说明）—Describe the requirements formally or informally.</li>
+<li>Validation（确认）—Review the requirement specification for errors, ambiguities（模糊）, omissions（遗漏）, and conflicts. </li>
+<li>Requirements management（管理）—Manage changing requirements.</li>
+</ul>
+<h5 id="8-2-1-Inception"><a href="#8-2-1-Inception" class="headerlink" title="8.2.1 Inception"></a>8.2.1 Inception</h5><p>Ask “context-free” questions:</p>
+<ul>
+<li><p>Who is behind the request for this work?</p>
+</li>
+<li><p>Who will use the solution (product&#x2F;system)?</p>
+</li>
+<li><p>What will be the economic benefits?</p>
+</li>
+<li><p>How would you characterize “good” output from the system?</p>
+</li>
+<li><p>What problems does this solution address?</p>
+</li>
+<li><p>What environment will the product be used in?</p>
+</li>
+<li><p>Are you the right person to answer these questions?</p>
+</li>
+<li><p>Are these question relevant?</p>
+</li>
+<li><p>Can anyone else provide additional information?</p>
+</li>
+<li><p>Should I be asking you anything else?</p>
+</li>
+</ul>
+<h5 id="8-2-2-Elicitation"><a href="#8-2-2-Elicitation" class="headerlink" title="8.2.2 Elicitation"></a>8.2.2 Elicitation</h5><p>Why is it so difficult to clearly understand what the customer wants?</p>
+<ul>
+<li>Scope<ul>
+<li>The boundary of the system is ill-defined.</li>
+<li>Customers&#x2F;users specify unnecessary technical detail that may confuse rather than clarify objectives.</li>
+</ul>
+</li>
+<li>Understanding<ul>
+<li>Customers are not completely sure of what is needed.</li>
+<li>Customers have a poor understanding of the capabilities and limitations of the computing environment.</li>
+<li>Customers don’t have a full understanding of their problem domain.</li>
+<li>Customers have trouble communicating needs to the system engineer.</li>
+<li>Customers omit detail that is believed to be obvious.</li>
+<li>Customers specify requirements that are ambiguous or untestable.</li>
+</ul>
+</li>
+<li>Volatility（不稳定性）<ul>
+<li>Requirements change over time.</li>
+</ul>
+</li>
+</ul>
+<h5 id="8-2-3-Elaboration（求精）"><a href="#8-2-3-Elaboration（求精）" class="headerlink" title="8.2.3 Elaboration（求精）"></a>8.2.3 Elaboration（求精）</h5><ul>
+<li>It is a good thing, but you have to know when to stop;</li>
+<li>The key is to describe the problem in a way that establishes a firm base for design;</li>
+<li>If you work beyond that point, you’re doing design;</li>
+</ul>
+<h5 id="8-2-4-Negotiation（谈判）"><a href="#8-2-4-Negotiation（谈判）" class="headerlink" title="8.2.4 Negotiation（谈判）"></a>8.2.4 Negotiation（谈判）</h5><ul>
+<li>There should be no winner and no loser in an effective negotiation（ Win – Win );</li>
+<li>Both sides win because a “deal” that both can live with is solidified.</li>
+</ul>
+<h5 id="8-2-5-Specification（规格说明）"><a href="#8-2-5-Specification（规格说明）" class="headerlink" title="8.2.5 Specification（规格说明）"></a>8.2.5 Specification（规格说明）</h5><p><strong>The formality and format of a specification varies with the size and the complexity of the software to be built.</strong></p>
+<h5 id="8-2-6-Validation（确认）"><a href="#8-2-6-Validation（确认）" class="headerlink" title="8.2.6 Validation（确认）"></a>8.2.6 Validation（确认）</h5><ul>
+<li>A key concern during requirements validation is consistency（一致性）;</li>
+<li>Use the analysis model to ensure that requirements have been consistently stated;</li>
+</ul>
+<h5 id="8-2-7-Requirements-Management"><a href="#8-2-7-Requirements-Management" class="headerlink" title="8.2.7 Requirements Management"></a>8.2.7 Requirements Management</h5><ul>
+<li>Features traceability table;</li>
+<li>Source traceability table;</li>
+<li>Dependency traceability table;</li>
+<li>Subsystem traceability table;</li>
+<li>Interface traceability table;</li>
+</ul>
+<h4 id="How-to-maintain-traceability-relationships-…"><a href="#How-to-maintain-traceability-relationships-…" class="headerlink" title="How to maintain traceability relationships …"></a>How to maintain traceability relationships …</h4><ul>
+<li>Most easily maintained using tools.</li>
+<li>Low tech tools: Excel, Word, …<ul>
+<li>Can be good enough (and better than nothing).</li>
+</ul>
+</li>
+<li>Specialized tools: RequisitePro.<ul>
+<li>Tools can be used to automatically generate views in the form to Matrices.</li>
+<li>NOTE: consider the cost of learning and using tools.</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-3-RE-process"><a href="#8-3-RE-process" class="headerlink" title="8.3 RE process"></a>8.3 RE process</h3><ul>
+<li>Identifying the stakeholders</li>
+<li>Recognizing multiple viewpoints</li>
+<li>Working toward collaboration</li>
+<li>Asking the first questions</li>
+</ul>
+<p><strong>Stakeholders in SE:</strong></p>
+<ul>
+<li>Customers<ul>
+<li>Those who pay for the software</li>
+</ul>
+</li>
+<li>Users<ul>
+<li>Those who use the software</li>
+</ul>
+</li>
+<li>Software developers</li>
+<li>Development Managers</li>
+</ul>
+<p><strong><u> Problem: The customer often doesn’t have good grasp of what he wants.</u></strong></p>
+<h3 id="8-4-Eliciting-Requirements"><a href="#8-4-Eliciting-Requirements" class="headerlink" title="8.4 Eliciting Requirements"></a>8.4 Eliciting Requirements</h3><ul>
+<li>Collaborative Requirements Gathering;</li>
+<li>Quality Function Deployment;</li>
+<li>User Scenarios;</li>
+<li>Elicitation Work Products;</li>
+</ul>
+<h4 id="8-4-1-Collaborative-Requirements-Gathering"><a href="#8-4-1-Collaborative-Requirements-Gathering" class="headerlink" title="8.4.1 Collaborative Requirements Gathering"></a>8.4.1 Collaborative Requirements Gathering</h4><p><strong><u>Meeting</u></strong></p>
+<p><strong>How to conduct a meeting?</strong></p>
+<ul>
+<li>Meetings are attended by all interested stakeholders.</li>
+<li>Rules established for preparation and participation.</li>
+<li>Agenda should be formal enough to cover all important points, but informal enough to encourage the free flow of ideas.</li>
+<li>A facilitator controls the meeting.</li>
+<li>A definition mechanism (blackboard, flip charts, etc.) is used.</li>
+</ul>
+<p><strong>During the meeting:</strong></p>
+<ul>
+<li>The problem is identified.</li>
+<li>Elements of the solution are proposed.</li>
+<li>Different approaches are negotiated.</li>
+<li>A preliminary set of solution requirements are obtained.</li>
+<li>The atmosphere is collaborative and non-threatening.</li>
+</ul>
+<h4 id="8-4-2-Quality-Function-Deployment"><a href="#8-4-2-Quality-Function-Deployment" class="headerlink" title="8.4.2 Quality Function Deployment"></a>8.4.2 Quality Function Deployment</h4><ul>
+<li>QFD Defines requirements in a way that maximizes customer satisfaction.</li>
+<li>Three types of requirements:<ul>
+<li>Normal Requirements;    </li>
+<li>Expected Requirements;</li>
+<li>Exciting Requirements;</li>
+</ul>
+</li>
+</ul>
+<h5 id="8-4-2-1Three-Level-Requirements"><a href="#8-4-2-1Three-Level-Requirements" class="headerlink" title="8.4.2.1Three Level Requirements:"></a>8.4.2.1<strong>Three Level Requirements:</strong></h5><ul>
+<li>Stakeholder Needs</li>
+<li>Features of the System</li>
+<li>Software Requirements</li>
+</ul>
+<h5 id="8-4-2-2Software-Requirements-Types"><a href="#8-4-2-2Software-Requirements-Types" class="headerlink" title="8.4.2.2Software Requirements Types:"></a>8.4.2.2<strong>Software Requirements Types:</strong></h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220314161609102.png" alt="image-20220314161609102" style="zoom:33%;">
+
+<ul>
+<li><p>Functional Requirements(FR):</p>
+<ul>
+<li>Describe the functionality or services that the system is expected to provide </li>
+<li>Address the input-output behavior of a system</li>
+</ul>
+</li>
+<li><p>Non-Functional Requirement(NFRS):</p>
+<p><strong>Specifying various quality attributes of the system</strong></p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319164350389.png" alt="image-20220319164350389" style="zoom:50%;"></li>
+</ul>
+<h5 id="8-4-2-3-Design-Constraints"><a href="#8-4-2-3-Design-Constraints" class="headerlink" title="8.4.2.3 Design Constraints"></a>8.4.2.3 Design Constraints</h5><ul>
+<li>Restrictions upon the design of a system, or the process by which a system is developed ,which do not affect the external behavior must be fulfilled to meet technical, business, or contractual obligations</li>
+<li>They constrain the way a designer and implementer can make decisions</li>
+</ul>
+<h3 id="8-5-User-Scenarios（用户脚本）"><a href="#8-5-User-Scenarios（用户脚本）" class="headerlink" title="8.5 User Scenarios（用户脚本）"></a>8.5 User Scenarios（用户脚本）</h3><ul>
+<li><p>Scenarios ( use-case ):</p>
+<ul>
+<li>identify a thread of usage for the system to be constructed.</li>
+<li>Provide a description of how the system will be used</li>
+</ul>
+<p>Example:</p>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319165652047.png" alt="image-20220319165652047" style="zoom: 67%;">
+
+<ul>
+<li>Elicitation Work Products<ul>
+<li>Statement of need and feasibility.</li>
+<li>Statement of scope.</li>
+<li>List of participants in requirements elicitation.</li>
+<li>Description of the system’s technical environment.</li>
+<li>List of requirements and associated domain constraints.</li>
+<li>List of usage scenarios.</li>
+<li>Any prototypes developed to refine requirements.</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-6-Developing-Use-Cases"><a href="#8-6-Developing-Use-Cases" class="headerlink" title="8.6 Developing Use-Cases"></a>8.6 Developing Use-Cases</h3><ul>
+<li>A use-case is a story about how someone or something external to the software (known as an actor) interacts with the system.</li>
+<li>Use-case are defined from an actor’s point of view.</li>
+<li>An actor is a role that people or devices play as they interact with the software.</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319170957340.png" alt="image-20220319170957340" style="zoom:50%;">
+
+<ul>
+<li>Each scenario answers the following questions:<ul>
+<li>Who is the primary actor, the secondary actor(s)?</li>
+<li>What are the actor’s goals?</li>
+<li>What preconditions should exist before the story begins?</li>
+<li>What main tasks or functions are performed by the actor?</li>
+<li>What exceptions might be considered as the story is described?</li>
+<li>What variations in the actor’s interaction are possible?</li>
+<li>What system information will the actor acquire, produce, or change? </li>
+<li>Will the actor have to inform the system about changes in the external environment?</li>
+<li>What information does the actor desire from the system?</li>
+<li>Does the actor wish to be informed about unexpected changes?</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-6-Building-the-Analysis-Model"><a href="#8-6-Building-the-Analysis-Model" class="headerlink" title="8.6 Building the Analysis Model"></a>8.6 Building the Analysis Model</h3><ul>
+<li>Elements of the Analysis Model;</li>
+<li>Analysis Patterns;</li>
+</ul>
+<h4 id="Elements-of-the-Analysis-Model"><a href="#Elements-of-the-Analysis-Model" class="headerlink" title="Elements of the Analysis Model"></a>Elements of the Analysis Model</h4><ul>
+<li>Scenario-based elements<ul>
+<li>Use-case—How external actors interact with the system (use-case diagrams; detailed templates)</li>
+<li>Functional—How software functions are processed in the system (flow charts; activity diagrams)</li>
+</ul>
+</li>
+<li>Class-based elements<ul>
+<li>The various system objects (obtained from scenarios) including their attributes and functions (class diagram)</li>
+</ul>
+</li>
+<li>Behavioral elements<ul>
+<li>How the system behaves in response to different events (state diagram)</li>
+</ul>
+</li>
+<li>Flow-oriented elements<ul>
+<li>How information is transformed as if flows through the system (data flow diagram)</li>
+</ul>
+</li>
+</ul>
+<h5 id="Use-Case-Diagram"><a href="#Use-Case-Diagram" class="headerlink" title="Use-Case Diagram"></a>Use-Case Diagram</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319171528803.png" alt="image-20220319171528803" style="zoom:50%;">
+
+<h5 id="Activity-Diagram-for-RE"><a href="#Activity-Diagram-for-RE" class="headerlink" title="Activity Diagram for RE"></a>Activity Diagram for RE</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319171604459.png" alt="image-20220319171604459" style="zoom:50%;">
+
+<h5 id="Class-Diagram"><a href="#Class-Diagram" class="headerlink" title="Class Diagram"></a>Class Diagram</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319171704345.png" alt="image-20220319171704345" style="zoom:50%;">
+
+<h5 id="State-Diagram"><a href="#State-Diagram" class="headerlink" title="State Diagram"></a>State Diagram</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319171742317.png" alt="image-20220319171742317" style="zoom:50%;">
+
+<h4 id="Analysis-Patterns"><a href="#Analysis-Patterns" class="headerlink" title="Analysis Patterns"></a>Analysis Patterns</h4><ul>
+<li>They  are conceptual models, which capture an abstraction of a situation that can often be encountered in modeling. </li>
+<li>Analysis patterns suggest solutions within the application domain that can be reused when modeling many application.<ul>
+<li>Analysis patterns speed up the development of abstract analysis models.</li>
+<li>Analysis patterns facilitate the transformation of the analysis model into a design model.</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220319172159037.png" alt="image-20220319172159037" style="zoom:67%;">
+
+
+
+<h5 id="Normal-format"><a href="#Normal-format" class="headerlink" title="Normal format:"></a>Normal format:</h5><ul>
+<li><p>Pattern name:  Captures the essence of the pattern. </p>
+</li>
+<li><p>Intent: What the pattern accomplishes or represents. </p>
+</li>
+<li><p>Motivation:  A scenario that illustrates how the pattern solves a problem.</p>
+</li>
+<li><p>Forces and context:  External issues (forces) that affect how the pattern is used, and external issues resolved when the pattern is applied. </p>
+</li>
+<li><p>Solution:  How the pattern is applied to solve the problem; emphasizes structural and behavioral issues.</p>
+</li>
+<li><p>Consequences:  What happens when the pattern is applied; what trade-offs exist during its application.</p>
+</li>
+<li><p>Design:  How the pattern can be achieved via known design patterns.</p>
+</li>
+<li><p>Known uses:  Examples of uses within actual systems.</p>
+</li>
+<li><p>Related patterns:  Patterns related to the named pattern because</p>
+<ol>
+<li>they are commonly used with the named pattern;</li>
+<li>they are structurally similar to the named pattern;</li>
+<li>they are a variation of the named pattern.</li>
+</ol>
+</li>
+</ul>
+<h3 id="8-7-Negotiating-Requirements"><a href="#8-7-Negotiating-Requirements" class="headerlink" title="8.7 Negotiating Requirements"></a>8.7 Negotiating Requirements</h3><ul>
+<li>Identify the key stakeholders<ul>
+<li>These are the people who will be involved in the negotiation</li>
+</ul>
+</li>
+<li>Determine each of the stakeholders “win conditions”<ul>
+<li>Win conditions are not always obvious</li>
+</ul>
+</li>
+<li>Negotiate<ul>
+<li>Work toward a set of requirements that lead to “win-win”</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-8-Validating-Requirements"><a href="#8-8-Validating-Requirements" class="headerlink" title="8.8 Validating Requirements"></a>8.8 Validating Requirements</h3><ul>
+<li>Is each requirement consistent with the objective of the system?</li>
+<li>Have all requirements been specified at the proper level of abstraction? </li>
+<li>Is the requirement really necessary?</li>
+<li>Is each requirement bounded and unambiguous?</li>
+<li>Does each requirement have attribution? </li>
+<li>Do any requirements conflict with other requirements?</li>
+<li>Is each requirement achievable in the system’s technical environment?</li>
+<li>Is each requirement testable, once implemented?</li>
+<li>Does the model reflect the system’s information, function and behavior?</li>
+<li>Has the model been appropriately “partitioned”?</li>
+<li>Have appropriate requirements patterns been used?</li>
+</ul>
 
                 
             </div>
@@ -1531,7 +1878,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.1k</span>
+                        class="white-color">19.7k</span>
             
             
             

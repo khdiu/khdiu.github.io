@@ -506,7 +506,7 @@ Internet: “network of networks” Interconnected IS">
 </li>
 </ul>
 <h3 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h3><p>protocol define format, order of message sent and received among network entities , and actions taken on message transmission ,receipt</p>
-<h2 id="1-1network-structure"><a href="#1-1network-structure" class="headerlink" title="1.1network structure"></a>1.1network structure</h2><ul>
+<h3 id="1-1network-structure"><a href="#1-1network-structure" class="headerlink" title="1.1network structure"></a>1.1network structure</h3><ul>
 <li><p>network edge: </p>
 <ul>
 <li>hosts: clients and servers </li>
@@ -523,8 +523,8 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ul>
-<h2 id="1-2network-edge"><a href="#1-2network-edge" class="headerlink" title="1.2network edge"></a>1.2network edge</h2><h3 id="ISP-internet-service-provider"><a href="#ISP-internet-service-provider" class="headerlink" title="ISP(internet service provider)"></a>ISP(internet service provider)</h3><p>End system access the Internet through ISP, such as local cable or telephone companies</p>
-<h3 id="Access-networks"><a href="#Access-networks" class="headerlink" title="Access networks"></a>Access networks</h3><ul>
+<h3 id="1-2network-edge"><a href="#1-2network-edge" class="headerlink" title="1.2network edge"></a>1.2network edge</h3><h4 id="ISP-internet-service-provider"><a href="#ISP-internet-service-provider" class="headerlink" title="ISP(internet service provider)"></a>ISP(internet service provider)</h4><p>End system access the Internet through ISP, such as local cable or telephone companies</p>
+<h4 id="Access-networks"><a href="#Access-networks" class="headerlink" title="Access networks"></a>Access networks</h4><ul>
 <li>serveral connect methods<ul>
 <li>ressidential access nets</li>
 <li>institutional nets wnetworks</li>
@@ -584,9 +584,9 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ol>
-<h3 id="sending-message"><a href="#sending-message" class="headerlink" title="sending message"></a>sending message</h3><p>link transmission rate, aka link capacity , aka link bandwidth</p>
+<h4 id="sending-message"><a href="#sending-message" class="headerlink" title="sending message"></a>sending message</h4><p>link transmission rate, aka link capacity , aka link bandwidth</p>
 <p>packet transmission delay &#x3D; L(bits)&#x2F;R(bits&#x2F;sec)</p>
-<h3 id="Physical-media"><a href="#Physical-media" class="headerlink" title="Physical media"></a>Physical media</h3><ul>
+<h4 id="Physical-media"><a href="#Physical-media" class="headerlink" title="Physical media"></a>Physical media</h4><ul>
 <li><p>bit: propagates between transmitter&#x2F;receiver pairs</p>
 </li>
 <li><p>physical link: what lies between transmitter&amp;receiver</p>
@@ -652,7 +652,7 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ul>
-<h2 id="1-3network-core"><a href="#1-3network-core" class="headerlink" title="1.3network core"></a>1.3network core</h2><ul>
+<h3 id="1-3network-core"><a href="#1-3network-core" class="headerlink" title="1.3network core"></a>1.3network core</h3><ul>
 <li>mesh of interconnected router</li>
 <li>packet-switching: hosts break application-layer message into packets<ul>
 <li>forward packets form one router to the next ,across links on path from source to destination</li>
@@ -660,21 +660,21 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ul>
-<h3 id="Packet-switch-store-and-forward"><a href="#Packet-switch-store-and-forward" class="headerlink" title="Packet-switch: store-and-forward"></a>Packet-switch: store-and-forward</h3><ul>
+<h4 id="Packet-switch-store-and-forward"><a href="#Packet-switch-store-and-forward" class="headerlink" title="Packet-switch: store-and-forward"></a>Packet-switch: store-and-forward</h4><ul>
 <li>It takes L&#x2F;R seconds to transmit L-bit packet into link at R bps</li>
 <li>store and forward: entire packet must arrive at router before it can be transmitted on next link</li>
 <li>end-end delay &#x3D;2L&#x2F;R(assuming zero propagation delay)</li>
 </ul>
-<h3 id="Packet-switching-queueing-delaying-loss"><a href="#Packet-switching-queueing-delaying-loss" class="headerlink" title="Packet-switching: queueing delaying,loss"></a>Packet-switching: queueing delaying,loss</h3><p>if arrival rate(in bits)to link exceeds transmission rate of link for a period of time:</p>
+<h4 id="Packet-switching-queueing-delaying-loss"><a href="#Packet-switching-queueing-delaying-loss" class="headerlink" title="Packet-switching: queueing delaying,loss"></a>Packet-switching: queueing delaying,loss</h4><p>if arrival rate(in bits)to link exceeds transmission rate of link for a period of time:</p>
 <ul>
 <li>packets will queue, wait to be transimitted on link </li>
 <li>packets can be dropped(lost) if memory(buffers) fills up</li>
 </ul>
-<h3 id="Tow-key-network-core-functions"><a href="#Tow-key-network-core-functions" class="headerlink" title="Tow key network-core functions"></a>Tow key network-core functions</h3><ul>
+<h4 id="Tow-key-network-core-functions"><a href="#Tow-key-network-core-functions" class="headerlink" title="Tow key network-core functions"></a>Tow key network-core functions</h4><ul>
 <li>routing: determines source-destination route taken by packets</li>
 <li>forwarding: move packets from router’ input to appropriate router ouput</li>
 </ul>
-<h3 id="Alternative-core-circuit-switching"><a href="#Alternative-core-circuit-switching" class="headerlink" title="Alternative core: circuit switching"></a>Alternative core: circuit switching</h3><p>end-end resources allocated to,reserved for “call” between source&amp;destination</p>
+<h4 id="Alternative-core-circuit-switching"><a href="#Alternative-core-circuit-switching" class="headerlink" title="Alternative core: circuit switching"></a>Alternative core: circuit switching</h4><p>end-end resources allocated to,reserved for “call” between source&amp;destination</p>
 <ul>
 <li><p>in diagram, each links has four circuits </p>
 <p>call gets 2nd circuit in top link and 1st circuit in right link</p>
@@ -687,13 +687,13 @@ Internet: “network of networks” Interconnected IS">
 <li><p>commonly used in traditional telephone networks</p>
 </li>
 </ul>
-<h3 id="FDM-versus-TDM"><a href="#FDM-versus-TDM" class="headerlink" title="FDM versus TDM"></a>FDM versus TDM</h3><p>FDM: frequency-division multiplexing</p>
+<h4 id="FDM-versus-TDM"><a href="#FDM-versus-TDM" class="headerlink" title="FDM versus TDM"></a>FDM versus TDM</h4><p>FDM: frequency-division multiplexing</p>
 <p>TDM: time-division multiplexing</p>
 <ul>
 <li>With FDM each circuit continuously gets a fraction of the bandwidth</li>
 <li>With TDM each circuit gets all of the bandwidth periodically during brief of time</li>
 </ul>
-<h3 id="Packet-switching-versus-circuit-switching"><a href="#Packet-switching-versus-circuit-switching" class="headerlink" title="Packet switching versus circuit switching"></a>Packet switching versus circuit switching</h3><ul>
+<h4 id="Packet-switching-versus-circuit-switching"><a href="#Packet-switching-versus-circuit-switching" class="headerlink" title="Packet switching versus circuit switching"></a>Packet switching versus circuit switching</h4><ul>
 <li><p>Packet switching </p>
 <p>Advantages:</p>
 <ul>
@@ -714,12 +714,12 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ul>
-<h3 id="Internet-structure-network-of-neworks"><a href="#Internet-structure-network-of-neworks" class="headerlink" title="Internet structure: network of neworks"></a>Internet structure: network of neworks</h3><ul>
+<h4 id="Internet-structure-network-of-networks"><a href="#Internet-structure-network-of-networks" class="headerlink" title="Internet structure: network of networks"></a>Internet structure: network of networks</h4><ul>
 <li>End-system connect to the access ISP</li>
 <li>access ISP connect to the regional ISP </li>
 <li>regional access connect to tier ISP</li>
 </ul>
-<h2 id="1-4Delay-loss-and-throughput-in-packet-switched-Networks"><a href="#1-4Delay-loss-and-throughput-in-packet-switched-Networks" class="headerlink" title="1.4Delay,loss,and throughput in packet-switched Networks"></a>1.4Delay,loss,and throughput in packet-switched Networks</h2><h3 id="Delay"><a href="#Delay" class="headerlink" title="Delay:"></a>Delay:</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220228233531690.png" style="zoom:50%;">
+<h3 id="1-4Delay-loss-and-throughput-in-packet-switched-Networks"><a href="#1-4Delay-loss-and-throughput-in-packet-switched-Networks" class="headerlink" title="1.4Delay,loss,and throughput in packet-switched Networks"></a>1.4Delay,loss,and throughput in packet-switched Networks</h3><h4 id="Delay"><a href="#Delay" class="headerlink" title="Delay:"></a>Delay:</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220228233531690.png" style="zoom:50%;">
 
 <ul>
 <li><p>Processing delay (<u>this relates to router’s cycle of instruction</u>) (constant)</p>
@@ -747,7 +747,7 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <p><strong>link : the device transform the digital signal to the analog signal</strong></p>
 <p><strong>relay device: the intermedium device transmit the analog signal</strong>  </p>
-<h3 id="Queuing-delay-and-packet-loss"><a href="#Queuing-delay-and-packet-loss" class="headerlink" title="Queuing delay and packet loss"></a>Queuing delay and packet loss</h3><ul>
+<h4 id="Queuing-delay-and-packet-loss"><a href="#Queuing-delay-and-packet-loss" class="headerlink" title="Queuing delay and packet loss"></a>Queuing delay and packet loss</h4><ul>
 <li><p>Queuing delay:</p>
 <p>traffic intensity: terminology to describe the congestion of the queue</p>
 <p>The fofmula:</p>
@@ -766,7 +766,7 @@ Internet: “network of networks” Interconnected IS">
 <p>lost packet may be retransmitted by previous node, by source end system, or not at all</p>
 </li>
 </ul>
-<h3 id="Throughput"><a href="#Throughput" class="headerlink" title="Throughput"></a>Throughput</h3><p>The rate(bits&#x2F;time unit) at witch bits transferred between sender and receiver</p>
+<h4 id="Throughput"><a href="#Throughput" class="headerlink" title="Throughput"></a>Throughput</h4><p>The rate(bits&#x2F;time unit) at witch bits transferred between sender and receiver</p>
 <ul>
 <li><p>instantaneous: rate at given point in time</p>
 </li>
@@ -785,7 +785,7 @@ Internet: “network of networks” Interconnected IS">
 
 
 
-<h2 id="1-5Protocol-layers-service-models"><a href="#1-5Protocol-layers-service-models" class="headerlink" title="1.5Protocol layers, service models"></a>1.5Protocol layers, service models</h2><h3 id="Layers"><a href="#Layers" class="headerlink" title="Layers:"></a>Layers:</h3><p> Each layer implements a service</p>
+<h3 id="1-5Protocol-layers-service-models"><a href="#1-5Protocol-layers-service-models" class="headerlink" title="1.5Protocol layers, service models"></a>1.5Protocol layers, service models</h3><h4 id="Layers"><a href="#Layers" class="headerlink" title="Layers:"></a>Layers:</h4><p> Each layer implements a service</p>
 <ul>
 <li>via its own internal-layer actions</li>
 <li>relying on services provides by layer below</li>
@@ -834,7 +834,7 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <p><strong>Internet stack “missing” these layers!</strong></p>
 <p>these services, if needed, must be implemented in application</p>
-<h3 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation:"></a>Encapsulation:</h3><ul>
+<h4 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation:"></a>Encapsulation:</h4><ul>
 <li>Application: append message</li>
 <li>transport: append segment</li>
 <li>network: append datagram</li>
@@ -858,7 +858,7 @@ Internet: “network of networks” Interconnected IS">
 <li>Link-layer-frame: appending linked-layer header</li>
 <li>Each packet has two type of fields: header and payload(A packet form the layer above)</li>
 </ul>
-<h2 id="The-homework-complements-（extension-and-correct）"><a href="#The-homework-complements-（extension-and-correct）" class="headerlink" title="The homework complements （extension and correct）"></a>The homework complements （extension and correct）</h2><ul>
+<h3 id="1-6-The-homework-supplements-（extension-and-correct）"><a href="#1-6-The-homework-supplements-（extension-and-correct）" class="headerlink" title="1.6 The homework supplements （extension and correct）"></a>1.6 The homework supplements （extension and correct）</h3><ul>
 <li>NAT(Network Address Transmission)</li>
 <li>A router equipped with NAT software is called a NAT router and has at least one valid external global IP address (public IP address)</li>
 <li>Host &#x3D; end system; end system &#x3D; clients + server (page 11)</li>
@@ -876,7 +876,24 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 </li>
 </ul>
-
+<h2 id="2-chaper2-Application-layer"><a href="#2-chaper2-Application-layer" class="headerlink" title="2. chaper2 Application layer"></a>2. chaper2 Application layer</h2><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline:"></a>Outline:</h3><p>2.1 principles of network applications</p>
+<p>2.2 Web and HTTP</p>
+<p>2.3 electronic mail</p>
+<ul>
+<li>SMTP, POP3, IMAP</li>
+</ul>
+<p>2.4 DNS</p>
+<p>2.5 P2P applications</p>
+<p>2.6 video streaming and </p>
+<ul>
+<li>content distribution </li>
+<li>networks</li>
+</ul>
+<p>2.7 socket programming </p>
+<ul>
+<li>with UDP and TCP</li>
+</ul>
+<h4 id="2-1-principles-of-network-applications"><a href="#2-1-principles-of-network-applications" class="headerlink" title="2.1 principles of network applications"></a>2.1 principles of network applications</h4>
                 
             </div>
             <hr/>
@@ -1673,7 +1690,7 @@ Internet: “network of networks” Interconnected IS">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.1k</span>
+                        class="white-color">19.7k</span>
             
             
             
