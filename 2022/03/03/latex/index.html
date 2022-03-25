@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="latex学习, khdiu&#39;blog">
-    <meta name="description" content="Latex学习">
+    <meta name="description" content="Latex学习Tutorial source: Learn LaTeX in 30 minutes - Overleaf, 在线LaTeX编辑器
+What is latexLatex is a tool used to create pro">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -464,14 +465,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    12 分
                 </div>
                 
 
@@ -491,7 +492,223 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Latex学习"><a href="#Latex学习" class="headerlink" title="Latex学习"></a>Latex学习</h1>
+                <h1 id="Latex学习"><a href="#Latex学习" class="headerlink" title="Latex学习"></a>Latex学习</h1><p>Tutorial source: <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#What_is_LaTeX.3F">Learn LaTeX in 30 minutes - Overleaf, 在线LaTeX编辑器</a></p>
+<h2 id="What-is-latex"><a href="#What-is-latex" class="headerlink" title="What is latex"></a>What is latex</h2><p>Latex is a tool used to create professional-looking documents. It is based on the WYSIWYM(<strong>what you see is what you mean</strong>) idea, meaning you only have focus on the contents and the computer will take care of the formatting. Instead of spacing out text on a page to control formatting, as with Microsoft Word or LibreOffice Writer, users can enter and let Latex take care of the rest</p>
+<h2 id="why-learn-Latex"><a href="#why-learn-Latex" class="headerlink" title="why learn Latex"></a>why learn Latex</h2><p><strong>Latex is used all over the world for scientific documents, books, as well as many other forms of publishing.</strong></p>
+<ul>
+<li>It allows users to very quickly tackle the more complicated parts of typesetting,such as <strong>inputting mathematics, creating tables of contents, referencing and creating bibliographies</strong></li>
+<li>It has a consistent layout across all sections</li>
+<li>With huge number of open source packages available, Latex allows users do more things, such as add footnotes, draw schematics, create tables etc.</li>
+</ul>
+<h2 id="Writing-your-first-piece-of-latex"><a href="#Writing-your-first-piece-of-latex" class="headerlink" title="Writing your first piece of latex"></a>Writing your first piece of latex</h2><pre><code>\documentclass&#123;article&#125;
+
+\begin&#123;document&#125;
+First document. This is a simple example, with no 
+extra parameters or packages included.
+\end&#123;document&#125;
+</code></pre>
+<ul>
+<li><p>The first line of code declares the type of document, know as <strong>class</strong>. The class controls the overall appearance of the document. In this case, the class is article, the simplest and most common Latex class. Other types of documents you may be working on may require different classes such as book or report</p>
+</li>
+<li><p>The \begin{document} and \end{document} tags is body, which means you write your content of document inside the tags</p>
+</li>
+</ul>
+<h3 id="The-preamble-of-a-document"><a href="#The-preamble-of-a-document" class="headerlink" title="The preamble of a document"></a>The preamble of a document</h3><ul>
+<li>Everything before the \begin{document} command is called the <strong>preamble.</strong></li>
+<li>The preamble you define the type of your document</li>
+<li>It includes the language, the package you would like to use and several other elements</li>
+</ul>
+<p>Example:</p>
+<pre><code>\documentclass[12pt, letterpaper]&#123;article&#125;
+\usepackage[utf8]&#123;inputenc&#125;
+</code></pre>
+<p>\documentclass[12pt, letterpaper]{article}</p>
+<p>As said before, this defines the type of document. Some additional parameters included in the square brackets can be passed to the command. These parameters must be comma-separated. In the example, the extra parameters set the font size (<strong><code>12pt</code></strong>) and the paper size (<strong><code>letterpaper</code></strong>). Of course other font sizes (<strong><code>9pt</code></strong>, <strong><code>11pt</code></strong>, <strong><code>12pt</code></strong>) can be used, but if none is specified, the default size is <strong><code>10pt</code></strong>. As for the paper size other possible values are <strong><code>a4paper</code></strong> and <strong><code>legalpaper</code></strong>; see the article about <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/latex/Page_size_and_margins">Page size and margins</a> for more details about this.</p>
+<p>\usepackage[utf8]{inputenc}</p>
+<p>This is the encoding for the document. It can be omitted or changed to another encoding but utf-8 is recommended. Unless you specifically need another encoding, or if you are unsure about it, add this line to the preamble.</p>
+<h3 id="Adding-a-title-author-and-date"><a href="#Adding-a-title-author-and-date" class="headerlink" title="Adding a title, author and date"></a>Adding a title, author and date</h3><p>To add a title, author and date to our document, you must add three lines to the <strong>preamble</strong> (NOT the main body of the document). These lines are</p>
+<pre><code>\title&#123;First document&#125;
+</code></pre>
+<p>This is the title.</p>
+<pre><code>\author&#123;Hubert Farnsworth&#125;
+</code></pre>
+<p>Here you put the name of the Author(s) and, as an optional addition, you can add the next command within the curly braces:</p>
+<pre><code>\thanks&#123;funded by the Overleaf team&#125;
+</code></pre>
+<p>This can be added after the name of the author, inside the braces of the <strong><code>author</code></strong> command. It will add a superscript and a footnote with the text inside the braces. Useful if you need to thank an institution in your article.</p>
+<pre><code>\date&#123;February 2014&#125;
+</code></pre>
+<p>You can enter the date manually or use the command <strong><code>\today</code></strong> so the date will be updated automatically at the time you compile your document</p>
+<p>With these lines added, your preamble should look something like this</p>
+<pre><code>\documentclass[12pt, letterpaper, twoside]&#123;article&#125;
+\usepackage[utf8]&#123;inputenc&#125;
+
+\title&#123;First document&#125;
+\author&#123;Hubert Farnsworth \thanks&#123;funded by the Overleaf team&#125;&#125;
+\date&#123;February 2017&#125;
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325222621764.png" alt="image-20220325222621764" style="zoom: 50%;">
+
+
+
+
+
+<h3 id="Adding-comments"><a href="#Adding-comments" class="headerlink" title="Adding comments"></a>Adding comments</h3><p>As with any code you are writing, it can often be useful to include comments. Comments are pieces of text you can include in the document which will not be printed, and will not affect the document in any way. They are useful for organizing your work, taking notes, or commenting out lines&#x2F;sections when debugging. To make a comment in LATEX, simply write a <strong><code>%</code></strong> symbol at the beginning of the line as shown below:</p>
+<pre><code>% This line here is a comment. It will not be printed in the document.
+</code></pre>
+<h3 id="Bold-italics-and-underlining"><a href="#Bold-italics-and-underlining" class="headerlink" title="Bold, italics and underlining"></a>Bold, italics and underlining</h3><p>We will now look at some simple text formatting commands.</p>
+<ul>
+<li><strong>Bold</strong>: Bold text in LaTeX is written with the <strong><code>\textbf&#123;...&#125;</code></strong> command.</li>
+<li><em>Italics</em>: Italicised text in LaTeX is written with the <strong><code>\textit&#123;...&#125;</code></strong> command.</li>
+<li>Underline: Underlined text in LaTeX is written with the <strong><code>\underline&#123;...&#125;</code></strong> command.</li>
+</ul>
+<p>An example of each of these in action is shown below:</p>
+<pre><code>Some of the \textbf&#123;greatest&#125;
+discoveries in \underline&#123;science&#125; 
+were made by \textbf&#123;\textit&#123;accident&#125;&#125;.
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325223125251.png" alt="image-20220325223125251" style="zoom:67%;">
+
+
+
+<p>Another very useful command is the <strong><code>\emph&#123;...&#125;</code></strong> command.</p>
+<p>What the <strong><code>\emph</code></strong> command actually does with its argument depends on the context - inside normal text the emphasized text is italicized, but this behaviour is reversed if used inside an italicized text- see example below:</p>
+<pre><code>Some of the greatest \emph&#123;discoveries&#125; 
+in science 
+were made by accident.
+
+\textit&#123;Some of the greatest \emph&#123;discoveries&#125; 
+in science 
+were made by accident.&#125;
+
+\textbf&#123;Some of the greatest \emph&#123;discoveries&#125; 
+in science 
+were made by accident.&#125;
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325223414435.png" alt="image-20220325223414435" style="zoom:67%;">
+
+
+
+<h3 id="Adding-images"><a href="#Adding-images" class="headerlink" title="Adding images"></a>Adding images</h3><p>We will now look at how to add images to a LATEX document. On Overleaf, you will first have to <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/latex/Including_images_in_ShareLaTeX">upload the images</a>.</p>
+<p>Below is a example on how to include a picture.</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325223731722.png" alt="image-20220325223731722"></p>
+<ul>
+<li>LATEX can not manage images by itself, so you will need to use a <em>package</em>. Packages can be used to change the default look of your LATEX document, or to allow more functionalities. </li>
+<li>In this case, you need to include an image in our document, so you should use the <strong><code>graphicx</code></strong> package. This package gives new commands, <strong><code>\includegraphics&#123;...&#125;</code></strong> and <strong><code>\graphicspath&#123;...&#125;</code></strong>. To use the <strong><code>graphicx</code></strong> package, include the following line in you preamble: <strong><code>\usepackage&#123;graphicx&#125;</code></strong></li>
+<li>The command <strong><code>\graphicspath&#123; &#123;images/&#125; &#125;</code></strong> tells LATEX that the images are kept in a folder named <em>images</em> under the current directory.</li>
+</ul>
+<p>Attention:</p>
+<p>The <strong><code>\includegraphics&#123;universe&#125;</code></strong> command is the one that actually included the image in the document. <strong>Here <em>universe</em> is the name of the file containing the image without the extension, then <em>universe.PNG</em> becomes <em>universe</em></strong>. The file name of the image should not contain white spaces nor multiple dots.</p>
+<h3 id="Captions-labels-and-references"><a href="#Captions-labels-and-references" class="headerlink" title="Captions, labels and references"></a>Captions, labels and references</h3><p>Images can be captioned, labelled and referenced by means of the <strong><code>figure</code></strong> environment as shown below:</p>
+<pre><code>\begin&#123;figure&#125;[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]&#123;mesh&#125;
+    \caption&#123;a nice plot&#125;
+    \label&#123;fig:mesh1&#125;
+\end&#123;figure&#125;
+
+As you can see in the figure \ref&#123;fig:mesh1&#125;, the 
+function grows near 0. Also, in the page \pageref&#123;fig:mesh1&#125; 
+is the same example.
+</code></pre>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325224419082.png" alt="image-20220325224419082"></p>
+<p>There are three important commands in the example:</p>
+<ul>
+<li><p><strong><code>\caption&#123;a nice plot&#125;</code></strong>: As you may expect this command sets the caption for the figure. If you create a list of figures this caption will be used there. You can place it above or below the figure.</p>
+</li>
+<li><p><strong><code>\label&#123;fig:mesh1&#125;</code></strong>: If you need to refer the image within your document, set a label with this command. The label will number the image, and combined with the next command will allow you to reference it.</p>
+</li>
+<li><p><strong><code>\ref&#123;fig:mesh1&#125;</code></strong>: This code will be substituted by the number corresponding to the referenced figure.</p>
+</li>
+</ul>
+<p><strong><u>Attention:</u></strong></p>
+<p>When placing images in a LATEX document, <u>we should always put them inside a <strong><code>figure</code></strong> environment</u> or similar so that LATEX will position the image in a way that fits in with the rest of your text.</p>
+<p><u>If you are using captions and references on your own computer, you will have to compile the document twice for the references to work</u>. Overleaf will do this for you automatically.’*</p>
+<h3 id="Creating-lists-in-LATEX"><a href="#Creating-lists-in-LATEX" class="headerlink" title="Creating lists in LATEX"></a>Creating lists in LATEX</h3><p>Lists are very simple to create in LATEX. You can create lists using different list <em>environments</em>. Environments are sections of our document that you want to present in a different way to the rest of the document. They start with a <strong><code>\begin&#123;...&#125;</code></strong> command and end with an <strong><code>\end&#123;...&#125;</code></strong> command.</p>
+<ul>
+<li>There are two main different types of lists, <em>ordered</em> lists and <em>unordered</em> lists. Each will use a different environment.</li>
+</ul>
+<h4 id="Unordered-lists"><a href="#Unordered-lists" class="headerlink" title="Unordered lists"></a>Unordered lists</h4><p>Unordered lists are produced by the <strong><code>itemize</code></strong> environment. Each entry must be preceded by the control sequence <strong><code>\item</code></strong> as shown below.</p>
+<pre><code>\begin&#123;itemize&#125;
+  \item The individual entries are indicated with a black dot, a so-called bullet.
+  \item The text in the entries may be of any length.
+\end&#123;itemize&#125;
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325225202690.png" alt="image-20220325225202690" style="zoom:67%;">
+
+
+
+<p>By default the individual entries are indicated with a black dot, so-called bullet. The text in the entries may be of any length.</p>
+<h4 id="Ordered-lists"><a href="#Ordered-lists" class="headerlink" title="Ordered lists"></a>Ordered lists</h4><p>Ordered list have the same syntax inside a different environment. We make ordered lists using the <strong><code>enumerate</code></strong> environment:</p>
+<pre><code>\begin&#123;enumerate&#125;
+  \item This is the first entry in our list
+  \item The list numbers increase with each entry we add
+\end&#123;enumerate&#125;
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325225630900.png" alt="image-20220325225630900" style="zoom:67%;">
+
+<p>As with unordered lists, <u>each entry must be preceded by the control sequence <strong><code>\item</code></strong></u>, which will automatically generate the number labelling the item. The enumerate labels consists of sequential numbers starting at one.</p>
+<p>List example:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325225455614.png" alt="image-20220325225455614" style="zoom:80%;">
+
+
+
+<h3 id="Adding-math-to-LATEX"><a href="#Adding-math-to-LATEX" class="headerlink" title="Adding math to LATEX"></a>Adding math to LATEX</h3><ul>
+<li><p>One of the main advantages of LATEX is the ease at which mathematical expressions can be written. </p>
+</li>
+<li><p>LATEX allows two writing modes for mathematical expressions: the <strong>inline</strong> mode and the <strong>display</strong> mode.</p>
+<ol>
+<li>The first one is used to write formulas that are part of a text</li>
+<li>The second one is used to write expressions that are not part of a text or paragraph, and are therefore put on separate lines.</li>
+</ol>
+</li>
+<li><p>Let’s see an example of the <strong>inline</strong> mode:</p>
+</li>
+</ul>
+<pre><code>In physics, the mass-energy equivalence is stated 
+by the equation $E=mc^2$, discovered in 1905 by Albert Einstein.
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325230111988.png" alt="image-20220325230111988" style="zoom:67%;">
+
+
+
+<p>To put your equations in <em>inline</em> mode use one of these delimiters: <strong><code>\( ... \)</code></strong>, <strong><code>$ ... $</code></strong> or <strong><code>\begin&#123;math&#125; ... \end&#123;math&#125;</code></strong>. They all work and the choice is a matter of taste.</p>
+<ul>
+<li>The <em>displayed</em> mode has two versions: numbered and unnumbered.</li>
+</ul>
+<pre><code>The mass-energy equivalence is described by the famous equation
+\[ E=mc^2 \]
+discovered in 1905 by Albert Einstein. 
+In natural units ($c = 1$), the formula expresses the identity
+\begin&#123;equation&#125;
+E=m
+\end&#123;equation&#125;
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325230250463.png" alt="image-20220325230250463" style="zoom:50%;">
+
+<p>To print your equations in <em>display</em> mode use one of these delimiters: <strong><code>\[ ... \]</code></strong>, <strong><code>\begin&#123;displaymath&#125; ... \end&#123;displaymath&#125;</code></strong> or <strong><code>\begin&#123;equation&#125; ... \end&#123;equation&#125;</code></strong>. <code>$$ ... $$</code> is <strong><a target="_blank" rel="noopener" href="https://texfaq.org/FAQ-dolldoll">discouraged</a></strong> as it can give inconsistent spacing, and may not work well with some math packages.</p>
+<p>This is a example:</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325230733686.png" alt="image-20220325230733686"></p>
+<p>Many math mode commands require the <strong><code>amsmath</code></strong> package, so be sure to include it when writing math. An example is shown below of some basic math mode commands.</p>
+<pre><code>Subscripts in math mode are written as $a_b$ and superscripts are written as $a^b$. These can be combined an nested to write expressions such as
+
+\[ T^&#123;i_1 i_2 \dots i_p&#125;_&#123;j_1 j_2 \dots j_q&#125; = T(x^&#123;i_1&#125;,\dots,x^&#123;i_p&#125;,e_&#123;j_1&#125;,\dots,e_&#123;j_q&#125;) \]
+ 
+We write integrals using $\int$ and fractions using $\frac&#123;a&#125;&#123;b&#125;$. Limits are placed on integrals using superscripts and subscripts:
+
+\[ \int_0^1 \frac&#123;dx&#125;&#123;e^x&#125; =  \frac&#123;e-1&#125;&#123;e&#125; \]
+
+Lower case Greek letters are written as $\omega$ $\delta$ etc. while upper case Greek letters are written as $\Omega$ $\Delta$.
+
+Mathematical operators are prefixed with a backslash as $\sin(\beta)$, $\cos(\alpha)$, $\log(x)$ etc.
+</code></pre>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325231048986.png" alt="image-20220325231048986" style="zoom:50%;">
+
+
+
+<p>This is a example:</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220325231127103.png" alt="image-20220325231127103"></p>
+
                 
             </div>
             <hr/>
@@ -1288,7 +1505,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">19.7k</span>
+                        class="white-color">24.1k</span>
             
             
             
