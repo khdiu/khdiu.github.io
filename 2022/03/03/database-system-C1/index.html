@@ -469,14 +469,14 @@ allow data independen">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    967
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    16 分
                 </div>
                 
 
@@ -743,6 +743,373 @@ allow data independen">
 </ul>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220313181441902.png" alt="image-20220313181441902" style="zoom:33%;">
 
+
+
+<h4 id="3-6-Aggregate-Functions"><a href="#3-6-Aggregate-Functions" class="headerlink" title="3.6 Aggregate Functions"></a>3.6 Aggregate Functions</h4><ul>
+<li><p>These functions</p>
+<p>operate on the multiset of values of a column of a relation and return a value</p>
+<ol>
+<li>count: number of values</li>
+<li>avg: average of value</li>
+<li>sum: sum of values</li>
+<li>min minimum value</li>
+<li>max: maximum value</li>
+</ol>
+</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Find the total number of instructors who teach a course in the spring 2010 semester</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>distinctID<span class="token punctuation">)</span>
+<span class="token keyword">from</span> teaches
+<span class="token keyword">where</span> semester <span class="token operator">=</span> <span class="token string">"spring"</span> <span class="token operator">and</span> year <span class="token operator">=</span><span class="token number">2017</span>
+</code></pre>
+<ul>
+<li>Find the number of tuples in the course relation</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span> course
+</code></pre>
+<p>Add: sql is not allowed in the count(*) with a “distinct”</p>
+<h5 id="Aggregate-functions-Group-by"><a href="#Aggregate-functions-Group-by" class="headerlink" title="Aggregate functions - Group by"></a>Aggregate functions - Group by</h5><p>Find the average salary of instructions in each department</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> dept_name<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>salar<span class="token punctuation">)</span>
+form instructor
+<span class="token keyword">group</span> <span class="token keyword">by</span> dept_name
+</code></pre>
+<p>Note1: departments with no instructor will not appear in result</p>
+<p>note2: Attributes in <strong>select</strong> clause outside of aggregate functions must appear in <strong>group by</strong> list</p>
+<p>Aggregate Functions - Having clause</p>
+<ul>
+<li>Find the names and average salaries of all departments whose average salary is greater than 42000</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> dept_name<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>salar<span class="token punctuation">)</span>
+<span class="token keyword">from</span> instructor 
+<span class="token keyword">group</span> <span class="token keyword">by</span> dept_name
+<span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>salary<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">42000</span>
+</code></pre>
+<p>Note:</p>
+<p><strong>Predicates in the having clause are applied after the formation of group</strong></p>
+<p>Whereas predicates in the where clause are applied before forming groups</p>
+<h5 id="Aggregate-Functions-NULL"><a href="#Aggregate-Functions-NULL" class="headerlink" title="Aggregate Functions - NULL"></a>Aggregate Functions - NULL</h5><ul>
+<li>Aggregation function according to the following principles to handle null<ul>
+<li>In addition to the count of every other aggregation function ignore</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> dept_name<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>salary<span class="token punctuation">)</span>
+form instruuctor 
+<span class="token keyword">where</span> salary <span class="token operator">is</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token operator">or</span> dept_name <span class="token operator">is</span> <span class="token operator">not</span> <span class="token boolean">null</span>
+<span class="token keyword">group</span> <span class="token keyword">by</span> dept_name
+<span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>salary<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">42000</span>    
+</code></pre>
+<ul>
+<li>If attending the operation input values is null<ul>
+<li>Count(null): return 0</li>
+<li>Other aggregate functions: return null</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-chapter4-Intermediate-SQL–1"><a href="#4-chapter4-Intermediate-SQL–1" class="headerlink" title="4. chapter4 Intermediate SQL–1"></a>4. chapter4 Intermediate SQL–1</h2><h3 id="outline"><a href="#outline" class="headerlink" title="outline"></a>outline</h3><ul>
+<li>join Expressions</li>
+<li>views</li>
+<li>transactions</li>
+<li>Integrity constraints</li>
+<li>SQL Data Types and schemas</li>
+<li>Index Definition in SQL</li>
+<li>Authorization</li>
+</ul>
+<h3 id="1-join-Expressions"><a href="#1-join-Expressions" class="headerlink" title="1 join Expressions"></a>1 join Expressions</h3><h3 id="2-views"><a href="#2-views" class="headerlink" title="2 views"></a>2 views</h3><h4 id="2-1-Why-views"><a href="#2-1-Why-views" class="headerlink" title="2.1 Why views?"></a>2.1 Why views?</h4><ul>
+<li>In some cases, it is not desirable for all users to see the entire logical model(conceptual schema)(that is, all the actual relations stored in the database)</li>
+<li>Any relation that is not of the conceptual model, but is made visible to a user as a “virtual relation”</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220331091403832.png" alt="image-20220331091403832" style="zoom: 50%;">
+
+
+
+<h4 id="2-2-view-Definition"><a href="#2-2-view-Definition" class="headerlink" title="2.2 view Definition"></a>2.2 view Definition</h4><ul>
+<li><p>A view  is defined using the create view statement which has the form</p>
+<p>create view name as (query expression)</p>
+<ul>
+<li>where (query expression) is any legal SQL expression</li>
+</ul>
+</li>
+<li><p>Once a view is defined, the view name can be used to refer to “the virtual relation” that view generates</p>
+</li>
+<li><p>view definition is not the same as creating a new relation by evaluating the query expression</p>
+<ul>
+<li>The database stores only the definition of the view</li>
+<li>view the virtual relationship is not calculated in advance and store data, only when use calculated(data appear)</li>
+</ul>
+</li>
+</ul>
+<h5 id="View-Definition-and-use"><a href="#View-Definition-and-use" class="headerlink" title="View Definition and use"></a>View Definition and use</h5><ul>
+<li><p>Definition</p>
+<p>A view of instructions without their salary</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> faculty <span class="token keyword">as</span> 
+<span class="token keyword">select</span> ID<span class="token punctuation">,</span> name<span class="token punctuation">,</span> dept_name
+<span class="token keyword">from</span> instructor
+</code></pre>
+</li>
+<li><p>Use</p>
+<p>Find all instructors in the Biology department from view faculty</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">Select</span> name
+<span class="token keyword">from</span> faculty
+<span class="token keyword">where</span> dept_name <span class="token operator">=</span> <span class="token string">"Biology"</span>
+</code></pre>
+</li>
+</ul>
+<h5 id="Views-Defined-using-Other-Views"><a href="#Views-Defined-using-Other-Views" class="headerlink" title="Views Defined using Other Views"></a>Views Defined using Other Views</h5><ul>
+<li><p>One view may be used in the expression defining another view</p>
+</li>
+<li><p>A view relation v1 is said to depend directly on a view relation v2 if v2 is used in the expression defining v1</p>
+</li>
+<li><p>A view relation v1 is said to depend on view relation v2 if either v1 depends directly to v2 or there is a path of dependencies form v1 to v2</p>
+<p>Example:</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> physics_fall_2017 <span class="token keyword">as</span>
+<span class="token keyword">select</span> course<span class="token punctuation">.</span>course<span class="token punctuation">.</span>id<span class="token punctuation">,</span> sec_id<span class="token punctuation">,</span> building<span class="token punctuation">,</span> room_number
+form course<span class="token punctuation">,</span> section
+<span class="token keyword">where</span> course<span class="token punctuation">.</span>course_id <span class="token operator">=</span> section<span class="token punctuation">.</span>course<span class="token punctuation">.</span>id
+      <span class="token operator">and</span> course<span class="token punctuation">.</span>dept_name <span class="token operator">=</span> <span class="token string">"Physics"</span>
+      <span class="token operator">and</span> section<span class="token punctuation">.</span>semester <span class="token operator">=</span> <span class="token string">"Fall"</span>
+      <span class="token operator">and</span> section<span class="token punctuation">.</span>year <span class="token operator">=</span> <span class="token string">"2017"</span>
+     
+<span class="token keyword">create</span> <span class="token keyword">view</span> physics_fall_2017_watson <span class="token keyword">as</span>
+<span class="token keyword">select</span> course_id<span class="token punctuation">,</span> room_number
+<span class="token keyword">from</span> physics_fall_2017
+<span class="token keyword">where</span> buliding <span class="token operator">=</span> <span class="token string">"watson"</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="2-3-Materialized-views"><a href="#2-3-Materialized-views" class="headerlink" title="2.3 Materialized views"></a>2.3 Materialized views</h4><ul>
+<li>certain database systems allow view relations to be physically stored<ul>
+<li>Physical copy created when the view is defined. Such views are called Materialized view</li>
+<li>Materialized view much faster by using the precomputed view result instead of recomputing it</li>
+<li>If relations used in the query are updated, the materialized view result becomes out of date<ul>
+<li>Need to maintain the view, by updating the view whenever the underlying relations are updated</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-4-view-updates-in-SQL"><a href="#2-4-view-updates-in-SQL" class="headerlink" title="2.4 view updates in SQL"></a>2.4 view updates in SQL</h4><ul>
+<li>Most SQL implementations allows updates only on “simple views”<ul>
+<li>The from clause has only one database relation</li>
+<li>The select clause contains only attribute names of the relation, and does not have any expressions, aggregates, or distinct specification.</li>
+<li>Any attribute not listed in the select clause can be set to null</li>
+<li>The query does not have a group by or having clause</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-transaction"><a href="#3-transaction" class="headerlink" title="3. transaction"></a>3. transaction</h3><ul>
+<li>A transaction consists of a sequence of “query and&#x2F;or update statements” and is a unit of work</li>
+<li>The SQL standard specifies that<ul>
+<li>A transaction begins implicitly<ul>
+<li>when an SQL statement is executed</li>
+</ul>
+</li>
+<li>The transaction must end with one of the following statements:<ul>
+<li>commit work: The updates performed by the transaction become permanent in the database.</li>
+<li>rollback work. All the updates performed by the SQL statements in the transaction are undone</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="ACID-of-transaction"><a href="#ACID-of-transaction" class="headerlink" title="ACID of transaction"></a>ACID of transaction</h5><ul>
+<li><p>Atomic </p>
+<ul>
+<li>either fully executed or rolled back as if it never occurred</li>
+<li>Either all operation of the transaction are reflected properly in the database, or none are.</li>
+</ul>
+</li>
+<li><p>Isolation </p>
+<ul>
+<li><p>Even though multiple transactions may execute concurrently the system guarantees that</p>
+<ul>
+<li><p>for every pair of transactions Ti and Tj, it appears to Ti that</p>
+<p>either Tj finished execution before Ti started</p>
+<p>or Tj started execution after Ti finished</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>consistency </p>
+<ul>
+<li>Execution of a transaction in isolation(with no other transaction executing concurrently) preserves the consistency of the database</li>
+</ul>
+</li>
+<li><p>Durability</p>
+<ul>
+<li>After a transaction completes successfully, the changes it has made to the database persist, even if there are system failures</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Integrity-contraints"><a href="#4-Integrity-contraints" class="headerlink" title="4.Integrity contraints"></a>4.Integrity contraints</h3><ul>
+<li>Integrity constraints guard against accidental damage to the database, by ensuring that authorized changes to the database do not result in a loss of the data consistency</li>
+</ul>
+<p>example:</p>
+<ul>
+<li>A checking account must have a balance greater than $10000000</li>
+<li>A salary of a bank employee must be at least $400 an hour</li>
+<li>A customer must have a(non-null) phone number</li>
+</ul>
+<h4 id="4-1-constraints-on-a-single-relation"><a href="#4-1-constraints-on-a-single-relation" class="headerlink" title="4.1 constraints on a single relation"></a>4.1 constraints on a single relation</h4><ul>
+<li><p>not null </p>
+<ul>
+<li><p>Declare name and budget to be bull </p>
+<p>name varchar(20) not null</p>
+<p>budget numeric(12,2) not null</p>
+</li>
+</ul>
+</li>
+<li><p>primary key</p>
+<ul>
+<li>ID varchar(8) primary key</li>
+</ul>
+</li>
+<li><p>unique(A1,A2,…,Am)</p>
+<ul>
+<li>The unique specification states that the attributes A1,A2,…,Am from a candidate key</li>
+<li>Candidate keys are permitted to be null (in contrast to primary keys)</li>
+</ul>
+</li>
+</ul>
+<p>The check clause</p>
+<p>The check(P) clause specifies a predicate P that must be satisfied by every tuple in a relayion</p>
+<p>Example:</p>
+<p>Ensure that semester is one of fall, winter spring or summer</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> section
+<span class="token punctuation">(</span>course_id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+sec_id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+semester <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+year <span class="token keyword">numeric</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+building <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+room_number <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+time_slot id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>course_id<span class="token punctuation">,</span>sec_id<span class="token punctuation">,</span>semester<span class="token punctuation">,</span>year<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">check</span><span class="token punctuation">(</span>semester <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token string">"Fall"</span><span class="token punctuation">,</span><span class="token string">"Winter"</span><span class="token punctuation">,</span><span class="token string">"spring"</span><span class="token punctuation">,</span><span class="token string">"summer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="4-2-Reference-integrity"><a href="#4-2-Reference-integrity" class="headerlink" title="4.2 Reference integrity"></a>4.2 Reference integrity</h4><ul>
+<li><p>Ensures that value that appears in one relation for given set of attributes, also appears for a certain set of attributes in another relation</p>
+</li>
+<li><p>Foreign keys can be specified as part of the SQL create table statement</p>
+<p>foreign key(dept_name) references department</p>
+</li>
+<li><p>By default, a foreign key references the primary_key attributes of the referenced table</p>
+</li>
+<li><p>SQL allow a list of attributes of the referenced relation to be specified explicitly</p>
+<p>foreign key(building, room_number)</p>
+<p>​     references classroom(building, room_number)</p>
+</li>
+</ul>
+<h5 id="Cascading-Actions-in-Referential-Integrity"><a href="#Cascading-Actions-in-Referential-Integrity" class="headerlink" title="Cascading Actions in Referential Integrity"></a>Cascading Actions in Referential Integrity</h5><p>cascade: Update&#x2F;delete records on the parent table, synchronous update&#x2F;delete child table</p>
+<ul>
+<li><p>When a referential-integrity constraint is violated</p>
+<ul>
+<li>The normal procedure is to reject the action that caused the violation</li>
+<li>An alternative, in case of delete or update is to cascade</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> course<span class="token punctuation">(</span>
+<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+dept_name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>dept_name<span class="token punctuation">)</span> <span class="token keyword">references</span> department
+                       <span class="token keyword">on</span> <span class="token keyword">delete</span> <span class="token keyword">cascade</span>
+                       <span class="token keyword">on</span> uodate <span class="token keyword">cascade</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>In stead of cascade we can use: set null or set default</li>
+</ul>
+</li>
+</ul>
+<h5 id="violation"><a href="#violation" class="headerlink" title="violation"></a>violation</h5><p>Integrity constraint violation During transactions</p>
+<p>Example: consider relation</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220331110358762.png" alt="image-20220331110358762" style="zoom:50%;">
+
+
+
+<ul>
+<li>How to insert  a tuple without causing constraint violation?<ul>
+<li>Insert father and mother of a person before inserting person</li>
+<li>OR, set father and mother to mull initially, update after inserting all persons (not possible if father and mother attributes declared to be not null)</li>
+<li>OR, defer constraint checking</li>
+</ul>
+</li>
+</ul>
+<h5 id="Assertion"><a href="#Assertion" class="headerlink" title="Assertion"></a>Assertion</h5><ul>
+<li><p>An assertion is a predicate expressing a condition that we wish the database always to satisfy.</p>
+</li>
+<li><p>An assertion in SQL takes the form:</p>
+<p>create assertion (assertion-name) check (<predicate>)</predicate></p>
+</li>
+<li><p>Example(ref book)</p>
+<ul>
+<li>For each tuple in the student relation, the value of the attribute tot_cred must equal the sum of credits of courses that student has completed successfully</li>
+</ul>
+</li>
+<li><p>Using “trigger” instead of assertion</p>
+</li>
+</ul>
+<h3 id="5-SQL-Data-Types-and-Schemas"><a href="#5-SQL-Data-Types-and-Schemas" class="headerlink" title="5. SQL Data Types and Schemas"></a>5. SQL Data Types and Schemas</h3><h4 id="5-1-Built-in-Data-Types-in-SQL"><a href="#5-1-Built-in-Data-Types-in-SQL" class="headerlink" title="5.1 Built-in Data Types in SQL"></a>5.1 Built-in Data Types in SQL</h4><ul>
+<li><p>data: Date, containing a(4 digit) year, month and date</p>
+<p>date ‘2005-7-27’</p>
+</li>
+<li><p>time: Time of day, in hours, minutes and seconds</p>
+<p>time ‘09:00:30’ time “09:00:30.75”</p>
+</li>
+<li><p>Timestamp: date plus time of day</p>
+<p>timestamp ‘2005-7-27 09:00:30.75’</p>
+</li>
+<li><p>Interval: period of time</p>
+<ul>
+<li>example: interval ‘1’ day</li>
+<li>subtracting a data&#x2F;time&#x2F;timestamp value from another gives an interval value</li>
+<li>interval values can be added to data&#x2F;time&#x2F;timestamp values</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2-large-object-types"><a href="#5-2-large-object-types" class="headerlink" title="5.2 large-object types"></a>5.2 large-object types</h4><ul>
+<li>large objects(photo, video, CAD files, etc.) are stored as a large object<ul>
+<li>blob: binary large object –object is a large collection of uninterpreted binary data(whose interpretation is left to an application outside of tthe database system)</li>
+<li>clob: character large object – object is a large collection of character data</li>
+<li>when a query returns a large object, a pointer is return rather than the large object itself</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-3-user-Defined-Types"><a href="#5-3-user-Defined-Types" class="headerlink" title="5.3 user-Defined Types"></a>5.3 user-Defined Types</h4><ul>
+<li><p>Create type constraints in SQL creates user-defined type</p>
+<p>create type Dollars as numeric(12,2) final</p>
+</li>
+</ul>
+<h4 id="5-4-Domains"><a href="#5-4-Domains" class="headerlink" title="5.4 Domains"></a>5.4 Domains</h4><ul>
+<li><p>Create domain construct in SQL-92 creates user-defined domain types</p>
+<p><strong>create domain person_name char(20 not null)</strong> </p>
+</li>
+<li><p>Domain can have constraints, such as not null specified on them</p>
+</li>
+</ul>
+<h3 id="6-Index-Definition-in-SQL"><a href="#6-Index-Definition-in-SQL" class="headerlink" title="6. Index Definition in SQL"></a>6. Index Definition in SQL</h3><h4 id="6-1-Index-Creation"><a href="#6-1-Index-Creation" class="headerlink" title="6.1 Index Creation"></a>6.1 Index Creation</h4><ul>
+<li><p>Problem: It is inefficient for </p>
+<ul>
+<li>The system to read every record to find a record with particular value</li>
+</ul>
+</li>
+<li><p>Resolution: An index on an attribute a relation</p>
+<ul>
+<li>A data structure that allows the database system to find those tuples in the relation that have a specified value for that attribute efficiently, without scanning through all the tuples of the relation</li>
+</ul>
+</li>
+<li><p>Do create an index with the create index command</p>
+<p>create index(name) on (relation-name) (attribute)</p>
+</li>
+</ul>
 
                 
             </div>
@@ -1540,7 +1907,7 @@ allow data independen">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">37.8k</span>
+                        class="white-color">40.2k</span>
             
             
             
