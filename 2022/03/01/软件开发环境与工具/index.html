@@ -471,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18.8k
+                    25.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    65 分
+                    90 分
                 </div>
                 
 
@@ -2310,6 +2310,638 @@
 </ol>
 </li>
 </ul>
+<h2 id="第六章-程序设计工具"><a href="#第六章-程序设计工具" class="headerlink" title="第六章 程序设计工具"></a>第六章 程序设计工具</h2><h3 id="提纲-2"><a href="#提纲-2" class="headerlink" title="提纲"></a>提纲</h3><ul>
+<li>计算机语言的发展</li>
+<li>不同编程工具介绍</li>
+<li>Visual Studio2010简介</li>
+</ul>
+<h3 id="1-计算机语言的发展"><a href="#1-计算机语言的发展" class="headerlink" title="1 计算机语言的发展"></a>1 计算机语言的发展</h3><ul>
+<li>计算机编程工具依赖于编程语言，计算机语言的发展引起编程工具的发展<ol>
+<li>机器语言</li>
+<li>汇编语言</li>
+<li>高级语言</li>
+<li>4G语言</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-1-机器语言"><a href="#1-1-机器语言" class="headerlink" title="1.1 机器语言"></a>1.1 机器语言</h4><ul>
+<li>机器语言是用二进制代码表示的计算机能直接识别和执行的一种机器指令集合</li>
+<li>机器语言是计算机能够唯一识别的语言</li>
+<li>机器语言灵活、直接执行、速度快</li>
+</ul>
+<h5 id="1-1-1-机器语言示例"><a href="#1-1-1-机器语言示例" class="headerlink" title="1.1.1 机器语言示例"></a>1.1.1 机器语言示例</h5><ul>
+<li><p>指令部份的示例</p>
+<ul>
+<li>0000 代表 加载（LOAD）</li>
+<li>0001 代表 存储（STORE</li>
+</ul>
+</li>
+<li><p>暂存器部份的示例</p>
+<ul>
+<li>0000 代表暂存器 A</li>
+<li>0001 代表暂存器 B</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-1-2-机器语言的缺点"><a href="#1-1-2-机器语言的缺点" class="headerlink" title="1.1.2 机器语言的缺点"></a>1.1.2 机器语言的缺点</h5><ol>
+<li>与自然语言不一致，难于理解</li>
+<li>考虑到计算机的所有细节，实现复杂</li>
+<li>可读性差，不易维护</li>
+<li>严重依赖于具体的计算机硬件，可移植性差，重用性差</li>
+</ol>
+<h4 id="1-2-汇编语言"><a href="#1-2-汇编语言" class="headerlink" title="1.2 汇编语言"></a>1.2 汇编语言</h4><ul>
+<li>汇编语言是为了克服机器语言不易理解的缺陷而开发的一种用助记符代替机器码而形成的面向机器的语言</li>
+<li>汇编语言亦称为符号语言</li>
+<li>汇编语言占用空间少，运行速度快，但仍然与机器语言接近，不易开发及维护</li>
+</ul>
+<h5 id="1-2-1-汇编语言示例"><a href="#1-2-1-汇编语言示例" class="headerlink" title="1.2.1 汇编语言示例"></a>1.2.1 汇编语言示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412141319997.png" alt="image-20220412141319997" style="zoom:50%;">
+
+
+
+<h5 id="1-2-2-常见的汇编语言工具"><a href="#1-2-2-常见的汇编语言工具" class="headerlink" title="1.2.2 常见的汇编语言工具"></a>1.2.2 常见的汇编语言工具</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412141359173.png" alt="image-20220412141359173" style="zoom:50%;">
+
+
+
+<h4 id="1-3-高级语言"><a href="#1-3-高级语言" class="headerlink" title="1.3 高级语言"></a>1.3 高级语言</h4><ul>
+<li>高级语言是为了克服汇编语言的缺点应运而生的</li>
+<li>高级语言是与自然语言接近并为计算机所接受和执行的计算机语言</li>
+<li>高级语言是面向用户的语言，高级语言诞生使计算机语言脱离了具体机器的限制，而且易于理解，从而促进了软件产业的巨大发展</li>
+</ul>
+<h5 id="1-3-1-高级语言中的C语言示例"><a href="#1-3-1-高级语言中的C语言示例" class="headerlink" title="1.3.1 高级语言中的C语言示例"></a>1.3.1 高级语言中的C语言示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412141511742.png" alt="image-20220412141511742" style="zoom: 50%;">
+
+
+
+<h5 id="1-3-2-高级语言的分类"><a href="#1-3-2-高级语言的分类" class="headerlink" title="1.3.2 高级语言的分类"></a>1.3.2 高级语言的分类</h5><ul>
+<li>高级语言可以分为：<ol>
+<li>解释型<br>一边编译一边执行，效率较低<br>例如：Basic，Javascript，python</li>
+<li>编译型<br>在应用程序执行之前，先将源代码编译成机器语言，然后再调入内存中执行<br>例如：C, C++, Delphi</li>
+</ol>
+</li>
+</ul>
+<h5 id="1-3-3-常见的高级语言"><a href="#1-3-3-常见的高级语言" class="headerlink" title="1.3.3 常见的高级语言"></a>1.3.3 常见的高级语言</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412141648154.png" alt="image-20220412141648154" style="zoom:50%;">
+
+
+
+<h4 id="1-4-4G语言"><a href="#1-4-4G语言" class="headerlink" title="1.4 4G语言"></a>1.4 4G语言</h4><ul>
+<li>4G（generation）语言，第四代语言基本上是传统软件工程界为了“范式开发” (prototyping) 而设计出来的语言，同时具有程序性与非程序性的特性，用来快速开发连接数据库的编程语言</li>
+<li>如 PowerBuilder 等</li>
+</ul>
+<h5 id="1-4-1-4G语言简介"><a href="#1-4-1-4G语言简介" class="headerlink" title="1.4.1 4G语言简介"></a>1.4.1 4G语言简介</h5><ul>
+<li>4GL是20世纪80年代初期由软件开发厂商提出来的</li>
+<li>4GL具有“面向问题”及“非过程化程度高”等特点，可以大幅度地提高软件生产效率，缩短软件开发周期</li>
+</ul>
+<h5 id="1-4-2-4G语言的应用范围"><a href="#1-4-2-4G语言的应用范围" class="headerlink" title="1.4.2 4G语言的应用范围"></a>1.4.2 4G语言的应用范围</h5><ul>
+<li>4G语言主要以数据库管理系统为应用基础</li>
+<li>4G语言以数据库所提供的基本功能为核心，构造出开发高层软件的开发环境，提供了诸如报表生成器，菜单生成系统以及决策支持系统等开发组件，大大提高了开发的效率</li>
+</ul>
+<h6 id="1-4-2-1-查询语言和报告生成器"><a href="#1-4-2-1-查询语言和报告生成器" class="headerlink" title="1.4.2.1 查询语言和报告生成器"></a>1.4.2.1 查询语言和报告生成器</h6><ul>
+<li>查询语言是数据库管理系统的主要工具，提供对数据库进行查询的功能</li>
+<li>报表生成器为用户提供自动产生表报的工具</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412141936827.png" alt="image-20220412141936827" style="zoom:50%;">
+
+<h6 id="1-4-2-2-图形语言"><a href="#1-4-2-2-图形语言" class="headerlink" title="1.4.2.2 图形语言"></a>1.4.2.2 图形语言</h6><ul>
+<li>图形语言以SQL语言为引擎，让用户在屏幕上以图形方式定义用户需求，系统自动生成相应的源代码</li>
+<li>图形语言工具：SQL Windows</li>
+<li>LABVIEW</li>
+</ul>
+<p>LabView图形开发语言</p>
+<ul>
+<li>4G语言利用现有的控件和组件来快速构建程序</li>
+<li>LabView是一种图形化的4G语言工具</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142105613.png" alt="image-20220412142105613" style="zoom:50%;">
+
+
+
+
+
+<h6 id="1-4-2-3-应用生成器"><a href="#1-4-2-3-应用生成器" class="headerlink" title="1.4.2.3 应用生成器"></a>1.4.2.3 应用生成器</h6><ul>
+<li>应用生成器用来生成完整的应用系统，应用生成器可以分为交互式和编程式<ol>
+<li>交互式：服务于维护、准备和处理报表，比如Power Builder</li>
+<li>编程式：编程式应用生成器是为了构造复杂系统的专业程序人员设计的，比如: MATLAB, Informix 4GL</li>
+</ol>
+</li>
+</ul>
+<p>MATLAB开发语言</p>
+<ul>
+<li>MATLAB函数具有强大功能，便于快速形成应用程序</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142236197.png" alt="image-20220412142236197" style="zoom:67%;">
+
+
+
+<h6 id="1-4-2-4-形式规格说明语言"><a href="#1-4-2-4-形式规格说明语言" class="headerlink" title="1.4.2.4 形式规格说明语言"></a>1.4.2.4 形式规格说明语言</h6><ul>
+<li>形式规格说明语言避免了自然语言的歧义性，是软件自动化的基础，从形式需求出发可以自动或半自动生成某种执行语言，如Z语言</li>
+<li>Z语言是基于一阶谓词逻辑和集合论的形式规格说明语言</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142321852.png" alt="image-20220412142321852" style="zoom:50%;">
+
+<h5 id="1-4-3-4G语言的不足"><a href="#1-4-3-4G语言的不足" class="headerlink" title="1.4.3 4G语言的不足"></a>1.4.3 4G语言的不足</h5><ul>
+<li>4G语言有以下几方面的不足：<ol>
+<li>4G抽象级别较高，因此不通用</li>
+<li>系统开销较大，耗费硬件资源，效率不高</li>
+<li>产品种类繁多，缺乏标准，可移植性差</li>
+<li>主要面向基于数据库的应用领域，不宜实现科学计算，高速实时系统等软件的开发</li>
+</ol>
+</li>
+</ul>
+<h5 id="1-4-4-4G语言的变化趋势"><a href="#1-4-4-4G语言的变化趋势" class="headerlink" title="1.4.4 4G语言的变化趋势"></a>1.4.4 4G语言的变化趋势</h5><ul>
+<li>4G语言变化趋势包括：<ol>
+<li>4G与面向对象技术进一步结合</li>
+<li>将全面支持Internet为代表的网络分布式应用开发</li>
+<li>将出现事实上的工业标准</li>
+<li>将继续需要数据库管理系统的支持</li>
+<li>开发方法将发生变革</li>
+<li>将进一步与人工智能相结合</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-5-未开的开发工具"><a href="#1-5-未开的开发工具" class="headerlink" title="1.5 未开的开发工具"></a>1.5 未开的开发工具</h4><ul>
+<li>未来的开发工具与人工智能相结合</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142514311.png" alt="image-20220412142514311" style="zoom:50%;">
+
+
+
+<h3 id="2-不同编程工具的介绍"><a href="#2-不同编程工具的介绍" class="headerlink" title="2. 不同编程工具的介绍"></a>2. 不同编程工具的介绍</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142540354.png" alt="image-20220412142540354" style="zoom:50%;">
+
+<h4 id="2-1-Fortran"><a href="#2-1-Fortran" class="headerlink" title="2.1 Fortran"></a>2.1 Fortran</h4><ul>
+<li>Fortran源自于“公式翻译”（英语：Formula Translation）的缩写。它是世界上最早出现的计算机高级程序设计语言，广泛应用于科学和工程计算领域</li>
+<li>1954年：美国IBM公司约翰·巴克斯(John Backus,77年图灵奖获得者)针对汇编语言的缺点着手研究开发FORTRAN语言。1957年：约翰·贝克斯在纽约正式对外发布Fortran程序设计语言</li>
+</ul>
+<h5 id="2-1-1-Fortran代码示例"><a href="#2-1-1-Fortran代码示例" class="headerlink" title="2.1.1 Fortran代码示例"></a>2.1.1 Fortran代码示例</h5><ul>
+<li>求Fibonacci数列的前30项</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142659165.png" alt="image-20220412142659165" style="zoom:50%;">
+
+
+
+<h4 id="2-2-Algol语言"><a href="#2-2-Algol语言" class="headerlink" title="2.2 Algol语言"></a>2.2 Algol语言</h4><ul>
+<li>1960年艾伦.佩利（Alan J.Perlis）等在巴黎发表了”算法语言Algol 60报告”，确定了程序设计语言Algol 60（1966年图灵奖）</li>
+<li>彼得.诺尔博士在1960年主编了《算法语言Algol 60报告》（2005年图灵奖）</li>
+<li>ALGOL语言（ALGOrithmic Language）引进了许多新概念：局部性概念、动态、递归、巴科斯-诺尔范式BNF（Backus-Naur Form）等</li>
+<li>这种编程语言影响了之后的 CPL、BCPL、B 语言、Pascal、Simula、C 语言等。</li>
+</ul>
+<h4 id="2-3-Cobol语言"><a href="#2-3-Cobol语言" class="headerlink" title="2.3 Cobol语言"></a>2.3 Cobol语言</h4><ul>
+<li>Cobol（Common Business-Oriented Language）语言1959-1961年开发</li>
+<li>Cobol语言主要适于商业应用，今天仍然被广泛应用</li>
+<li>COBOL的重要性：2019年，世界上95％的ATM交易仍然在通过COBOL程序，80％的现场交易也间接依赖于它们，超过40％的银行仍然使用COBOL作为其系统基础。</li>
+</ul>
+<h5 id="2-3-1-Cobol语言代码"><a href="#2-3-1-Cobol语言代码" class="headerlink" title="2.3.1 Cobol语言代码"></a>2.3.1 Cobol语言代码</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412142911678.png" alt="image-20220412142911678" style="zoom:50%;">
+
+<h4 id="2-4-BASIC"><a href="#2-4-BASIC" class="headerlink" title="2.4 BASIC"></a>2.4 BASIC</h4><ul>
+<li>BASIC （Beginners’ All-purpose Symbolic Instruction Code）是一种解释性的语言</li>
+<li>BASIC由Dartmouth学院的John G.Kemeny与Thomas E.Kurtz两位教授在1964年5月研制出来的。1975年，比尔·盖茨把它移植到PC上</li>
+<li>BASIC语言简单易学，因此广为使用</li>
+</ul>
+<h5 id="2-4-1-BASIC代码示例"><a href="#2-4-1-BASIC代码示例" class="headerlink" title="2.4.1 BASIC代码示例"></a>2.4.1 BASIC代码示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143033330.png" alt="image-20220412143033330" style="zoom:50%;">
+
+
+
+<h5 id="2-4-2-VisualBasic"><a href="#2-4-2-VisualBasic" class="headerlink" title="2.4.2 VisualBasic"></a>2.4.2 VisualBasic</h5><ul>
+<li>Visual basic是Microsoft公司1991年开发的图形化和快速应用程序开发系统，包含事件驱动机制的可视化设计语言</li>
+<li>该系统可以使用ADO连接到数据库，也可以创建ActiveX控件</li>
+</ul>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143128759.png" alt="image-20220412143128759"></p>
+<h4 id="2-5-Pascal"><a href="#2-5-Pascal" class="headerlink" title="2.5 Pascal"></a>2.5 Pascal</h4><ul>
+<li>Pascal是由瑞士Niklaus Wirth教授（84年图灵奖获得者）于六十年代末设计并创立的一种计算机通用高级程序设计语言</li>
+<li>Pascal的取名原本就是为了纪念十七世纪法国著名哲学家和数学家Blaise Pascal</li>
+<li>Pascal是最早出现的结构化编程语言</li>
+</ul>
+<h5 id="2-5-1-Pascal语言的特点"><a href="#2-5-1-Pascal语言的特点" class="headerlink" title="2.5.1 Pascal语言的特点"></a>2.5.1 Pascal语言的特点</h5><ul>
+<li>严格的结构化形式</li>
+<li>丰富完备的数据类型</li>
+<li>运行效率高</li>
+<li>查错能力强</li>
+<li>适于描述数值和非数值的问题</li>
+</ul>
+<h5 id="2-5-2-Pascal代码示例"><a href="#2-5-2-Pascal代码示例" class="headerlink" title="2.5.2 Pascal代码示例"></a>2.5.2 Pascal代码示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143253326.png" alt="image-20220412143253326" style="zoom:50%;">
+
+
+
+<h4 id="2-6-Delphi开发工具"><a href="#2-6-Delphi开发工具" class="headerlink" title="2.6 Delphi开发工具"></a>2.6 Delphi开发工具</h4><ul>
+<li>Delphi的前身是DOS时代Borland公司的“Turbo Pascal”，最早的版本由美国Borland公司的Anders Hejlsberg(Delphi之父）于1995年开发</li>
+<li>Delphi是一个集成开发环境（IDE），使用的核心是由传统 Pascal语言发展而来的Object Pascal，以图形用户界面为开发环境，构成一个以面向对象程序设计为中心的应用程序开发工具</li>
+</ul>
+<h5 id="2-6-1-Delphi7软件界面"><a href="#2-6-1-Delphi7软件界面" class="headerlink" title="2.6.1 Delphi7软件界面"></a>2.6.1 Delphi7软件界面</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143354165.png" alt="image-20220412143354165" style="zoom: 50%;">
+
+
+
+<h4 id="2-7-C语言"><a href="#2-7-C语言" class="headerlink" title="2.7 C语言"></a>2.7 C语言</h4><ul>
+<li>C语言由美国贝尔实验室的Dennis M. Ritchie在Ken Thompson的B语言基础上于1972年开发出，是一种通用的中级语言，它也被称为“可移植的汇编语言”</li>
+<li>C语言具有某些高级语言的特征，例如结构化数据，结构化控制流程、机器无关性以及一套丰富的运算符</li>
+<li>C语言是世界上影响最深远的语言，现在很多语言的语法规则都来源于它</li>
+</ul>
+<h4 id="2-8-C-与C-Builder"><a href="#2-8-C-与C-Builder" class="headerlink" title="2.8 C++与C++Builder"></a>2.8 C++与C++Builder</h4><ul>
+<li>1983年，贝尔实验室的Bjarne Stroustrup在C语言基础上推出了C++</li>
+<li>C++进一步扩充和完善了C语言，是一种面向对象的程序设计语言</li>
+<li>1998年通过C++标准</li>
+<li>2011年C++推出C++11标准</li>
+</ul>
+<h5 id="2-8-1-C-Builder"><a href="#2-8-1-C-Builder" class="headerlink" title="2.8.1 C++Builder"></a>2.8.1 C++Builder</h5><ul>
+<li>C++ Builder是由Borland公司推出的一款可视化集成开发工具</li>
+<li>C++ Builder内置了100多个完全封装了Windows公用特性且具有完全可扩展性的可重用控件；</li>
+<li>C++ Builder具有一个专业C++开发环境所能提供的全部功能：快速、高效、灵活的编译器优化，逐步连接，CPU透视，命令行工具等</li>
+</ul>
+<h5 id="2-8-2-C-Builder界面"><a href="#2-8-2-C-Builder界面" class="headerlink" title="2.8.2 C++Builder界面"></a>2.8.2 C++Builder界面</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143553699.png" alt="image-20220412143553699" style="zoom: 67%;">
+
+
+
+<h4 id="2-9-Java"><a href="#2-9-Java" class="headerlink" title="2.9 Java"></a>2.9 Java</h4><ul>
+<li>Java是1995年由SUN公司的James Gosling开发的一种基于网络的开发语言</li>
+<li>Java以C++为基础，是一种简单的，跨平台的，面向对象的，分布式的，解释的，健壮的安全的，结构中立的，可移植的，性能很优异的多线程的，动态的语言</li>
+</ul>
+<h5 id="2-9-1-Java开发工具Eclipse"><a href="#2-9-1-Java开发工具Eclipse" class="headerlink" title="2.9.1  Java开发工具Eclipse"></a>2.9.1  Java开发工具Eclipse</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412143653637.png" alt="image-20220412143653637" style="zoom:50%;">
+
+
+
+<h4 id="2-10-基于-Net的C"><a href="#2-10-基于-Net的C" class="headerlink" title="2.10 基于.Net的C#"></a>2.10 基于.Net的C#</h4><ul>
+<li>C#是微软公司2000年发布的一种面向对象的、运行于.NET Framework之上的高级程序设计语言</li>
+<li>C#与Java非常相似，包括：单一继承、接口、与Java几乎同样的语法和编译成中间代码再运行的过程</li>
+<li>C#与Java的不同，它借鉴了Delphi的一个特点，与COM直接集成</li>
+</ul>
+<h4 id="2-11-ASP"><a href="#2-11-ASP" class="headerlink" title="2.11 ASP"></a>2.11 ASP</h4><ul>
+<li>ASP（Active Server Pages动态网页）是微软公司推出的一种用以取代CGI（Common Gateway Interface通用网关接口）的技术</li>
+<li>ASP是一个位于服务器端的脚本运行环境，通过这种环境，用户可以创建和运行动态的交互式Web服务器应用程序，如交互式动态网页，包括使用HTML表单收集和处理信息，上传与下载等等</li>
+</ul>
+<h4 id="2-12-JSP"><a href="#2-12-JSP" class="headerlink" title="2.12 JSP"></a>2.12 JSP</h4><ul>
+<li>JSP(JavaServer Pages)是由Sun Microsystems公司倡导、许多公司参与一起建立的一种动态网页技术标准</li>
+<li>JSP技术有点类似ASP技术，它是在传统的网页HTML文件中插入Java程序段(Script)和JSP标记(tag)，从而形成JSP文件(*.jsp)。用JSP开发的Web应用是跨平台的，既能在Linux下运行，也能在其他操作系统上运行</li>
+</ul>
+<h5 id="2-12-1-JSP的工作原理"><a href="#2-12-1-JSP的工作原理" class="headerlink" title="2.12.1 JSP的工作原理"></a>2.12.1 JSP的工作原理</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412144538210.png" alt="image-20220412144538210" style="zoom:50%;">
+
+<h5 id="2-12-2-JSP代码示例"><a href="#2-12-2-JSP代码示例" class="headerlink" title="2.12.2 JSP代码示例"></a>2.12.2 JSP代码示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412144601711.png" alt="image-20220412144601711" style="zoom: 50%;">
+
+
+
+
+
+<h4 id="2-13-Python语言"><a href="#2-13-Python语言" class="headerlink" title="2.13 Python语言"></a>2.13 Python语言</h4><ul>
+<li>Python是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年底发明</li>
+<li>Python是一种解释性的、交互式的面向对象语言，能在多种环境下运行。它常被昵称为胶水语言，它能够把用其他语言制作的各种模块联结在一起 </li>
+<li>它最常见的用处是编写脚本和小型Web应用程序，也支持创建大型程序</li>
+</ul>
+<h5 id="2-13-1-Python语言代码"><a href="#2-13-1-Python语言代码" class="headerlink" title="2.13.1 Python语言代码"></a>2.13.1 Python语言代码</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412144700409.png" alt="image-20220412144700409" style="zoom:50%;">
+
+
+
+<h5 id="2-13-2-Python语言应用于神经网络"><a href="#2-13-2-Python语言应用于神经网络" class="headerlink" title="2.13.2 Python语言应用于神经网络"></a>2.13.2 Python语言应用于神经网络</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412144726743.png" alt="image-20220412144726743" style="zoom:50%;">
+
+<h4 id="2-14-RUST"><a href="#2-14-RUST" class="headerlink" title="2.14 RUST"></a>2.14 RUST</h4><ul>
+<li>Graydon Hoare 于2006年以Mozilla公司员工 的私人项目形式开发Rust语言，2009 年公司开始赞助这个项目。Rust 编译器于2012 年 1 月发布， 2015年5月15日发布的Rust 1.0 是第一个稳定版本。</li>
+<li>2021年2 月 8 日，华为、微软、AWS、谷歌和 Mozilla 五大公司联合 成立 Rust 基金会</li>
+<li>Rust以取代 C&#x2F;C++ 为目标， 与 C&#x2F;C++ 的区别在于其强大的安全保障</li>
+</ul>
+<h5 id="2-14-1-Rust语言的特点"><a href="#2-14-1-Rust语言的特点" class="headerlink" title="2.14.1 Rust语言的特点"></a>2.14.1 Rust语言的特点</h5><ul>
+<li>Rust是针对多核体系提出的语言，具有高性能</li>
+<li>Rust语言系统设计于保证内存安全，它在安全代码里不允许空指针，悬垂指针和数据竞争</li>
+<li>Rust的具体语法和C，C++类似，都是由花括号限定代码块</li>
+</ul>
+<h5 id="2-14-2-Rust代码示例"><a href="#2-14-2-Rust代码示例" class="headerlink" title="2.14.2 Rust代码示例"></a>2.14.2 Rust代码示例</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412144913722.png" alt="image-20220412144913722" style="zoom:50%;">
+
+
+
+<h5 id="2-15-Swift语言"><a href="#2-15-Swift语言" class="headerlink" title="2.15 Swift语言"></a>2.15 Swift语言</h5><ul>
+<li>Swift是Apple在WWDC2014所发布的一门编程语言，用来撰写mac OS和iOS应用程序，基于C和Objective-C（克里斯·拉特纳组织开发，基于LLVM）</li>
+<li>苹果宣称Swift的特点是：快速、现代、安全、互动，且全面优于Objective-C语言。编程过程中动态展示结果</li>
+</ul>
+<h5 id="2-15-1-Swift语言代码"><a href="#2-15-1-Swift语言代码" class="headerlink" title="2.15.1 Swift语言代码"></a>2.15.1 Swift语言代码</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145015750.png" alt="image-20220412145015750" style="zoom:50%;">
+
+
+
+<h4 id="2-16-世界流行软件开发语言变迁"><a href="#2-16-世界流行软件开发语言变迁" class="headerlink" title="2.16 世界流行软件开发语言变迁"></a>2.16 世界流行软件开发语言变迁</h4><ul>
+<li>TIOBE编程语言社区排行榜是编程语言流行趋势的一个指标，每月更新，这份排行榜排名基于互联网上有经验的程序员、课程和三方厂商的数量</li>
+<li>这个排行榜只是反映某个编程语言的热门程度，并不能说明一门编程语言好不好，或者一门语言所编写的代码数量多少</li>
+</ul>
+<h5 id="2-16-1-2022编程语言排行榜"><a href="#2-16-1-2022编程语言排行榜" class="headerlink" title="2.16.1 2022编程语言排行榜"></a>2.16.1 2022编程语言排行榜</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145236517.png" alt="image-20220412145236517" style="zoom:67%;">
+
+<h5 id="2-16-2-近14年年度语言"><a href="#2-16-2-近14年年度语言" class="headerlink" title="2.16.2 近14年年度语言"></a>2.16.2 近14年年度语言</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145313335.png" alt="image-20220412145313335" style="zoom:50%;">
+
+<h3 id="3-Visual-Studio-2010"><a href="#3-Visual-Studio-2010" class="headerlink" title="3. Visual Studio 2010"></a>3. Visual Studio 2010</h3><ul>
+<li>2010年4月12日微软公司推出了Visual Studio 2010开发环境。它是目前最流行的Windows平台应用程序开发环境</li>
+<li>Visual Studio 2010以NET Framework 4.0为基础，除了Microsoft SQL Server，它还支持 IBM DB2和Oracle数据库</li>
+</ul>
+<h4 id="3-1-Visual-Studio-2010安装"><a href="#3-1-Visual-Studio-2010安装" class="headerlink" title="3.1 Visual Studio 2010安装"></a>3.1 Visual Studio 2010安装</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145442520.png" alt="image-20220412145442520" style="zoom:50%;">
+
+
+
+<h4 id="3-2-Visual-Studio-2010初次启动"><a href="#3-2-Visual-Studio-2010初次启动" class="headerlink" title="3.2 Visual Studio 2010初次启动"></a>3.2 Visual Studio 2010初次启动</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145503409.png" alt="image-20220412145503409" style="zoom:50%;">
+
+
+
+<h4 id="3-3-Visual-Studio-2010的起始页"><a href="#3-3-Visual-Studio-2010的起始页" class="headerlink" title="3.3 Visual Studio 2010的起始页"></a>3.3 Visual Studio 2010的起始页</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145532208.png" alt="image-20220412145532208" style="zoom:50%;">
+
+
+
+<h4 id="3-4-Visual-Studio-2010开发程序"><a href="#3-4-Visual-Studio-2010开发程序" class="headerlink" title="3.4 Visual Studio 2010开发程序"></a>3.4 Visual Studio 2010开发程序</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145550071.png" alt="image-20220412145550071" style="zoom:50%;">
+
+
+
+<h5 id="3-4-1-选择程序类型"><a href="#3-4-1-选择程序类型" class="headerlink" title="3.4.1 选择程序类型"></a>3.4.1 选择程序类型</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145609116.png" alt="image-20220412145609116" style="zoom:50%;">
+
+<h5 id="3-4-2-选择用户界面功能"><a href="#3-4-2-选择用户界面功能" class="headerlink" title="3.4.2 选择用户界面功能"></a>3.4.2 选择用户界面功能</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145635536.png" alt="image-20220412145635536" style="zoom:50%;">
+
+<h5 id="3-4-3-高级选择功能"><a href="#3-4-3-高级选择功能" class="headerlink" title="3.4.3 高级选择功能"></a>3.4.3 高级选择功能</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145727014.png" alt="image-20220412145727014" style="zoom:50%;">
+
+<h5 id="3-4-4-程序自动生成框架代码"><a href="#3-4-4-程序自动生成框架代码" class="headerlink" title="3.4.4 程序自动生成框架代码"></a>3.4.4 程序自动生成框架代码</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145749061.png" alt="image-20220412145749061" style="zoom:50%;">
+
+<h5 id="3-4-5-生成的程序"><a href="#3-4-5-生成的程序" class="headerlink" title="3.4.5 生成的程序"></a>3.4.5 生成的程序</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220412145809190.png" alt="image-20220412145809190" style="zoom:50%;">
+
+
+
+<h2 id="第七章-软件测试工具"><a href="#第七章-软件测试工具" class="headerlink" title="第七章 软件测试工具"></a>第七章 软件测试工具</h2><h3 id="提纲-3"><a href="#提纲-3" class="headerlink" title="提纲"></a>提纲</h3><ul>
+<li>软件测试概述</li>
+<li>软件测试工具分类</li>
+<li>软件测试工具选择</li>
+<li>单元测试工具cppUnit介绍</li>
+</ul>
+<h3 id="1-软件测试概述"><a href="#1-软件测试概述" class="headerlink" title="1. 软件测试概述"></a>1. 软件测试概述</h3><ul>
+<li>软件测试的基本内容</li>
+<li>软件测试的定义</li>
+<li>软件测试的分类</li>
+<li>软件测试的简单过程</li>
+</ul>
+<h4 id="1-1-软件测试的基本内容"><a href="#1-1-软件测试的基本内容" class="headerlink" title="1.1 软件测试的基本内容"></a>1.1 软件测试的基本内容</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419140823000.png" alt="image-20220419140823000" style="zoom:50%;">
+
+
+
+<h4 id="1-2-软件测试的定义"><a href="#1-2-软件测试的定义" class="headerlink" title="1.2 软件测试的定义"></a>1.2 软件测试的定义</h4><p>在IEEE标准610.12-1990中将软件测试定义为：</p>
+<ul>
+<li>软件测试（Software Test）——在指定的条件下操作测试系统或组件(1)，观察或记录结果(2)，并对测试系统或组件的不同方面做出评估(3)的过程</li>
+<li>总体来讲，软件测试是一个寻找和证实软件缺陷的过程</li>
+</ul>
+<h4 id="1-3-软件测试的分类"><a href="#1-3-软件测试的分类" class="headerlink" title="1.3 软件测试的分类"></a>1.3 软件测试的分类</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419140950011.png" alt="image-20220419140950011" style="zoom:50%;">
+
+
+
+<h5 id="1-3-1-各种软件测试之间的关系"><a href="#1-3-1-各种软件测试之间的关系" class="headerlink" title="1.3.1 各种软件测试之间的关系"></a>1.3.1 各种软件测试之间的关系</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141021594.png" alt="image-20220419141021594" style="zoom:50%;">
+
+
+
+<h4 id="1-4-软件测试的简单过程"><a href="#1-4-软件测试的简单过程" class="headerlink" title="1.4 软件测试的简单过程"></a>1.4 软件测试的简单过程</h4><ul>
+<li>在很多软件程序员的眼中，测试软件就是运行软件，看软件在运行过程中是否出错； 实际上，运行软件只是软件测试的一部分 </li>
+<li>实际的软件测试是需要设计的，设计的结果是构建了测试用例，而测试是按照测试用例来运行软件的，运行软件得到的结果需要记录，统计</li>
+</ul>
+<h5 id="1-4-1-最简单的测试过程"><a href="#1-4-1-最简单的测试过程" class="headerlink" title="1.4.1  最简单的测试过程"></a>1.4.1  最简单的测试过程</h5><ul>
+<li><p>最简单的测试过程至少包括测试设计，生成测试用例，执行测试用例以及测试结果分析几个阶段</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141131990.png" alt="image-20220419141131990" style="zoom:50%;"></li>
+</ul>
+<h5 id="1-4-2-一个软件测试的例子"><a href="#1-4-2-一个软件测试的例子" class="headerlink" title="1.4.2 一个软件测试的例子"></a>1.4.2 一个软件测试的例子</h5><ul>
+<li>对“Hello world”程序进行测试 ，程序代码如下：</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141249900.png" alt="image-20220419141249900" style="zoom:50%;"></li>
+</ul>
+<h6 id="1-4-2-1-建立测试用例"><a href="#1-4-2-1-建立测试用例" class="headerlink" title="1.4.2.1 建立测试用例"></a>1.4.2.1 建立测试用例</h6><ul>
+<li>测试最基本的方法就是建立并运行测试用例，我们通常使用表格的方式来构建简单的测试用例</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141334380.png" alt="image-20220419141334380" style="zoom:50%;"></li>
+</ul>
+<h6 id="1-4-2-2-执行测试用例"><a href="#1-4-2-2-执行测试用例" class="headerlink" title="1.4.2.2 执行测试用例"></a>1.4.2.2 执行测试用例</h6><ul>
+<li>将Hello world 程序编译、连接形成可执行程序Hello.exe，然后运行它，因为测试不要求输入值，因此运行软件即是执行测试</li>
+<li>Hello.exe</li>
+</ul>
+<h6 id="1-4-2-3-记录运行的结果"><a href="#1-4-2-3-记录运行的结果" class="headerlink" title="1.4.2.3 记录运行的结果"></a>1.4.2.3 记录运行的结果</h6><ul>
+<li>程序在控制台上打印出Hello world字样</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141446270.png" alt="image-20220419141446270" style="zoom:50%;"></li>
+</ul>
+<h6 id="1-4-2-4-测试总结"><a href="#1-4-2-4-测试总结" class="headerlink" title="1.4.2.4 测试总结"></a>1.4.2.4 测试总结</h6><ul>
+<li>测试的实际结果与期望的结果一致，程序的打印功能是正确的</li>
+<li>上面四步就是对Hello world程序的一次正式测试，尽管它还不够完整，但是它让我们看到了测试的整个过程</li>
+</ul>
+<h5 id="1-4-3-对Hello-World软件的改进"><a href="#1-4-3-对Hello-World软件的改进" class="headerlink" title="1.4.3 对Hello World软件的改进"></a>1.4.3 对Hello World软件的改进</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141541184.png" alt="image-20220419141541184" style="zoom:50%;">
+
+
+
+<h6 id="1-4-3-1-建立测试用例"><a href="#1-4-3-1-建立测试用例" class="headerlink" title="1.4.3.1 建立测试用例"></a>1.4.3.1 建立测试用例</h6><ul>
+<li>由于该程序接受参数，我们可以选择不同的输入参数来进行软件测试</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141618386.png" alt="image-20220419141618386" style="zoom:50%;"></li>
+</ul>
+<h6 id="1-4-3-2-执行测试用例"><a href="#1-4-3-2-执行测试用例" class="headerlink" title="1.4.3.2 执行测试用例"></a>1.4.3.2 执行测试用例</h6><ul>
+<li>我们在控制台上运行该程序，分别给程序带不同的输入参数，可执行程序的名字是Hello.exe<ol>
+<li>Hello 1</li>
+<li>Hello 2</li>
+<li>Hello 3</li>
+<li>Hello</li>
+</ol>
+</li>
+</ul>
+<h6 id="1-4-3-3-记录运行的结果"><a href="#1-4-3-3-记录运行的结果" class="headerlink" title="1.4.3.3 记录运行的结果"></a>1.4.3.3 记录运行的结果</h6><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141711098.png" alt="image-20220419141711098" style="zoom:50%;">
+
+<h6 id="-2"><a href="#-2" class="headerlink" title></a></h6><p>错误对话框</p>
+<ul>
+<li>执行不带参数的Hello程序后，弹出错误对话框，程序崩溃 </li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419141751120.png" alt="image-20220419141751120" style="zoom:50%;"></li>
+</ul>
+<h6 id="1-4-3-4-测试总结"><a href="#1-4-3-4-测试总结" class="headerlink" title="1.4.3.4 测试总结"></a>1.4.3.4 测试总结</h6><ul>
+<li>在程序中使用了输入参数变量*argv[1]，如果不输入任何参数，那么argv[1]为空指针（NULL），程序访问空指针会出现问题，如果我们在程序的前面对参数个数加以保护，就不会出现上面的问题</li>
+<li>即使我们认为再简单的程序也可能包含错误，但软件测试可以找到这些错误</li>
+</ul>
+<h3 id="2-软件测试工具分类"><a href="#2-软件测试工具分类" class="headerlink" title="2. 软件测试工具分类"></a>2. 软件测试工具分类</h3><ul>
+<li>测试工具是为了提高测试效率，用软件代替测试人工输入的有效方法</li>
+<li>根据测试工具的作用，可以分类为：<ol>
+<li>白盒测试工具</li>
+<li>黑盒测试工具</li>
+<li>功能测试工具</li>
+<li>性能测试工具</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-1-白盒测试"><a href="#2-1-白盒测试" class="headerlink" title="2.1 白盒测试"></a>2.1 白盒测试</h4><ul>
+<li>白盒测试——软件测试员可以了解软件的内部结构以及实现的具体代码，从而可以根据程序的内部情况来设计更实用的测试案例</li>
+<li>白盒测试工具就是针对代码进行测试，测试中发现的错误可以定位到代码的具体位置</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419142027190.png" alt="image-20220419142027190" style="zoom:50%;">
+
+<h5 id="2-1-1-白盒测试工具的分类"><a href="#2-1-1-白盒测试工具的分类" class="headerlink" title="2.1.1 白盒测试工具的分类"></a>2.1.1 白盒测试工具的分类</h5><ul>
+<li><p>白盒测试工具可以分为两类</p>
+<ol>
+<li><p>静态测试工具</p>
+<p>直接对代码进行语法分析，根据某种质量模型评估代码，不需要运行代码</p>
+</li>
+<li><p>动态测试工具</p>
+<p>动态测试工具采用在程序中插桩的方式，让程序中插入一些代码，然后运行代码统计程序运行时的数据</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-1-2-白盒静态测试工具"><a href="#2-1-2-白盒静态测试工具" class="headerlink" title="2.1.2 白盒静态测试工具"></a>2.1.2 白盒静态测试工具</h5><ul>
+<li>白盒静态测试工具的代表是Telelogic公司的Logiscope软件</li>
+<li>Telelogic是1983年在瑞典创立的复杂软件及系统开发解决方案供应商，其提供从需求管理、变更管理、可视化软件工程到软件测试的工具，其产品被各国军方所采用，2007年被IBM公司收购</li>
+</ul>
+<h6 id="2-1-2-1-Logiscope软件"><a href="#2-1-2-1-Logiscope软件" class="headerlink" title="2.1.2.1 Logiscope软件"></a>2.1.2.1 Logiscope软件</h6><ul>
+<li>Logiscope是Telelogic公司推出的专用于软件质量保证和软件测试的产品</li>
+<li>主要功能是对软件做质量分析和测试以保证软件的质量，并可做认证、反向工程和维护，特别是针对要求高可靠性和高安全性的软件项目和工程</li>
+</ul>
+<h6 id="2-1-2-2-Logiscope软件的三大功能"><a href="#2-1-2-2-Logiscope软件的三大功能" class="headerlink" title="2.1.2.2 Logiscope软件的三大功能"></a>2.1.2.2 Logiscope软件的三大功能</h6><ol>
+<li>Audit：定位错误模块，可评估软件质量及复杂程度，提供代码的直观描述，自动生成软件文档（根据质量模型标准进行评估）</li>
+<li>RuleChecker：根据工程中定义的编程规则自动检查软件代码的规范性。包含大量标准规则，用户也可定制创建规则，自动生成测试报告 </li>
+<li>TestChecker：测试覆盖分析，显示没有测试的代码路径，通过插装和软件运行进行分析</li>
+</ol>
+<h6 id="2-1-2-3-Logiscope软件界面"><a href="#2-1-2-3-Logiscope软件界面" class="headerlink" title="2.1.2.3 Logiscope软件界面"></a>2.1.2.3 Logiscope软件界面</h6><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419142545474.png" alt="image-20220419142545474" style="zoom:50%;">
+
+
+
+<h5 id="2-1-3-白盒动态测试工具"><a href="#2-1-3-白盒动态测试工具" class="headerlink" title="2.1.3 白盒动态测试工具"></a>2.1.3 白盒动态测试工具</h5><ul>
+<li><p>白盒动态测试工具的代表包括：</p>
+<ol>
+<li>Rational公司的Purify（内存）</li>
+<li>Numega公司的BoundsChecker(内存)</li>
+<li>Compuware公司的Devpartner（代码评审、内存、性能等）</li>
+</ol>
+</li>
+<li><p>Numega 1997年被Compuware收购</p>
+</li>
+<li><p>Micro Focus公司2009年收购Compuware公司的测试产品线</p>
+</li>
+</ul>
+<h6 id="2-1-3-1-IBM-Rational-Purify简介"><a href="#2-1-3-1-IBM-Rational-Purify简介" class="headerlink" title="2.1.3.1 IBM Rational Purify简介"></a>2.1.3.1 IBM Rational Purify简介</h6><ul>
+<li>IBM Rational Purify是一个面向VC, VB或者Java开发的测试工具，用于检查Visual C&#x2F;C++ 和Java 代码中与内存有关的错误，确保整个应用程序的质量和可靠性</li>
+<li>主要用于查找Visual C&#x2F;C++ 程序中的传统内存访问错误，以及Java 代码中与垃圾内存收集相关的错误方面</li>
+</ul>
+<h6 id="2-1-3-2-Purify界面"><a href="#2-1-3-2-Purify界面" class="headerlink" title="2.1.3.2 Purify界面"></a>2.1.3.2 Purify界面</h6><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419142844014.png" alt="image-20220419142844014" style="zoom:50%;">
+
+
+
+
+
+<h4 id="2-2-黑盒测试工具"><a href="#2-2-黑盒测试工具" class="headerlink" title="2.2 黑盒测试工具"></a>2.2 黑盒测试工具</h4><ul>
+<li>黑盒测试——是基于需求说明书的软件测试，在这种测试下，我们不需要了解软件的内部结构，内部分支，以及软件代码的具体实现</li>
+<li>黑盒测试工具一般原理是利用脚本的录制和回放，模拟用户的操作，然后比较记录结果和预先设定的结果来判定测试的正确性</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419142947857.png" alt="image-20220419142947857" style="zoom:50%;"></li>
+</ul>
+<h4 id="2-2-1-典型的黑盒测试工具"><a href="#2-2-1-典型的黑盒测试工具" class="headerlink" title="2.2.1 典型的黑盒测试工具"></a>2.2.1 典型的黑盒测试工具</h4><ul>
+<li>典型的黑盒测试工具包括：<ol>
+<li>Compuware公司的QACenter（集成）</li>
+<li>Rational公司的teamTest（测试管理）、Robot（功能、性能）等</li>
+</ol>
+</li>
+</ul>
+<h6 id="2-2-1-1-QACenter简介"><a href="#2-2-1-1-QACenter简介" class="headerlink" title="2.2.1.1 QACenter简介"></a>2.2.1.1 QACenter简介</h6><ul>
+<li>Compuware公司的QACenter测试软件是一个综合型的测试工具集，它帮助测试人员创建快速、可重用的测试过程</li>
+<li>这些测试工具自动帮助管理测试过程，快速分析和调试程序，包括针对回归，强度，单元，并发，集成，移植，容量和负载建立测试用例，自动执行测试和产生文档结果</li>
+</ul>
+<h6 id="2-2-1-2-QACenter的组成"><a href="#2-2-1-2-QACenter的组成" class="headerlink" title="2.2.1.2 QACenter的组成"></a>2.2.1.2 QACenter的组成</h6><ul>
+<li>QACenter主要包括以下几个模块：<ol>
+<li>QARun：应用的功能测试工具</li>
+<li>QALoad：强负载下应用的性能测试工具</li>
+<li>QADirector：测试的组织设计和创建以及管理工具</li>
+<li>TrackRecord：集成的缺陷跟踪管理工具</li>
+<li>EcoTools：高层次的性能监测工具</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-3-功能测试工具"><a href="#2-3-功能测试工具" class="headerlink" title="2.3 功能测试工具"></a>2.3 功能测试工具</h4><ul>
+<li>功能测试是对产品各功能进行验证，根据功能测试用例，逐项测试，检查产品是否达到用户要求的功能</li>
+<li>功能测试工具包括：<ol>
+<li>Rational Robot </li>
+<li>SilkTest</li>
+<li>WinRunner</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-3-1-Rational-Robot"><a href="#2-3-1-Rational-Robot" class="headerlink" title="2.3.1 Rational Robot"></a>2.3.1 Rational Robot</h5><ul>
+<li>Rational Robot 是Rational 的产品之一，提供了软件的功能测试，它提供了许多类似机器人的重复过程</li>
+<li>IBM Rational Robot 可以让测试人员对 .NET、Java、Web和其他基于 GUI 的应用程序进行自动的功能性回归测试</li>
+<li>Rational Robot 可开发三种测试脚本，包括用于功能测试的GUI脚本、用于性能测试的VU以及VB脚本</li>
+</ul>
+<h4 id="2-4-性能测试工具"><a href="#2-4-性能测试工具" class="headerlink" title="2.4 性能测试工具"></a>2.4 性能测试工具</h4><ul>
+<li>性能测试是指通过自动化的测试工具模拟多种正常、峰值以及异常负载条件来对系统的各项性能指标进行测试</li>
+<li>性能测试工具用于测试软件的性能，包括：<ol>
+<li>HP公司的LoadRunner</li>
+<li>Microsoft公司的WebStress</li>
+<li>Apache Jmeter（开源软件）</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-4-1-LoadRunner"><a href="#2-4-1-LoadRunner" class="headerlink" title="2.4.1 LoadRunner"></a>2.4.1 LoadRunner</h5><ul>
+<li>LoadRunner是一种预测系统行为和性能的负载测试工具</li>
+<li>LoadRunner通过以模拟成千上万用户实施并发负载及实时性能监测的方式来确认和查找问题，其对整个企业架构进行测试</li>
+<li>LoadRunner可适用于各种体系架构的自动负载测试，能预测系统行为并评估系统性能</li>
+</ul>
+<h5 id="2-4-2-LoadRunner工作原理"><a href="#2-4-2-LoadRunner工作原理" class="headerlink" title="2.4.2 LoadRunner工作原理"></a>2.4.2 LoadRunner工作原理</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419143429663.png" alt="image-20220419143429663" style="zoom:50%;">
+
+
+
+<h5 id="2-4-3-LoadRunner界面"><a href="#2-4-3-LoadRunner界面" class="headerlink" title="2.4.3 LoadRunner界面"></a>2.4.3 LoadRunner界面</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419143533111.png" alt="image-20220419143533111" style="zoom:50%;">
+
+
+
+<h4 id="2-5-测试管理工具"><a href="#2-5-测试管理工具" class="headerlink" title="2.5 测试管理工具"></a>2.5 测试管理工具</h4><ul>
+<li>测试管理包括对测试计划、测试用例、测试实施以及测试缺陷进行管理</li>
+<li>测试管理工具是对测试过程进行管理的工具，典型的测试管理工具包括：</li>
+<li>Mercury Interactive公司（2006年被HP收购）TestDirector</li>
+<li>Rational公司的testManager</li>
+<li>Mozilla公司的Bugzilla（开源工具）</li>
+</ul>
+<h5 id="2-5-1-TestDirector"><a href="#2-5-1-TestDirector" class="headerlink" title="2.5.1 TestDirector"></a>2.5.1 TestDirector</h5><ul>
+<li>TestDirector是HP(Mercury Interactive)公司生产的企业级测试管理工具，也是业界第一个基于Web的测试管理系统，它可以在公司内部或外部进行全球范围内测试的管理</li>
+<li>通过在一个整体的应用系统中集成了测试管理的各个部分，包括需求管理，测试计划，测试执行以及错误跟踪等功能</li>
+</ul>
+<h5 id="2-5-2-TestDirector项目管理"><a href="#2-5-2-TestDirector项目管理" class="headerlink" title="2.5.2 TestDirector项目管理"></a>2.5.2 TestDirector项目管理</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419143720588.png" alt="image-20220419143720588" style="zoom:50%;">
+
+<h5 id="2-5-3-TestDirector界面"><a href="#2-5-3-TestDirector界面" class="headerlink" title="2.5.3 TestDirector界面"></a>2.5.3 TestDirector界面</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419143808860.png" alt="image-20220419143808860" style="zoom:50%;">
+
+
+
+<h4 id="2-6-测试工具的主要生产商"><a href="#2-6-测试工具的主要生产商" class="headerlink" title="2.6 测试工具的主要生产商"></a>2.6 测试工具的主要生产商</h4><ul>
+<li>测试工具主要集中在以下几家厂商：<ol>
+<li>IBM（TestManager、Robot、Purify）</li>
+<li>HP(Quality Center、QTP、Loadrunner)</li>
+<li>Micro Focus(QACenter)</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-测试工具的选择"><a href="#3-测试工具的选择" class="headerlink" title="3. 测试工具的选择"></a>3. 测试工具的选择</h3><ul>
+<li>测试工具众多，因此需要根据一定的条件来选择适合自己要求的测试工具</li>
+<li>测试工具众多，因此需要根据一定的条件来选择适合自己要求的测试工具<ol>
+<li>功能</li>
+<li>价格</li>
+<li>测试自动化</li>
+<li>适合软件生命周期的各个阶段</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-1-选择的步骤"><a href="#3-1-选择的步骤" class="headerlink" title="3.1 选择的步骤"></a>3.1 选择的步骤</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419144014418.png" alt="image-20220419144014418" style="zoom:50%;">
+
+
+
+<h5 id="3-1-1-选择的步骤说明"><a href="#3-1-1-选择的步骤说明" class="headerlink" title="3.1.1 选择的步骤说明"></a>3.1.1 选择的步骤说明</h5><ol>
+<li>成立小组负责测试工具的选择和决策，制定时间表</li>
+<li>确定需求，并研究不同的解决方案</li>
+<li>了解市场上满足需求的产品，包括：基本功能、价格、限制以及服务等</li>
+<li>根据了解的情况，决定是自己开发还是从市场上购买</li>
+<li>确定2~3种候选产品</li>
+<li>请候选产品厂家介绍、演示产品</li>
+<li>初步确定</li>
+<li>商务谈判</li>
+<li>最后决定</li>
+</ol>
+<h3 id="4-CppUnit单元测试"><a href="#4-CppUnit单元测试" class="headerlink" title="4. CppUnit单元测试"></a>4. CppUnit单元测试</h3><ul>
+<li>测试驱动开发(TDD)是以测试作为开发过程的中心，它坚持在编写实际代码之前，先写好基于产品代码的测试代码</li>
+<li>XUnit是一个基于测试驱动开发的测试框架，它为我们在开发过程中使用测试驱动开发提供了一个方便的工具，使我们得以快速的进行单元测试</li>
+<li>XUnit成员有很多，如JUnit，PythonUnit等；CppUnit是XUnit家族中一个专门面向C++的测试框架</li>
+</ul>
+<h4 id="4-1-CppUnit的组织"><a href="#4-1-CppUnit的组织" class="headerlink" title="4.1 CppUnit的组织"></a>4.1 CppUnit的组织</h4><ul>
+<li>CppUnit将所有的单元测试按照树的结构来表示</li>
+<li>在CppUnit中，最小的测试单元称为测试方法TestMethod；而多个相关的测试方法又可以组成一个测试用例TestCase；多个测试用例又组成测试包 TestSuite</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220419144231078.png" alt="image-20220419144231078" style="zoom:50%;">
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>有众多的测试工具</li>
+<li>按照测试技术可以将测试工具分为：<ol>
+<li>白盒测试</li>
+<li>黑盒测试</li>
+</ol>
+</li>
+<li>按照测试的应用可以将测试工具分为：<ol>
+<li>功能测试工具</li>
+<li>性能测试工具</li>
+<li>测试管理工具</li>
+</ol>
+</li>
+</ul>
 
                 
             </div>
@@ -2872,9 +3504,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Introduction to software engineer">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Introduction to software engineer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2889,11 +3521,23 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            何星林
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/introduction-to-software-engineer/" class="post-category">
+                                    introduction to software engineer
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/learning/">
+                        <span class="chip bg-color">learning</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -3095,7 +3739,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">40.2k</span>
+                        class="white-color">48.8k</span>
             
             
             

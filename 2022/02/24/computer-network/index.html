@@ -465,14 +465,14 @@ Internet: “network of networks” Interconnected IS">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.7k
+                    7.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    35 分
+                    46 分
                 </div>
                 
 
@@ -858,7 +858,7 @@ Internet: “network of networks” Interconnected IS">
 <li>Link-layer-frame: appending linked-layer header</li>
 <li>Each packet has two type of fields: header and payload(A packet form the layer above)</li>
 </ul>
-<h3 id="1-6-The-homework-supplements-（extension-and-correct）"><a href="#1-6-The-homework-supplements-（extension-and-correct）" class="headerlink" title="1.6 The homework supplements （extension and correct）"></a>1.6 The homework supplements （extension and correct）</h3><ul>
+<h2 id="Homework1-supplements-（extension-and-correct）"><a href="#Homework1-supplements-（extension-and-correct）" class="headerlink" title="Homework1 supplements （extension and correct）"></a>Homework1 supplements （extension and correct）</h2><ul>
 <li>NAT(Network Address Transmission)</li>
 <li>A router equipped with NAT software is called a NAT router and has at least one valid external global IP address (public IP address)</li>
 <li>Host &#x3D; end system; end system &#x3D; clients + server (page 11)</li>
@@ -895,16 +895,13 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <h3 id="2-1-principles-of-network-applications"><a href="#2-1-principles-of-network-applications" class="headerlink" title="2.1 principles of network applications"></a>2.1 principles of network applications</h3><h4 id="2-1-1-Goals："><a href="#2-1-1-Goals：" class="headerlink" title="2.1.1 Goals："></a>2.1.1 Goals：</h4><ul>
 <li><p>conceptual,  implementation aspects  of network application  protocols</p>
-</li>
-<li><p>transport-layer  </p>
-</li>
-<li><p>service models </p>
-</li>
-<li><p>client-server paradigm </p>
-</li>
-<li><p>peer-to-peer paradigm </p>
-</li>
-<li><p>content distribution networks</p>
+<ul>
+<li>transport-layer  </li>
+<li>service models </li>
+<li>client-server paradigm </li>
+<li>peer-to-peer paradigm </li>
+<li>content distribution networks</li>
+</ul>
 </li>
 <li><p>learn about protocols by  examining popular  application-level  protocols</p>
 <ul>
@@ -1173,22 +1170,18 @@ Internet: “network of networks” Interconnected IS">
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220326174807388.png" alt="image-20220326174807388" style="zoom:50%;">
 
 <h5 id="Persistent-HTTP"><a href="#Persistent-HTTP" class="headerlink" title="Persistent HTTP"></a>Persistent HTTP</h5><ul>
-<li><p>non-persistent HTTP issues: </p>
-<ul>
+<li>non-persistent HTTP issues: <ul>
 <li>requires 2 RTTs per object </li>
 <li>OS overhead for each TCP connection </li>
 <li>browsers often open parallel TCP connections to fetch referenced objects</li>
 </ul>
 </li>
-<li><p>persistent HTTP: </p>
-</li>
-<li><p>server leaves connection open after sending response </p>
-</li>
-<li><p>subsequent HTTP  messages between same client&#x2F;server sent over open connection </p>
-</li>
-<li><p>client sends requests as  soon as it encounters a referenced object </p>
-</li>
-<li><p>as little as one RTT for all the referenced objects</p>
+<li>persistent HTTP: <ul>
+<li>server leaves connection open after sending response </li>
+<li>subsequent HTTP  messages between same client&#x2F;server sent over open connection </li>
+<li>client sends requests as  soon as it encounters a referenced object </li>
+<li>as little as one RTT for all the referenced objects</li>
+</ul>
 </li>
 </ul>
 <h4 id="2-2-4-HTTP-request-message"><a href="#2-2-4-HTTP-request-message" class="headerlink" title="2.2.4 HTTP request message"></a>2.2.4 HTTP request message</h4><ul>
@@ -1318,10 +1311,10 @@ Internet: “network of networks” Interconnected IS">
 
 <h5 id="More-about-Web-caching"><a href="#More-about-Web-caching" class="headerlink" title="More about Web caching:"></a>More about Web caching:</h5><ul>
 <li><p>cache acts as both client and server </p>
-</li>
-<li><p>server for original requesting client </p>
-</li>
-<li><p>client to origin server</p>
+<ul>
+<li>server for original requesting client </li>
+<li>client to origin server</li>
+</ul>
 </li>
 <li><p>typically cache is installed by ISP (university, company, residential ISP)</p>
 </li>
@@ -1432,7 +1425,7 @@ Internet: “network of networks” Interconnected IS">
 </li>
 </ul>
 <h5 id="Scenario-Alice-sends-message-to-Bob"><a href="#Scenario-Alice-sends-message-to-Bob" class="headerlink" title="Scenario: Alice sends message to Bob"></a>Scenario: Alice sends message to Bob</h5><ol>
-<li>Alice uses UA to compose message “ to ” <a href="mailto:&#98;&#x6f;&#98;&#x40;&#115;&#x6f;&#x6d;&#101;&#115;&#x63;&#x68;&#111;&#x6f;&#x6c;&#x2e;&#101;&#x64;&#x75;">&#98;&#x6f;&#98;&#x40;&#115;&#x6f;&#x6d;&#101;&#115;&#x63;&#x68;&#111;&#x6f;&#x6c;&#x2e;&#101;&#x64;&#x75;</a> </li>
+<li>Alice uses UA to compose message “ to ” <a href="mailto:&#98;&#x6f;&#98;&#64;&#115;&#x6f;&#109;&#101;&#x73;&#x63;&#x68;&#x6f;&#111;&#x6c;&#x2e;&#101;&#x64;&#x75;">&#98;&#x6f;&#98;&#64;&#115;&#x6f;&#109;&#101;&#x73;&#x63;&#x68;&#x6f;&#111;&#x6c;&#x2e;&#101;&#x64;&#x75;</a> </li>
 <li>Alice’s UA sends message to her mail server; message placed in message queue </li>
 <li>client side of SMTP opens TCP connection with Bob’ s mail server </li>
 <li>SMTP client sends Alice’ s message over the TCP connection </li>
@@ -1458,13 +1451,15 @@ Internet: “network of networks” Interconnected IS">
 <p>RFC 822: standard for text  message format:</p>
 <ul>
 <li><p>header lines, e.g., </p>
-</li>
+<ul>
 <li><p>To: </p>
 </li>
 <li><p>From: </p>
 </li>
 <li><p>Subject: </p>
-<p>different from SMTP MAIL FROM, RCPT TO: commands! </p>
+<p>different from SMTP MAIL FROM, RCPT TO: commands!</p>
+</li>
+</ul>
 </li>
 <li><p>Body: the “ message ” </p>
 <ul>
@@ -1888,8 +1883,10 @@ Internet: “network of networks” Interconnected IS">
 <li>used by Akamai, 1700 locations</li>
 </ul>
 </li>
-<li>bring home: smaller number (10’s) of larger clusters in POPs near (but not within) access networks</li>
+<li>bring home: smaller number (10’s) of larger clusters in POPs near (but not within) access networks<ul>
 <li>used by Limelight</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>CDN: stores copies of content at CDN nodes </p>
@@ -2006,6 +2003,14 @@ Internet: “network of networks” Interconnected IS">
 <p>Example app: TCP server</p>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220327142258946.png" alt="image-20220327142258946" style="zoom: 33%;">
 
+
+
+<h2 id="Homework2-supplements-extension-and-correct"><a href="#Homework2-supplements-extension-and-correct" class="headerlink" title="Homework2 supplements (extension and correct)"></a>Homework2 supplements (extension and correct)</h2><ul>
+<li>DNS use UDP to transfer data</li>
+<li>The default mode of HTTP uses persistent connection with pipelining</li>
+<li>If the header line Connection is close, it means that the client wants non-persistent connection</li>
+<li></li>
+</ul>
 <h2 id="3-chapter3-Transport-layer"><a href="#3-chapter3-Transport-layer" class="headerlink" title="3. chapter3 Transport layer"></a>3. chapter3 Transport layer</h2><h3 id="prevew"><a href="#prevew" class="headerlink" title="prevew:"></a>prevew:</h3><ul>
 <li>understand principles behind transport layer services:<ul>
 <li>multiplexing, demultiplexing </li>
@@ -2023,11 +2028,623 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <h3 id="3-1-transport-layer-service"><a href="#3-1-transport-layer-service" class="headerlink" title="3.1 transport-layer service"></a>3.1 transport-layer service</h3><h4 id="3-1-1-Transport-services-and-protocols"><a href="#3-1-1-Transport-services-and-protocols" class="headerlink" title="3.1.1 Transport services and protocols"></a>3.1.1 Transport services and protocols</h4><ul>
 <li>provide logical communication between app processes running on different hosts</li>
-<li>transport protocols run in end systems </li>
+<li>transport protocols run in end systems <ul>
 <li>send side: breaks app messages into segments, passes to network layer </li>
 <li>rcv side: reassembles segments into messages, passes to app layer</li>
 </ul>
-<h2 id="-2"><a href="#-2" class="headerlink" title></a></h2>
+</li>
+</ul>
+<h4 id="3-1-2-Transport-vs-network-layer"><a href="#3-1-2-Transport-vs-network-layer" class="headerlink" title="3.1.2 Transport vs. network layer"></a>3.1.2 Transport vs. network layer</h4><ul>
+<li>network layer: logical  communication  between hosts</li>
+<li>transport layer: logical communication between processes <ul>
+<li>relies on, enhances,  network layer  services</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-1-3-Internet-transport-layer-protocols"><a href="#3-1-3-Internet-transport-layer-protocols" class="headerlink" title="3.1.3 Internet transport-layer protocols"></a>3.1.3 Internet transport-layer protocols</h4><ul>
+<li><p>reliable, in-order  delivery (TCP)</p>
+<ul>
+<li>congestion control </li>
+<li>flow control</li>
+<li>connection setup</li>
+</ul>
+</li>
+<li><p>unreliable, unordered  delivery: UDP </p>
+<ul>
+<li>no-frills extension of “best-effort” IP</li>
+</ul>
+</li>
+<li><p>services not available:</p>
+<ul>
+<li>delay guarantees</li>
+<li>bandwidth guarantees</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-multiplexing-and-demultiplexing"><a href="#3-2-multiplexing-and-demultiplexing" class="headerlink" title="3.2 multiplexing and demultiplexing"></a>3.2 multiplexing and demultiplexing</h3><h4 id="3-2-1-Multiplexing-x2F-demultiplexing"><a href="#3-2-1-Multiplexing-x2F-demultiplexing" class="headerlink" title="3.2.1 Multiplexing&#x2F;demultiplexing"></a>3.2.1 Multiplexing&#x2F;demultiplexing</h4><ul>
+<li><p>multiplexing at sender:</p>
+<p>handle data from multiple sockets, add transport header  (later used for demultiplexing)</p>
+</li>
+<li><p>demultiplexing at receiver:</p>
+<p>use header info to deliver received segments to correct  socket</p>
+</li>
+</ul>
+<h4 id="3-2-2-How-demultiplexing-works"><a href="#3-2-2-How-demultiplexing-works" class="headerlink" title="3.2.2 How demultiplexing works"></a>3.2.2 How demultiplexing works</h4><ul>
+<li><p>host receives IP datagrams</p>
+<ul>
+<li>each datagram has source IP address, destination IP address</li>
+<li>each datagram carries one transport-layer segment</li>
+<li>each segment has source, destination port number</li>
+</ul>
+</li>
+<li><p>host uses IP addresses &amp; port numbers to direct segment to appropriate socket</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413205144831.png" alt="image-20220413205144831" style="zoom:50%;"></li>
+</ul>
+<h4 id="3-2-3-Connectionless-demultiplexing"><a href="#3-2-3-Connectionless-demultiplexing" class="headerlink" title="3.2.3 Connectionless demultiplexing"></a>3.2.3 Connectionless demultiplexing</h4><ul>
+<li><p>recall: created socket has host-local port #: </p>
+<p>DatagramSocket mySocket1  &#x3D; new DatagramSocket(12534);</p>
+</li>
+<li><p>recall: when creating datagram to send into UDP socket, must specify </p>
+<ul>
+<li>destination IP address </li>
+<li>destination port #</li>
+</ul>
+</li>
+<li><p>when host receives UDP  segment:</p>
+<ul>
+<li>checks destination port #  in segment</li>
+<li>directs UDP segment to  socket with that port # IP datagrams with same dest. port #</li>
+</ul>
+</li>
+</ul>
+<p>example：</p>
+<h4 id="3-2-4-Connection-oriented-demux"><a href="#3-2-4-Connection-oriented-demux" class="headerlink" title="3.2.4 Connection-oriented demux"></a>3.2.4 Connection-oriented demux</h4><ul>
+<li><p>TCP socket identified by 4-tuple: </p>
+</li>
+<li><p>source IP address</p>
+</li>
+<li><p>source port number </p>
+</li>
+<li><p>dest IP address</p>
+</li>
+<li><p>dest port number</p>
+</li>
+<li><p>demux: receiver uses all four values to direct segment to appropriate socket</p>
+</li>
+<li><p>server host may support  many simultaneous TCP  sockets: </p>
+<ul>
+<li>each socket identified by its own 4-tuple</li>
+</ul>
+</li>
+<li><p>web servers have different sockets for each connecting client</p>
+<ul>
+<li>non-persistent HTTP will have different socket for each request</li>
+</ul>
+</li>
+</ul>
+<p>example：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413205909578.png" alt="image-20220413205909578" style="zoom: 50%;">
+
+
+
+
+
+<h3 id="3-3-connectionless-transport-UDP"><a href="#3-3-connectionless-transport-UDP" class="headerlink" title="3.3 connectionless transport: UDP"></a>3.3 connectionless transport: UDP</h3><h4 id="3-3-1-UDP-User-Datagram-Protocol"><a href="#3-3-1-UDP-User-Datagram-Protocol" class="headerlink" title="3.3.1 UDP: User Datagram Protocol"></a>3.3.1 UDP: User Datagram Protocol</h4><ul>
+<li><p>“no frills,” “bare bones” Internet transport  protocol</p>
+</li>
+<li><p>“best effort” service, UDP  segments may be:</p>
+<ul>
+<li>lost</li>
+<li>delivered out-of-order to app</li>
+</ul>
+</li>
+<li><p><strong>connectionless</strong>:</p>
+<ul>
+<li>no handshaking between UDP sender, receiver</li>
+<li>each UDP segment handled independently of others</li>
+</ul>
+</li>
+<li><p>UDP use: </p>
+<ul>
+<li>streaming multimedia apps (loss tolerant, rate sensitive) </li>
+<li>DNS</li>
+<li>SNMP</li>
+</ul>
+</li>
+<li><p>reliable transfer over UDP:</p>
+<ul>
+<li>add reliability at application layer</li>
+<li>application-specific error recovery!</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-2-UDP-segment-header"><a href="#3-3-2-UDP-segment-header" class="headerlink" title="3.3.2 UDP: segment header"></a>3.3.2 UDP: segment header</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413210352750.png" alt="image-20220413210352750" style="zoom:50%;">
+
+
+
+<ul>
+<li>why is there a UDP?<ul>
+<li>no connection establishment (which can add delay)</li>
+<li>simple: no connection state at sender, receiver</li>
+<li>small header size</li>
+<li>no congestion control: UDP can blast away as fast as desired</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-3-UDP-checksum"><a href="#3-3-3-UDP-checksum" class="headerlink" title="3.3.3 UDP checksum"></a>3.3.3 UDP checksum</h4><p>Goal: detect “ errors ” (e.g., flipped bits) in transmitted segment.</p>
+<ul>
+<li>sender:<ul>
+<li>treat segment contents, including header fields, as sequence of 16-bit integers</li>
+<li>checksum: addition (one’s complement sum) of segment contents</li>
+<li>sender puts checksum value into UDP checksum field</li>
+</ul>
+</li>
+<li>receiver:<ul>
+<li>compute checksum of received segment </li>
+<li>check if computed checksum equals checksum field value: </li>
+<li>NO - error detected </li>
+<li>YES - no error detected.  But maybe errors  nonetheless? More later</li>
+</ul>
+</li>
+</ul>
+<h5 id="Internet-checksum-example"><a href="#Internet-checksum-example" class="headerlink" title="Internet checksum: example"></a>Internet checksum: example</h5><p>example: add two 16-bit integers：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413210745184.png" alt="image-20220413210744966" style="zoom:50%;">
+
+
+
+<p><strong>Note: when adding numbers, a carryout from the most  significant bit needs to be added to the result</strong></p>
+<h3 id="3-4-principles-of-reliable-data-transfer"><a href="#3-4-principles-of-reliable-data-transfer" class="headerlink" title="3.4 principles of reliable data transfer"></a>3.4 principles of reliable data transfer</h3><h4 id="3-4-1-reliable-data-transfer"><a href="#3-4-1-reliable-data-transfer" class="headerlink" title="3.4.1 reliable data transfer"></a>3.4.1 reliable data transfer</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413211157155.png" alt="image-20220413211157155" style="zoom:50%;">
+
+
+
+<ul>
+<li>important in application, transport, link layers<ul>
+<li>top-10 list of important networking topics</li>
+</ul>
+</li>
+<li>characteristics of unreliable channel will determine  complexity of reliable data transfer protocol (rdt)</li>
+</ul>
+<h4 id="3-4-2-getting-started"><a href="#3-4-2-getting-started" class="headerlink" title="3.4.2 getting started"></a>3.4.2 getting started</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413211303235.png" alt="image-20220413211303235" style="zoom: 50%;">
+
+
+
+<p>we will:</p>
+<ul>
+<li>incrementally develop sender, receiver sides of reliable data transfer protocol (rdt)</li>
+<li>consider only unidirectional data transfer<ul>
+<li>but control info will flow on both directions!</li>
+<li>use finite state machines (FSM) to specify sender, receiver</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-4-3-rdt1-0"><a href="#3-4-3-rdt1-0" class="headerlink" title="3.4.3 rdt1.0"></a>3.4.3 rdt1.0</h4><p>rdt1.0: reliable transfer over a reliable channel</p>
+<ul>
+<li><p>underlying channel perfectly reliable </p>
+<ul>
+<li>no bit errors </li>
+<li>no loss of packets</li>
+</ul>
+</li>
+<li><p>separate FSMs for sender, receiver:</p>
+<ul>
+<li>sender sends data into underlying channel </li>
+<li>receiver reads data from underlying channel</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413211816243.png" alt="image-20220413211816243" style="zoom:50%;">
+
+
+
+<h4 id="3-4-4-rdt2-0"><a href="#3-4-4-rdt2-0" class="headerlink" title="3.4.4 rdt2.0"></a>3.4.4 rdt2.0</h4><p>rdt2.0: channel with bit errors</p>
+<ul>
+<li><p>underlying channel may flip bits in packet</p>
+<ul>
+<li>checksum to detect bit errors</li>
+</ul>
+</li>
+<li><p>the question: how to recover from errors:</p>
+<ul>
+<li>acknowledgements (ACKs): receiver explicitly tells sender that pkt received OK</li>
+<li>negative acknowledgements (NAKs): receiver explicitly tells sender that pkt had errors</li>
+<li>sender retransmits pkt on receipt of NAK</li>
+</ul>
+</li>
+<li><p>new mechanisms in rdt2.0 (beyond rdt1.0):</p>
+<ul>
+<li>error detection</li>
+<li>feedback: control msgs (ACK,NAK) from receiver to sender</li>
+</ul>
+</li>
+</ul>
+<h5 id="FSM-specification"><a href="#FSM-specification" class="headerlink" title="FSM specification"></a>FSM specification</h5><p>sender:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413212225692.png" alt="image-20220413212225692" style="zoom:50%;">
+
+
+
+<p>receiver:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413212245813.png" alt="image-20220413212245813" style="zoom:50%;">
+
+<h5 id="A-fatal-flaw"><a href="#A-fatal-flaw" class="headerlink" title="A fatal flaw"></a>A fatal flaw</h5><p>what happens if ACK&#x2F;NAK corrupted?</p>
+<ul>
+<li>sender doesn’t know what happened at receiver!</li>
+<li>can ’t just retransmit: possible duplicate</li>
+</ul>
+<p>handling duplicates:</p>
+<ul>
+<li>sender retransmits current pkt if ACK&#x2F;NAK corrupted</li>
+<li>sender adds sequence number to each pkt </li>
+<li>receiver discards (doesn’t deliver up) duplicate pkt</li>
+</ul>
+<p>stop and wait:</p>
+<ul>
+<li>sender sends one packet, then waits for receiver response</li>
+</ul>
+<h4 id="3-4-5-rdt2-1"><a href="#3-4-5-rdt2-1" class="headerlink" title="3.4.5 rdt2.1"></a>3.4.5 rdt2.1</h4><ul>
+<li>sender, handles garbled ACK&#x2F;NAKs</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413212721018.png" alt="image-20220413212721018" style="zoom:50%;">
+
+<ul>
+<li>receiver, handles garbled ACK&#x2F;NAKs</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413212909502.png" alt="image-20220413212909502" style="zoom:50%;">
+
+
+
+<h4 id="discussion"><a href="#discussion" class="headerlink" title="discussion"></a>discussion</h4><ul>
+<li>sender:<ul>
+<li>sequence number added to pkt</li>
+<li>two sequence number(0,1) will suffice. Why?</li>
+<li>must check if received ACK&#x2F;NAK corrupted</li>
+<li>twice as many states<ul>
+<li>state must “remember” whether “expected” pkt should have sequence number of 0 or 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>receiver:<ul>
+<li>must check if received packet is duplicate</li>
+<li>state indicates whether 0 or 1 is expected pkt sequence number</li>
+</ul>
+</li>
+<li>note: receiver can not know if its last ACK&#x2F;NAK received OK at sender</li>
+</ul>
+<h4 id="3-4-6-rdt2-2"><a href="#3-4-6-rdt2-2" class="headerlink" title="3.4.6 rdt2.2"></a>3.4.6 rdt2.2</h4><p>rdt2.2: a NAK-free protocol</p>
+<ul>
+<li>same functionality as rdt2.1, using ACKs only</li>
+<li>instead of NAK, receiver sends ACK for last pkt received OK</li>
+<li>receiver must explicitly include sequence number of pkt being ACKed</li>
+<li>duplicate ACK at sender results in same action as NAK: retransmit current pkt</li>
+</ul>
+<p>sender, receiver fragments:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413213639475.png" alt="image-20220413213639475" style="zoom: 50%;">
+
+
+
+<h4 id="3-4-7-rdt3-0"><a href="#3-4-7-rdt3-0" class="headerlink" title="3.4.7 rdt3.0"></a>3.4.7 rdt3.0</h4><p>new assumption:</p>
+<ul>
+<li>underlying channel can also lose packets (data, ACKs)<ul>
+<li>checksum, sequence number, ACKs, retransmissions  will be of help … but not enough</li>
+</ul>
+</li>
+</ul>
+<p>approach:</p>
+<ul>
+<li>sender waits “reasonable” amount of time for ACK<ul>
+<li>retransmits if no ACK  received in this time</li>
+<li>if pkt (or ACK) just delayed (not lost):<ul>
+<li>retransmission will be duplicate, but sequence number has already handles this</li>
+<li>receiver must specify sequence number of pkt being ACKed</li>
+</ul>
+</li>
+<li>requires countdown timer</li>
+</ul>
+</li>
+</ul>
+<p>sender:</p>
+<p><u><strong>timer was set up at the same time  when the packet was sent.</strong></u></p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413214103878.png" alt="image-20220413214103878" style="zoom:50%;">
+
+
+
+<h5 id="action"><a href="#action" class="headerlink" title="action"></a>action</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413214447682.png" alt="image-20220413214447682" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413214509954.png" alt="image-20220413214509954" style="zoom:50%;">
+
+
+
+<h5 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h5><ul>
+<li><p>rdt3.0 is correct, but performance stinks</p>
+</li>
+<li><p>example: 1 Gbps link, 15 ms prop. delay, 8000 bit packet:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413215044881.png" alt="image-20220413215044881" style="zoom:50%;">
+
+<ul>
+<li>U sender: utilization – fraction of time sender busy sending</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413215224086.png" alt="image-20220413215224086" style="zoom:50%;">
+
+<ul>
+<li>if RTT&#x3D;30 msec, 1KB pkt every 30 msec: 33kB&#x2F;sec thruput  over 1 Gbps link</li>
+</ul>
+</li>
+<li><p>network protocol limits use of physical resources!</p>
+</li>
+</ul>
+<h5 id="stop-and-wait-operation"><a href="#stop-and-wait-operation" class="headerlink" title="stop-and-wait operation"></a>stop-and-wait operation</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413215341953.png" alt="image-20220413215341953" style="zoom:50%;">
+
+
+
+
+
+
+
+<h4 id="3-4-8-Pipelined-protocols"><a href="#3-4-8-Pipelined-protocols" class="headerlink" title="3.4.8 Pipelined protocols"></a>3.4.8 Pipelined protocols</h4><p>pipelining: sender allows multiple, “in-flight”, yet-to-be-acknowledged pkt</p>
+<ul>
+<li>range of sequence numbers must be increased</li>
+<li>buffering at sender and&#x2F;or receiver</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413215628683.png" alt="image-20220413215628683" style="zoom:50%;">
+
+<ul>
+<li>two generic forms of pipelined protocols: go-Back-N, selective repeat</li>
+</ul>
+<h5 id="increased-utilization"><a href="#increased-utilization" class="headerlink" title="increased utilization"></a>increased utilization</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220413215715205.png" alt="image-20220413215715205" style="zoom:50%;">
+
+
+
+<h5 id="overview"><a href="#overview" class="headerlink" title="overview:"></a>overview:</h5><p>Go-back-N:</p>
+<ul>
+<li>sender can have up to N unacked packets in pipeline</li>
+<li>receiver only sends cumulative ack<ul>
+<li>doesn’t ack packet if  there’ s a gap</li>
+</ul>
+</li>
+<li>sender has timer for oldest unacked packet<ul>
+<li>when timer expires, retransmit all unacked packets</li>
+</ul>
+</li>
+</ul>
+<p>Selective Repeat:</p>
+<ul>
+<li>sender can have up to N unack’ed packets in pipeline</li>
+<li>receiver sends individual ack for each packet</li>
+<li>sender maintains timer for each unacked packet<ul>
+<li>when timer expires,  retransmit only that unacked packet</li>
+</ul>
+</li>
+</ul>
+<h5 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N:"></a>Go-Back-N:</h5><p>sender:</p>
+<ul>
+<li>k-bit sequence number in pkt header</li>
+<li>“window” of up to N, consecutive unack’ed pkts allowed</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416150337516.png" alt="image-20220416150337516" style="zoom:50%;">
+
+<ul>
+<li>ACK(n): ACKs all pkts up to, including seq # n - “cumulative  ACK”<ul>
+<li>may receive duplicate ACKs (see receiver)</li>
+</ul>
+</li>
+<li><strong>timer for oldest in-flight pkt</strong></li>
+<li>timeout(n): retransmit packet n and all higher seq # pkts in window</li>
+</ul>
+<p>sender extended FSM:</p>
+<p>The timer was set at the same time the oldest packet was sent</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416150606898.png" alt="image-20220416150606898" style="zoom:50%;">
+
+<p>receiver extended FSM: </p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416151306662.png" alt="image-20220416151306662" style="zoom:50%;">
+
+<p>ACK-only: always send ACK for correctly-received packet with highest in-order sequence</p>
+<ul>
+<li>may generate duplicate ACKs</li>
+<li>need only remember expectedseqnum</li>
+</ul>
+<p> out-of-order pkt: </p>
+<ul>
+<li>discard (don’t buffer): no receiver buffering!</li>
+<li>re-ACK pkt with highest in-order seq #</li>
+</ul>
+<p>GBN in action:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416151601258.png" alt="image-20220416151601258" style="zoom:50%;">
+
+
+
+<h5 id="Selective-repeat"><a href="#Selective-repeat" class="headerlink" title="Selective repeat"></a>Selective repeat</h5><ul>
+<li>receiver individually acknowledges all correctly received pkts<ul>
+<li>buffers pkts, as needed, for eventual in-order delivery  to upper layer</li>
+</ul>
+</li>
+<li>sender only resends pkts for which ACK not received<ul>
+<li>sender timer for each unACKed pkt</li>
+</ul>
+</li>
+<li>sender window<ul>
+<li>N consecutive seq #’ s </li>
+<li>limits seq #s of sent, unACKed pkts</li>
+</ul>
+</li>
+</ul>
+<p>sender, receiver windows:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416152017690.png" alt="image-20220416152017690" style="zoom:50%;">
+
+<ul>
+<li><p>sender</p>
+<p>data from above:</p>
+<ul>
+<li>if next available seq # in window, send pkt</li>
+<li>timeout(n):  resend pkt n, restart timers</li>
+</ul>
+<p>ACK(n) in [sendbase,sendbase+N]:</p>
+<ul>
+<li>mark pkt n as received</li>
+<li>if n smallest unACKed pkt, advance window base to next unACKed seq #</li>
+</ul>
+</li>
+<li><p>receiver</p>
+<p>pkt n in [rcvbase, rcvbase+N-1]</p>
+<ul>
+<li>send ACK(n)</li>
+<li>out-of-order: buffer</li>
+<li>in-order: deliver (also deliver buffered, in-order pkts), advance window to next not-yet-received pkt</li>
+</ul>
+<p>pkt n in [rcvbase-N,rcvbase-1]</p>
+<ul>
+<li>ACK(n)</li>
+</ul>
+<p>otherwise:</p>
+<ul>
+<li>ignore</li>
+</ul>
+</li>
+</ul>
+<p>Selective repeat in action:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416152624877.png" alt="image-20220416152624877" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416152720926.png" alt="image-20220416152720926" style="zoom:50%;">
+
+
+
+
+
+
+
+<h3 id="3-5-connection-oriented-transport-TCP"><a href="#3-5-connection-oriented-transport-TCP" class="headerlink" title="3.5 connection-oriented transport: TCP"></a>3.5 connection-oriented transport: TCP</h3><h4 id="3-5-1-Overview"><a href="#3-5-1-Overview" class="headerlink" title="3.5.1 Overview"></a>3.5.1 Overview</h4><ul>
+<li>point-to-point:<ul>
+<li>one sender, one receiver</li>
+</ul>
+</li>
+<li>reliable, in-order byte steam:<ul>
+<li>no “message boundaries”</li>
+</ul>
+</li>
+<li>pipelined:<ul>
+<li>TCP congestion and flow control set window size</li>
+</ul>
+</li>
+<li>full duplex data<ul>
+<li>bi-directional data flow in same connection</li>
+<li>MSS: maximum segment size</li>
+</ul>
+</li>
+<li>connection-oriented:<ul>
+<li>handshaking (exchange of control messages) initiates sender, receiver state before data exchange</li>
+</ul>
+</li>
+<li>flow controlled:<ul>
+<li>sender will not overwhelm receiver</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-2-segment-structure"><a href="#3-5-2-segment-structure" class="headerlink" title="3.5.2  segment structure"></a>3.5.2  segment structure</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153436606.png" alt="image-20220416153436606" style="zoom: 33%;">
+
+
+
+<h4 id="3-5-3-TCP-seq-numbers-ACKs"><a href="#3-5-3-TCP-seq-numbers-ACKs" class="headerlink" title="3.5.3 TCP seq. numbers, ACKs"></a>3.5.3 TCP seq. numbers, ACKs</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153840516.png" alt="image-20220416153840516" style="zoom:50%;">
+
+
+
+<ul>
+<li>sequence numbers:<ul>
+<li>byte stream “number” of first byte in segment’ s data</li>
+</ul>
+</li>
+<li>acknowledgements:<ul>
+<li>sequence number of next byte expected from other sides</li>
+<li>cumulative ACK</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153915735.png" alt="image-20220416153915735" style="zoom:50%;">
+
+<h4 id="3-5-4-round-trip-time-timeout"><a href="#3-5-4-round-trip-time-timeout" class="headerlink" title="3.5.4 round trip time, timeout"></a>3.5.4 round trip time, timeout</h4><p>how to set TCP timeout value?</p>
+<ul>
+<li>longer than RTT<ul>
+<li>but RTT varies</li>
+</ul>
+</li>
+<li>Too short: premature timeout, unnecessary retransmissions</li>
+<li>Too long: slow reaction to segment loss</li>
+</ul>
+<p>how to estimate RTT?</p>
+<ul>
+<li><p>SampleRTT: measured time from segment transmission until ACK receipt</p>
+<ul>
+<li>ignore retransmissions</li>
+</ul>
+</li>
+<li><p>SampleRTT will vary, want estimated RTT “smoother”</p>
+<ul>
+<li>average several recent measurements, not just current SampleRTT</li>
+</ul>
+</li>
+<li><p>EstimatedRTT &#x3D; (1- a)<em>EstimatedRTT + a</em>SampleRTT</p>
+<ul>
+<li>exponential weighted moving average</li>
+<li>influence of past sample decreases exponentially fast</li>
+<li>typical value: a &#x3D; 0.125</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416154606769.png" alt="image-20220416154606769" style="zoom: 50%;">
+
+
+</li>
+<li><p>timeout interval: EstimatedRTT plus “safety margin”</p>
+<ul>
+<li>large variation in EstimatedRTT -&gt; larger safety margin</li>
+</ul>
+</li>
+<li><p>estimate SampleRTT deviate from EstimatedRTT:</p>
+<ul>
+<li>DevRTT &#x3D; (1-B)<em>DevRTT + B</em>|SampleRTT-EstimatedRTT|(typically, B &#x3D; 0.25)</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416154853734.png" alt="image-20220416154853734" style="zoom:50%;">
+
+
+
+<h4 id="3-5-5-reliable-data-transfer"><a href="#3-5-5-reliable-data-transfer" class="headerlink" title="3.5.5 reliable data transfer"></a>3.5.5 reliable data transfer</h4><ul>
+<li>TCP creates rdt service on top of IP’s unreliable service<ul>
+<li>pipelined segments</li>
+<li>cumulative acks</li>
+<li>single retransmission timer</li>
+</ul>
+</li>
+<li>retransmissions triggered by:<ul>
+<li>timeout events </li>
+<li>duplicate acks</li>
+</ul>
+</li>
+</ul>
+<h5 id="sender-events"><a href="#sender-events" class="headerlink" title="sender events:"></a>sender events:</h5><p>data rcvd from app:</p>
+<ul>
+<li>create segment with sequence #</li>
+<li>sequence # is byte-stream number of first data byte in segment</li>
+<li>start timer if not already running<ul>
+<li>think of timer as for oldest unacked segment</li>
+<li>expiration interval: TimeOutInterval</li>
+</ul>
+</li>
+</ul>
+<p>timeout:</p>
+<ul>
+<li>retransmit segment that caused timeout</li>
+<li>restart timer</li>
+</ul>
+<p>ack rcvd:</p>
+<ul>
+<li>if ack acknowledges previously unacked segments<ul>
+<li>update what is known  to be ACKed</li>
+<li>start timer if there are still unacked segments</li>
+</ul>
+</li>
+</ul>
+<p>sender (simplified):</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416155622599.png" alt="image-20220416155622216" style="zoom:50%;">
+
+
                 
             </div>
             <hr/>
@@ -2540,9 +3157,9 @@ Internet: “network of networks” Interconnected IS">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Introduction to software engineer">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Introduction to software engineer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2557,11 +3174,23 @@ Internet: “network of networks” Interconnected IS">
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            何星林
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/introduction-to-software-engineer/" class="post-category">
+                                    introduction to software engineer
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/learning/">
+                        <span class="chip bg-color">learning</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -2812,7 +3441,7 @@ Internet: “network of networks” Interconnected IS">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">40.2k</span>
+                        class="white-color">48.8k</span>
             
             
             
