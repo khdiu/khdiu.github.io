@@ -465,14 +465,14 @@ Internet: “network of networks” Interconnected IS">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.5k
+                    8.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    46 分
+                    52 分
                 </div>
                 
 
@@ -1425,7 +1425,7 @@ Internet: “network of networks” Interconnected IS">
 </li>
 </ul>
 <h5 id="Scenario-Alice-sends-message-to-Bob"><a href="#Scenario-Alice-sends-message-to-Bob" class="headerlink" title="Scenario: Alice sends message to Bob"></a>Scenario: Alice sends message to Bob</h5><ol>
-<li>Alice uses UA to compose message “ to ” <a href="mailto:&#98;&#x6f;&#98;&#64;&#115;&#x6f;&#109;&#101;&#x73;&#x63;&#x68;&#x6f;&#111;&#x6c;&#x2e;&#101;&#x64;&#x75;">&#98;&#x6f;&#98;&#64;&#115;&#x6f;&#109;&#101;&#x73;&#x63;&#x68;&#x6f;&#111;&#x6c;&#x2e;&#101;&#x64;&#x75;</a> </li>
+<li>Alice uses UA to compose message “ to ” <a href="mailto:&#98;&#111;&#98;&#x40;&#115;&#111;&#x6d;&#101;&#x73;&#x63;&#x68;&#111;&#111;&#108;&#46;&#101;&#x64;&#117;">&#98;&#111;&#98;&#x40;&#115;&#111;&#x6d;&#101;&#x73;&#x63;&#x68;&#111;&#111;&#108;&#46;&#101;&#x64;&#117;</a> </li>
 <li>Alice’s UA sends message to her mail server; message placed in message queue </li>
 <li>client side of SMTP opens TCP connection with Bob’ s mail server </li>
 <li>SMTP client sends Alice’ s message over the TCP connection </li>
@@ -2100,14 +2100,12 @@ Internet: “network of networks” Interconnected IS">
 <p>example：</p>
 <h4 id="3-2-4-Connection-oriented-demux"><a href="#3-2-4-Connection-oriented-demux" class="headerlink" title="3.2.4 Connection-oriented demux"></a>3.2.4 Connection-oriented demux</h4><ul>
 <li><p>TCP socket identified by 4-tuple: </p>
-</li>
-<li><p>source IP address</p>
-</li>
-<li><p>source port number </p>
-</li>
-<li><p>dest IP address</p>
-</li>
-<li><p>dest port number</p>
+<ul>
+<li>source IP address</li>
+<li>source port number </li>
+<li>dest IP address</li>
+<li>dest port number</li>
+</ul>
 </li>
 <li><p>demux: receiver uses all four values to direct segment to appropriate socket</p>
 </li>
@@ -2292,7 +2290,7 @@ Internet: “network of networks” Interconnected IS">
 
 
 
-<h4 id="discussion"><a href="#discussion" class="headerlink" title="discussion"></a>discussion</h4><ul>
+<h5 id="discussion"><a href="#discussion" class="headerlink" title="discussion"></a>discussion</h5><ul>
 <li>sender:<ul>
 <li>sequence number added to pkt</li>
 <li>two sequence number(0,1) will suffice. Why?</li>
@@ -2542,7 +2540,7 @@ Internet: “network of networks” Interconnected IS">
 
 
 
-<h4 id="3-5-3-TCP-seq-numbers-ACKs"><a href="#3-5-3-TCP-seq-numbers-ACKs" class="headerlink" title="3.5.3 TCP seq. numbers, ACKs"></a>3.5.3 TCP seq. numbers, ACKs</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153840516.png" alt="image-20220416153840516" style="zoom:50%;">
+<h5 id="TCP-seq-numbers-ACKs"><a href="#TCP-seq-numbers-ACKs" class="headerlink" title="TCP seq. numbers, ACKs"></a>TCP seq. numbers, ACKs</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153840516.png" alt="image-20220416153840516" style="zoom:50%;">
 
 
 
@@ -2559,7 +2557,7 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416153915735.png" alt="image-20220416153915735" style="zoom:50%;">
 
-<h4 id="3-5-4-round-trip-time-timeout"><a href="#3-5-4-round-trip-time-timeout" class="headerlink" title="3.5.4 round trip time, timeout"></a>3.5.4 round trip time, timeout</h4><p>how to set TCP timeout value?</p>
+<h5 id="round-trip-time-timeout"><a href="#round-trip-time-timeout" class="headerlink" title="round trip time, timeout"></a>round trip time, timeout</h5><p>how to set TCP timeout value?</p>
 <ul>
 <li>longer than RTT<ul>
 <li>but RTT varies</li>
@@ -2605,7 +2603,7 @@ Internet: “network of networks” Interconnected IS">
 
 
 
-<h4 id="3-5-5-reliable-data-transfer"><a href="#3-5-5-reliable-data-transfer" class="headerlink" title="3.5.5 reliable data transfer"></a>3.5.5 reliable data transfer</h4><ul>
+<h4 id="3-5-3-reliable-data-transfer"><a href="#3-5-3-reliable-data-transfer" class="headerlink" title="3.5.3 reliable data transfer"></a>3.5.3 reliable data transfer</h4><ul>
 <li>TCP creates rdt service on top of IP’s unreliable service<ul>
 <li>pipelined segments</li>
 <li>cumulative acks</li>
@@ -2643,6 +2641,332 @@ Internet: “network of networks” Interconnected IS">
 </ul>
 <p>sender (simplified):</p>
 <img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220416155622599.png" alt="image-20220416155622216" style="zoom:50%;">
+
+
+
+<h5 id="Three-retransmission-scenarios"><a href="#Three-retransmission-scenarios" class="headerlink" title="Three retransmission scenarios"></a>Three retransmission scenarios</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420190211041.png" alt="image-20220420190211041" style="zoom:50%;">
+
+
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420190229132.png" alt="image-20220420190229132" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420190243034.png" alt="image-20220420190243034" style="zoom:50%;">
+
+
+
+<h5 id="ACK-generation"><a href="#ACK-generation" class="headerlink" title="ACK generation"></a>ACK generation</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420190427513.png" alt="image-20220420190427513" style="zoom:50%;">
+
+
+
+<h5 id="fast-retransmit"><a href="#fast-retransmit" class="headerlink" title="fast retransmit"></a>fast retransmit</h5><ul>
+<li>time-out period often relatively long:<ul>
+<li>long delay before  resending lost packet</li>
+</ul>
+</li>
+<li>detect lost segments via duplicate ACKs.<ul>
+<li>sender often sends many segments back-to-back</li>
+<li>if segment is lost, there will likely be many duplicate ACKs.</li>
+</ul>
+</li>
+</ul>
+<p>TCP fast retransmit</p>
+<p>if sender receives 3 ACKs for same data (“triple duplicate ACKs”), resend unacked segment with smallest sequence number</p>
+<ul>
+<li>likely that unacked segment lost, so don’ t wait for timeout</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420190705325.png" alt="image-20220420190705325" style="zoom:50%;">
+
+
+
+<h4 id="3-5-4-flow-control"><a href="#3-5-4-flow-control" class="headerlink" title="3.5.4 flow control"></a>3.5.4 flow control</h4><ul>
+<li><p>flow control</p>
+<p>receiver controls sender, so sender won’t overflow receiver’s buffer by transmitting too much, too fast</p>
+</li>
+<li><p>receiver “advertises” free buffer space by including rwnd value in TCP header of receiver-to-sender segments</p>
+<ul>
+<li>RcvBuffer size set via socket options (typical default  is 4096 bytes)</li>
+<li>many operating systems autoadjust RcvBuffer</li>
+</ul>
+</li>
+<li><p>sender limits amount of unacked (“in-flight”) data to receiver’ s rwnd value</p>
+</li>
+<li><p>guarantees receive buffer will not overflow</p>
+</li>
+</ul>
+<h4 id="3-5-5-Connection-Management"><a href="#3-5-5-Connection-Management" class="headerlink" title="3.5.5 Connection Management"></a>3.5.5 Connection Management</h4><p>before exchanging data, sender&#x2F;receiver “<strong>handshake</strong>” :</p>
+<ul>
+<li><p>agree to establish connection (each knowing the other willing  to establish connection)</p>
+</li>
+<li><p>agree on connection parameters</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420191422292.png" alt="image-20220420191422292" style="zoom:50%;"></li>
+</ul>
+<h5 id="Handshake"><a href="#Handshake" class="headerlink" title="Handshake"></a>Handshake</h5><h6 id="2-way-handshake"><a href="#2-way-handshake" class="headerlink" title="2-way handshake:"></a>2-way handshake:</h6><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420191522523.png" alt="image-20220420191522523" style="zoom:50%;">
+
+<p>Q: will 2-way handshake always work in network?</p>
+<ul>
+<li>variable delays</li>
+<li>retransmitted messages (e.g.  req_conn(x)) due to message loss</li>
+<li>message reordering</li>
+<li>can’t “see” other side</li>
+</ul>
+<p>2-way handshake failure scenarios:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420191727771.png" alt="image-20220420191727771" style="zoom:50%;">
+
+
+
+<h6 id="3-way-handshake"><a href="#3-way-handshake" class="headerlink" title="3-way handshake"></a>3-way handshake</h6><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420191929314.png" alt="image-20220420191929314" style="zoom:50%;">
+
+
+
+<p>3-way handshake: FSM</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420192010094.png" alt="image-20220420192010094" style="zoom:50%;">
+
+<h5 id="closing-a-connection"><a href="#closing-a-connection" class="headerlink" title="closing a connection"></a>closing a connection</h5><ul>
+<li>client, server each close their side of connection<ul>
+<li>send TCP segment with FIN bit &#x3D; 1</li>
+</ul>
+</li>
+<li>respond to received FIN with ACK<ul>
+<li>on receiving FIN, ACK can be combined with own FIN</li>
+</ul>
+</li>
+<li>simultaneous FIN exchanges can be handled</li>
+<li><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220420192224668.png" alt="image-20220420192224668" style="zoom:50%;"></li>
+</ul>
+<h3 id="3-6-principles-of-congestion-control"><a href="#3-6-principles-of-congestion-control" class="headerlink" title="3.6 principles of congestion control"></a>3.6 principles of congestion control</h3><p>congestion:</p>
+<ul>
+<li>informally: “too many sources sending too much data too fast for network to handle”</li>
+<li>different from flow control!</li>
+<li>manifestations:<ul>
+<li>lost packets (buffer overflow at routers) </li>
+<li>long delays (queueing in router buffers)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-6-1-Causes-x2F-costs-of-congestion"><a href="#3-6-1-Causes-x2F-costs-of-congestion" class="headerlink" title="3.6.1 Causes&#x2F;costs of congestion"></a>3.6.1 Causes&#x2F;costs of congestion</h4><h5 id="scenario-1："><a href="#scenario-1：" class="headerlink" title="scenario 1："></a>scenario 1：</h5><ul>
+<li>two senders, two receivers</li>
+<li>one router, infinite buffers</li>
+<li>output link capacity: R</li>
+<li>no retransmission</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421174933277.png" alt="image-20220421174933277" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421174951886.png" alt="image-20220421174951886" style="zoom:50%;">
+
+
+
+<h5 id="scenario-2："><a href="#scenario-2：" class="headerlink" title="scenario 2："></a>scenario 2：</h5><ul>
+<li><p>one router, finite buffers</p>
+</li>
+<li><p>sender retransmission of timed-out packet</p>
+<ul>
+<li>application-layer input &#x3D; application-layer output: in &#x3D;  out</li>
+<li>transport-layer input includes retransmissions : in’ &gt;&#x3D; in</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421175211464.png" alt="image-20220421175211464" style="zoom:50%;">
+
+
+</li>
+<li><p>idealization: perfect knowledge</p>
+<ul>
+<li>sender sends only when router buffers available</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421175518944.png" alt="image-20220421175518944" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421175539551.png" alt="image-20220421175539551" style="zoom:50%;">
+
+<ul>
+<li>Idealization: known loss packets can be lost, dropped at router due to full buffers<ul>
+<li>sender only resends if packet known to be lost</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421175706509.png" alt="image-20220421175706509" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421175734693.png" alt="image-20220421175734693" style="zoom:50%;">
+
+
+
+<p>Realistic: duplicates：</p>
+<ul>
+<li>packets can be lost, dropped at  router due to full buffers</li>
+<li>sender times out prematurely, sending two copies, both of which are delivered</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421180007942.png" alt="image-20220421180007942" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421180029759.png" alt="image-20220421180029759" style="zoom: 33%;">
+
+
+
+<p>“costs” of congestion:</p>
+<ul>
+<li>more work (retrans) for given “goodput”</li>
+<li>unneeded retransmissions: link carries multiple copies of pkt<ul>
+<li>decreasing goodput</li>
+</ul>
+</li>
+</ul>
+<h5 id="scenario-3"><a href="#scenario-3" class="headerlink" title="scenario 3:"></a>scenario 3:</h5><ul>
+<li>four senders</li>
+<li>multiple paths</li>
+<li>timeout&#x2F;retransmit</li>
+</ul>
+<p>Q: what happens as in and in’ increase ?</p>
+<p>A: as red in’ increases, all arriving  blue pkts at upper queue are dropped, blue throughput&#x3D;0</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421180609262.png" alt="image-20220421180609262" style="zoom:50%;">
+
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421180628190.png" alt="image-20220421180628190" style="zoom:50%;">
+
+<p>another “cost” of congestion:</p>
+<p>when packet dropped, any “ upstream transmission capacity used for that packet was wasted!</p>
+<h3 id="3-7-TCP-congestion-control"><a href="#3-7-TCP-congestion-control" class="headerlink" title="3.7 TCP congestion control"></a>3.7 TCP congestion control</h3><h4 id="3-7-1-additive-increase-multiplicative-decrease"><a href="#3-7-1-additive-increase-multiplicative-decrease" class="headerlink" title="3.7.1 additive increase multiplicative decrease"></a>3.7.1 additive increase multiplicative decrease</h4><ul>
+<li>approach:sender increases transmission rate (window  size), probing for usable bandwidth, until loss occurs<ul>
+<li>additive increase: increase cwnd by 1 MSS every RTT until loss detected</li>
+<li>multiplicative decrease: cut cwnd in half after loss</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421181142072.png" alt="image-20220421181142072" style="zoom:50%;">
+
+
+
+<h4 id="3-7-2-details"><a href="#3-7-2-details" class="headerlink" title="3.7.2 details"></a>3.7.2 details</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421181303242.png" alt="image-20220421181303242" style="zoom:50%;">
+
+<ul>
+<li><p>sender limits transmission:</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421181353780.png" alt="image-20220421181353780" style="zoom:50%;">
+</li>
+<li><p>cwnd is dynamic, function of perceived network congestion</p>
+</li>
+</ul>
+<p>TCP sending rate:</p>
+<ul>
+<li><p>roughly: send cwnd bytes, wait RTT for ACKS, then send more bytes</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421181504644.png" alt="image-20220421181504644" style="zoom:50%;"></li>
+</ul>
+<h4 id="3-7-3-Slow-Start"><a href="#3-7-3-Slow-Start" class="headerlink" title="3.7.3 Slow Start"></a>3.7.3 Slow Start</h4><ul>
+<li>when connection begins, increase rate exponentially until first loss event<ul>
+<li>initially cwnd &#x3D; 1 MSS</li>
+<li>double cwnd every RTT</li>
+<li>done by incrementing</li>
+<li>cwnd for every ACK received</li>
+</ul>
+</li>
+<li>summary: initial rate is slow but ramps up exponentially fast</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421181739650.png" alt="image-20220421181739650" style="zoom:50%;">
+
+
+
+<h5 id="Detecting-reacting-to-loss"><a href="#Detecting-reacting-to-loss" class="headerlink" title="Detecting, reacting to loss"></a>Detecting, reacting to loss</h5><ul>
+<li>loss indicated by timeout:<ul>
+<li>cwnd set to 1 MSS</li>
+<li>window then grows exponentially (as in slow start) to threshold, then grows linearly</li>
+</ul>
+</li>
+<li>loss indicated by 3 duplicate ACKs: TCP RENO<ul>
+<li>dup ACKs indicate network capable of delivering  some segments</li>
+<li>cwnd is cut in half window then grows linearly</li>
+</ul>
+</li>
+<li>TCP Tahoe always sets cwnd to 1 (timeout or 3  duplicate acks)</li>
+</ul>
+<h5 id="switching-from-slow-start-to-CA"><a href="#switching-from-slow-start-to-CA" class="headerlink" title="switching from slow start to CA"></a>switching from slow start to CA</h5><p>Q: when should the exponential increase switch to linear?</p>
+<p>A: when cwnd gets to 1&#x2F;2 of its value before timeout.</p>
+<p>Implementation:</p>
+<ul>
+<li>variable ssthresh </li>
+<li>on loss event, ssthresh is set to 1&#x2F;2 of cwnd just before loss event</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421182340610.png" alt="image-20220421182340610" style="zoom:50%;">
+
+
+
+<h5 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h5><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421182803514.png" alt="image-20220421182803514" style="zoom:50%;">
+
+
+
+
+
+<h4 id="3-7-4-throughput"><a href="#3-7-4-throughput" class="headerlink" title="3.7.4 throughput"></a>3.7.4 throughput</h4><ul>
+<li><p>avg. TCP thruput as function of window size, RTT?</p>
+<ul>
+<li>ignore slow start, assume always data to send</li>
+</ul>
+</li>
+<li><p>W: window size (measured in bytes) where loss occurs</p>
+<ul>
+<li><p>avg. window size (# in-flight bytes) is ¾ W</p>
+</li>
+<li><p>avg. thruput is 3&#x2F;4W per RTT</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>avg TCP thruput &#x3D; 3&#x2F;4*(W&#x2F;RTT) bytes&#x2F;sec</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421183126830.png" alt="image-20220421183126830" style="zoom:50%;">
+
+
+
+<p>TCP over “long, fat pipes”</p>
+<ul>
+<li><p>example: 1500 byte segments, 100ms RTT, want 10 Gbps throughput</p>
+</li>
+<li><p>requires W &#x3D; 83,333 in-flight segments</p>
+</li>
+<li><p>requires W &#x3D; 83,333 in-flight segments</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421183517456.png" alt="image-20220421183517456" style="zoom:50%;">
+</li>
+<li><p>to achieve 10 Gbps throughput, need a loss rate of L  &#x3D; 2·10^(-10) – a very small loss rate!</p>
+</li>
+</ul>
+<h3 id="3-8-Fairness"><a href="#3-8-Fairness" class="headerlink" title="3.8 Fairness"></a>3.8 Fairness</h3><ul>
+<li>fairness goal: if K TCP sessions share same bottleneck link of bandwidth R, each should have average rate of R&#x2F;K</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421183714886.png" alt="image-20220421183714886" style="zoom:50%;">
+
+<h4 id="3-8-1-Why-is-TCP-fair"><a href="#3-8-1-Why-is-TCP-fair" class="headerlink" title="3.8.1 Why is TCP fair"></a>3.8.1 Why is TCP fair</h4><p>two competing sessions:</p>
+<ul>
+<li>additive increase gives slope of 1, as throughout increases</li>
+<li>multiplicative decrease decreases throughput proportionally</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421183838551.png" alt="image-20220421183838551" style="zoom:50%;">
+
+
+
+<h4 id="3-8-2-More-about-Fairness"><a href="#3-8-2-More-about-Fairness" class="headerlink" title="3.8.2 More about Fairness"></a>3.8.2 More about Fairness</h4><p>Fairness and UDP</p>
+<ul>
+<li><p>multimedia apps often do not use TCP </p>
+<ul>
+<li>do not want rate throttled by congestion control</li>
+</ul>
+</li>
+<li><p>instead use UDP:</p>
+<ul>
+<li>send audio&#x2F;video at constant rate, tolerate packet loss</li>
+</ul>
+</li>
+</ul>
+<p>Fairness, parallel TCP connections</p>
+<ul>
+<li>application can open multiple parallel connections between two hosts</li>
+<li>web browsers do this</li>
+<li>link of rate R with 9 existing connections:<ul>
+<li>new app asks for 1 TCP, gets rate R&#x2F;10</li>
+<li>new app asks for 11 TCPs, gets R&#x2F;2</li>
+</ul>
+</li>
+</ul>
+<p>3.9 ECN</p>
+<p>Explicit Congestion Notification (ECN)</p>
+<ul>
+<li>network-assisted congestion control:</li>
+<li>congestion indication carried to receiving host</li>
+<li>receiver (seeing congestion indication in IP datagram) sets ECE bit on receiver-to-sender ACK segment to notify sender of congestion</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20220421184548650.png" alt="image-20220421184548650" style="zoom:50%;">
 
 
                 
@@ -3441,7 +3765,7 @@ Internet: “network of networks” Interconnected IS">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.8k</span>
+                        class="white-color">57.4k</span>
             
             
             
