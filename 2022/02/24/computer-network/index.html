@@ -1356,7 +1356,7 @@
 </li>
 </ul>
 <h5 id="Scenario-Alice-sends-message-to-Bob"><a href="#Scenario-Alice-sends-message-to-Bob" class="headerlink" title="Scenario: Alice sends message to Bob"></a>Scenario: Alice sends message to Bob</h5><ol>
-<li>Alice uses UA to compose message “ to ” <a href="mailto:&#x62;&#111;&#98;&#x40;&#115;&#x6f;&#109;&#x65;&#x73;&#99;&#x68;&#111;&#x6f;&#108;&#x2e;&#101;&#x64;&#117;">&#x62;&#111;&#98;&#x40;&#115;&#x6f;&#109;&#x65;&#x73;&#99;&#x68;&#111;&#x6f;&#108;&#x2e;&#101;&#x64;&#117;</a> </li>
+<li>Alice uses UA to compose message “ to ” <a href="mailto:&#x62;&#x6f;&#x62;&#x40;&#115;&#x6f;&#109;&#x65;&#115;&#x63;&#104;&#111;&#111;&#108;&#x2e;&#x65;&#100;&#x75;">&#x62;&#x6f;&#x62;&#x40;&#115;&#x6f;&#109;&#x65;&#115;&#x63;&#104;&#111;&#111;&#108;&#x2e;&#x65;&#100;&#x75;</a> </li>
 <li>Alice’s UA sends message to her mail server; message placed in message queue </li>
 <li>client side of SMTP opens TCP connection with Bob’ s mail server </li>
 <li>SMTP client sends Alice’ s message over the TCP connection </li>
@@ -3651,7 +3651,7 @@ servletweb开发基石，与平台无关的服务器组件，负责与客户端�
       
         
           <div class="footer-copyright">
-            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/khdiu">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+            <p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
 
           </div>
         
@@ -3739,6 +3739,58 @@ servletweb开发基石，与平台无关的服务器组件，负责与客户端�
 
     
     <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="song"
+  id="002Dktdo1IFd0b"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
     
 
     <!-- 图片放大 -->

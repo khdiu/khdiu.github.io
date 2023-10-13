@@ -1055,44 +1055,10 @@
         :data="listData"
         :class-option="classOption"
         class="warp"
-        style="height: 60px"
+        style="height: 0px"
       >
         <ul class="index-notice-content__ul">
           
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <span title="今日没有任何公告" style="color:black">
-                      今日没有任何公告
-                    </span>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:black">
-                    2020-10-10
-                  </div>
-                
-              
-            </li>
-          
-            <li>
-              
-                <div class="index-notice-content__title">
-                  
-                    <span title="今日" style="color:black">
-                      今日
-                    </span>
-                  
-                </div>
-                
-                  <div class="index-notice-content__date" style="color:black">
-                    2023-12-12
-                  </div>
-                
-              
-            </li>
            
         </ul>
       </vue-seamless-scroll>
@@ -1107,7 +1073,7 @@
 <script>
   var seamless = JSON.parse('false');
   seamless = seamless ? 0 : 30;
-  var listData = '[object Object],[object Object]' || '';
+  var listData = '' || '';
   listData = listData.split(',');
   var vm = new Vue({
     el: '#appIndexNotice',
@@ -2074,7 +2040,7 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Fri Oct 13 2023 13:22:21 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Fri Oct 13 2023 13:30:23 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2023-10-13 日</div>
           
         </div>
@@ -2322,7 +2288,7 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
       
         
           <div class="footer-copyright">
-            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/khdiu">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+            <p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
 
           </div>
         
@@ -2410,6 +2376,58 @@ servlet本身是一堆接口，自定义一个类，并实现servlet
 
     
     <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="song"
+  id="002Dktdo1IFd0b"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
     
 
     <!-- 图片放大 -->
