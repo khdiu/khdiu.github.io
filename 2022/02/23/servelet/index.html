@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '2';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -470,6 +485,32 @@
     <a target="_blank" rel="noopener" href="https://github.com/khdiu" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
   
   
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
 </header>
         <!-- 内容区域 -->
         
@@ -486,7 +527,7 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
@@ -584,7 +625,7 @@
 <h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>PS：jsp会将写入的代码转化为servlet，在调用write（）方法将HTML内容逐行输出</p>
 <p> JSP本质上就是一个servlet，jsp主要负责于用户交互，将最终的界面全部呈现给用户，即HTML+CSS+JS混合文件</p>
 <p> Tomcat会将jsp转化为servlet，将代码逐行输出，所有信息组合成完整的HTML代码</p>
-<h3 id="1-转换流程"><a href="#1-转换流程" class="headerlink" title="1.转换流程"></a>1.转换流程</h3><p>​              <img src="/2022/02/23/servelet/Users/khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" class="lazyload placeholder" data-srcset="/2022/02/23/servelet/Users/khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20211126203817591" style="zoom: 50%;"></p>
+<h3 id="1-转换流程"><a href="#1-转换流程" class="headerlink" title="1.转换流程"></a>1.转换流程</h3><p>​              <img src="/C:/Users\khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" class="lazyload placeholder" data-srcset="/C:/Users\khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20211126203817591" style="zoom: 50%;"></p>
 <h3 id="2-HTML中嵌入JAVA程序"><a href="#2-HTML中嵌入JAVA程序" class="headerlink" title="2.HTML中嵌入JAVA程序"></a>2.HTML中嵌入JAVA程序</h3><ol>
 <li>jsp脚本：执行JAVA代码用&lt;% code %&gt;单标签</li>
 <li>jsp声明：定义JAVA方法用&lt;%! code%&gt;单标签</li>
@@ -692,7 +733,7 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/computer%20network.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/computer%20network.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
     <a href="/2022/02/24/computer-network/" class="post-nav-link">
       <div class="title">
@@ -945,30 +986,9 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/10/13/audioTest/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">10-13</span>
-                
-              </div>
-              <a class="post-title" href="/2023/10/13/audioTest/">audioTest</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
               <a href="/2023/05/12/JUC/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/JUC.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/JUC.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -989,7 +1009,7 @@
             <div class="post-img-box">
               <a href="/2023/04/07/srping-auto-configration/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1008,18 +1028,18 @@
             
 
             <div class="post-img-box">
-              <a href="/2022/03/20/spring/" class="post-img " style="background-size: cover; 
+              <a href="/2023/03/13/java%E8%AF%AD%E6%B3%95%E7%B3%96/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/java.webp" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/java.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">03-20</span>
+                  <span class="post-date">03-13</span>
                 
               </div>
-              <a class="post-title" href="/2022/03/20/spring/">spring核心基础</a>
+              <a class="post-title" href="/2023/03/13/java%E8%AF%AD%E6%B3%95%E7%B3%96/">java语法糖</a>
             </div>
           </div>
         
@@ -1029,18 +1049,39 @@
             
 
             <div class="post-img-box">
-              <a href="/2022/03/03/latex/" class="post-img " style="background-size: cover; 
+              <a href="/2022/05/13/Introduction%20to%20software%20engineer/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/software%20engineer.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/software%20engineer.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">03-03</span>
+                  <span class="post-date">05-13</span>
                 
               </div>
-              <a class="post-title" href="/2022/03/03/latex/">latex</a>
+              <a class="post-title" href="/2022/05/13/Introduction%20to%20software%20engineer/">Introduction to software engineer</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/03/20/spring/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-20</span>
+                
+              </div>
+              <a class="post-title" href="/2022/03/20/spring/">spring核心基础</a>
             </div>
           </div>
         
@@ -1232,7 +1273,7 @@
       if (isDark) {
         this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
       } else {
-        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+        this.FISH_COLOR = '' || 'rgba(200,200,200, 0.8)';
       }
     },
     setParameters: function () {
