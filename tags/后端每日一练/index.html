@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签 | khdiu&#39;blog</title>
+  <title>标签: 后端每日一练 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -499,20 +499,21 @@
 </header>
         <!-- 内容区域 -->
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-tags" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="tags-header" style="background-image:url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/tag/background.jpg')">
-    <div class="tags-header-title">
-        标签
-    </div>
-    <div class="tags-header-desc">
-    
-        <span class="title" id="tags-header-desc"></span>
-        <script>
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+
+<div class="tag-header" style="background-image: url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/tag/background.jpg');">
+  <div class="tag-header-title">
+    tag
+  </div>
+  <div class="tag-header-desc">
+  
+    <span class="title" id="tag-header-desc"></span>
+    <script>
   function typedFn() {
-    const el = '#tags-header-desc';
-    const type = 'tag';
+    const el = '#tag-header-desc';
+    const type = 'tagDetail';
     let desc = '好久不见'
     var typed = new Typed(el, {
       strings: [desc],
@@ -526,102 +527,261 @@
   typedFn();
 </script>
     
-    </div>
-    <div class="mask-box"></div>
+  </div>
+  <div class="mask-box"></div>
 </div>
 
 
-<div id="tags" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+
+<div class="tag">
+  <div class="tag-name">
+    <div class="name" style="background-color: #F9E79F;">后端每日一练 分类</div>
+  </div>
+  <!-- 每一篇文章卡片 -->
+  <!-- hash算法 -->
+
+<section class="posts">
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-10-24</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">后端day4</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">后端每日一练</a></li></ul>
+
             </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/Software-Engineer/" title="Software Engineer: 1">
-                    <span class="tag-content"
-                        title="Software Engineer" style="background-color: #FEF9E7;">Software Engineer
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/java/" title="java: 2">
-                    <span class="tag-content"
-                        title="java" style="background-color: #A3E4D7;">java
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Database/" title="Database: 2">
-                    <span class="tag-content"
-                        title="Database" style="background-color: #A3E4D7;">Database
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/ComputerNetwork/" title="ComputerNetwork: 1">
-                    <span class="tag-content"
-                        title="ComputerNetwork" style="background-color: #F5EEF8;">ComputerNetwork
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/back-number/" title="back number: 1">
-                    <span class="tag-content"
-                        title="back number" style="background-color: #FEF9E7;">back number
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/javaweb/" title="javaweb: 1">
-                    <span class="tag-content"
-                        title="javaweb" style="background-color: #F8C471;">javaweb
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/spring/" title="spring: 3">
-                    <span class="tag-content"
-                        title="spring" style="background-color: #D7BDE2;">spring
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" title="后端每日一练: 4">
-                    <span class="tag-content"
-                        title="后端每日一练" style="background-color: #F9E79F;">后端每日一练
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/latex/" title="latex: 1">
-                    <span class="tag-content"
-                        title="latex" style="background-color: #D5F5E3;">latex
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/" title="软件开发环境与工具: 1">
-                    <span class="tag-content"
-                        title="软件开发环境与工具" style="background-color: #A3E4D7;">软件开发环境与工具
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/Learning/">Learning</a>
+</div>
+
+
             </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            
+          </div>
         </div>
-    </div>
+        <div class="post-more">
+          <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-10-24</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/">后端day3</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">后端每日一练</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/Learning/">Learning</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            读写分离与分库分表读写分离
+何为读写分离？
+
+读写分离主要是为了将对数据库的读写操作分散到不同的数据库节点上。
+这样可以小幅提高写性能，大幅提升读性能 
+
+
+一般情况下，会选择一主多从，即一台主数据库负责写，其他的从数据库负责读。主库和从库
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-10-24</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/">后端day2</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">后端每日一练</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/Learning/">Learning</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            资料来源：JavaGuide知识星球
+Springboot 自动装备原理从以下三个步骤考虑：
+
+什么是SpringBoot自动装配？
+Springboots如何实现自动装配的？如何实现按需加载
+如何实现一个Starter
+
+前言在使用Spr
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2023-10-23</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/">后端day1</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">后端每日一练</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/Leanring/">Leanring</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            资料来源：JavaGuide知识星球
+3种缓存读写策略
+Cache Aside Pattern（旁路缓存模式）
+也称之为Lazy-Loading模式
+
+Cache Aside Pattern是平时使用较多的一个缓存读写模式，比较适合请求比较
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
+</div>
+
+<div class="w-70">
+  
 </div>
 
       </main>

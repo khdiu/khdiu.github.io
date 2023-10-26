@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>servelet学习 | khdiu&#39;blog</title>
+  <title>后端day1 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -512,21 +512,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        servelet学习
+        后端day1
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-02-23 |
+          <i class="fas fa-calendar"></i> 发表于：2023-10-23 |
         </span>
       
 
@@ -534,8 +534,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> 分类：
           
-            <a href="/categories/Learning/" class="post-detail-header_category">
-              Learning
+            <a href="/categories/Leanring/" class="post-detail-header_category">
+              Leanring
             </a>
           
         </span>
@@ -559,130 +559,143 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="javaweb"><a href="#javaweb" class="headerlink" title="javaweb"></a>javaweb</h1><p>Tomcat: web 应用服务器</p>
-<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><p>web开发基石，与平台无关的服务器组件，负责与客户端进行通信</p>
-<p>servlet本身是一堆接口，自定义一个类，并实现servlet</p>
-<p>客户端无法直接访问servlet，只能在服务器端添加映射才能访问</p>
-<p>映射需要开发者手动配置，有两种：</p>
-<ul>
-<li><p>基于xml的配置方式，直接手写映射</p>
-</li>
-<li><p>基于注解的方式，在需要映射的类名上方使用@添加注释</p>
-<p>上述两种配置方法结果一致</p>
-</li>
-</ul>
-<h3 id="1-servlet功能"><a href="#1-servlet功能" class="headerlink" title="1.servlet功能"></a>1.servlet功能</h3><ul>
-<li>创建并返回给予客户请求的动态页面</li>
-<li>与数据库进行通信</li>
-</ul>
-<h3 id="2-servlet生命周期"><a href="#2-servlet生命周期" class="headerlink" title="2.servlet生命周期"></a>2.servlet生命周期</h3><ol>
-<li><p>当浏览器访问servle的时候，Tomcat会查询当前servlet的实例化对象是否存在，<u>若不存在，则通过反射机制动态创建对象（运行时类，获取类名-》获取构造器-》调用构造器创建对象， 若存在则直接执行第三步操作）</u></p>
-</li>
-<li><p>调用init方法完成初始化操作</p>
-</li>
-<li><p>调用service方法完成业务逻辑操作</p>
-</li>
-<li><p>关闭Tomcat时，调用destroy方法，释放当前占用资源</p>
-<p>​    servlet生命周期方法：无参构造函数，init，service，destroy</p>
-</li>
+        <p>资料来源：JavaGuide知识星球</p>
+<h1 id="3种缓存读写策略"><a href="#3种缓存读写策略" class="headerlink" title="3种缓存读写策略"></a>3种缓存读写策略</h1><blockquote>
+<p>Cache Aside Pattern（旁路缓存模式）</p>
+<p>也称之为Lazy-Loading模式</p>
+</blockquote>
+<p>Cache Aside Pattern是平时使用较多的一个缓存读写模式，比较适合请求比较多的场景</p>
+<p>Cache Aside Pattern中服务端需要同时维系DB和cache，并且是以DB的结果为准</p>
+<p>在Cache Aside模式中，数据的读写都是由应用程序主动控制，而缓存并不自动维护数据的一致性。以下是Cache Aside模式的基本工作原理和要点</p>
+<p>缓存读写步骤：</p>
+<br>
+
+<p>写：</p>
+<ol>
+<li>先更新DB</li>
+<li>然后直接删除Cache</li>
 </ol>
-<h3 id="3-servletconfig"><a href="#3-servletconfig" class="headerlink" title="3.servletconfig"></a>3.servletconfig</h3><p>该接口用来描述servlet的基本信息</p>
-<ul>
-<li>getservletname()  获取全类名</li>
-<li>getinitparameter(string key)  过去init参数值(web.xml)</li>
-<li>getinitparametername() 返回所有的initparameter的name值，用于遍历所有初始化值</li>
-<li>getservletcontent 返回servletcontext，它是servlet的上下文，整个servlet的管理者</li>
-</ul>
-<h4 id="servletconfig与servletcontext的区别："><a href="#servletconfig与servletcontext的区别：" class="headerlink" title="servletconfig与servletcontext的区别："></a>servletconfig与servletcontext的区别：</h4><p>config作用于某个servlet对象，context作用于整个web应用</p>
-<p>config具体实例，context全局</p>
-<h3 id="4-servlet的层次结构"><a href="#4-servlet的层次结构" class="headerlink" title="4.servlet的层次结构"></a>4.servlet的层次结构</h3><p>servlet-》genericservlet（屏蔽常用方法）-》Httpservlet（处理HTTP请求）</p>
-<ul>
-<li>Genericservlet实现了servlet接口，同时为它的子类屏蔽不常用方法，子类只需要重写service方法，HTTPservice方法即可</li>
-<li>HTTPservlet继承Genericservlet，根据请求类型进行分发处理，GET进入doGET方法等</li>
-</ul>
-<p>开发者自定义servlet只需继承HTTPservlet即可</p>
-<h4 id="HTTP请求类型："><a href="#HTTP请求类型：" class="headerlink" title="HTTP请求类型："></a>HTTP请求类型：</h4><ul>
-<li>Get 读</li>
-<li>post 存</li>
-<li>put 放</li>
-<li>delete 删</li>
-</ul>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>PS：jsp会将写入的代码转化为servlet，在调用write（）方法将HTML内容逐行输出</p>
-<p> JSP本质上就是一个servlet，jsp主要负责于用户交互，将最终的界面全部呈现给用户，即HTML+CSS+JS混合文件</p>
-<p> Tomcat会将jsp转化为servlet，将代码逐行输出，所有信息组合成完整的HTML代码</p>
-<h3 id="1-转换流程"><a href="#1-转换流程" class="headerlink" title="1.转换流程"></a>1.转换流程</h3><p>​              <img src="/C:/Users\khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" class="lazyload placeholder" data-srcset="/C:/Users\khdiu\AppData\Roaming\Typora\typora-user-images\image-20211126203817591.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20211126203817591" style="zoom: 50%;"></p>
-<h3 id="2-HTML中嵌入JAVA程序"><a href="#2-HTML中嵌入JAVA程序" class="headerlink" title="2.HTML中嵌入JAVA程序"></a>2.HTML中嵌入JAVA程序</h3><ol>
-<li>jsp脚本：执行JAVA代码用&lt;% code %&gt;单标签</li>
-<li>jsp声明：定义JAVA方法用&lt;%! code%&gt;单标签</li>
-<li>jsp表达式：把JAVA对象直接输出到HTML页中&lt;%&#x3D; java变量%&gt;</li>
+<br>
+
+<p>读：</p>
+<ol>
+<li>从Cache中读，命中就直接返回</li>
+<li>未命中就从DB中读取数据返回</li>
+<li>把数据更新到Cache中</li>
 </ol>
-<h3 id="3-jsp内置对象"><a href="#3-jsp内置对象" class="headerlink" title="3.jsp内置对象"></a>3.jsp内置对象</h3><ul>
-<li>request 表示一次请求 Httpservletservice</li>
-<li>response 表示一次响应 Httpservletresponse</li>
-<li>pagecontext 页面上下文 获取页面信息 </li>
-<li>session 表示一次会话 保存用户信息 Httpsession</li>
-<li>applocation 表示当前web应用，全局对象，保存所有用户共享信息 servletcontext</li>
-<li>config 当前就jsp对应servlet的servletconfig对象，获取当前的servlet信息</li>
-<li>out 向浏览器输出数据 jspwriter</li>
-<li>page 当前jsp对应的servlet对象 servlet</li>
-<li>exception 表示jsp页面发生的异常</li>
-</ul>
-<h3 id="4-request常用方法"><a href="#4-request常用方法" class="headerlink" title="4.request常用方法"></a>4.request常用方法</h3><ol>
-<li>string getparameter(string key)获取从客户端传来的参数</li>
-<li>void setAttribute(string key,objerct value) 通过键值对</li>
-<li>string getAttribute(string key) 源JSP调用getrequestDispatcher(jsp名).forward(request,response)将对象传递给其他的JSP，之后由其他JSP处理请求</li>
-<li>requestDispatcher ，getrequestdispatcher(string path)返回一个requestdispatcher对象</li>
-<li>string[] getparametervalues()获取客户端传来的多个同名参数</li>
-<li>void setcharacterEncoding(string charset)指定每个请求的编码</li>
-</ol>
-<h3 id="5-response常用方法"><a href="#5-response常用方法" class="headerlink" title="5.response常用方法"></a>5.response常用方法</h3><p>senddirect(string path)重定向，页面之间的跳转</p>
-<p><u>转发是将同请求传递给下个页面，重定向是创建一个新的请求给下一个页面，之前的请求结束生命周期</u></p>
+<br>
+
+<p>本模式是先更新DB，后删除Cache。</p>
+<p>无论是先更新DB还是先删除Cache都可能造成缓存不一致问题。</p>
+<br>
+
+<p>Cache Aside模式的优点在于简单易于实现，适用于许多不同类型的存储后端，以对数据库访问的灵活控制。</p>
+<p>该模式存在以下缺点</p>
 <ul>
-<li>转发：同一个请求在服务器之间的传毒，地址栏不变，也叫服务器跳转</li>
-<li>重定向：由客户端发送一个新的请求来访问跳转后的目标资源，地址栏改变，也叫客户端跳转</li>
+<li>缓存一致性问题：Cache Aside模式不自动维护数据一致性，需要应用程序开发者确保数据的有效性和一致性</li>
+<li>缓存更新延迟：如果数据在主存储中被修改后，需要等待缓存过期或明确的刷新操作才能获取最新数据，可能导致数据不一致的问题</li>
+<li>缓存过期管理：需要定期清理和维护缓存，以确保缓存中的数据不过期或占用太多内存</li>
 </ul>
-<p><strong>如果两个页面之间需要通过request来传值，则必须使用转发，不能使用重定向</strong></p>
-<p>如：用户名登录，则需要将用户名传递给下一个页面</p>
-<h2 id="session会话"><a href="#session会话" class="headerlink" title="session会话"></a>session会话</h2><p><u>服务器无法识别每一次HTTP请求的出处(<strong>无法识别来自哪个终端</strong>)，它只会接受到一个请求信号，必须有一种技术让服务器知道请求来自哪，这就是会话技术</u></p>
-<h3 id="会话："><a href="#会话：" class="headerlink" title="会话："></a>会话：</h3><p>​      就是客户端与服务器之间发生的一系列连续的请求和响应的过程，<strong>打开浏览器到关闭浏览器进行的过程操作</strong></p>
-<h3 id="会话状态："><a href="#会话状态：" class="headerlink" title="会话状态："></a>会话状态：</h3><p>指服务器和浏览器在会话过程中产生的状态信息，借助于会话状态，服务器能够把属于同一次会话的一系列请求和响应关联起来</p>
-<p>属于同一次会话的请求共用一个标识符，即session id（同一浏览器多个窗口属于同一会话，即共用同一id，关闭浏览器后再次打开，id刷新）</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li>string getid() 获取session id</li>
-<li>vodi setmaxnactiveinterval（） 设置session失效时间，单位秒</li>
-<li>int getmaxinactiveinterval 获取当前session的失效时间</li>
-<li>void invalidate 设置session失效时间</li>
-<li>void setattribute（string key，object value） 通过键值对存储数据</li>
-<li>object getattribute(string key) 通过键值对获取对应数据</li>
-<li>object removeattribute(string key) 通过键值对删除对应数据</li>
-</ul>
-<p><strong>session生命周期比request长，故用session存储用户名与密码</strong></p>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>针对浏览器，不同浏览器使用不同的cookie</p>
-<p>cookie是服务端在HTTP响应中附带传给浏览器的一个小文本文件，一旦浏览器保存了某个cookie，在之后的请求与响应过程中，会将此cookie来回传递，这样就可以通过cookie这个载体完成客户端与服务端的交互</p>
-<p><strong>cookie本身也是javax.servlet中的类</strong></p>
+<p>Cache Aside模式通常适用于对数据一致性要求较低的场景，例如读取操作频繁，但写入操作较少的应用程序，在需要更强一致性和实时性的情况下，需要使用其他缓存模式</p>
+<br>
+
+<blockquote>
+<p>缓存一致性维护</p>
+<p><strong>先更新DB还是先删除缓存？</strong></p>
+<p>缓存一致性维护的重点在于减少缓存与主存储数据不一致的时间，缓存不一致无法避免，只能减少不一致的时间</p>
+<p>常见误区：维护缓存一致性的解决的主要问题并不是增加用户访问新数据的访问速度，而是减少缓存与主存储数据不一致的时间，切勿混淆选择原因</p>
+</blockquote>
+<br>
+
+<p>方案1：先删除cache，后更新DB</p>
+<p>此种方式先删除cache，当DB更新还未完成的时候，如果有请求到达，则会请求DB中的旧数据，然后DB会返回旧数据并写入cache，DB更新完成后出现数据不一致问题，数据不一致的时间为一个TTL（其他开销时间不变）。</p>
+<p>缓存不一致的场景：</p>
+<p><strong>请求1先把cache中的A数据删除 -&gt; 请求2从DB中读取数据A -&gt; 请求1再把DB中的A数据更新</strong></p>
+<p>由于磁盘操作的速度远小于缓存操作的速度，在进行DB写入的同时可能会出现新的DB读取，此时磁盘更新没有完毕，请求2获取到了DB中过时的数据，出现缓存不一致</p>
+<br>
+
+<p>方案2：先更新DB，后删除cache</p>
+<p>此种方式先更新DB，后删除cache，在其他在DB更新完成后，在进行cache更新，此种方式缓存不一致的时间为缓存数据的写入时间。</p>
+<p>由于缓存读写较快，此种方式下缓存的不一致时间通常远远小于方案1导致的一个TTL时间的缓存不一致问题</p>
+<p>缓存不一致的场景：</p>
+<p><strong>请求1从DB读数据A -&gt; 请求2写更新数据A到数据库并删除cache中的A数据 -&gt; 请求1将数据A写入cache</strong></p>
+<br>
+
+<p>Cache Aside Pattern的缺陷</p>
+<p><strong>缺陷1：首次请求数据一定不存在cache的问题</strong></p>
+<p>解决方法：将热点数提前放入cache中</p>
+<p><strong>缺陷2：写操作比较频繁的话会导致数据被频繁删除，这样会影响缓存命中率</strong></p>
+<p>解决方法：</p>
 <ul>
-<li><p>创建cookie</p>
-<p>调用responseaddcookie()将cookie写入客户端</p>
-</li>
-<li><p>读取cookie</p>
-<p>request.getcookies()</p>
-</li>
+<li>数据库和缓存数据强一致场景：更新DB的时候同时更新cache，使用锁&#x2F;分布式锁来保证二者一起更新的原子性</li>
+<li>短暂允许数据库和缓存数据不一致的场景，更新DB的时候同时更新cache，不需要加锁保证原子性，但是给缓存加一个比较短的过期时间，这样可以保证数据即使不一致的话影响也比较小</li>
 </ul>
-<h3 id="cookie常用方法"><a href="#cookie常用方法" class="headerlink" title="cookie常用方法"></a>cookie常用方法</h3><p>void setmaxage(int age) 设置cookie的有效时间，单位秒</p>
-<p>int getmaxage() 获取cookie的有效时间</p>
-<p>string getName() 获取cookie的name</p>
-<p>string getvalue() 获取cookie的value</p>
-<h3 id="cookie与session的区别"><a href="#cookie与session的区别" class="headerlink" title="cookie与session的区别"></a>cookie与session的区别</h3><p>session：存在服务器 保存object类型</p>
-<p>cookie：存在浏览器，保存的数据是string类型</p>
-<p>安全： <strong>session保存重要内容，cookie保存不重要信息</strong></p>
+<br>
+
+<hr>
+<blockquote>
+<p>Read&#x2F;Write Through Pattern（读写穿透）</p>
+</blockquote>
+<p>Read&#x2F;Write Through Pattern中服务端把cache视为主要数据存储，从中读取数据并将数据写入其中。cache服务负责将此数据读取和写入DB，从而减轻了应用程序的职责</p>
+<br>
+
+<p>写（Write Through）：</p>
+<ul>
+<li>先查cache，cache中不存在，直接更新DB</li>
+<li>cache中存在，则先更新cache，然后cache服务自己更新DB（同步更新cache和DB）</li>
+</ul>
+<br>
+
+<p>读（Read Through）</p>
+<ul>
+<li>从cache中读取数据，读取到就直接返回</li>
+<li>读取不到的话，先从DB加载，写入到cache后返回响应</li>
+</ul>
+<br>
+
+<p>Read-Through Pattern 实际上只是在Cache-AsidePatter上进行了封装。</p>
+<p>在Cache-Aside Pattern下，发生请求的时候，如果cache中不存在对应的数据，是由客户端自己负责把数据写入cache。</p>
+<p>而Read Through Pattern则是在cache服务自己来写入缓存，这对客户端是透明的。</p>
+<br>
+
+<p>Read-Through Pattern也有首次请求数据一定不在Cache的问题，对于热点数据可以提前放入缓存中</p>
+<br>
+
+<hr>
+<blockquote>
+<p>Write Behind Pattern（异步缓存写入）</p>
+</blockquote>
+<p>Write Behind Pattern 和 Read&#x2F;Write Through相似，两者都是由cache服务来负责cache和DB的读写</p>
+<br>
+
+<p>同时，二者又存在很大的不同：</p>
+<p>Read&#x2F;Write Through 是同步更新cache和DB。</p>
+<p>Write Behind Caching则是只更新缓存，不直接更新DB，而是改为异步批量的方式来更新DB。</p>
+<br>
+
+<p>明显，这种方式对数据一致性带来了更大的挑战，比如cache数据可能还没异步更新DB的话，cache服务可能就挂掉了。</p>
+<br>
+
+<p>这种策略在平时开发过程中比较少见，但是不代表应用场景少，比如消息队列中消息的异步写入磁盘、MySQL的InnoDB Buffer Pool机制都使用到了这种策略。</p>
+<br>
+
+<p>Write Behind Pattern下DB的写性能非常高，非常适合一些数据经常变化，又对数据一致性要求不高的场景，比如浏览量、点赞量</p>
+<br>
+
+<p>该模式的优点包括了应用程序的响应性、降低了写入延迟、并能够高校处理大量的写入操作。但是，也存在以下挑战：</p>
+<ul>
+<li>数据一致性：Write-Behind引入了潜在不一致性的时段，既缓存与主数据存储之间的数据可能不同步。如果应用程序崩溃或写后处理失败，数据可能不会同步</li>
+<li>增加复杂性：实现后台写入的逻辑可能较为负责，需要处理写入失败，异步处理、数据一致性等问题</li>
+<li>写操作批处理的管理：管理批处理操作可能需要考虑事务性和错误处理</li>
+</ul>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/javaweb/" class="">
-              javaweb
+            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" class="">
+              后端每日一练
             </a>
           
         </div>
@@ -696,7 +709,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2022/02/23/servelet/" target="_blank" title="servelet学习">http://khdiu.github.io/2022/02/23/servelet/</a>
+    <a href="/2023/10/23/后端day1/" target="_blank" title="后端day1">http://khdiu.github.io/2023/10/23/后端day1/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -718,21 +731,39 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/computer%20network.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/computer%20network.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2022/02/24/computer-network/" class="post-nav-link">
+    <a href="/2023/10/23/servelet/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">computer network</div>
+        <div class="title-text">servelet学习</div>
       </div>
       
       <!-- <div class="content">
-        computer network1.chapter1  computer networks and the Intern
+        javawebTomcat: web 应用服务器
+servletweb开发基石，与平台无关的服务器组件，负责与客户端进行
       </div> -->
     </a>
   </div>
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/10/16/spring-circular-dependencies/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">spring circular-dependencies</div>
+      </div>
+      <!-- <div class="content">
+        Spring循环依赖循环依赖在Java中，循环依赖通常指的是类之间的相互依赖关系。其中一个类依赖于另一个类，而另一个类同
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -938,7 +969,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javaweb"><span class="toc-text">javaweb</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#servlet"><span class="toc-text">servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-servlet%E5%8A%9F%E8%83%BD"><span class="toc-text">1.servlet功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">2.servlet生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-servletconfig"><span class="toc-text">3.servletconfig</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#servletconfig%E4%B8%8Eservletcontext%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">servletconfig与servletcontext的区别：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-servlet%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-text">4.servlet的层次结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">HTTP请求类型：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSP"><span class="toc-text">JSP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BD%AC%E6%8D%A2%E6%B5%81%E7%A8%8B"><span class="toc-text">1.转换流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HTML%E4%B8%AD%E5%B5%8C%E5%85%A5JAVA%E7%A8%8B%E5%BA%8F"><span class="toc-text">2.HTML中嵌入JAVA程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-jsp%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.jsp内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-request%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">4.request常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-response%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">5.response常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E4%BC%9A%E8%AF%9D"><span class="toc-text">session会话</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%EF%BC%9A"><span class="toc-text">会话：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E7%8A%B6%E6%80%81%EF%BC%9A"><span class="toc-text">会话状态：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">cookie常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie%E4%B8%8Esession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">cookie与session的区别</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E7%A7%8D%E7%BC%93%E5%AD%98%E8%AF%BB%E5%86%99%E7%AD%96%E7%95%A5"><span class="toc-text">3种缓存读写策略</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -971,18 +1002,18 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/05/12/JUC/" class="post-img " style="background-size: cover; 
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/JUC.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/JUC.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">05-12</span>
+                  <span class="post-date">10-24</span>
                 
               </div>
-              <a class="post-title" href="/2023/05/12/JUC/">JUC</a>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">后端day4</a>
             </div>
           </div>
         
@@ -992,18 +1023,18 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/04/07/srping-auto-configration/" class="post-img " style="background-size: cover; 
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/spring.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">04-07</span>
+                  <span class="post-date">10-24</span>
                 
               </div>
-              <a class="post-title" href="/2023/04/07/srping-auto-configration/">srping auto configration</a>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/">后端day3</a>
             </div>
           </div>
         
@@ -1013,28 +1044,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/03/13/java%E8%AF%AD%E6%B3%95%E7%B3%96/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/java.webp" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/java.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">03-13</span>
-                
-              </div>
-              <a class="post-title" href="/2023/03/13/java%E8%AF%AD%E6%B3%95%E7%B3%96/">java语法糖</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/02/13/back-number/" class="post-img " style="background-size: cover; 
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -1042,10 +1052,10 @@
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">02-13</span>
+                  <span class="post-date">10-24</span>
                 
               </div>
-              <a class="post-title" href="/2023/02/13/back-number/">back number</a>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/">后端day2</a>
             </div>
           </div>
         
@@ -1055,18 +1065,39 @@
             
 
             <div class="post-img-box">
-              <a href="/2022/05/13/Introduction%20to%20software%20engineer/" class="post-img " style="background-size: cover; 
+              <a href="/2023/10/23/servelet/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/software%20engineer.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/software%20engineer.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">05-13</span>
+                  <span class="post-date">10-23</span>
                 
               </div>
-              <a class="post-title" href="/2022/05/13/Introduction%20to%20software%20engineer/">Introduction to software engineer</a>
+              <a class="post-title" href="/2023/10/23/servelet/">servelet学习</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-23</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/">后端day1</a>
             </div>
           </div>
         

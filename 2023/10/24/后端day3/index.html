@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签 | khdiu&#39;blog</title>
+  <title>后端day3 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -499,130 +499,771 @@
 </header>
         <!-- 内容区域 -->
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-tags" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="tags-header" style="background-image:url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/tag/background.jpg')">
-    <div class="tags-header-title">
-        标签
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        后端day3
+      </span>
     </div>
-    <div class="tags-header-desc">
     
-        <span class="title" id="tags-header-desc"></span>
-        <script>
-  function typedFn() {
-    const el = '#tags-header-desc';
-    const type = 'tag';
-    let desc = '好久不见'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-10-24 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/Learning/" class="post-detail-header_category">
+              Learning
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="读写分离与分库分表"><a href="#读写分离与分库分表" class="headerlink" title="读写分离与分库分表"></a>读写分离与分库分表</h1><h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><blockquote>
+<p>何为读写分离？</p>
+</blockquote>
+<p>读写分离主要是为了将对数据库的读写操作分散到不同的数据库节点上。</p>
+<p>这样可以小幅提高写性能，大幅提升读性能 </p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E7%BB%83/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E7%BB%83/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="读写分离" style="zoom:67%;">
+
+<p>一般情况下，会选择一主多从，即一台主数据库负责写，其他的从数据库负责读。主库和从库之间会进行数据同步，以保证从库之间会进行数据同步，以保证从库中数据的准确性。</p>
+<p>这样架构实现较为简单，并且符合系统的写少读多的特点。</p>
+<br>
+
+
+
+<blockquote>
+<p>读写分离会带来哪些问题？</p>
+<p>如何解决？</p>
+</blockquote>
+<p>读写分离对于提升数据库的并发非常有效。</p>
+<p>同时也会带来一个问题：</p>
+<p>主库和从库的数据存在延迟，比如写完主库之后，主库的数据同步到从库是需要时间的，这个时间差就导致了主库和从库的数据不一致性问题。</p>
+<p>也就是经常说的<strong>主从同步延迟</strong>。</p>
+<br>
+
+<p><strong>主从同步延迟</strong></p>
+<p>主从同步延迟的集中解决方法</p>
+<ol>
+<li><p>强制将读请求路由到主库处理</p>
+<p>从库数据过期，直接从主库读取。</p>
+<p>这种方式会增加主库的压力，但是实现起来较为简单，也是使用最多的一种方式</p>
+<p>比如sharding-JDBC就是采用这种方案</p>
+<p>对于这种方案，你可以将哪些必须获取最新数据的读请求都交给主库处理</p>
+</li>
+<li><p>延迟读取</p>
+<p>限制读取在进行写操作之后，经过同步延迟间隔，再开放读操作</p>
+<p>比如在支付之后，跳转到一个支付成功的页面，点击返回之后才返回自己的账户</p>
+</li>
+</ol>
+<br>
+
+<blockquote>
+<p>如何实现读写分离</p>
+</blockquote>
+<p>实现读写分离一般包含以下几步：</p>
+<ol>
+<li>部署多台数据库，选择一台作为主数据库，其他的一台或多台作为从数据库</li>
+<li>保证主数据库和从数据库之间的数据是实时同步的</li>
+<li>系统将写请求交给主数据库处理，读请求交给从数据库处理</li>
+</ol>
+<br>
+
+<p>常用的两种方式：</p>
+<h3 id="代理方式"><a href="#代理方式" class="headerlink" title="代理方式"></a>代理方式</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E7%BB%83/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E7%BB%83/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="代理方式" style="zoom:67%;">
+
+<br>
+
+<p>咋应用和数据之间添加一个代理层。</p>
+<p>应用程序将所有的数据请求都交给代理层处理，代理层负责分离读写请求，将它们路由到对应的数据库中</p>
+<p>提供类似功能的中间件有MySQL Router（官方），Atlas（基于MySQL Proxy）、Maxsacale、MyCat。</p>
+<br>
+
+<h3 id="组件方式"><a href="#组件方式" class="headerlink" title="组件方式"></a>组件方式</h3><p>这种方式中，我们可以通过引入第三方组件来帮助我们管理读写请求</p>
+<p>例如sharding-jdbc，直接引入jar包即可使用，非常方便。</p>
+<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><p>上述提到的读写分离应对的是数据库并发问题，没有解决数据库存储问题。</p>
+<p>如果一张MySQL一张表的数据量过大怎么办，即如何解决MySQL的存储压力？</p>
+<p>分库分表就是用来解决MySQL的存储压力的。</p>
+<br>
+
+<blockquote>
+<p>何为分库？</p>
+</blockquote>
+<p>分库就是将数据库中的数据分散到不同的数据库上。</p>
+<p>例如：</p>
+<ul>
+<li>数据库中的用户表和用户订单表分别放到两个不同的数据库</li>
+<li>由于用户表数据量太大，你对用户表进行了水平切分，然后将切分后的两张表分别放在两个不同的数据库</li>
+</ul>
+<br>
+
+<blockquote>
+<p>何为分表？</p>
+</blockquote>
+<p>分表就是对单表的数据进行拆分，可以是垂直拆分，也可以是水平拆分。</p>
+<br>
+
+<p><strong>何为垂直拆分？</strong></p>
+<p>垂直拆分就是对数据库表列的拆分，把一张列比较多的表拆分为多张表</p>
+<p>如：将用户信息表中的一些列单独抽出来作为一个表</p>
+<br>
+
+<p><strong>何为水平拆分？</strong></p>
+<p>水平拆分是对数据表行的拆分，把一张行比较多的表拆分为多张表</p>
+<p>如：将用户信息表拆分为多个用户信息表，这样可以避免单一数据量过大对性能造成影响。</p>
+<br>
+
+<blockquote>
+<p>什么情况下需要分库分表</p>
+</blockquote>
+<p>下面几种场景可以考虑分库分表：</p>
+<ul>
+<li>但比奥数据到达千万级别以上，数据库读写速度比较缓慢</li>
+<li>数据库中的数据占用的空间越来越大，备份时间越来越长（分库）</li>
+<li>应用的并发量太大（分库）</li>
+</ul>
+<br>
+
+<blockquote>
+<p>分库分表会带来什么问题</p>
+</blockquote>
+<p>引入分库分表之后，会给系统带来什么挑战？</p>
+<ul>
+<li>join操作：同一个数据库中的表分布在了不同的数据库中，导致无法使用join操作，这就导致我们需要手动进行数据封装，比如在一个数据库中查询到一个数据之后，再根据这个数据去另外一个数据库中找到对应的数据</li>
+<li>事务问题：同一个数据库的表分布在了不同的数据库中，如果单个操作涉及到多个数据库，那么数据库自带的事务就无法满足要求了</li>
+<li>分布式id：分库之后，数据遍布在了不同服务器上的数据库中，数据库的自增主键已经没办法满足生成的主键唯一了，这个时候就需要引入分布式id解决全局唯一主键问题。</li>
+</ul>
+<p>另外，引入分库分表之后，一般需要DBA的参与，同时还需要更多的数据库，这些都属于成本</p>
+<br>
+
+<p>推荐方案：</p>
+<p>ShardingSphere项目（包括Sharding-JDBC、Sharding-Proxy和Sharding-sidecar）。</p>
+<p>ShardingSphere的功能完善，除了支持读写分离和分库分表，还提供分布式事务、数据库治理等功能</p>
+<br>
+
+<blockquote>
+<p>除了分库分表，还有其他方法吗？</p>
+</blockquote>
+<p>除了分库分表解决方案，还有很多公司使用了目前比较火的一个开源的分布式关系型数据库TiDB</p>
+<p>TiDB天然支持水平扩容或缩容，金融级高可用，并且，兼容MySQL5.7协议和MySQL生态。</p>
+<p>非常适合高可用、强一致要求、数据规模较大的各种应用场景</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" class="">
+              后端每日一练
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>何星林</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2023/10/24/后端day3/" target="_blank" title="后端day3">http://khdiu.github.io/2023/10/24/后端day3/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">后端day4</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">后端day2</div>
+      </div>
+      <!-- <div class="content">
+        资料来源：JavaGuide知识星球
+Springboot 自动装备原理从以下三个步骤考虑：
+
+什么是SpringBoo
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
 </script>
     
-    </div>
-    <div class="mask-box"></div>
-</div>
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
 
 
-<div id="tags" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/Software-Engineer/" title="Software Engineer: 1">
-                    <span class="tag-content"
-                        title="Software Engineer" style="background-color: #FEF9E7;">Software Engineer
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/java/" title="java: 2">
-                    <span class="tag-content"
-                        title="java" style="background-color: #A3E4D7;">java
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Database/" title="Database: 2">
-                    <span class="tag-content"
-                        title="Database" style="background-color: #A3E4D7;">Database
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/ComputerNetwork/" title="ComputerNetwork: 1">
-                    <span class="tag-content"
-                        title="ComputerNetwork" style="background-color: #F5EEF8;">ComputerNetwork
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/back-number/" title="back number: 1">
-                    <span class="tag-content"
-                        title="back number" style="background-color: #FEF9E7;">back number
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/javaweb/" title="javaweb: 1">
-                    <span class="tag-content"
-                        title="javaweb" style="background-color: #F8C471;">javaweb
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/spring/" title="spring: 3">
-                    <span class="tag-content"
-                        title="spring" style="background-color: #D7BDE2;">spring
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" title="后端每日一练: 4">
-                    <span class="tag-content"
-                        title="后端每日一练" style="background-color: #F9E79F;">后端每日一练
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/latex/" title="latex: 1">
-                    <span class="tag-content"
-                        title="latex" style="background-color: #D5F5E3;">latex
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7/" title="软件开发环境与工具: 1">
-                    <span class="tag-content"
-                        title="软件开发环境与工具" style="background-color: #A3E4D7;">软件开发环境与工具
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
-        </div>
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://blogpicture01.oss-cn-beijing.aliyuncs.com/blogbackground/homepage/yotailang%20.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>何星林</h2>
+        
+        
+          <p>早起每一天</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:khdiue@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/khdiu"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1179763684"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E4%B8%8E%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-text">读写分离与分库分表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-text">读写分离</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-text">代理方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-text">组件方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-text">分库分表</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">后端day4</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/">后端day3</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday2/">后端day2</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/23/servelet/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-23</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/23/servelet/">servelet学习</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-23</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/23/%E5%90%8E%E7%AB%AFday1/">后端day1</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
