@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>后端day2 | khdiu&#39;blog</title>
+  <title>Dobbo入门 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -512,21 +512,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        后端day2
+        Dobbo入门
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-10-24 |
+          <i class="fas fa-calendar"></i> 发表于：2024-03-15 |
         </span>
       
 
@@ -559,33 +559,191 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>资料来源：JavaGuide知识星球</p>
-<h1 id="Springboot-自动装备原理"><a href="#Springboot-自动装备原理" class="headerlink" title="Springboot 自动装备原理"></a>Springboot 自动装备原理</h1><p>从以下三个步骤考虑：</p>
+        <h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="分布式系统中的相关概念"><a href="#分布式系统中的相关概念" class="headerlink" title="分布式系统中的相关概念"></a>分布式系统中的相关概念</h2><h2 id><a href="#" class="headerlink" title></a></h2><h3 id="大型互联网项目架构目标"><a href="#大型互联网项目架构目标" class="headerlink" title="大型互联网项目架构目标"></a>大型互联网项目架构目标</h3><p>互联网项目特点</p>
+<ul>
+<li>用户多</li>
+<li>流量大，并发高</li>
+<li>海量数据</li>
+<li>易受攻击</li>
+<li>功能繁琐</li>
+<li>变更快</li>
+</ul>
+<p>衡量网站的性能指标</p>
+<ul>
+<li>响应时间：指执行一个请求从开始到最后受到相应数据所花费的总体时间</li>
+<li>并发数：指系统同时能处理的请求数量<ul>
+<li>并发连接数：指的是客户端向服务器发起请求，并建立了TCP连接，每秒钟服务器连接的总TCP数量</li>
+<li>请求数：也成为QPS，指的是每秒多少请求</li>
+<li>并发用户：单位时间内有多少用户</li>
+</ul>
+</li>
+<li>吞吐量：指单位时间内系统能处理的请求数量<ul>
+<li>QPS：Query Per Second 每秒查询数</li>
+<li>TPS：Transactions Per Second 每秒事务数</li>
+<li>一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机再发送请求时开始计时，受到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数</li>
+<li>一个页面的一次访问，只会形成一个TPS；但一次页面请求，可能产生多次对服务器的请求，就会有多个QPS</li>
+</ul>
+</li>
+</ul>
+<p>架构目标</p>
+<ul>
+<li>高性能：提供快速的访问体验</li>
+<li>高可用给：网站服务一直可以正常访问</li>
+<li>可伸缩：通过硬件增加、减少，提高、降低处理能力</li>
+<li>高可扩展：系统间耦合低，方便的通过新增、移除方式，增加、减少新的功能、模块</li>
+<li>安全性：提供网站安全访问和数据加密，安全存储等策略</li>
+<li>敏捷性：随需应变，快速响应</li>
+</ul>
+<h3 id="集群与分布式"><a href="#集群与分布式" class="headerlink" title="集群与分布式"></a>集群与分布式</h3><p>集群：多单位干同样的事情</p>
+<ul>
+<li>一个业务模块，部署再多台服务器上</li>
+</ul>
+<p>分布式：多单位干不一样的事情，合起来是一件大事</p>
+<ul>
+<li>一个大的业务系统，拆分为小的业务模块，分别部署再不同的机器上</li>
+</ul>
+<p>架构的演化</p>
 <ol>
-<li>什么是SpringBoot自动装配？</li>
-<li>Springboots如何实现自动装配的？如何实现按需加载</li>
-<li>如何实现一个Starter</li>
+<li><p>单体架构</p>
+<ol>
+<li>优点<ol>
+<li>简单：开发部署都很方便，小型项目首选</li>
 </ol>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在使用Spring的过程中，需要使用XML进行配置，即使Spring后面引入了基于注解的配置，我们在开启某些Spring特性或者引入第三方依赖的时候，还是需要用XML或Java进行显示配置</p>
-<br>
+</li>
+<li>缺点：<ol>
+<li>项目启动慢</li>
+<li>可靠性差</li>
+<li>可伸缩性差</li>
+<li>扩展性和可维护性差</li>
+<li>性能低</li>
+</ol>
+</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222557751.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222557751.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314222557751" style="zoom:33%;">
+</li>
+<li><p>垂直架构</p>
+<ol>
+<li>垂直架构是指将单体架构中的多个模块拆分为多个独立的项目，形成多个独立的单体架构</li>
+<li>存在的问题<ol>
+<li>重复的功能太多</li>
+</ol>
+</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222832561.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222832561.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314222832561" style="zoom:33%;">
+</li>
+<li><p>分布式架构</p>
+<ol>
+<li>分布式架构是指再垂直架构的基础上，将公共业务模块抽取出来，作为独立的服务，供其他调用者消费，以实现服务的共享和重用</li>
+<li>RPC：Remote Procedure Call 远程过程调用。有非常多的协议和技术都实现了RPC的过程。比如：HTTP REST风格，Java RMI规范、WebServiceSOAP协议、Hession等等。</li>
+<li>存在问题<ol>
+<li>服务提供方一旦产生变更，所有消费方都需要变更</li>
+</ol>
+</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223308307.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223308307.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314223308307" style="zoom: 33%;">
+</li>
+<li><p>SOA架构</p>
+<ol>
+<li>SOA：（Service-Oriented Architecture，面向服务的架构）是一个组件模型，它将应用程序的不同功能单元（称为服务）进行拆分，并通过这些服务之间定义良好的结构和契约联系起来</li>
+<li>ESB：（Enterprise Serbice Bus）企业服务总线，服务中介。主要是提供了一个服务于服务之间的交互。ESB包含的功能如：负载均衡，流量控制，加密处理，服务的监控，异常处理，监控告急等等。</li>
+</ol>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223732559.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223732559.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314223732559" style="zoom:33%;">
 
-<p>但是，SpringBoot项目只需要添加相关依赖，通过启动带有@SpringBootApplication的启动类main方法即可，如下：</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoApplication</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>DemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
-<p>并且，可以通过Spring Boot的全局配置文件application.properties或application.yml即可对项目进行设置比如更换端口号，配置JPA属性等等</p>
 
+</li>
+<li><p>微服务架构</p>
+<ol>
+<li>微服务架构是在SOA上做的升华，微服务架构强调的一个重点是“业务需要彻底的组件化和服务化”，原有的单个业务系统会拆分为多个可以独立开发、设计、运行的小应用。这些小应用之间通过服务完成交互和集成</li>
+<li>微服务架构 &#x3D; 80%的SOA架构思想 + 100%的组件化架构思想 + 80%的领域建模思想</li>
+<li>特点<ol>
+<li>服务实现组件化：开发者可以自由选择开发技术，不需要协调其他团队</li>
+<li>服务之间交互一般使用REST API</li>
+<li>去中心化：每个微服务有自己私有的数据库持久化业务数据</li>
+<li>自动化部署：把应用拆分为一个个独立的单个服务，方便自动化部署、测试、运维</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Dubbo是SOA时代的产物，SpringCloud是微服务时代的产物</p>
+<h2 id="Dubbo概述"><a href="#Dubbo概述" class="headerlink" title="Dubbo概述"></a>Dubbo概述</h2><h3 id="Dubbo概念"><a href="#Dubbo概念" class="headerlink" title="Dubbo概念"></a>Dubbo概念</h3><ul>
+<li>Dubbo是阿里巴巴公司开源的一个高性能、轻量级的Java RPC框架</li>
+<li>致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314224613890.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314224613890.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314224613890" style="zoom:50%;">
+
+
+
+
+
+<h2 id="Dubbo快速入门"><a href="#Dubbo快速入门" class="headerlink" title="Dubbo快速入门"></a>Dubbo快速入门</h2><h3 id="Zookeeper安装"><a href="#Zookeeper安装" class="headerlink" title="Zookeeper安装"></a>Zookeeper安装</h3><h2 id="Dubbo-高级特性"><a href="#Dubbo-高级特性" class="headerlink" title="Dubbo 高级特性"></a>Dubbo 高级特性</h2><h3 id="dubbo-admin管理平台"><a href="#dubbo-admin管理平台" class="headerlink" title="dubbo-admin管理平台"></a>dubbo-admin管理平台</h3><ul>
+<li>dubbo-admin管理平台，是图形化的服务管理平台</li>
+<li>从注册中心中获取到所有的提供者&#x2F;消费者进行配置管理</li>
+<li>路由规则、动态配置、服务降级、访问控制、权重调整、负载均衡等管理功能</li>
+<li>dubbo-admin是一个前后端分离的项目。前端使用vue，后端使用springboot</li>
+</ul>
+<h3 id="dubbo-常用的高级配置"><a href="#dubbo-常用的高级配置" class="headerlink" title="dubbo 常用的高级配置"></a>dubbo 常用的高级配置</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315170119058.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315170119058.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315170119058" style="zoom:33%;">
+
+
+
+<p>序列化</p>
+<ul>
+<li>dubbo内部已经将序列化和反序列化的过程内部封装了</li>
+<li>我们只需要在定义pojo类时实现Serializable接口即可</li>
+</ul>
+<h4 id="地址缓存"><a href="#地址缓存" class="headerlink" title="地址缓存"></a>地址缓存</h4><blockquote>
+<p>注册中心挂了，服务是否可以正常访问</p>
+<p>可以，因为dubbo服务消费者在第一次调用时，会将服务提供方地址缓存到本地，以后再调用则不会访问注册中心</p>
+<p>当服务提供者地址发生变化时，注册中心会通知服务消费者</p>
+</blockquote>
+<h4 id="超时与重试"><a href="#超时与重试" class="headerlink" title="超时与重试"></a>超时与重试</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315172700065.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315172700065.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315172700065" style="zoom:33%;">
+
+
+
+<p>超时</p>
+<ul>
+<li><p>服务消费者再调用服务提供者的时候发生了阻塞、等待的情形，这个时候，服务消费者会一直等待下去</p>
+</li>
+<li><p>在某个峰值时刻，大量请求都同时请求服务消费者，会造成线程的大量堆积，势必会造成雪崩</p>
+</li>
+<li><p>dubbo利用超时机制来解决这个问题，在这个时间内，无法完成服务访问，则自动断开连接</p>
+</li>
+<li><p>使用timeout属性配置超时时间,默认值1000,单位毫秒</p>
+</li>
+</ul>
+<p>重试</p>
+<ul>
+<li>设置了超时时间,在这个时间段内,无法完成服务访问,则自动断开连接</li>
+<li>如果网络出现抖动,则这一次就会失败</li>
+</ul>
+<h2 id="Dubbo-高级特性-1"><a href="#Dubbo-高级特性-1" class="headerlink" title="Dubbo 高级特性"></a>Dubbo 高级特性</h2><h3 id="多版本"><a href="#多版本" class="headerlink" title="多版本"></a>多版本</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315175424682.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315175424682.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315175424682" style="zoom:33%;">
+
+<ul>
+<li>灰度发布:新功能发布时,会让一部分用户先使用新功能,用户反馈没问题时,再将所有用户迁移到新功能</li>
+<li>dubbo中使用version属性来设置和调用同一个接口的不同版本</li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡策略(4种):</p>
+<ul>
+<li>Random:按权重随机,默认值.按权重设置随机概率</li>
+<li>RoundRobin:按权重轮询</li>
+<li>LastActive:最少活跃调用数,相同活跃数的随机</li>
+<li>ConsistentHash:一致性Hash,相同参数的请求总是发到同一提供者</li>
+</ul>
+<h3 id="集群容错"><a href="#集群容错" class="headerlink" title="集群容错"></a>集群容错</h3><ul>
+<li>FailOver Cluster: 失败重试.默认值.当出现失败,重试其他服务器,默认重试两次,使用retries配置.一般用于读操作</li>
+<li>Failfast Cluster:快速失败,只发起一次调用,失败立即报错,通常用于写操作</li>
+<li>Failsafe Cluseter:失败安全,出现异常时,直接忽略,返回一个空结果</li>
+<li>Failback:失败自动恢复,后台记录失败请求,定时重发</li>
+<li>Forking Cluster:并行调用多个服务器,只要一个返回成功即可</li>
+</ul>
+<h3 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h3>
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" class="">
-              后端每日一练
+            <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="">
+              中间件
             </a>
           
         </div>
@@ -599,7 +757,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2023/10/24/后端day2/" target="_blank" title="后端day2">http://khdiu.github.io/2023/10/24/后端day2/</a>
+    <a href="/2024/03/15/Dobbo入门/" target="_blank" title="Dobbo入门">http://khdiu.github.io/2024/03/15/Dobbo入门/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -617,44 +775,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">后端day3</div>
-      </div>
-      
-      <!-- <div class="content">
-        读写分离与分库分表读写分离
-何为读写分离？
-
-读写分离主要是为了将对数据库的读写操作分散到不同的数据库节点上。
-这样可以
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/10/23/servelet/" class="post-nav-link">
+    <a href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">servelet学习</div>
+        <div class="title-text">ThreadPoolExecutor详解</div>
       </div>
       <!-- <div class="content">
-        javawebTomcat: web 应用服务器
-servletweb开发基石，与平台无关的服务器组件，负责与客户端进行
+        ThreadPoolExecutor详解
       </div> -->
     </a>
   </div>
@@ -863,7 +998,7 @@ servletweb开发基石，与平台无关的服务器组件，负责与客户端�
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot-%E8%87%AA%E5%8A%A8%E8%A3%85%E5%A4%87%E5%8E%9F%E7%90%86"><span class="toc-text">Springboot 自动装备原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dubbo"><span class="toc-text">Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">分布式系统中的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E7%9B%AE%E6%A0%87"><span class="toc-text">大型互联网项目架构目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F"><span class="toc-text">集群与分布式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo%E6%A6%82%E8%BF%B0"><span class="toc-text">Dubbo概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dubbo%E6%A6%82%E5%BF%B5"><span class="toc-text">Dubbo概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">Dubbo快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Zookeeper%E5%AE%89%E8%A3%85"><span class="toc-text">Zookeeper安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">Dubbo 高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dubbo-admin%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="toc-text">dubbo-admin管理平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dubbo-%E5%B8%B8%E7%94%A8%E7%9A%84%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-text">dubbo 常用的高级配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BC%93%E5%AD%98"><span class="toc-text">地址缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E4%B8%8E%E9%87%8D%E8%AF%95"><span class="toc-text">超时与重试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-1"><span class="toc-text">Dubbo 高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%89%88%E6%9C%AC"><span class="toc-text">多版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%AE%B9%E9%94%99"><span class="toc-text">集群容错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7"><span class="toc-text">服务降级</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

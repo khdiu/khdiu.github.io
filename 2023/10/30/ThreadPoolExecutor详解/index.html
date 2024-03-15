@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>后端day2 | khdiu&#39;blog</title>
+  <title>ThreadPoolExecutor详解 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -512,21 +512,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        后端day2
+        ThreadPoolExecutor详解
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-10-24 |
+          <i class="fas fa-calendar"></i> 发表于：2023-10-30 |
         </span>
       
 
@@ -559,33 +559,14 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>资料来源：JavaGuide知识星球</p>
-<h1 id="Springboot-自动装备原理"><a href="#Springboot-自动装备原理" class="headerlink" title="Springboot 自动装备原理"></a>Springboot 自动装备原理</h1><p>从以下三个步骤考虑：</p>
-<ol>
-<li>什么是SpringBoot自动装配？</li>
-<li>Springboots如何实现自动装配的？如何实现按需加载</li>
-<li>如何实现一个Starter</li>
-</ol>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在使用Spring的过程中，需要使用XML进行配置，即使Spring后面引入了基于注解的配置，我们在开启某些Spring特性或者引入第三方依赖的时候，还是需要用XML或Java进行显示配置</p>
-<br>
-
-<p>但是，SpringBoot项目只需要添加相关依赖，通过启动带有@SpringBootApplication的启动类main方法即可，如下：</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoApplication</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>DemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
-<p>并且，可以通过Spring Boot的全局配置文件application.properties或application.yml即可对项目进行设置比如更换端口号，配置JPA属性等等</p>
-
+        <h1 id="ThreadPoolExecutor详解"><a href="#ThreadPoolExecutor详解" class="headerlink" title="ThreadPoolExecutor详解"></a>ThreadPoolExecutor详解</h1>
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E5%90%8E%E7%AB%AF%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" class="">
-              后端每日一练
+            <a href="/tags/juc/" class="">
+              juc
             </a>
           
         </div>
@@ -599,7 +580,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2023/10/24/后端day2/" target="_blank" title="后端day2">http://khdiu.github.io/2023/10/24/后端day2/</a>
+    <a href="/2023/10/30/ThreadPoolExecutor详解/" target="_blank" title="ThreadPoolExecutor详解">http://khdiu.github.io/2023/10/30/ThreadPoolExecutor详解/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -621,20 +602,22 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday3/" class="post-nav-link">
+    <a href="/2024/03/15/Dobbo%E5%85%A5%E9%97%A8/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">后端day3</div>
+        <div class="title-text">Dobbo入门</div>
       </div>
       
       <!-- <div class="content">
-        读写分离与分库分表读写分离
-何为读写分离？
+        Dubbo分布式系统中的相关概念大型互联网项目架构目标互联网项目特点
 
-读写分离主要是为了将对数据库的读写操作分散到不同的数据库节点上。
-这样可以
+用户多
+流量大，并发高
+海量数据
+易受攻击
+功能
       </div> -->
     </a>
   </div>
@@ -645,16 +628,18 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/post/servlet.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/10/23/servelet/" class="post-nav-link">
+    <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">servelet学习</div>
+        <div class="title-text">后端day4</div>
       </div>
       <!-- <div class="content">
-        javawebTomcat: web 应用服务器
-servletweb开发基石，与平台无关的服务器组件，负责与客户端进行
+        线程池总结线程池优点《Java并发编程的艺术》：
+
+降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗
+
       </div> -->
     </a>
   </div>
@@ -863,7 +848,7 @@ servletweb开发基石，与平台无关的服务器组件，负责与客户端�
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot-%E8%87%AA%E5%8A%A8%E8%A3%85%E5%A4%87%E5%8E%9F%E7%90%86"><span class="toc-text">Springboot 自动装备原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadPoolExecutor%E8%AF%A6%E8%A7%A3"><span class="toc-text">ThreadPoolExecutor详解</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
