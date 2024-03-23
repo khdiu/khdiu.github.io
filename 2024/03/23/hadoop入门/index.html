@@ -1,0 +1,3555 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>hadoop入门 | khdiu&#39;blog</title>
+
+  <link rel="icon" type="image/png" href="/medias/logo1.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo1.png" class="lazyload placeholder" data-srcset="/medias/logo1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">khdiu&#39;blog</h3>
+      <h5 class="drawer-box-head_desc">本站用于记录个人的学习生活之旅途</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/khdiu">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo1.png" class="lazyload placeholder" data-srcset="/medias/logo1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">khdiu&#39;blog</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/friends" class="menu-item-link" title="友情链接">
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/khdiu" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        hadoop入门
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2024-03-23 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/Learning/" class="post-detail-header_category">
+              Learning
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="数据导论"><a href="#数据导论" class="headerlink" title="数据导论"></a>数据导论</h2><h3 id="企业数据分析方向"><a href="#企业数据分析方向" class="headerlink" title="企业数据分析方向"></a>企业数据分析方向</h3><p>数据是什么：</p>
+<ul>
+<li>数据是指对客观事件进行记录并可以鉴别的符号，是对客观事务的性质，状态以及相互关系尽心记载的物理符号或这些物理符号的组合，它是可以识别的、抽象的符号</li>
+<li>它不仅指狭义上的数字，还可以是具有一定意义的文字、字母、数字符号的组合、图形、图像、视频、音频等，也是客观事物的属性、数量、位置以及相互关系的抽象表示。</li>
+</ul>
+<p>数据怎么产生；</p>
+<ul>
+<li>对客观事务的计量和记录产生数据</li>
+</ul>
+<p>企业数据分析方向</p>
+<ul>
+<li>把隐藏在数据背后的信息集中和提炼出来，总结出所研究对象的内在规律，帮助管理进行有效的判断和决策</li>
+<li>数据分析在企业日常经营中主要有三大方向：<ul>
+<li>现状分析（分析当下的数据）：现阶段的整体情况，各个部分的构成占比、发展、变动；</li>
+<li>原因分析（分析过去的数据）：某一现状为什么发生，确定原因，做出调整优化；</li>
+<li>预测分析 （结合数据预测未来）：结合已有数据预测未来发展趋势。</li>
+</ul>
+</li>
+</ul>
+<p>原因分析</p>
+<ul>
+<li>也叫离线分析（Batch Processing）<ul>
+<li>面向过去，面向历史，分析已有的数据</li>
+<li>在时间维度明显成批次变化。一周一分析 （T+7），一天一分析（T+1），所以也叫做批处理</li>
+</ul>
+</li>
+</ul>
+<p>现状分析</p>
+<ul>
+<li>也叫实时分析（RealTime Processing | Streaming）<ul>
+<li>面向当下，分析实时产生的数据；</li>
+<li>所谓的实时是指从数据产生到数据分析到数据应用的时间间隔很短，可细分秒级、毫秒级</li>
+</ul>
+</li>
+</ul>
+<p>预测分析</p>
+<ul>
+<li>机器学习（Machine Learning）<ul>
+<li>基于历史数据和当下产生的实时数据预测未来发生的事情</li>
+<li>侧重于数学算法的运用，比如分类、聚类、关联、预测。</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据分析基本步骤"><a href="#数据分析基本步骤" class="headerlink" title="数据分析基本步骤"></a>数据分析基本步骤</h3><p>概述：</p>
+<ul>
+<li>数据分析步骤（流程）的重要性体现在 ：对如何开展数据分析提供了强有力的逻辑支持</li>
+<li>张文霖在《数据分析六部曲》说，典型的数据分析应该包含一下几个步骤：<ul>
+<li>明确分析目的和思路</li>
+<li>数据收集</li>
+<li>数据处理</li>
+<li>数据分析</li>
+<li>数据呈现</li>
+<li>报告撰写</li>
+</ul>
+</li>
+</ul>
+<p>明确分析的目的和思路</p>
+<ul>
+<li>目的是整个分析流程的起点，为数据的收集、处理以及分析提供清晰的指引方向</li>
+<li>思路是使分析框架体系化，比如先分析什么，后分析什么，使得个分析点之间具有逻辑联系，保证分析维度的完整性，分析结果的有效性以及正确性，需要数据分析方法论进行支持</li>
+<li>数据分析方法论是一些营销管理类相关理论，比如用户行为理论、PEST分析法、5W2H分析法等</li>
+</ul>
+<p>数据收集</p>
+<ul>
+<li>数据从无到有的过程：比如传感器收集气象数据、埋点收集用户行为数据</li>
+<li>数据传输搬运的过程：比如采集数据库数据到数据分析平台</li>
+</ul>
+<p>数据处理</p>
+<ul>
+<li>准确来说，应该称之为数据预处理</li>
+<li>数据预处理需要对收集到的数据进行加工整理，形成适合数据分析的样式，主要包括数据清洗、数据转化、数据提取、数据计算</li>
+<li>数据预处理可以保证数据的一致性和有效性，让数据变成干净规整的结构化数据</li>
+</ul>
+<p>数据分析</p>
+<ul>
+<li>用适当的分析方法和工具，对处理过的数据进行分析，提取有价值的信息，形成有效结论的过程</li>
+<li>需要掌握各种数据分析方法，还要熟悉数据分析软件的操作</li>
+</ul>
+<p>数据展现 </p>
+<ul>
+<li>数据展现又称之为数据可视化，指的是分析结果图标展示，因为人类是视觉动物</li>
+<li>数据可视化（Data Visualization）属于数据应用的一种</li>
+<li>注意，数据分析的结果不只有可视化展示，还可以继续数据挖掘（Data Mining），即席查询（Ad Hoc）等</li>
+</ul>
+<h3 id="大数据时代"><a href="#大数据时代" class="headerlink" title="大数据时代"></a>大数据时代</h3><p>大数据定义</p>
+<ul>
+<li>大数据（big data）是指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合</li>
+<li>是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产</li>
+</ul>
+<p>大数据5V特征</p>
+<ul>
+<li>Volume，数据体量大<ul>
+<li>采集数据量大</li>
+<li>存储数据量大</li>
+<li>计算数据量大</li>
+<li>TB、PB级别起步</li>
+</ul>
+</li>
+<li>Variety：种类、来源多样化<ul>
+<li>种类：结构化、半结构化、非结构化</li>
+<li>来源：日志文本、图片、音频、视频</li>
+</ul>
+</li>
+<li>Value：低密度价值<ul>
+<li>信息海量但是价值密度低</li>
+<li>深度复杂的挖掘分析需要机器学习参与</li>
+</ul>
+</li>
+<li>Velocity：速度快<ul>
+<li>数据增长速度快</li>
+<li>获取数据速度快</li>
+<li>数据处理速度快</li>
+</ul>
+</li>
+<li>Veracity：数据的质量<ul>
+<li>数据的准确性</li>
+<li>数据的可信赖度</li>
+</ul>
+</li>
+</ul>
+<p>应用场景</p>
+<ul>
+<li>电商领域<ul>
+<li>精准广告位、个性化推荐、大数据杀熟</li>
+</ul>
+</li>
+<li>传媒领域<ul>
+<li>精准营销、猜你喜欢、交互推荐</li>
+</ul>
+</li>
+<li>交通领域<ul>
+<li>拥堵预测、智能红绿灯、导航最优规划</li>
+<li>基站选址优化、舆情监控、客户用户画像</li>
+</ul>
+</li>
+</ul>
+<h3 id="分布式与集群"><a href="#分布式与集群" class="headerlink" title="分布式与集群"></a>分布式与集群</h3><p>分布式：多台机器，每台机器上部署不同的组件</p>
+<p>集群：多台机器，每台机器上部署相同组件</p>
+<p>混淆：</p>
+<ul>
+<li>分布式、集群的共同点都是：都是多台机器（服务器）组成的；</li>
+<li>因此口语中混淆两者概念的时候都是：相对于单机来说的</li>
+</ul>
+<p>应用：</p>
+<ul>
+<li>数据大爆炸，海量数据处理场景面临问题<ul>
+<li>存储：单机存储有瓶颈，多台机器分布式存储 </li>
+<li>计算：单机计算能力有限，多台机器分布式计算</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hadoop-1"><a href="#Hadoop-1" class="headerlink" title="Hadoop"></a>Hadoop</h2><h3 id="Hadoop概述"><a href="#Hadoop概述" class="headerlink" title="Hadoop概述"></a>Hadoop概述</h3><p>介绍：</p>
+<ul>
+<li><p>狭义上Hadoop指的是Apache软件基金会的一款开源软件</p>
+<p>用java语言实现，开源</p>
+<p>允许用户使用简单的编程模型实现跨机器集群对海量数据进行分布式计算处理</p>
+</li>
+<li><p>Hadoop核心组件</p>
+<ul>
+<li>Hadoop HDFS（分布式文件存储系统）：解决海量数据存储</li>
+<li>Hadoop YARN（集群资源管理和任务调度框架）：解决资源任务调度</li>
+<li>Hadoop MapReduce（分布式计算框架）：解决海量数据计算</li>
+</ul>
+</li>
+</ul>
+<p>发展简史：</p>
+<ul>
+<li>Hadoop之父：Doug Cutting</li>
+<li>Hadoop起源于Apache Lucene子项目：Nutch<ul>
+<li>Nutch的涉及目标是构建一个大型的全网搜索引擎</li>
+<li>遇到瓶颈：如何解决十亿网页的存储和索引问题</li>
+</ul>
+</li>
+</ul>
+<p>Hadoop现状</p>
+<ul>
+<li>HDFS作为分布式文件存储系统，处在生态圈的底层与核心地位；</li>
+<li>YARN作为分布式通用的集群资源管理系统和任务调度平台，支撑各种计算引擎运行，保证了Hadoop地位；</li>
+<li>MapReduce作为大数据生态圈第一代分布式计算引擎，由于自身涉及的模型所产生的弊端，导致企业一线几乎不再直接使用MapReduce进行编程处理，但是很多软件的底层仍然在使用MapReduce引擎来处理数据</li>
+</ul>
+<p>特性优点</p>
+<ul>
+<li>扩容能力（Scalability）：Hadoop是在可用的计算机集群间分配数据并完成计算任务的，这些集群可以方便灵活的方式扩展到数以千计的节点</li>
+<li>成本低（Economical）：Hadoop集群允许通过部署普通廉价的机器组成集群来处理大数据，以至于成本很低。看重的是集群整体能力</li>
+<li>效率高（efficiency）：通过并发数据，Hadoop可以在节点之间动态并行的移动数据，使得速度非常快</li>
+<li>reliability：能自动维护数据的多分复制，并且在任务失败后能自动地重新部署（redeploy）计算任务。所以Hadoop的按位存储和处理数据的能力值得信赖</li>
+</ul>
+<p>国内外应用</p>
+<ul>
+<li><p>国内：</p>
+<ul>
+<li><p>百度</p>
+<p>用户搜索表征的需求数据、阿拉丁爬虫数据存储</p>
+<p>数据分析和挖掘 竞价排名</p>
+</li>
+<li><p>阿里巴巴</p>
+<p>为电子商务网络平台提供底层的基础计算和存储服务</p>
+<p>交易数据、信用数据</p>
+</li>
+<li><p>腾讯</p>
+<p>用户关数据</p>
+<p>基于Hadoop、Hive构建TDW（腾讯分布式数据仓库）</p>
+</li>
+<li><p>华为对Hadoop的HA方案，以及HBase领域有深入研究</p>
+</li>
+</ul>
+</li>
+<li><p>国外：</p>
+<ul>
+<li><p>Yahoo</p>
+<p>支持广告系统</p>
+<p>用户行为分析</p>
+<p>支持Web搜索</p>
+<p>反垃圾邮件系统</p>
+</li>
+<li><p>FaceBook</p>
+<p>存储处理数据挖掘的日志统计</p>
+<p>构建基于Hadoop数据仓库平台</p>
+</li>
+<li><p>IBM</p>
+<p>蓝云基础设施构建</p>
+<p>商业化Hadoop发行、解决方案支持</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>发行版本：</p>
+<ul>
+<li>开源社区版：Apache开源社区发行，也是官方发行版本<ul>
+<li>优点：更新迭代快</li>
+<li>兼容稳定性不周</li>
+</ul>
+</li>
+<li>商业发行版：基于Apache开源协议，某些服务需要收费<ul>
+<li>优点：稳定兼容好</li>
+<li>缺点：收费 版本更新慢</li>
+</ul>
+</li>
+</ul>
+<p>架构变迁</p>
+<ul>
+<li>Hadoop 1.0<ul>
+<li>HDFS（分布式文件存储）</li>
+<li>MapReduce（资源管理和分布式数据处理）</li>
+</ul>
+</li>
+<li>Hadoop 2.0<ul>
+<li>HDFS（分布式文件存储）</li>
+<li>MapReduce（分布式数据处理）</li>
+<li>YARN（集群资源管理、任务调度）</li>
+</ul>
+</li>
+</ul>
+<h3 id="Hadoop集群"><a href="#Hadoop集群" class="headerlink" title="Hadoop集群"></a>Hadoop集群</h3><p>概述：</p>
+<ul>
+<li>Hadoop集群包括两个集群：HDFS集群、YARN集群</li>
+<li>两个集群逻辑上分离、通常物理上在一起</li>
+<li>两个集群都是标准的主从架构集群</li>
+</ul>
+<blockquote>
+<p>问题</p>
+<ol>
+<li><p>如何理解两个集群逻辑上分离？</p>
+<p>两个集群互相之间没有依赖，互不影响</p>
+</li>
+<li><p>如何理解两个集群物理上连在一起？</p>
+<p>某些角色进程往往部署在同一台物理服务器上</p>
+</li>
+<li><p>为什么没有MapReduce集群？有这样的说法吗？</p>
+<p>MapReduce是计算框架、代码层面的组件，没有集群之说</p>
+</li>
+</ol>
+</blockquote>
+<p>Hadoop集群</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317090252314.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317090252314.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240317090252314"></p>
+<p>Hadoop源码编译</p>
+<blockquote>
+<p>为什么要重新编译Hadoop源码？</p>
+<p>匹配不同操作系统本地库环境，Hadoop某些操作比如压缩、IO需要调用系统本地库（*.so|*.dll）</p>
+<p>如何编译Hadoop</p>
+<p>源码包根目录下文件：BUILDING.txt</p>
+</blockquote>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><p>step1：集群角色规划</p>
+<ul>
+<li>角色规划的准则<ul>
+<li>根据软件工作特性和服务器硬件资源情况合理分配</li>
+<li>比如依赖内存工作的NameNode是不是部署在大内存机器上？</li>
+</ul>
+</li>
+<li>角色规划注意事项<ul>
+<li>资源上有抢夺冲突的，尽量不要部署在一起</li>
+<li>工作上需要相互配合的，尽量部署在一起</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>运行角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>centos1</td>
+<td>namenode datanode resourcemanager nodemanager</td>
+</tr>
+<tr>
+<td>centos2</td>
+<td>secondarynamenode datanode nodemanager</td>
+</tr>
+<tr>
+<td>centos3</td>
+<td>datanode nodemanager</td>
+</tr>
+</tbody></table>
+<p>step2：服务器基础环境准备</p>
+<ul>
+<li><p>主机名（3台机器）</p>
+<p>vim &#x2F;etc&#x2F;hostname</p>
+</li>
+<li><p>Hosts映射（3台机器）</p>
+<p>vim &#x2F;etc&#x2F;hosts</p>
+</li>
+<li><p>防火墙关闭（3台机器）</p>
+</li>
+<li><p>ssh免密登录（node11执行-&gt;node1|node2|node3）</p>
+<ul>
+<li>ssh-keygen </li>
+<li>ssh-copy-id node1、ssh-copy-id node2、ssh-copy-id node3</li>
+</ul>
+</li>
+<li><p>集群时间同步（3台机器）</p>
+<ul>
+<li>yum -y install ntupdate</li>
+<li>ntpdate  ntp4.aliyun.com</li>
+</ul>
+</li>
+<li><p>创建同一工作目录（3台机器）</p>
+<ul>
+<li>mkdir -p &#x2F;export&#x2F;server&#x2F;    软件安装路径</li>
+<li>mkdir -p &#x2F;export&#x2F;data&#x2F;    数据存储路径</li>
+<li>mkdir -p &#x2F;export&#x2F;software&#x2F;    安装包存放路径</li>
+</ul>
+</li>
+</ul>
+<p>step3：上传、解压安装包</p>
+<ul>
+<li>JDK1.8安装（3台机器）</li>
+<li>上传、解压Hadoop安装包（node1）</li>
+</ul>
+<p>step4：Hadoop安装包目录结构</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bin</td>
+<td>Hadoop最基本的管理脚本和使用脚本的目录，这些脚本是sbin目录下管理脚本的基础实现，用户可以直接使用这些脚本管理和使用Hadoop</td>
+</tr>
+<tr>
+<td>etc</td>
+<td>Hadoop配置文件所在的目录</td>
+</tr>
+<tr>
+<td>include</td>
+<td>对外提供的编程库头文件（棘突动态库和静态库在lib目录中），这些头文件均是用C++定义的，通常用于C++程序访问HDFS或者编写MapReduce程序</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>该目录包含类了Hadoop对外提供的编程动态库和静态库，与include目录中的头文件结合使用</td>
+</tr>
+<tr>
+<td>libexec</td>
+<td>各个服务对应的shell配置文件所在的目录，可用于配置日志输出、启动参数（比如JVM参数）等基本信息</td>
+</tr>
+<tr>
+<td>sbin</td>
+<td>Hadoop管理脚本所在的目录，主要包含HDFS和YARN中各类服务的启动&#x2F;关闭脚本</td>
+</tr>
+<tr>
+<td>share</td>
+<td>Hadoop各个模块编译后的jar包所在的目录，官方自带示例</td>
+</tr>
+</tbody></table>
+<p>step5：配置文件</p>
+<ul>
+<li>第一类<ul>
+<li>hadoop-env.sh</li>
+</ul>
+</li>
+<li>第二类：xxxx-site.xml，site表示的是用户定义的配置，会覆盖default中的默认配置<ul>
+<li>core-site.xml 核心模块配置</li>
+<li>hdfs-site.xml hdfs文件系统模块配置</li>
+<li>mapred-site.xml MapReduce模块配置</li>
+<li>yarn-site.xml yarn模块配置</li>
+</ul>
+</li>
+<li>第三类：<ul>
+<li>workers</li>
+</ul>
+</li>
+<li>所有的配置文件目录：&#x2F;export&#x2F;server&#x2F;hadoop-3.3.0&#x2F;etc&#x2F;hadoop</li>
+</ul>
+<p>step6：分发同步安装包</p>
+<p>step7：配置环境变量</p>
+<p>step8：NameNode format（格式化操作）</p>
+<ul>
+<li><p>首次启动HDFS时，必须对其进行格式化操作</p>
+</li>
+<li><p>format本质上是初始化工作，进行HDFS清理和准备工作</p>
+</li>
+<li><p>命令：</p>
+<p>hdfs namenode -format</p>
+</li>
+</ul>
+<h4 id="启停命令、Web-UI"><a href="#启停命令、Web-UI" class="headerlink" title="启停命令、Web UI"></a>启停命令、Web UI</h4><p>手动逐个进程启动</p>
+<ul>
+<li><p>每台机器每次手动启动关闭一个角色进程，可以精准控制每个进程启停，避免群起群停</p>
+</li>
+<li><p>HDFS集群</p>
+<pre class=" language-shell"><code class="language-shell">#hadoop2.x版本命令
+hadoop-daemon.sh start|stop namenode|datanode|secondarynamenode
+#hadoop3.x版本命令
+hdfs --daemon start|stop namenode|datanode|secondarynamenode
+</code></pre>
+</li>
+<li><p>YARN集群</p>
+<pre class=" language-shell"><code class="language-shell">#hadoop2.x版本命令
+yarn-daemon.sh start|stop resourcemanager|nodemanager
+#hadoop3.x版本命令
+yarn --daemon start|stop resourcemanager|nodemanager
+</code></pre>
+</li>
+</ul>
+<p>shell脚本一键启动</p>
+<ul>
+<li><p>在node1上，使用软件自带的shell脚本一键启动。前提：<strong>配置好机器之间的SSH免密登录和workers文件</strong></p>
+</li>
+<li><p>HDFS集群</p>
+<p>start-dfs.sh<br>stop-dfs.sh</p>
+</li>
+<li><p>YARN</p>
+<p>start-yarn.sh</p>
+<p>stop-yarn.sh</p>
+</li>
+<li><p>Hadoop集群</p>
+<p>start-all.sh</p>
+<p>stop-all.sh</p>
+</li>
+</ul>
+<p>进程状态、日志查看</p>
+<ul>
+<li><p>启动完毕以后可以使用jps命令查看进程是否启动成功</p>
+</li>
+<li><p>Hadoop启动日志路径 &#x2F;export&#x2F;server&#x2F;hadoop-3.3.0&#x2F;logs&#x2F;</p>
+</li>
+<li><p>HDFS集群</p>
+<ul>
+<li><p>地址：namenode_host:9870</p>
+<p>其中namenode_host是namenode运行所在机器的主机名或者ip</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317145631076.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317145631076.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240317145631076"></p>
+</li>
+</ul>
+</li>
+<li><p>YARN集群</p>
+<ul>
+<li><p>地址：resourcemanager_host：8088</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317145811980.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240317145811980.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240317145811980"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h4><p>初体验</p>
+<ul>
+<li>shell命令操作<ul>
+<li>hadoop fs -mkdir &#x2F;jiulou</li>
+<li>hadoop fs -put zookeeper.out &#x2F;jiulou</li>
+<li>hadoop fs -;s &#x2F;</li>
+</ul>
+</li>
+<li>web UI 页面操作</li>
+</ul>
+<ol>
+<li>HDFS本质就是一个文件系统</li>
+<li>有目录树结构和Linux类似，分文件、文件夹</li>
+</ol>
+<p>MapReduce+YARN 初体验</p>
+<ul>
+<li><p>执行Hadoop官方自带的MapReduce案例，评估圆周率Π的值</p>
+<pre class=" language-shell"><code class="language-shell">cd /export/server/hadoop-3.3.0/share/hadoop/mapreduce/
+hadoop jar hadoop-mapreduce-examples-3.3.0.jar pi 2 4
+</code></pre>
+</li>
+</ul>
+<h3 id="HDFS分布式文件系统基础"><a href="#HDFS分布式文件系统基础" class="headerlink" title="HDFS分布式文件系统基础"></a>HDFS分布式文件系统基础</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>文件系统定义：</p>
+<ul>
+<li>文件系统是一种存储和组织数据的方法，实现了数据的存储、分级组织、访问和获取等操作，使得用户对文件范文和查找变得更加容易</li>
+</ul>
+<p>数据定义：</p>
+<ul>
+<li>指存储的内容本身，比如文件、视频、图片等，这些数据底层最终是存储在磁盘等存储介质上的。一般无需用户关心，只需要基于目录树进行增删查改即可，实际针对数据的操作由文件系统完成</li>
+</ul>
+<p>元数据：</p>
+<ul>
+<li>一般指文件大小、最后修改时间、底层存储位置、属性、所属用户、权限等信息</li>
+</ul>
+<h4 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h4><p>海量数据存储的问题：</p>
+<ul>
+<li>成本高<ul>
+<li>传统存储硬件通用性差，设备投资加上后期维护、升级扩容的成本非常高</li>
+</ul>
+</li>
+<li>如何支撑高效率的计算分析<ul>
+<li>传统存储方式意味着数据：存储是存储，计算是计算，当需要处理数据的时候把数据移动过来</li>
+<li>程序和数据存储是属于不同的技术厂商实现，无法有机整合在一起</li>
+</ul>
+</li>
+</ul>
+<p>分布式存储系统核心属性：</p>
+<ul>
+<li>分布式存储</li>
+<li>元数据记录</li>
+<li>分块存储</li>
+<li>副本机制</li>
+</ul>
+<p>分布式系统的优点</p>
+<ul>
+<li>问题：数据量大，单机存储遇到瓶颈</li>
+<li>解决：<ul>
+<li>单机纵向扩展：磁盘不够加磁盘，邮上线瓶颈限制</li>
+<li>多级横向扩展：机器不够加机器，理论上无限扩展</li>
+</ul>
+</li>
+</ul>
+<p>文件分块存储的好处</p>
+<ul>
+<li>问题：文件过大导致单机存不下，上传下载效率低</li>
+<li>解决：文件分块存储在不同机器，针对块并行操作提高效率</li>
+</ul>
+<p>元数据记录功能</p>
+<ul>
+<li>问题：文件分布在不同的机器上不利于寻找</li>
+<li>解决：元数据记录下文件机器存储位置信息，快速定位文件位置</li>
+</ul>
+<p>副本机制的作用</p>
+<ul>
+<li>问题硬件故障难以避免，数据容易丢失</li>
+<li>解决：不同机器设置备份，冗余存储，保障数据安全</li>
+</ul>
+<h4 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h4><ul>
+<li><p>HDFS（Hadoop Distributed File System）</p>
+</li>
+<li><p>是Apache Hadoop核心组件之一，作为大数据生态圈最底层的分布式存储服务而存在。</p>
+</li>
+<li><p>HDFS主要解决的就是海量数据的存储问题、分布式意味着是HDFS是横跨在多台计算机上的存储系统</p>
+</li>
+<li><p>HDFS是一种能够在普通硬件上运行的分布式文件系统，高度容错的，适应于具有大数据集的应用程序，它非常适用于存储大型数据（比如TB和PB）</p>
+</li>
+<li><p>HDFS使用多台计算机存储文件，并且提供统一的访问接口，像是访问一个普通文件系统一样使用分布式文件系统</p>
+</li>
+</ul>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>HDFS设计目标</p>
+<ul>
+<li>硬件故障（Hardware Failure）是常态，HDFS可能有成百上千的服务器组成，每一个组件都有可能出现故障。因此故障检测和自动快速恢复是HDFS的核心架构目标。</li>
+<li>HDFS上的应用主要是以流式读取数据（Streaming Data Access）。HDFS被设计成用于批处理，而不是用户交互式的。相较于数据访问和反应时间，更注重数据访问的高吞吐量。</li>
+<li>典型的HDFS文件大小是GB和TB的级别。所以，HDFS被调整为支持大文件。它提供很高的聚合数据带宽，一个集群中支持数百个节点，一个集群中还应该支持千万级别的文件 。</li>
+<li>大部分HDFS应用对文件要求是write-one-read-many访问模型。一个文件一旦创建、写入、关闭之后就不需要修改了。这一假设计划了数据一致性，使高吞吐量的数据访问称为可能。</li>
+<li>移动计算的代价比移动数据的代价低。一个应用请求，距离它操作的数据越近就越高效。将计算移动到数据附近，比将数据移动到应用所在更好。</li>
+<li>HDFS被设计为可移植的。</li>
+</ul>
+<h4 id="重要特性"><a href="#重要特性" class="headerlink" title="重要特性"></a>重要特性</h4><p>概述：</p>
+<ol>
+<li>主从架构</li>
+<li>分块存储</li>
+<li>副本机制</li>
+<li>元数据记录</li>
+<li>抽象统一的目录树结构</li>
+</ol>
+<p>主从架构</p>
+<ul>
+<li><p>HDFS集群是标准的master&#x2F;slave主从架构集群</p>
+</li>
+<li><p>一般一个HDFS集群是有一个Namenode和一定数目的Datanode组成</p>
+</li>
+<li><p>Namenode是HDFS主节点，Datanode是HDFS从节点，两种角色各司其职，共同协调完成分布式的文件存储服务</p>
+</li>
+<li><p>官方架构是如下的一主无从模式，其中五个从角色位于两个机架（Rack）的不同服务器上</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320164142047.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320164142047.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320164142047" style="zoom: 67%;"></li>
+</ul>
+<p>分块存储</p>
+<ul>
+<li>HDFS中的文件在物理上是分块存储（block）的，默认大小是128M，不足128M则本身就是一块</li>
+<li>块的大小可以通过配置参数来规定，参数位于hdfs-default.xml中：dfs.blocksize</li>
+</ul>
+<p>副本机制</p>
+<ul>
+<li>文件的所有block都会有副本，副本系数可以在文件创建的时候指定，也可以在之后通过命令改变</li>
+<li>副本数由参数dfs.replication控制，默认值是3，也就是会额外再复制2次，连同本身总共3份</li>
+</ul>
+<p>元数据管理</p>
+<ul>
+<li><p>在HDFS中，Namenode管理的元数据有两种类型</p>
+<ul>
+<li><p>文件自身属性信息</p>
+<p>文件名称、权限，修改时间，文件大小，复制因子，数据块大小</p>
+</li>
+<li><p>文件块位置映射信息</p>
+<p>记录文件块和DataNode之间的映射信息，即哪个快位于哪个节点上</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>namespace</p>
+<ul>
+<li>HDFS支持传统的层次文件组织结构。用户可以创建目录，然后将文件保存在这些目录中<ul>
+<li>用户可以创建、删除、移动或重命名文件</li>
+</ul>
+</li>
+<li>Namenode负责维护文件系统的namespace命名空间，任何对文件系统命名空间或属性的修改都将被Namenode记录下来</li>
+<li>HDFS会给客户端提供一个统一的抽象目录树，客户端通过路径来访问文件，形如：hdfs:&#x2F;&#x2F;namenode:port&#x2F;dir-a&#x2F;dir-b&#x2F;file.data</li>
+</ul>
+<h3 id="HDFS-shell命令"><a href="#HDFS-shell命令" class="headerlink" title="HDFS shell命令"></a>HDFS shell命令</h3><h4 id="解释说明"><a href="#解释说明" class="headerlink" title="解释说明"></a>解释说明</h4><p>命令</p>
+<ul>
+<li>命令行界面（command-line inteface,CLI）。是指用户通过键盘输入指令，计算机受到指令后，予以执行一种人机交互方式</li>
+<li>Hadoop提供了文件系统的shell命令客户端：hadoop fs [generic options]</li>
+</ul>
+<p>文件系统协议</p>
+<ul>
+<li><p>HDFS Shell CLI支持多种文件系统，包括本地文件系统（file:&#x2F;&#x2F;&#x2F;）、分布式文件系统（hdfs:&#x2F;&#x2F;nn:8020）等</p>
+</li>
+<li><p>具体操作的是什么文件系统取决于命令中文件路径URL中的前缀协议</p>
+</li>
+<li><p>如果没有指定前缀，则会读取环境变量中的fs.defaultFS属性，以该属性值作为默认文件系统</p>
+<pre class=" language-shell"><code class="language-shell">hadoop fs -ls file #操作本地文件系统
+hadoop fs -ls hdfs://node1:8020/ #操作HDFS分布式文件系统
+hadoop fs -ls #直接根目录，没有指定协议，将加载读取fs.defaultFS值
+</code></pre>
+</li>
+</ul>
+<p>命令版本</p>
+<ul>
+<li>hadoop dfs 只能操作HDFS文件系统（包括与Local FS间的操作），不过已经Deprecated</li>
+<li>hdfs dfs 只能操作HDFS文件系统相关，常用</li>
+<li>hadoop fs 可操作任意文件系统，不仅仅是hdfs文件系统，使用范围更广</li>
+<li>目前版本来看，推荐使用hadoop fs</li>
+</ul>
+<h4 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h4><ul>
+<li>创建文件与linux操作命令类似</li>
+</ul>
+<h3 id="HDFS集群角色与职责"><a href="#HDFS集群角色与职责" class="headerlink" title="HDFS集群角色与职责"></a>HDFS集群角色与职责</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320164142047.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320164142047.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320164142047" style="zoom: 67%;">
+
+
+
+<h4 id="主角色"><a href="#主角色" class="headerlink" title="主角色"></a>主角色</h4><p>namenode</p>
+<ul>
+<li>NameNode是hadoop分布式文件系统的核心，架构中的主角色</li>
+<li>NameNode维护和管理文件系统元数据，包括名称空间目录树结构，文件和块的位置信息、访问权限等信息</li>
+<li>基于此，NameNode称为了访问HDFS的唯一入口</li>
+<li>NameNode内部通过内存和磁盘文件两种方式管理元数据</li>
+<li>其中磁盘上的元数据文件包括Fsimage内存元素据镜像文件和edits log（Journal）编辑日志</li>
+</ul>
+<p>职责</p>
+<ul>
+<li>NameNode仅存储HDFS的元数据：文件系统中所有的目录树，并跟踪整个集群中的文件，不存储实际数据</li>
+<li>NameNode知道HDFS中任何给定文件的块列表及其位置。使用此信息NameNode知道如何从块中构建文件</li>
+<li>NameNode<strong>不持久化存储</strong>每个文件中各个块所在的datanode的位置信息，这些信息会在系统启动时从DataNode重建</li>
+<li>NameNode是Hadoop集群中的单点故障</li>
+<li>NameNode所在及其通常会配置有大量内存（RAM）</li>
+</ul>
+<h4 id="从角色"><a href="#从角色" class="headerlink" title="从角色"></a>从角色</h4><p>datanode</p>
+<ul>
+<li>DataNode是hadoop HDFS中的从角色，负责具体的数据块存储</li>
+<li>DataNode的数量决定了HDFS集群的整体数据存储能力。通过和NameNode配合维护着数据块</li>
+</ul>
+<p>职责：</p>
+<ul>
+<li>DataNode负责最终数据块block的存储。是集群的从角色，也称为Slave</li>
+<li>DataNode启动时，会将自己注册到NameNode并汇报自己负责持有的快列表</li>
+<li>当某个DataNode关闭时，不会影响数据的可用性。NameNode将安排由其他DataNode管理的块进行副本复制</li>
+<li>DataNode所在及其通常配置有大量的硬盘空间，因为实际数据存储在Datanode中</li>
+</ul>
+<h4 id="主要辅助角色"><a href="#主要辅助角色" class="headerlink" title="主要辅助角色"></a>主要辅助角色</h4><p>SecondaryNameNode</p>
+<ul>
+<li>Secondary NameNode充当NameNode的辅助节点，但不能代替NameNode</li>
+<li>主要是帮助主角色进行元数据文件的合并动作。</li>
+</ul>
+<h3 id="HDFS工作流程与机制"><a href="#HDFS工作流程与机制" class="headerlink" title="HDFS工作流程与机制"></a>HDFS工作流程与机制</h3><h4 id="写数据流程"><a href="#写数据流程" class="headerlink" title="写数据流程"></a>写数据流程</h4><p>过程</p>
+<ol>
+<li><p>HDFS客户端创建对象实例DistributedFileSystem，该对象中封装了与HDFS文件操作系统的相关方法</p>
+</li>
+<li><p>调用DistributeFilesystem的create()方法，通过<strong>RPC请求</strong>NameNode创建文件。</p>
+<ol>
+<li>NameNode执行各种检查判断：目标文件是否存在、父目录是否存在、客户端是否具有创建该文件的权限。</li>
+<li>检查通过NameNode就会为本次请求记下一条记录，返回FSDataOutputStream输出流对象给客户端用于写数据</li>
+</ol>
+</li>
+<li><p>客户端通过FSDataOutputStream输出流开始写入数据</p>
+</li>
+<li><p>客户端写入数据时，将数据分成一个个数据包（默认64k），内部组件DataStreamer请求NameNode挑选出适合存储数据副本的一组DataNode地址，默认是3副本存储</p>
+<p>DataStreamer将数据包流式传输到pipeline的第一个DataNode，该DataNode存储数据包并将它发送到pipeline的第二个DataNode，第二个发送给第三个同理</p>
+</li>
+<li><p>传输的反方向上，会通过ACK机制校验数据包传输是否成功</p>
+</li>
+<li><p>客户端完成数据写入后，在FSDataOutputStream输出流上调用close()方法关闭</p>
+</li>
+<li><p>DistributedFileSystem联系NameNode告知其文件写入完成，等待NameNode确认</p>
+<p>因为namenode已经知道文件由哪些块组成（DataStream请求分配数据块），因此仅需等待最小的复制快即可成功返回。</p>
+<p>最小复制是由参数dfs.namenode.replication指定，默认是1</p>
+</li>
+</ol>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320212221719.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320212221719.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320212221719"></p>
+<p>核心概念——pipeline管道</p>
+<ul>
+<li><p>Pipeline，HDFS在上传文件写数据过程中采用的一种数据传输方式</p>
+</li>
+<li><p>客户端将数据块写入第一个数据节点，第一个数据节点保存数据之后再将块复制到第二个数据节点，后者保存后将其复制到第三个数据节点</p>
+</li>
+<li><p>在线性推送模式下，每台机器所有的出口宽带都用于以最快的速度传输数据，而不是在多个接收者之间分配带宽</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320212516590.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320212516590.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320212516590"></p>
+</li>
+</ul>
+<blockquote>
+<p>为什么datanode之间采用pipeline线性传输，而不是一次给三个datanode拓扑式传输呢？</p>
+<p>因为数据以管道的方式，顺序沿着一个方向传输，这样能够充分利用每个机器的带宽，避免网络瓶颈和高延迟时的连接，最小化推送所有数据的延时</p>
+</blockquote>
+<p>核心概念——ACK应答</p>
+<ul>
+<li>ACK即确认字符，在数据通信中，接收方发送给发送方的一种传输类控制字符，表示发来的数据已确认接受无误</li>
+<li>在HDFS pipeline管道传输数据的过程中，传输的反方向会进行ACK校验，确保数据传输安全</li>
+</ul>
+<p>核心概念——默认3副本存储策略</p>
+<ul>
+<li>默认副本存储策略是由BlockPlacementPolicyDefault指定的</li>
+<li>第一块副本：优先客户端本地，否则随机</li>
+<li>第二块副本：不同于第一块副本的不同机架</li>
+<li>第三块副本：第二块副本相同机架的不同机器</li>
+</ul>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><h3 id="设计构思"><a href="#设计构思" class="headerlink" title="设计构思"></a>设计构思</h3><p>如何应对大数据处理场景</p>
+<ul>
+<li><p>对相互间不具有计算依赖关系的大数据计算任务，实行并行最自然的办法就是采取MapReduce分而治之的策略</p>
+</li>
+<li><p>首先Map阶段进行拆分，把大数据拆分成若干份小数据，多个程序同时并行计算产生中间结果；然后是Reduce聚合阶段，通过程序对并行的结果进行最终的汇总计算，得出最终的结果</p>
+</li>
+<li><p>不可拆分的计算任务或相互间有依赖关系的数据无法进行并行计算</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320214958815.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320214958815.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320214958815"></p>
+</li>
+</ul>
+<p>构建抽象编程模型</p>
+<p>MapReduce借鉴了函数式语言中的思想，用Map和Reduce两个函数提供了高层的并行编程抽象模型。</p>
+<ul>
+<li><p>map对一组数据元素进行某种重复式的处理</p>
+</li>
+<li><p>reduce：对Map的中间结果进行某种进一步的结果整理</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320215209482.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240320215209482.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240320215209482"></p>
+</li>
+</ul>
+<p>统一架构、隐藏底层细节</p>
+<ul>
+<li>MapReduce设计并提供了统一的计算架构，为程序员隐藏了绝大多数层面的处理细节</li>
+<li>MapReduce最大的亮点在于通过抽象模型给和计算框架把需要做什么（what to do）与具体怎么做（How to do）分开，为程序员提供一个抽象和高层的编程接口和框架</li>
+<li>程序员仅需要关心其应用层的具体计算问题，仅需要编写少量的处理应用本身计算问题的业务程序代码</li>
+<li>如何完成这个并行计算任务所相关的诸多系统层细节被隐藏起来，交给计算框架去处理：从分布代理的执行，大到数千小到单个节点集群的自动调度使用</li>
+</ul>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>分布式计算</p>
+<ul>
+<li>一种计算方法，和集中式计算是相对的</li>
+<li>随着计算技术的发展，有限应用需要非常巨大的计算能力才能完成，如果采用集中式计算，需要耗费相当长的时间来完成</li>
+<li>分布式计算将该应用分解成许多小的部分，分配给多台计算机进行处理。这样可以节约整体计算时间，大大提高计算效率</li>
+</ul>
+<p>MapReduce</p>
+<ul>
+<li>Hadoop MapReduce是一个分布式计算框架，用于轻松编写分布式应用程序，这些应用程序可以依靠，容错的方式并行处理大型硬件集群（数千个节点）上的大量数据（多TB数据集）</li>
+<li>MapReduce是一种面向海量数据处理的一种知道思想，也是以中国用于大规模数据进行分布式计算的编程模型</li>
+</ul>
+<p>特点</p>
+<ul>
+<li>易于编程<ul>
+<li>MapReduce框架提供了用于二次开发的接口；简单地实现一些接口，就可以完成一个分布式程序。任务计算交给计算框架去处理，将分布式程序部署到hadoop集群上运行，集群节点可以扩展到成百上千个</li>
+</ul>
+</li>
+<li>良好的扩展性<ul>
+<li>当计算机资源不能得到满足的时候，可以通过增加机器来扩展它的计算能力。基于MapReduec的分布式计算的特点可以随节点数目增长保持近似于线性的增长，这个特点是MapReduce处理海量数据的关键，通过将计算节点增至几百或者几千可以很容易地处理数百TB甚至PB级别的离线数据</li>
+</ul>
+</li>
+<li>高容错性<ul>
+<li>Hadoop集群是分布式搭建和部署的，任何单一节点宕机了，它可以把上面的计算任务转移到另一个节点上运行，不影响整个作业任务的完成，过程完全是由Hadoop内部完成的</li>
+</ul>
+</li>
+<li>适合海量数据的离线处理<ul>
+<li>可以处理GB、TB和PB级别的数据</li>
+</ul>
+</li>
+</ul>
+<p>局限性</p>
+<p>MapReduce虽然有很多的优势，也有相对的局限性，局限性不代表不能做，而是在某些场景下实现的效果比较差，并不适合使用MapReduce来处理，主要表现在以下结果方面</p>
+<ul>
+<li>实时计算性能差<ul>
+<li>MapReduce主要应用于离线作业，无法做到秒级或者是亚秒级别的数据响应</li>
+</ul>
+</li>
+<li>不能进行流式计算<ul>
+<li>流式计算即源源不断的计算，并且数据是动态的；MapReduce作为一个离线计算框架，主要是针对静态数据集的，数据是不能动态变化的</li>
+</ul>
+</li>
+</ul>
+<p>MapReduce实例进程</p>
+<p>一个完整的MapReduce程序在分布式运行时有三类</p>
+<ul>
+<li>MRAppMaster：负责整个MR程序的过程调度及状态协调</li>
+<li>MapTask：负责map阶段的整个数据处理流程</li>
+<li>RedeceTask：负责reduce阶段的整个数据处理流程</li>
+</ul>
+<p>程序的阶段组成</p>
+<ul>
+<li>一个MaoReduce编程模型中只能包含一个Map阶段和一个Reduce阶段，或者Map阶段</li>
+<li>不能有诸如多个map阶段、多个reduce阶段的情景出现</li>
+<li>如果用户的业务逻辑非常复杂，只能多个MapReduce程序串行运行</li>
+</ul>
+<p>MapReduce数据类型</p>
+<ul>
+<li>整个MapReduce程序中，数据都是以kv键值对的形式流转的</li>
+<li>在实际编程解决各种业务问题中，需要考虑每个阶段的输入输出的kv分别是什么</li>
+<li>MapReduce内置了很多默认属性，比如排序、分组等，都和数据的k有关，所以说kv的类型数据确定是极其重要的</li>
+</ul>
+<h3 id="官方示例"><a href="#官方示例" class="headerlink" title="官方示例"></a>官方示例</h3><p>概述</p>
+<ul>
+<li>一个最终完整的MR程序需要用户编写的代码和Hadoop自己实现的代码整合在一起才可以</li>
+<li>其中用户负责map、reduce两个阶段的业务问题，Hadoop负责底层所有的技术问题</li>
+<li>由于MapReduce计算引擎天生的弊端，当下企业中直接使用率已经下降了，所以在企业工作中很少涉及到MapReduce直接编程，但某些软件的背后还依赖MapReduce</li>
+<li>可以通过官方提供的示例在感受MapReduce及其内部执行流程，因为后续的新的计算引擎比如Spark，当中就有MapReduce的影子存在</li>
+</ul>
+<p>示例说明</p>
+<ul>
+<li>示例程序路径：&#x2F;export&#x2F;server&#x2F;hadoop-3.3.0&#x2F;share&#x2F;hadoop&#x2F;mapreduce&#x2F;</li>
+<li>示例程序：hadoop-mapreduce-examples-3.3.0.jar</li>
+<li>MapReduce程序提交命令：[hadoop jar|yarn jar] hadoop-mapreduce-examples-3.3.0.jar args…</li>
+<li>提交到YARN集群上分布式执行</li>
+</ul>
+<h3 id="Map阶段"><a href="#Map阶段" class="headerlink" title="Map阶段"></a>Map阶段</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132102564.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132102564.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321132102564" style="zoom:33%;">
+
+
+
+<ol>
+<li><p>第一阶段：把输入目录下文件按照一定的标准逐个进行逻辑切片，形成切片规划</p>
+<p>默认Split size  &#x3D; Block size（128M），每个切片由一个MapTask处理</p>
+</li>
+<li><p>第二阶段：对切片中的数据按照一定的规则读取解析返回&lt;key,value&gt;对</p>
+<p>默认是按行读取数据。key是每一行的起始位置偏移量，value是本行的文本内容</p>
+</li>
+<li><p>第三阶段：调用Mapper类中的map方法处理数据</p>
+<p>每读取解析出来的一个&lt;key,value&gt;，调用一次map方法</p>
+</li>
+<li><p>第四阶段：按照一定的规则对Map输出的键值对进行分区partition。默认不分区，因为只有一个reducetask</p>
+<p>分区数量就是reducetask的运行数量</p>
+</li>
+<li><p>第五阶段：Map输出数据写入内存缓冲区，达到比例溢出到磁盘上。溢出spill的时候根据key进行排序sort。</p>
+<p>默认更具key字典排序</p>
+</li>
+<li><p>第六阶段：对所有溢出文件进行最终的merge合并，称为一个文件</p>
+</li>
+</ol>
+<h3 id="Reduce阶段"><a href="#Reduce阶段" class="headerlink" title="Reduce阶段"></a>Reduce阶段</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132307198.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132307198.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321132307198" style="zoom:50%;">
+
+
+
+<ol>
+<li>第一阶段：RedeceTask会主动从MapTask复制拉取属于需要自己处理的数据</li>
+<li>第二阶段：把拉取来的数据，进行合并，在对合并后的数据排序</li>
+<li>第三阶段：对排序后的键值对调用reduce方法。键向相等的键值对调用一次reduce方法。最后把这些输出的键值对写入到HDFS文件中</li>
+</ol>
+<h3 id="Shuffle机制"><a href="#Shuffle机制" class="headerlink" title="Shuffle机制"></a>Shuffle机制</h3><p>MapReduce全过程</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132423653.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132423653.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321132423653" style="zoom:50%;">
+
+
+
+
+
+
+
+<p>概念</p>
+<ul>
+<li><p>Shuffle本意是洗牌的意思，即把一组有规则的数据尽量打乱成无规则的数据</p>
+</li>
+<li><p>而在MapReduce中，Shuffle更像是洗牌的逆过程，指的是将map端的无规则输出按指定的规则“打乱”成具有一定规则的数据，以便reduce端接受处理</p>
+</li>
+<li><p>一般把从Map产生输出开始到Reduce取得数据作为输入之前的过程称作shuffle</p>
+</li>
+<li><p>Shuffle是横跨Map、Reduce两个阶段的过程</p>
+</li>
+</ul>
+<p>Map端Shuffle</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132520378.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132520378.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321132520378" style="zoom: 33%;">
+
+<ul>
+<li><p>collect阶段：将MapTask的结果输出到默认大小为100M的环形缓冲区，保存之前会对key及进行分区的计算。默认Hash分区</p>
+</li>
+<li><p>Spill阶段：当内存中的数据量达到一定的阈值的时候，就会将数据写入本地磁盘，在将数据写入磁盘之前需要对数据进行一次排序操作，如果配置了cobmbiner，还会将有相同分区号的key的数据进行排序</p>
+</li>
+<li><p>Merge阶段：把所有溢出的临时文件进行一次合并操作，以确保一个MapTask最终只产生一个中间数据文件</p>
+</li>
+</ul>
+<p>Reduce端shuffle</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132612251.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321132612251.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321132612251" style="zoom:33%;">
+
+<ul>
+<li>copy阶段：ReduceTask启动Fetcher线程到已完成MapTask的节点上复制一份属于自己的数据</li>
+<li>Merge阶段：在ReduceTask远程复制数据的同时，会在后台开启两个线程对内存到本地的数据文件进行合并操作</li>
+<li>sort阶段：在对数据进行合并的同时，会进行排序操作，由于Maptask阶段已经对数据进行了局部的排序，ReduceTask只需要保证Copy的数据的最终整体有效性即可</li>
+</ul>
+<p>shuffle弊端</p>
+<ul>
+<li>Shuffle是MapReduce程序的核心与精髓</li>
+<li>Shuffle也是MapReduce被诟病最多的地方所在。MapReduce相比较于Spark、Flink计算引擎慢的原因，跟Shuffle机制有很大的关系</li>
+<li>Shuffle中频繁涉及到数据在内存、磁盘之间的多次往复</li>
+</ul>
+<h2 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h2><p>简介</p>
+<ul>
+<li>Apache hadoop YARN（Yet Another Resource Negotiator，另一种资源协调者）是一种新的Hadoop资源管理器</li>
+<li>YARN是一个通用资源管理系统和调度平台，可为上层应用提供统一的资源管理和调度</li>
+<li>它的引入为集群在利用率、资源统一管理和数据共享等方面带来了巨大的好处</li>
+</ul>
+<p>功能说明</p>
+<ul>
+<li>资源管理系统：集群的硬件资源，和程序运行相关，比如内存、CPU等</li>
+<li>调度平台：多个程序同时申请计算资源如何分配，调度的规则</li>
+<li>通用：不仅仅支持MapReduce程序，理论上支持各种计算程序。YARN不关心你干什么，只关心你要资源，用还之后归还资源</li>
+<li>可以理解为相当于一个分布式的操作系统平台，而MapReduce等计算按程序则相当于运行于操作系统之上的应用程序，YARN为这些程序提供所需的资源</li>
+</ul>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>官方架构图</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321133817770.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321133817770.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321133817770" style="zoom: 33%;">
+
+<ul>
+<li>集群物理层面<ul>
+<li>ResourceManager</li>
+<li>NodeManager</li>
+</ul>
+</li>
+<li>App层面<ul>
+<li>ApplicationMaster（App Mstr）</li>
+</ul>
+</li>
+<li>client</li>
+<li>container容器（资源的抽象）</li>
+</ul>
+<p>YARN三大组件</p>
+<ul>
+<li><p>ResourceManager（RM）</p>
+<p>YARN中的主角色，决定系统中所有应用程序之间的资源分配的最终权限，即最终仲裁者</p>
+<p>接受用户的作业提交，并通过NM分配、管理各个机器上的计算资源</p>
+</li>
+<li><p>NodeManager（NM）</p>
+<p>YARN中的从角色，一台机器上一个，负责管理本机器上的计算资源</p>
+<p>根据RM命令，启动Container容器、监视容器的资源使用情况，并向RM主角色汇报资源使用情况</p>
+</li>
+<li><p>ApplicationMaster（AM）</p>
+<p>用户提交的每一个应用程序均包含一个AM</p>
+<p>应用程序内的“老大”，负责程序内部各阶段的资源申请，监督程序的执行情况</p>
+</li>
+</ul>
+<h3 id="交互流程"><a href="#交互流程" class="headerlink" title="交互流程"></a>交互流程</h3><p>基本流程</p>
+<ol>
+<li>MR作业提交 Client——》RM</li>
+<li>资源的申请 MrAppMaster——》RM</li>
+<li>MR作业状态汇报 Container（Map|Reduce Task）——》Container（MrAppMster）</li>
+<li>节点的状态汇报 NM——》RM</li>
+</ol>
+<p>整体概述</p>
+<ul>
+<li><p>当用户向YARN中提交一个应用程序之后，YARN将分为两个阶段运行该应用程序</p>
+<ul>
+<li><p>第一个阶段是客户端申请资源启动运行本次程序的ApplicationMaster</p>
+</li>
+<li><p>第二个阶段是由ApplicationMaster根据本次程序内部具体情况，为它申请资源，并监控它的整个运行过程，知道运行完成</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>MR提交YARN交互程序</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321141516679.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321141516679.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321141516679"></p>
+<ol>
+<li>用户通过客户端向YARN中的ResourceManager提交应用程序（比如Hadoop jar提交MR程序）</li>
+<li>ResourceManager为该应用程序分配第一个Container（容器），并与对应的NodeManager通信，要求它在这个Container中启动这个应用程序的ApplicationMaster</li>
+<li>ApplicationMaster启动成功之后，首先向ResourceManager注册并保持通信，这样用户可以通过RM查看应用程序的运行状态</li>
+<li>AM为本次程序内部的各个Task任务向RM申请资源，并监控它的运行状态</li>
+<li>一旦ApplicationMaster申请到资源后，便于对应的NodeManager通信，要求他启动任务</li>
+<li>NodeManager为任务设置好运行环境后，将任务启动命令写入一个脚本中，并通过运行该脚本启动任务</li>
+<li>各个任务通过某个RPC协议向ApplicationMaster汇报自己的状态和进度，让ApplicationMaster随时掌握各个任务的运行状态，从而可以在任务失败时重新启动任务。在应用程序运行过程中，用户可以随时通过RPC向ApplicationMaster查询应用程序的当前运行状态</li>
+<li>应用程序完成后，ApplicationMaster向ResourceMaster注销并关闭自己</li>
+</ol>
+<h3 id="资源调度器Scheduler"><a href="#资源调度器Scheduler" class="headerlink" title="资源调度器Scheduler"></a>资源调度器Scheduler</h3><p>资源调度器</p>
+<ul>
+<li><p>在理想情况下，应用程序提出的请求将立即得到YARN批准。但是实际中，资源是有限的，并且在繁忙的群集上，应用程序通常将需要等待其某些请求得到满足。YARN调度程序的工作是<strong>根据一些定义的策略为应用程序分配资源</strong>。</p>
+</li>
+<li><p>在YARN中，负责给应用分配资源的就是<strong>Scheduler</strong>，它是ResourceManager的核心组件之一。Scheduler完全专</p>
+<p>用于调度作业，它无法跟踪应用程序的状态。</p>
+</li>
+</ul>
+<p>调度器策略</p>
+<p>三种调度器</p>
+<ul>
+<li><p>FIFO Scheduler（先进先出调度器）、Capacity Scheduler（容量调度器）、Fair Scheduler（公平调度器）。</p>
+</li>
+<li><p>Apache版本YARN默认使用Capacity Scheduler。</p>
+</li>
+<li><p>如果需要使用其他的调度器，可以在yarn-site.xml中的yarn.resourcemanager.scheduler.class进行配置。</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144141745.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144141745.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321144141745"></p>
+</li>
+</ul>
+<p><strong>FIFO Scheduler</strong></p>
+<ul>
+<li><p><strong>FIFO Scheduler</strong>是Hadoop1.x中JobTracker原有的调度器实现，此调度器在YARN中保留了下来。</p>
+</li>
+<li><p>FIFO Scheduler是一个先进先出的思想，即先提交的应用先运行。调度工作不考虑优先级和范围，适用于负载较低的小规模集群。当使用大型共享集群时，它的效率较低且会导致一些问题。</p>
+</li>
+<li><p>FIFO Scheduler拥有一个控制全局的队列queue，默认queue名称为default，该调度器会获取当前集群上所有的资源信息作用于这个全局的queue。</p>
+</li>
+<li><p>优势</p>
+<p>无需配置、先到先得、易于执行</p>
+</li>
+<li><p>劣势</p>
+<p>任务的优先级不会变高，因此高优先级的作业需要等待</p>
+<p>不适合共享集群</p>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144311521.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144311521.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321144311521" style="zoom: 50%;">
+
+
+
+<p><strong>Capacity Scheduler</strong></p>
+<ul>
+<li><p>Capacity Scheduler容量调度是Apache Hadoop3.x默认调度策略。该策略允许<strong>多个组织共享整个集群资源</strong>，每个组织可以获得集群的一部分计算能力。<strong>通过为每个组织分配专门的队列，然后再为每个队列分配一定的集群资源</strong>，这样整个集群就可以通过设置多个队列的方式给多个组织提供服务了。</p>
+</li>
+<li><p>Capacity可以理解成一个个的资源队列，这个资源队列是用户自己去分配的。队列内部又可以垂直划分，这样一个</p>
+<p>组织内部的多个成员就可以共享这个队列资源了，在一个队列内部，资源的调度是采用的是先进先出(FIFO)策略。</p>
+</li>
+<li><p>Capacity Scheduler调度器以队列为单位划分资源。简单通俗点来说，就是一个个队列有独立的资源，队列的结构</p>
+<p>和资源是可以进行配置的。</p>
+</li>
+<li><p>优势</p>
+<ul>
+<li><p>层次化的队列设计（Hierarchical Queues）</p>
+<p>层次化的管理，可以更容易、更合理分配和限制资源的使用。</p>
+</li>
+<li><p>容量保证（Capacity Guarantees）</p>
+<p>每个队列上都可以设置一个资源的占比，保证每个队列都不会占用整个集群的资源。</p>
+</li>
+<li><p>安全（Security）</p>
+<p>每个队列有严格的访问控制。用户只能向自己的队列里面提交任务，而且不能修改或者访问其他队列的任务。</p>
+</li>
+<li><p>弹性分配（Elasticity）</p>
+<p>空闲的资源可以被分配给任何队列。</p>
+<p>当多个队列出现争用的时候，则会按照权重比例进行平衡。</p>
+</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144646611.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144646611.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321144646611" style="zoom:50%;">
+
+
+
+<p><strong>Fair Scheduler</strong></p>
+<ul>
+<li><p>Fair Scheduler叫做公平调度，提供了YARN应用程序公平地共享大型集群中资源的另一种方式。使所有应用在平</p>
+<p>均情况下随着时间的流逝可以获得相等的资源份额。</p>
+</li>
+<li><p>Fair Scheduler设计目标是为所有的应用分配公平的资源（对公平的定义通过参数来设置）。</p>
+</li>
+<li><p>公平调度可以在多个队列间工作，允许资源共享和抢占。</p>
+</li>
+<li><p>优势</p>
+<ul>
+<li><strong>分层队列</strong>：队列可以按层次结构排列以划分资源，并可以配置权重以按特定比例共享集群。</li>
+<li><strong>基于用户或组的队列映射</strong>：可以根据提交任务的用户名或组来分配队列。如果任务指定了一个队列,则在该队列中提交任务。</li>
+<li><strong>资源抢占</strong>：根据应用的配置，抢占和分配资源可以是友好的或是强制的。默认不启用资源抢占。</li>
+<li><strong>保证最小配额</strong>：可以设置队列最小资源，允许将保证的最小份额分配给队列，保证用户可以启动任务。当队列不能满足最小资源时,可以从其它队列抢占。当队列资源使用不完时,可以给其它队列使用。这对于确保某些用户、组或生产应用始终获得足够的资源。</li>
+<li><strong>允许资源共享</strong>：即当一个应用运行时,如果其它队列没有任务执行,则可以使用其它队列,当其它队列有应用需要资源时再将占用的队列释放出来。所有的应用都从资源队列中分配资源。</li>
+<li><strong>默认不限制每个队列和用户可以同时运行应用的数量</strong>。可以配置来限制队列和用户并行执行的应用数量。限制并行执行应用数量不会导致任务提交失败,超出的应用会在队列中等待。</li>
+</ul>
+</li>
+</ul>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144705708.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240321144705708.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240321144705708" style="zoom:50%;">
+
+
+
+
+
+<h2 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>基础概念</p>
+<ul>
+<li><strong>数据仓库</strong>（英语：Data Warehouse，简称<strong>数仓</strong>、<strong>DW</strong>）,是一个<strong>用于存储、分析、报告的数据系统</strong>。</li>
+<li>数据仓库的目的是构建<strong>面向分析</strong>的集成化数据环境，分析结果为企业提供决策支持（Decision Support）。</li>
+</ul>
+<p>数据仓库专注于分析</p>
+<ul>
+<li>数据仓库本身并不“生产”任何数据，其数据来源于不同外部系统；</li>
+<li>同时数据仓库自身也不需要“消费”任何的数据，其结果开放给各个外部应用使用；</li>
+<li>这也是为什么叫“仓库”，而不叫“工厂”的原因。</li>
+</ul>
+<h3 id="数据仓库的解决的问题"><a href="#数据仓库的解决的问题" class="headerlink" title="数据仓库的解决的问题"></a>数据仓库的解决的问题</h3><p><strong>业务数据的存储问题</strong></p>
+<ul>
+<li><p>中国人寿保险（集团）公司下辖多条业务线，包括：人寿险、财险、车险，养老险等。各业务线的业务正常运营需</p>
+<p>要记录维护包括客户、保单、收付费、核保、理赔等信息。这么多业务数据存储在哪里呢？</p>
+</li>
+<li><p>联机事务处理系统（OLTP）正好可以满足上述业务需求开展, 其主要任务是执行联机事务处理。其基本特征是<strong>前台</strong>接收的用户数据可以立即传送到后台进行处理，并在很短的时间内给出处理结果**</p>
+</li>
+<li><p>关系型数据库（RDBMS）是OLTP典型应用，比如：Oracle、MySQL、SQL Server等。</p>
+</li>
+</ul>
+<p><strong>分析型决策的制定</strong></p>
+<ul>
+<li>随着集团业务的持续运营，业务数据将会越来越多。由此也产生出许多运营相关的困惑<ul>
+<li>能够确定哪些险种正在恶化或已成为不良险种？</li>
+<li>能够用有效的方式制定新增和续保的政策吗？</li>
+<li>理赔过程有欺诈的可能吗？</li>
+<li>现在得到的报表是否只是某条业务线的？集团整体层面数据如何？</li>
+</ul>
+</li>
+<li>为了能够正确认识这些问题，制定相关的解决措施，最稳妥办法就是：基于业务数据开展数据分析，基于分析的结果给决策提供支撑。也就是所谓的数据驱动决策的制定</li>
+</ul>
+<p><strong>OLTP</strong>环境开展分析是否可行</p>
+<ul>
+<li><p>可以，但是没必要</p>
+</li>
+<li><p>OLTP系统的核心是面向业务，支持业务，支持事务。所有的业务操作可以分为读、写两种操作，一般来说读的压</p>
+<p>力明显大于写的压力。如果在OLTP环境直接开展各种分析，有以下问题需要考虑：</p>
+<ul>
+<li>数据分析也是对数据进行读取操作，<strong>会让读取压力倍增</strong></li>
+<li>OLTP<strong>仅存储数周或数月的数据</strong></li>
+<li><strong>数据分散</strong>在不同系统不同表中，字段类型属性不统一</li>
+</ul>
+</li>
+</ul>
+<p>数据仓库面世</p>
+<ul>
+<li><p>当分析所涉及数据规模较小的时候，在业务低峰期时可以在OLTP系统上开展直接分析。</p>
+</li>
+<li><p>但为了更好的进行各种规模的数据分析，同时也不影响OLTP系统运行，此时需要构建一个集成统一的数据分析平</p>
+<p>台。该平台的目的很简单：<strong>面向分析，支持分析</strong>，并且和OLTP系统解耦合。</p>
+</li>
+<li><p>基于这种需求，数据仓库的雏形开始在企业中出现了。</p>
+</li>
+</ul>
+<p><strong>数据仓库的构建</strong></p>
+<ul>
+<li><strong>数仓是一个用于存储、分析、报告的数据系统</strong>，目的是<strong>构建面向分析的集成化数据环境</strong>。我们把这种面向分析、支持分析的系统称之为<strong>OLAP</strong>（联机分析处理）系统。当然，数据仓库是OLAP系统的一种实现。</li>
+<li>中国人寿保险公司就可以基于分析决策需求，构建数仓平台</li>
+</ul>
+<p>OLAP系统和OLTP系统</p>
+<ul>
+<li><p>OLTP系统（Online Transaction Processing）</p>
+<ul>
+<li><p>OLTP系统用于处理日常的交易性数据，例如订单处理、交易记录、库存管理等。</p>
+</li>
+<li><p>它们通常针对实时数据进行处理，并且需要支持并发访问。</p>
+</li>
+<li><p>OLTP系统通常设计为支持高事务处理速度和短响应时间，以满足实时业务需求。</p>
+</li>
+<li><p>数据库模式通常是规范化的，以减少数据冗余和保持数据一致性。</p>
+</li>
+</ul>
+</li>
+<li><p>OLAP系统（Online Analytical Processing）</p>
+<ul>
+<li>OLAP系统用于分析大量的历史数据以支持决策制定和业务智能。</li>
+<li>它们通过聚合、多维度分析和复杂查询来提供更深入的洞察。</li>
+<li>OLAP系统通常用于执行复杂的分析，例如趋势分析、预测、数据挖掘等。</li>
+<li>数据库模式通常是针对分析优化的，通常采用星型或雪花型结构，以支持快速查询和分析。</li>
+</ul>
+</li>
+<li><p>主要区别</p>
+<ul>
+<li>用途<ul>
+<li>OLTP系统用于支持日常的交易性操作和实时数据处理。</li>
+<li>OLAP系统用于支持决策制定和深入分析</li>
+</ul>
+</li>
+<li><strong>设计</strong><ul>
+<li>OLTP系统设计用于高事务处理速度和短响应时间。</li>
+<li>OLAP系统设计用于支持复杂查询和分析，并优化了查询性能。</li>
+</ul>
+</li>
+<li><strong>数据模式</strong><ul>
+<li>OLTP系统通常采用规范化的数据模式，以减少冗余和保持数据一致性。</li>
+<li>OLAP系统通常采用针对分析优化的数据模式，例如星型或雪花型结构。</li>
+</ul>
+</li>
+<li><strong>查询类型</strong><ul>
+<li>OLTP系统主要执行简单的增删改查操作。</li>
+<li>OLAP系统主要执行复杂的多维度分析和聚合查询。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>主要特征</p>
+<ul>
+<li>Subject-Oriented， <strong>主题</strong>是一个抽象的概念，是较高层次上数据综合、归类并进行分析利用的抽象</li>
+<li>Integrated，主题相关的数据通常会分布在多个操作型系统中，彼此分散、独立、异构。需要集成到数仓主题下。</li>
+<li>Non-Volatile，数据仓库是分析数据的平台，而不是创造数据的平台。</li>
+<li>Time-Variant，数据仓库的<strong>数据需要随着时间更新</strong>，以适应决策的需要。</li>
+</ul>
+<p>面向主题性（Subject-Oriented）</p>
+<ul>
+<li>主题是一个抽象的概念，是较高层次上企业信息系统中的数据综合、归类并进行分析利用的抽象。在逻辑意义上，它是对应企业中某一宏观分析领域所涉及的分析对象</li>
+<li>传统OLTP系统对数据的划分并不适用于决策分析。而基于主题组织的数据则不同，它们被划分为各自独立的领域，每个领域有各自的逻辑内涵但互不交叉，在抽象层次上对数据进行完整、一致和准确的描述。</li>
+</ul>
+<p><strong>集成性（Integrated</strong>）</p>
+<ul>
+<li><p>主题相关的数据通常会分布在多个操作型系统中，彼此分散、独立、异构。</p>
+</li>
+<li><p>因此在数据进入数据仓库之前，必然要经过统一与综合，对数据进行抽取、清理、转换和汇总，这一步是数据仓库建设中最关键、最复杂的一步，所要完成的工作有：</p>
+</li>
+<li><p>要<strong>统一源数据中所有矛盾之处</strong>；</p>
+<ul>
+<li>如字段的同名异义、异名同义、单位不统一、字长不一致等等。</li>
+</ul>
+</li>
+<li><p>进行<strong>数据综合和计算</strong>。</p>
+<ul>
+<li>数据仓库中的数据综合工作可以在从原有数据库抽取数据时生成，但许多是在数据仓库内部生成的，即进入数据仓库以后进行综合生成的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>非易失性、非异变性（Non-Volatile）</strong></p>
+<ul>
+<li><p>数据仓库是分析数据的平台，而不是创造数据的平台。我们是通过数仓去分析数据中的规律，而不是去创造修改其中的规律。因此数据进入数据仓库后，它便稳定且不会改变。</p>
+</li>
+<li><p>数据仓库的数据反映的是一段相当长的时间内历史数据的内容，数据仓库的用户对数据的操作大多是数据查询或比较复杂的挖掘，一旦数据进入数据仓库以后，一般情况下被较长时间保留。</p>
+</li>
+<li><p>数据仓库中一般有<strong>大量的查询操作</strong>，但修改和删除操作很少。</p>
+</li>
+</ul>
+<p><strong>时变性（Time-Variant）</strong></p>
+<ul>
+<li><p>数据仓库包含各种粒度的<strong>历史数据</strong>，数据可能与某个特定日期、星期、月份、季度或者年份有关。</p>
+</li>
+<li><p>当业务变化后会失去时效性。因此数据仓库的数据需要随着时间更新，以适应决策的需要。</p>
+</li>
+<li><p>从这个角度讲，数据仓库建设是一个项目，更是一个过程</p>
+</li>
+</ul>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p><strong>数仓开发语言概述</strong></p>
+<ul>
+<li><p>数仓作为面向分析的数据平台，其主职工作就是对存储在其中的数据开展分析，那么如何读取数据分析呢？</p>
+</li>
+<li><p>理论上来说，任何一款编程语言只要具备读写数据、处理数据的能力，都可以用于数仓的开发。比如大家耳熟能详的C、java、Python等；</p>
+</li>
+<li><p><strong>关键在于编程语言是否易学、好用、功能是否强大</strong>。遗憾的是上面所列出的C、Python等编程语言都需要一定的时间进行语法的学习，并且学习语法之后还需要结合分析的业务场景进行编码，跑通业务逻辑。</p>
+</li>
+<li><p>不管从学习成本还是开发效率来说，上述所说的编程语言都不是十分友好的。</p>
+</li>
+<li><p>在数据分析领域，不得不提的就是<strong>SQL</strong>编程语言，应该称之为分析领域主流开发语言。</p>
+</li>
+</ul>
+<p>SQL语言介绍</p>
+<ul>
+<li><p><strong>结构化查询语言</strong>（<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage）简称<strong>SQL</strong>，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理数据。</p>
+</li>
+<li><p>SQL语言使我们有能力访问数据库，并且SQL是一种ANSI（美国国家标准化组织）的标准计算机语言，各大数据库</p>
+</li>
+<li><p>厂商在生产数据库软件的时候，几乎都会去支持SQL的语法，以使得用户在使用软件时更加容易上手，以及在不同厂商软件之间进行切换时更加适应，因为大家的SQL语法都差不多。</p>
+</li>
+<li><p>SQL语言功能很强，十分简洁，核心功能只用了9个动词。语法接近英语口语，所以，用户很容易学习和使用。</p>
+</li>
+</ul>
+<p>数仓与SQL</p>
+<ul>
+<li>虽然SQL语言本身是针对数据库软件设计的，但是在数据仓库领域，尤其是<strong>大数据数仓领域</strong>，很多数仓软件<strong>都会去</strong>支持<strong>SQL</strong>语法；</li>
+<li>原因在于一是用户学习SQL成本低，二是SQL语言对于数据分析真的十分友好，爱不释手。</li>
+</ul>
+<p><strong>结构化数据</strong></p>
+<ul>
+<li><p><strong>结构化数据</strong>也称作行数据，是由<strong>二维表结构来逻辑表达和实现的数据</strong>，严格地遵循数据格式与长度规范，主要通过关系型数据库进行存储和管理。</p>
+</li>
+<li><p>与结构化数据相对的是不适于由数据库二维表来表现的非结构化数据，包括所有格式的办公文档、XML、HTML、</p>
+<p>各类报表、图片和音频、视频信息等。</p>
+</li>
+<li><p>通俗来说，结构化数据会有严格的行列对齐，便于解读与理解。</p>
+</li>
+</ul>
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>什么是Hive</p>
+<ul>
+<li>Apache Hive是一款建立在Hadoop之上的开源<strong>数据仓库</strong>系统，可以将存储在Hadoop文件中的结构化、半结构化数据文件映射为一张数据库表，基于表提供了一种类似SQL的查询模型，称为Hive查询语言（HQL），用于访问和分析存储在Hadoop文件中的大型数据集。</li>
+<li>Hive核心是将<strong>HQL</strong>转换为MapReduce程序，然后将程序提交到Hadoop群集执行。</li>
+<li>Hive由Facebook实现并开源。</li>
+</ul>
+<p>为什么使用<strong>Hive</strong></p>
+<ul>
+<li>使用Hadoop MapReduce直接处理数据所面临的问题<ul>
+<li>人员学习成本太高 需要掌握java语言</li>
+<li>MapReduce实现复杂查询逻辑开发难度太大</li>
+</ul>
+</li>
+<li>使用Hive处理数据的好处<ul>
+<li>操作接口采用类<strong>SQL</strong>语法，提供快速开发的能力（简单、容易上手）</li>
+<li>避免直接写MapReduce，减少开发人员的学习成本</li>
+<li>支持自定义函数，功能扩展很方便</li>
+<li>背靠Hadoop，<strong>擅长存储分析海量数据集</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Hive</strong>和Hadoop的关系</p>
+<ul>
+<li><p>从功能来说，数据仓库软件，至少需要具备下述两种能力：</p>
+<ul>
+<li>存储数据的能力、分析数据的能力</li>
+</ul>
+</li>
+<li><p>Apache Hive作为一款大数据时代的数据仓库软件，当然也具备上述两种能力。只不过Hive并不是自己实现了上述</p>
+<p>两种能力，而是借助Hadoop。</p>
+</li>
+<li><p><strong>Hive</strong>利用<strong>HDFS</strong>存储数据，利用<strong>MapReduce</strong>查询分析数据。</p>
+</li>
+<li><p>这样突然发现Hive没啥用，不过是套壳Hadoop罢了。其实不然，Hive的最大的魅力在于用户专注于编写HQL，</p>
+<p>Hive帮助转换成为MapReduce程序完成对数据的分析。</p>
+</li>
+</ul>
+<h3 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002023562.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002023562.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322002023562" style="zoom:33%;">
+
+
+
+<p>Hive组件</p>
+<ol>
+<li><p><strong>用户接口</strong></p>
+<ol>
+<li><p>包括 CLI、JDBC&#x2F;ODBC、WebGUI。其中，CLI(command line interface)为shell命令行；</p>
+<p>Hive中的Thrift服务器允许外部客户端通过网络与Hive进行交互，类似于JDBC或ODBC协议。WebGUI是通过浏览器访问Hive。</p>
+</li>
+</ol>
+</li>
+<li><p><strong>元数据存储</strong></p>
+<ol>
+<li>通常是存储在关系数据库如 mysql&#x2F;derby中。Hive 中的元数据包括表的名字，表的列和分区及其属性，表的属性（是否为外部表等），表的数</li>
+</ol>
+</li>
+<li><p><strong>Driver</strong>驱动程序，包括语法解析器、计划编译器、优化器、执行器</p>
+<ol>
+<li>完成 HQL 查询语句从词法分析、语法分析、编译、优化以及查询计划的生成。生成的查询计划存储在 HDFS 中，并在随后有执行引擎调用执行</li>
+</ol>
+</li>
+<li><p><strong>执行引擎</strong></p>
+<ol>
+<li>Hive本身并不直接处理数据文件。而是通过执行引擎处理。当下Hive支持MapReduce、Tez、Spark3种执行引擎。</li>
+</ol>
+</li>
+</ol>
+<h3 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h3><h4 id="Apache-Hive元数据"><a href="#Apache-Hive元数据" class="headerlink" title="Apache Hive元数据"></a>Apache Hive元数据</h4><p><strong>什么是元数据</strong></p>
+<ul>
+<li><p>元数据（Metadata），又称中介数据、中继数据，为<strong>描述数据的数据</strong>（data about data），主要是描述数据属</p>
+<p>性（property）的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。</p>
+</li>
+</ul>
+<p><strong>Hive Metadata</strong></p>
+<ul>
+<li><strong>Hive Metadata****即Hive的元数据</strong>。</li>
+<li>包含用Hive创建的database、table、表的位置、类型、属性，字段顺序类型等元信息。</li>
+<li>元数据存储在关系型数据库中。如hive内置的Derby、或者第三方如MySQL等。</li>
+</ul>
+<p><strong>Hive Metastore</strong></p>
+<ul>
+<li><p>Metastore即<strong>元数据服务</strong>。Metastore服务的作用是管理metadata元数据，对外暴露服务地址，让各种客户端通</p>
+<p>过连接metastore服务，由metastore再去连接MySQL数据库来存取元数据。</p>
+</li>
+<li><p>有了metastore服务，就可以有多个客户端同时连接，而且这些客户端不需要知道MySQL数据库的用户名和密码</p>
+<p>，只需要连接metastore 服务即可。某种程度上也保证了hive元数据的安全。</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002457301.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002457301.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322002457301" style="zoom: 50%;"></li>
+</ul>
+<p><strong>metastore</strong>配置方式</p>
+<ul>
+<li><p>metastore服务配置有3种模式：内嵌模式、本地模式、<strong>远程模式</strong>。</p>
+</li>
+<li><p>区分3种配置方式的关键是弄清楚两个问题：</p>
+<ul>
+<li><p>Metastore服务是否需要单独配置、单独启动？</p>
+<p>Metadata是存储在内置的derby中，还是第三方RDBMS,比如MySQL。</p>
+</li>
+</ul>
+</li>
+<li><p>本笔记使用远程模式部署模式</p>
+</li>
+</ul>
+<p><strong>metastore</strong>远程模式</p>
+<ul>
+<li><p>在生产环境中，建议用远程模式来配置Hive Metastore。在这种情况下，其他依赖hive的软件都可以通过</p>
+<p>Metastore访问hive。由于还可以完全屏蔽数据库层，因此这也带来了更好的可管理性&#x2F;安全性</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002638632.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322002638632.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322002638632" style="zoom: 50%;"></li>
+</ul>
+<h4 id="Apache-Hive客户端使用"><a href="#Apache-Hive客户端使用" class="headerlink" title="Apache Hive客户端使用"></a>Apache Hive客户端使用</h4><p><strong>Hive</strong>自带客户端</p>
+<ul>
+<li>bin&#x2F;hive、bin&#x2F;beeline</li>
+<li>Hive发展至今，总共历经了两代客户端工具。</li>
+<li>第一代客户端（deprecated不推荐使用）：$HIVE_HOME&#x2F;bin&#x2F;hive, 是一个 shellUtil。主要功能：一是可用于以交互或批处理模式运行Hive查询；二是用于Hive相关服务的启动，比如metastore服务。</li>
+<li>第二代客户端（recommended 推荐使用）：$HIVE_HOME**&#x2F;bin&#x2F;beeline<strong>，是一个JDBC客户端，是</strong>官方强烈推**荐使用的Hive命令行工具，和第一代客户端相比，性能加强安全性提高。</li>
+</ul>
+<p><strong>HiveServer2</strong>服务介绍</p>
+<ul>
+<li>远程模式下beeline通过 Thrift 连接到单独的<strong>HiveServer2</strong>服务上，这也是官方推荐在生产环境中使用的模式。</li>
+<li>HiveServer2支持多客户端的并发和身份认证，旨在为开放API客户端如JDBC、ODBC提供更好的支持</li>
+</ul>
+<p><strong>关系梳理</strong></p>
+<ul>
+<li><p>HiveServer2通过Metastore服务读写元数据。所以在远程模式下，<strong>启动</strong>HiveServer2之前必须先首先启动<strong>metastore</strong>服务</p>
+</li>
+<li><p>特别注意：远程模式下，Beeline客户端只能通过HiveServer2服务访问Hive。而bin&#x2F;hive是通过Metastore服务访问的。具体关系如下：</p>
+<p><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322213010563.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322213010563.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322213010563"></p>
+</li>
+</ul>
+<p><strong>bin&#x2F;beeline</strong>客户端使用</p>
+<ul>
+<li>在hive安装的服务器上，首先启动metastore服务，然后启动hiveserver2服务。</li>
+<li>需要注意hiveserver2服务启动之后需要稍等一会才可以对外提供服务。</li>
+<li>Beeline是JDBC的客户端，通过JDBC协议和Hiveserver2服务进行通信，协议的地址是：jdbc:hive2:&#x2F;&#x2F;node1:10000</li>
+</ul>
+<p><strong>Hive</strong>可视化客户端</p>
+<ul>
+<li><p><strong>DataGrip</strong>、Dbeaver、SQuirrel SQL Client等</p>
+</li>
+<li><p>可以在Windows、MAC平台中<strong>通过</strong>JDBC连接HiveServer2的图形界面工具；</p>
+</li>
+<li><p>这类工具往往专门针对SQL类软件进行开发优化、页面美观大方，操作简洁，更重要的是SQL编辑环境优雅；</p>
+</li>
+<li><p>SQL语法智能提示补全、关键字高亮、查询结果智能显示、按钮操作大于命令操作；</p>
+</li>
+</ul>
+<h3 id="Hive-SQL之数据库与建库"><a href="#Hive-SQL之数据库与建库" class="headerlink" title="Hive SQL之数据库与建库"></a>Hive SQL之数据库与建库</h3><p><strong>SQL</strong>中<strong>DDL</strong>语法的作用</p>
+<ul>
+<li>数据定义语言 (Data Definition Language, DDL)，是SQL语言集中对数据库内部的对象结构进行创建，删除，修改等的操作语言，这些数据库对象包括database、table等。</li>
+<li>DDL核心语法由CREATE、ALTER与DROP三个所组成。<strong>DDL</strong>并不涉及表内部数据的操作。</li>
+</ul>
+<p><strong>Hive</strong>中<strong>DDL</strong>语法的使用</p>
+<ul>
+<li>Hive SQL（HQL）与标准SQL的语法大同小异，基本相通；</li>
+</ul>
+<p><strong>数据库</strong>database</p>
+<ul>
+<li>在Hive中，默认的数据库叫做default，存储数据位置位于HDFS的&#x2F;user&#x2F;hive&#x2F;warehouse下。</li>
+<li>用户自己创建的数据库存储位置是&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;database_name.db下。</li>
+</ul>
+<p>建库SQL</p>
+<ul>
+<li><strong>create database</strong>：创建数据库</li>
+<li><strong>use database</strong>：选择指定的数据库</li>
+<li><strong>drop database</strong>：删除数据库</li>
+</ul>
+<h3 id="Hive-SQL之表与建表"><a href="#Hive-SQL之表与建表" class="headerlink" title="Hive SQL之表与建表"></a>Hive SQL之表与建表</h3><p><strong>建表语法树（基础）</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>db_name<span class="token punctuation">.</span><span class="token punctuation">]</span>table_name
+<span class="token punctuation">(</span>col_name data_type <span class="token punctuation">[</span><span class="token keyword">COMMENT</span> col_comment<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token keyword">COMMENT</span> table_comment<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">ROW</span> FORMAT DELIMITED …<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>数据类型</strong></p>
+<ul>
+<li><p>Hive数据类型指的是表中列的字段类型；</p>
+</li>
+<li><p>整体分为两类：原生数据类型（primitive data type）和复杂数据类型（complex data type）。</p>
+</li>
+<li><p>最常用的数据类型是字符串String和数字类型Int。</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322213949140.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322213949140.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322213949140" style="zoom:67%;"></li>
+</ul>
+<p><strong>分隔符指定语法</strong></p>
+<ul>
+<li><p><strong>ROW FORMAT DELIMITED</strong>语法用于指定字段之间等相关的分隔符，这样Hive才能正确的读取解析数据。</p>
+</li>
+<li><p>或者说只有分隔符指定正确，解析数据成功，我们才能在表中看到数据。</p>
+</li>
+<li><p>LazySimpleSerDe是Hive默认的，包含4种子语法，分别用于<strong>指定字段之间</strong>、集合元素之间、map映射 kv之间、换行的分隔符号。</p>
+</li>
+<li><p>在建表的时候可以根据数据的特点灵活搭配使用。</p>
+</li>
+</ul>
+<p><strong>Hive</strong>默认分隔符</p>
+<ul>
+<li><p>Hive建表时如果没有row format语法指定分隔符，则采用默认分隔符；</p>
+</li>
+<li><p><strong>默认的分割符是</strong>‘\001’，是一种特殊的字符，使用的是ASCII编码的值，键盘是打不出来的</p>
+</li>
+<li><p>在vim编辑器中，连续按下Ctrl+v&#x2F;Ctrl+a即可输入’\001’ ，显示^A</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322214306663.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322214306663.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322214306663" style="zoom:33%;">
+</li>
+<li><p>在一些文本编辑器中将以<strong>SOH</strong>的形式显示：</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322214330365.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240322214330365.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240322214330365" style="zoom:50%;"></li>
+</ul>
+<h3 id="DML语句与函数使用"><a href="#DML语句与函数使用" class="headerlink" title="DML语句与函数使用"></a>DML语句与函数使用</h3><h4 id="DML-Load加载数据"><a href="#DML-Load加载数据" class="headerlink" title="DML-Load加载数据"></a>DML-Load加载数据</h4><p>回顾</p>
+<ul>
+<li>在Hive中建表成功之后，就会在HDFS上创建一个与之对应的文件夹，且文件夹名字就是表名</li>
+<li>文件夹父路径是由参数hive.metastore.warehouse.dir控制，默认值是&#x2F;user&#x2F;hive&#x2F;warehouse</li>
+<li>不管路径在哪里，只有把数据文件移动到对应的表文件夹下面，Hive才能映射解析成功;</li>
+<li>最原始暴力的方式就是使用hadoop fs –put|-mv等方式直接将数据移动到表文件夹下</li>
+<li>但是，Hive官方推荐使用Load命令将数据加载到表中</li>
+</ul>
+<p><strong>Load</strong>语法功能</p>
+<ul>
+<li><p>Load英文单词的含义为：加载、装载</p>
+</li>
+<li><p>所谓加载是指：将数据文件移动到与Hive表对应的位置，移动时是纯复制、移动操作。</p>
+</li>
+<li><p>纯复制、移动指在数据load加载到表中时，Hive不会对表中的数据内容进行任何转换，任何操作。</p>
+</li>
+<li><p><strong>Load</strong>语法规则</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">LOAD</span> <span class="token keyword">DATA</span> <span class="token punctuation">[</span><span class="token keyword">LOCAL</span><span class="token punctuation">]</span> INPATH <span class="token string">'filepath'</span> <span class="token punctuation">[</span>OVERWRITE<span class="token punctuation">]</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> tablename<span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ul>
+<p><strong>语法规则之</strong>filepath</p>
+<ul>
+<li><strong>filepath</strong>表示待移动数据的路径。可以指向文件（在这种情况下，Hive将文件移动到表中），也可以指向目录（在这种情况下，Hive将把该目录中的所有文件移动到表中）。</li>
+<li>filepath文件路径支持下面三种形式，要结合LOCAL关键字一起考虑：</li>
+</ul>
+<p><strong>语法规则之</strong>LOCAL</p>
+<ul>
+<li><strong>指定</strong>LOCAL， 将在本地文件系统中查找文件路径<ul>
+<li>若指定相对路径，将相对于用户的当前工作目录进行解释；</li>
+<li>用户也可以为本地文件指定完整的URI-例如：file:&#x2F;&#x2F;&#x2F;user&#x2F;hive&#x2F;project&#x2F;data1。</li>
+</ul>
+</li>
+<li><strong>没有指定****LOCAL</strong>关键字。<ul>
+<li>如果filepath指向的是一个完整的URI，会直接使用这个URI；</li>
+<li>如果没有指定schema，Hive会使用在hadoop配置文件中参数fs.default.name指定的（不出意外，都是HDFS）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>LOCAL</strong>本地是哪里？</p>
+<ul>
+<li><p>如果对HiveServer2服务运行此命令</p>
+<ul>
+<li><p><strong>本地文件系统</strong>指的是Hiveserver2服务所在机器的本地Linux文件系统，不是Hive客户端所在的本地文件系统。</p>
+<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240323102150440.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240323102150440.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240323102150440" style="zoom:50%;"></li>
+</ul>
+</li>
+</ul>
+<h4 id="DML-Insert插入数据"><a href="#DML-Insert插入数据" class="headerlink" title="DML-Insert插入数据"></a>DML-Insert插入数据</h4><p><strong>Insert</strong>语法功能</p>
+<ul>
+<li><p>Hive官方推荐加载数据的方式:</p>
+<ul>
+<li>清洗数据成为结构化文件，再使用Load语法加载数据到表中。这样的效率更高。</li>
+</ul>
+</li>
+<li><p>也可以使用insert语法把数据插入到指定的表中，最常用的配合是<strong>把查询返回的结果插入到另一张表中</strong>。</p>
+</li>
+<li><p>insert+select表示：将后面查询返回的结果作为内容插入到指定表中.</p>
+<ul>
+<li>需要保证查询结果列的数目和需要插入数据表格的列数目一致。</li>
+<li>如果查询出来的数据类型和插入表格对应的列数据类型不一致，将会进行转换，但是不能保证转换一定成功，转换失败的数据将会为NULL。</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> tablename select_statement1 <span class="token keyword">FROM</span> from_statement<span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ul>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="">
+              大数据
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>何星林</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2024/03/23/hadoop入门/" target="_blank" title="hadoop入门">http://khdiu.github.io/2024/03/23/hadoop入门/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">zookeeper入门</div>
+      </div>
+      <!-- <div class="content">
+        zookeeper初识zookeeper概念
+
+Zookeeper是Apache Hadoop项目下的一个子项目，是一个
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://blogpicture01.oss-cn-beijing.aliyuncs.com/blogbackground/homepage/yotailang%20.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>何星林</h2>
+        
+        
+          <p>早起每一天</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:khdiue@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/khdiu"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1179763684"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop"><span class="toc-text">Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%AE%BA"><span class="toc-text">数据导论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E5%90%91"><span class="toc-text">企业数据分析方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">数据分析基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%B6%E4%BB%A3"><span class="toc-text">大数据时代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E9%9B%86%E7%BE%A4"><span class="toc-text">分布式与集群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop-1"><span class="toc-text">Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop%E6%A6%82%E8%BF%B0"><span class="toc-text">Hadoop概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop%E9%9B%86%E7%BE%A4"><span class="toc-text">Hadoop集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%81%9C%E5%91%BD%E4%BB%A4%E3%80%81Web-UI"><span class="toc-text">启停命令、Web UI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-text">初体验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80"><span class="toc-text">HDFS分布式文件系统基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="toc-text">分布式系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HDFS"><span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7"><span class="toc-text">重要特性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS-shell%E5%91%BD%E4%BB%A4"><span class="toc-text">HDFS shell命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E"><span class="toc-text">解释说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">常用操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS%E9%9B%86%E7%BE%A4%E8%A7%92%E8%89%B2%E4%B8%8E%E8%81%8C%E8%B4%A3"><span class="toc-text">HDFS集群角色与职责</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A7%92%E8%89%B2"><span class="toc-text">主角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E8%A7%92%E8%89%B2"><span class="toc-text">从角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%BE%85%E5%8A%A9%E8%A7%92%E8%89%B2"><span class="toc-text">主要辅助角色</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%8E%E6%9C%BA%E5%88%B6"><span class="toc-text">HDFS工作流程与机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B"><span class="toc-text">写数据流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MapReduce"><span class="toc-text">MapReduce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%9E%84%E6%80%9D"><span class="toc-text">设计构思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B"><span class="toc-text">官方示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map%E9%98%B6%E6%AE%B5"><span class="toc-text">Map阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reduce%E9%98%B6%E6%AE%B5"><span class="toc-text">Reduce阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shuffle%E6%9C%BA%E5%88%B6"><span class="toc-text">Shuffle机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Yarn"><span class="toc-text">Yarn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-text">架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="toc-text">交互流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6%E5%99%A8Scheduler"><span class="toc-text">资源调度器Scheduler</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93"><span class="toc-text">数据仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">数据仓库的解决的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81"><span class="toc-text">特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hive"><span class="toc-text">Hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84-1"><span class="toc-text">架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="toc-text">安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Apache-Hive%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">Apache Hive元数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apache-Hive%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8"><span class="toc-text">Apache Hive客户端使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-SQL%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E5%BB%BA%E5%BA%93"><span class="toc-text">Hive SQL之数据库与建库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-SQL%E4%B9%8B%E8%A1%A8%E4%B8%8E%E5%BB%BA%E8%A1%A8"><span class="toc-text">Hive SQL之表与建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML%E8%AF%AD%E5%8F%A5%E4%B8%8E%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8"><span class="toc-text">DML语句与函数使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DML-Load%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-Load加载数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DML-Insert%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-Insert插入数据</span></a></li></ol></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-23</span>
+                
+              </div>
+              <a class="post-title" href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/">hadoop入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-16</span>
+                
+              </div>
+              <a class="post-title" href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/">zookeeper入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/03/15/Dobbo%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-15</span>
+                
+              </div>
+              <a class="post-title" href="/2024/03/15/Dobbo%E5%85%A5%E9%97%A8/">Dobbo入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-30</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/">ThreadPoolExecutor详解</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">后端day4</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(200,200,200, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

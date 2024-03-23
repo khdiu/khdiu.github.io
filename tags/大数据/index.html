@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Dobbo入门 | khdiu&#39;blog</title>
+  <title>标签: 大数据 | khdiu&#39;blog</title>
 
   <link rel="icon" type="image/png" href="/medias/logo1.png">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -499,819 +499,112 @@
 </header>
         <!-- 内容区域 -->
         
- <!-- prismjs 代码高亮 -->
- 
 
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-
-
-  <!-- 文章详情页顶部图片和标题 -->
-
-
-
-
-<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
-  <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
-  
-  <div class="post-detail-header_info-box">
-    <div class="title-box">
-      <span class="title">
-        Dobbo入门
-      </span>
-    </div>
-    
-    
-      
-        <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2024-03-15 |
-        </span>
-      
-
-      
-        <span class="post-detail-header_categories">
-          <i class="iconfont iconbookmark1"></i> 分类：
-          
-            <a href="/categories/Learning/" class="post-detail-header_category">
-              Learning
-            </a>
-          
-        </span>
-      
-
-      
-    
+<div class="tag-header" style="background-image: url('https://blogpicture01.oss-cn-beijing.aliyuncs.com/tag/background.jpg');">
+  <div class="tag-header-title">
+    tag
   </div>
+  <div class="tag-header-desc">
   
-  
-    <script src="/js/bubble/bubble.js"></script>
-  
-</div>
-
-
-
-
-
-<div class="post-detail-content post-row" 
-  style="padding-top: 0px;">
-  <div class="main-content">
-    <article class="post post-detail">
-      <div class="post-content">
-        <h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="分布式系统中的相关概念"><a href="#分布式系统中的相关概念" class="headerlink" title="分布式系统中的相关概念"></a>分布式系统中的相关概念</h2><h2 id><a href="#" class="headerlink" title></a></h2><h3 id="大型互联网项目架构目标"><a href="#大型互联网项目架构目标" class="headerlink" title="大型互联网项目架构目标"></a>大型互联网项目架构目标</h3><p>互联网项目特点</p>
-<ul>
-<li>用户多</li>
-<li>流量大，并发高</li>
-<li>海量数据</li>
-<li>易受攻击</li>
-<li>功能繁琐</li>
-<li>变更快</li>
-</ul>
-<p>衡量网站的性能指标</p>
-<ul>
-<li>响应时间：指执行一个请求从开始到最后受到相应数据所花费的总体时间</li>
-<li>并发数：指系统同时能处理的请求数量<ul>
-<li>并发连接数：指的是客户端向服务器发起请求，并建立了TCP连接，每秒钟服务器连接的总TCP数量</li>
-<li>请求数：也成为QPS，指的是每秒多少请求</li>
-<li>并发用户：单位时间内有多少用户</li>
-</ul>
-</li>
-<li>吞吐量：指单位时间内系统能处理的请求数量<ul>
-<li>QPS：Query Per Second 每秒查询数</li>
-<li>TPS：Transactions Per Second 每秒事务数</li>
-<li>一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机再发送请求时开始计时，受到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数</li>
-<li>一个页面的一次访问，只会形成一个TPS；但一次页面请求，可能产生多次对服务器的请求，就会有多个QPS</li>
-</ul>
-</li>
-</ul>
-<p>架构目标</p>
-<ul>
-<li>高性能：提供快速的访问体验</li>
-<li>高可用给：网站服务一直可以正常访问</li>
-<li>可伸缩：通过硬件增加、减少，提高、降低处理能力</li>
-<li>高可扩展：系统间耦合低，方便的通过新增、移除方式，增加、减少新的功能、模块</li>
-<li>安全性：提供网站安全访问和数据加密，安全存储等策略</li>
-<li>敏捷性：随需应变，快速响应</li>
-</ul>
-<h3 id="集群与分布式"><a href="#集群与分布式" class="headerlink" title="集群与分布式"></a>集群与分布式</h3><p>集群：多单位干同样的事情</p>
-<ul>
-<li>一个业务模块，部署再多台服务器上</li>
-</ul>
-<p>分布式：多单位干不一样的事情，合起来是一件大事</p>
-<ul>
-<li>一个大的业务系统，拆分为小的业务模块，分别部署再不同的机器上</li>
-</ul>
-<p>架构的演化</p>
-<ol>
-<li><p>单体架构</p>
-<ol>
-<li>优点<ol>
-<li>简单：开发部署都很方便，小型项目首选</li>
-</ol>
-</li>
-<li>缺点：<ol>
-<li>项目启动慢</li>
-<li>可靠性差</li>
-<li>可伸缩性差</li>
-<li>扩展性和可维护性差</li>
-<li>性能低</li>
-</ol>
-</li>
-</ol>
-<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222557751.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222557751.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314222557751" style="zoom:33%;">
-</li>
-<li><p>垂直架构</p>
-<ol>
-<li>垂直架构是指将单体架构中的多个模块拆分为多个独立的项目，形成多个独立的单体架构</li>
-<li>存在的问题<ol>
-<li>重复的功能太多</li>
-</ol>
-</li>
-</ol>
-<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222832561.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314222832561.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314222832561" style="zoom:33%;">
-</li>
-<li><p>分布式架构</p>
-<ol>
-<li>分布式架构是指再垂直架构的基础上，将公共业务模块抽取出来，作为独立的服务，供其他调用者消费，以实现服务的共享和重用</li>
-<li>RPC：Remote Procedure Call 远程过程调用。有非常多的协议和技术都实现了RPC的过程。比如：HTTP REST风格，Java RMI规范、WebServiceSOAP协议、Hession等等。</li>
-<li>存在问题<ol>
-<li>服务提供方一旦产生变更，所有消费方都需要变更</li>
-</ol>
-</li>
-</ol>
-<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223308307.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223308307.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314223308307" style="zoom: 33%;">
-</li>
-<li><p>SOA架构</p>
-<ol>
-<li>SOA：（Service-Oriented Architecture，面向服务的架构）是一个组件模型，它将应用程序的不同功能单元（称为服务）进行拆分，并通过这些服务之间定义良好的结构和契约联系起来</li>
-<li>ESB：（Enterprise Serbice Bus）企业服务总线，服务中介。主要是提供了一个服务于服务之间的交互。ESB包含的功能如：负载均衡，流量控制，加密处理，服务的监控，异常处理，监控告急等等。</li>
-</ol>
-<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223732559.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314223732559.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314223732559" style="zoom:33%;">
-
-
-</li>
-<li><p>微服务架构</p>
-<ol>
-<li>微服务架构是在SOA上做的升华，微服务架构强调的一个重点是“业务需要彻底的组件化和服务化”，原有的单个业务系统会拆分为多个可以独立开发、设计、运行的小应用。这些小应用之间通过服务完成交互和集成</li>
-<li>微服务架构 &#x3D; 80%的SOA架构思想 + 100%的组件化架构思想 + 80%的领域建模思想</li>
-<li>特点<ol>
-<li>服务实现组件化：开发者可以自由选择开发技术，不需要协调其他团队</li>
-<li>服务之间交互一般使用REST API</li>
-<li>去中心化：每个微服务有自己私有的数据库持久化业务数据</li>
-<li>自动化部署：把应用拆分为一个个独立的单个服务，方便自动化部署、测试、运维</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<p>Dubbo是SOA时代的产物，SpringCloud是微服务时代的产物</p>
-<h2 id="Dubbo概述"><a href="#Dubbo概述" class="headerlink" title="Dubbo概述"></a>Dubbo概述</h2><h3 id="Dubbo概念"><a href="#Dubbo概念" class="headerlink" title="Dubbo概念"></a>Dubbo概念</h3><ul>
-<li>Dubbo是阿里巴巴公司开源的一个高性能、轻量级的Java RPC框架</li>
-<li>致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案</li>
-</ul>
-<img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314224613890.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240314224613890.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240314224613890" style="zoom:50%;">
-
-
-
-
-
-<h2 id="Dubbo快速入门"><a href="#Dubbo快速入门" class="headerlink" title="Dubbo快速入门"></a>Dubbo快速入门</h2><h3 id="Zookeeper安装"><a href="#Zookeeper安装" class="headerlink" title="Zookeeper安装"></a>Zookeeper安装</h3><h2 id="Dubbo-高级特性"><a href="#Dubbo-高级特性" class="headerlink" title="Dubbo 高级特性"></a>Dubbo 高级特性</h2><h3 id="dubbo-admin管理平台"><a href="#dubbo-admin管理平台" class="headerlink" title="dubbo-admin管理平台"></a>dubbo-admin管理平台</h3><ul>
-<li>dubbo-admin管理平台，是图形化的服务管理平台</li>
-<li>从注册中心中获取到所有的提供者&#x2F;消费者进行配置管理</li>
-<li>路由规则、动态配置、服务降级、访问控制、权重调整、负载均衡等管理功能</li>
-<li>dubbo-admin是一个前后端分离的项目。前端使用vue，后端使用springboot</li>
-</ul>
-<h3 id="dubbo-常用的高级配置"><a href="#dubbo-常用的高级配置" class="headerlink" title="dubbo 常用的高级配置"></a>dubbo 常用的高级配置</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315170119058.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315170119058.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315170119058" style="zoom:33%;">
-
-
-
-<p>序列化</p>
-<ul>
-<li>dubbo内部已经将序列化和反序列化的过程内部封装了</li>
-<li>我们只需要在定义pojo类时实现Serializable接口即可</li>
-</ul>
-<h4 id="地址缓存"><a href="#地址缓存" class="headerlink" title="地址缓存"></a>地址缓存</h4><blockquote>
-<p>注册中心挂了，服务是否可以正常访问</p>
-<p>可以，因为dubbo服务消费者在第一次调用时，会将服务提供方地址缓存到本地，以后再调用则不会访问注册中心</p>
-<p>当服务提供者地址发生变化时，注册中心会通知服务消费者</p>
-</blockquote>
-<h4 id="超时与重试"><a href="#超时与重试" class="headerlink" title="超时与重试"></a>超时与重试</h4><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315172700065.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315172700065.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315172700065" style="zoom:33%;">
-
-
-
-<p>超时</p>
-<ul>
-<li><p>服务消费者再调用服务提供者的时候发生了阻塞、等待的情形，这个时候，服务消费者会一直等待下去</p>
-</li>
-<li><p>在某个峰值时刻，大量请求都同时请求服务消费者，会造成线程的大量堆积，势必会造成雪崩</p>
-</li>
-<li><p>dubbo利用超时机制来解决这个问题，在这个时间内，无法完成服务访问，则自动断开连接</p>
-</li>
-<li><p>使用timeout属性配置超时时间,默认值1000,单位毫秒</p>
-</li>
-</ul>
-<p>重试</p>
-<ul>
-<li>设置了超时时间,在这个时间段内,无法完成服务访问,则自动断开连接</li>
-<li>如果网络出现抖动,则这一次就会失败</li>
-</ul>
-<h2 id="Dubbo-高级特性-1"><a href="#Dubbo-高级特性-1" class="headerlink" title="Dubbo 高级特性"></a>Dubbo 高级特性</h2><h3 id="多版本"><a href="#多版本" class="headerlink" title="多版本"></a>多版本</h3><img src="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315175424682.png" class="lazyload placeholder" data-srcset="https://blogpicture01.oss-cn-beijing.aliyuncs.com/img/image-20240315175424682.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-20240315175424682" style="zoom:33%;">
-
-<ul>
-<li>灰度发布:新功能发布时,会让一部分用户先使用新功能,用户反馈没问题时,再将所有用户迁移到新功能</li>
-<li>dubbo中使用version属性来设置和调用同一个接口的不同版本</li>
-</ul>
-<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡策略(4种):</p>
-<ul>
-<li>Random:按权重随机,默认值.按权重设置随机概率</li>
-<li>RoundRobin:按权重轮询</li>
-<li>LastActive:最少活跃调用数,相同活跃数的随机</li>
-<li>ConsistentHash:一致性Hash,相同参数的请求总是发到同一提供者</li>
-</ul>
-<h3 id="集群容错"><a href="#集群容错" class="headerlink" title="集群容错"></a>集群容错</h3><ul>
-<li>FailOver Cluster: 失败重试.默认值.当出现失败,重试其他服务器,默认重试两次,使用retries配置.一般用于读操作</li>
-<li>Failfast Cluster:快速失败,只发起一次调用,失败立即报错,通常用于写操作</li>
-<li>Failsafe Cluseter:失败安全,出现异常时,直接忽略,返回一个空结果</li>
-<li>Failback:失败自动恢复,后台记录失败请求,定时重发</li>
-<li>Forking Cluster:并行调用多个服务器,只要一个返回成功即可</li>
-</ul>
-<h3 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h3>
-      </div>
-      <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="">
-              中间件
-            </a>
-          
-        </div>
-        
-      </div>
-      
-        <div class="copyright">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-    <strong>作者:  </strong>何星林</a>
-    </li>
-    <li class="post-copyright-link">
-    <strong>文章链接:  </strong>
-    <a href="/2024/03/15/Dobbo入门/" target="_blank" title="Dobbo入门">http://khdiu.github.io/2024/03/15/Dobbo入门/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明:   </strong>
-      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      许可协议。转载请注明出处!
-    </li>
-  </ul>
-<div>
-      
-    </article>
-    <!-- 上一篇文章和下一篇文章 -->
-    
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">zookeeper入门</div>
-      </div>
-      
-      <!-- <div class="content">
-        zookeeper初识zookeeper概念
-
-Zookeeper是Apache Hadoop项目下的一个子项目，是一个
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
-    </div>
-    <a href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/" class="post-nav-link">
-      <div class="title">
-        下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">ThreadPoolExecutor详解</div>
-      </div>
-      <!-- <div class="content">
-        ThreadPoolExecutor详解
-      </div> -->
-    </a>
-  </div>
-
-</div>
-
-    
-    
-
-    <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          你的赏识是我前进的动力
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appDonate',
-    data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
-      },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-      changeTabActive(name) {
-        this.tabActive = name;
-      }
-    },
-    created() {}
-  })
-</script>
-    
-
-    <!-- 分享 -->
-    
-      <!-- https://github.com/overtrue/share.js -->
-<!-- 文章详情页的分享 -->
-<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-
-<script src="/js/shareJs/social-share.min.js"></script>
-</script>
-
-<style>
-  .social-share {
-    margin: 20px 0;
+    <span class="title" id="tag-header-desc"></span>
+    <script>
+  function typedFn() {
+    const el = '#tag-header-desc';
+    const type = 'tagDetail';
+    let desc = '好久不见'
+    var typed = new Typed(el, {
+      strings: [desc],
+      startDelay: 100,
+      typeSpeed: 100,
+      loop: true,
+      backSpeed: 50,
+      showCursor: true
+    });
   }
-</style>
-
-
-    
-    
-    <!-- 评论 -->
-    <!-- 评论 -->
-
-  <div id="myComment">
-    
-      <div id="gitment-container"></div>
-
+  typedFn();
+</script>
     
   </div>
+  <div class="mask-box"></div>
+</div>
 
-<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
 
 
+<div class="tag">
+  <div class="tag-name">
+    <div class="name" style="background-color: #F5EEF8;">大数据 分类</div>
   </div>
+  <!-- 每一篇文章卡片 -->
+  <!-- hash算法 -->
 
-  <!-- 目录 -->
-  <aside id='l_side'>
+<section class="posts">
   
     
-      <section class="widget side_blogger">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img src='https://blogpicture01.oss-cn-beijing.aliyuncs.com/blogbackground/homepage/yotailang%20.jpg'/>
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2024-03-23</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/">hadoop入门</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/Learning/">Learning</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            Hadoop数据导论企业数据分析方向数据是什么：
+
+数据是指对客观事件进行记录并可以鉴别的符号，是对客观事务的性质，状态以及相互关系尽心记载的物理符号或这些物理符号的组合，它是可以识别的、抽象的符号
+它不仅指狭义上的数字，还可以是具有一定意
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
         </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>何星林</h2>
-        
-        
-          <p>早起每一天</p>
-
-        
-        
       </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:khdiue@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/khdiu"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1179763684"
-              class="social fab fa-qq flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
+    </article>
+  
 </section>
-
-    
-  
-  
-  
-
-  <div class="layout_sticky">    
-    
-      
-<section class="widget side_toc">
-  
-  <header>
-    
-      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="toc-main">
-      <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dubbo"><span class="toc-text">Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">分布式系统中的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E7%9B%AE%E6%A0%87"><span class="toc-text">大型互联网项目架构目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F"><span class="toc-text">集群与分布式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo%E6%A6%82%E8%BF%B0"><span class="toc-text">Dubbo概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dubbo%E6%A6%82%E5%BF%B5"><span class="toc-text">Dubbo概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">Dubbo快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Zookeeper%E5%AE%89%E8%A3%85"><span class="toc-text">Zookeeper安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">Dubbo 高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dubbo-admin%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="toc-text">dubbo-admin管理平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dubbo-%E5%B8%B8%E7%94%A8%E7%9A%84%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-text">dubbo 常用的高级配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BC%93%E5%AD%98"><span class="toc-text">地址缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E4%B8%8E%E9%87%8D%E8%AF%95"><span class="toc-text">超时与重试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-1"><span class="toc-text">Dubbo 高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%89%88%E6%9C%AC"><span class="toc-text">多版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%AE%B9%E9%94%99"><span class="toc-text">集群容错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7"><span class="toc-text">服务降级</span></a></li></ol></li></ol></li></ol> -->
-        <div class="toc"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- 手机端目录按钮 -->
-<div id="toc-mobile-btn">
-  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
-      
-  <section class="widget side_recent_post">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      
-      <!-- hash算法 -->
-      
-      <div class="aside-list">
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">03-23</span>
-                
-              </div>
-              <a class="post-title" href="/2024/03/23/hadoop%E5%85%A5%E9%97%A8/">hadoop入门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">03-16</span>
-                
-              </div>
-              <a class="post-title" href="/2024/03/16/zookeeper%E5%85%A5%E9%97%A8/">zookeeper入门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/03/15/Dobbo%E5%85%A5%E9%97%A8/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">03-15</span>
-                
-              </div>
-              <a class="post-title" href="/2024/03/15/Dobbo%E5%85%A5%E9%97%A8/">Dobbo入门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">10-30</span>
-                
-              </div>
-              <a class="post-title" href="/2023/10/30/ThreadPoolExecutor%E8%AF%A6%E8%A7%A3/">ThreadPoolExecutor详解</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">10-24</span>
-                
-              </div>
-              <a class="post-title" href="/2023/10/24/%E5%90%8E%E7%AB%AFday4/">后端day4</a>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  </section>
-
-    
-  </div>
-</aside>
-
-  <!-- 图片放大 Wrap images with fancybox support -->
-  <script src="/js/wrapImage.js"></script>
-</div>
-
-<!-- 文章详情页背景图 -->
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
-	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
-	<transition-group tag="ul" :name="names">
-		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-			<img :src="image" class="bg-swiper-img no-lazy">
-		</li>
-	</transition-group>
-</div>
-<script>
-	var vm = new Vue({
-		el: '#appBgSwiper',
-		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
-			mark: 0,
-			img: [],
-			bgColor: '',
-			time: null
-		},
-		methods: {   //添加方法
-			change(i, m) {
-				if (i > m) {
-					// this.names = 'fade';
-				} else if (i < m) {
-					// this.names = 'fade';
-				} else {
-					return;
-				}
-				this.mark = i;
-			},
-			prev() {
-				// this.names = 'fade';
-				this.mark--;
-				if (this.mark === -1) {
-					this.mark = 3;
-					return
-				}
-			},
-			next() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			autoPlay() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			play() {
-				let bgImgDelay = '' || '180000'
-				let delay = parseInt(bgImgDelay) || 180000;
-				this.time = setInterval(this.autoPlay, delay);
-			},
-			enter() {
-				clearInterval(this.time);
-			},
-			leave() {
-				this.play();
-			}
-		},
-		created() {
-			this.play()
-		},
-		beforeDestroy() {
-			clearInterval(this.time);
-		},
-		mounted() {
-			let prop = '' || '';
-			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
-			if (isImg) {
-				let img = prop.split(',');
-				let configRoot = '/'
-				let arrImg = [];
-				img.forEach(el => {
-					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-					var objExp = new RegExp(Expression);
-
-					if (objExp.test(el)) {
-						// http or https
-						arrImg.push(el);
-					} else {
-						// 非http or https开头
-						// 本地文件
-						let firstStr = el.charAt(0);
-						if (firstStr == '/') {
-							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-						}
-						el = configRoot + el;
-						arrImg.push(el);
-					}
-				})
-				this.img = arrImg;
-			} else {
-				this.bgColor = prop;
-			}
-		}
-	})
-</script>
-
-<style>
-	.bg-swiper-box {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.bg-swiper-img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-</style>
-
-
-
-
-  <script>
-  function loadMermaid() {
-    if (document.getElementsByClassName('mermaid').length) {
-      if (window.mermaidJsLoad) mermaid.init()
-      else {
-        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
-          window.mermaidJsLoad = true
-          mermaid.initialize({
-            theme: 'default',
-          })
-          if ('true') {
-            mermaid.init();
-          }
-        })
-      }
-    }
-  };
-  document.addEventListener("DOMContentLoaded", function () {
-    loadMermaid();
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    loadMermaid();
-  })
+<div class="w-70">
   
-</script>
-
+</div>
 
       </main>
     </div>
